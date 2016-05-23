@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `t_recruitment_info`;
+﻿DROP TABLE IF EXISTS `t_recruitment_info`;
 CREATE TABLE `t_recruitment_info` (
   `no` bigint(12) NOT NULL AUTO_INCREMENT,
   `recruitNo` varchar(16) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE `t_recruitment_info` (
   `recruitNumber` int(3),
   `recruitLocale` char(100),
   `recruitObject` varchar(500) DEFAULT NULL,
-  `recruitDetails` text(10000),
+  `recruitDetails` blob,
   `addTimestamp` timestamp NULL DEFAULT NULL,
   `addUserKey` varchar(40) DEFAULT NULL,
   `updTimestamp` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

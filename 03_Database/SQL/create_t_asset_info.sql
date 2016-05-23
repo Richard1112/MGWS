@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS `t_partner_info`;
-CREATE TABLE `t_partner_info` (
+DROP TABLE IF EXISTS `t_asset_info`;
+CREATE TABLE `t_asset_info` (
   `no` bigint(12) NOT NULL AUTO_INCREMENT,
   `partnerNo` varchar(16) NOT NULL,
   `releaseDate` timestamp NOT NULL,
   `releaseFlg` char(1) NOT NULL,
-  `partnerName` varchar(100) DEFAULT NULL,
-  `partnerDetails` text(10000),
+  `assetName` varchar(100) DEFAULT NULL,
+  `assetDetails` blob,
   `addTimestamp` timestamp NULL DEFAULT NULL,
   `addUserKey` varchar(40) DEFAULT NULL,
   `updTimestamp` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
