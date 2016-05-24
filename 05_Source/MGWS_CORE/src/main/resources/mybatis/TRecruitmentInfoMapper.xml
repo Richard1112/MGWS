@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TRecruitmentInfoDao" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TRecruitmentInfo" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="recruitNo" property="recruitno" jdbcType="VARCHAR" />
+    <result column="releaseDate" property="releasedate" jdbcType="TIMESTAMP" />
+    <result column="releaseFlg" property="releaseflg" jdbcType="CHAR" />
+    <result column="recruitJobTitle" property="recruitjobtitle" jdbcType="VARCHAR" />
+    <result column="recruitNumber" property="recruitnumber" jdbcType="INTEGER" />
+    <result column="recruitLocale" property="recruitlocale" jdbcType="CHAR" />
+    <result column="recruitObject" property="recruitobject" jdbcType="VARCHAR" />
+    <result column="addTimestamp" property="addtimestamp" jdbcType="TIMESTAMP" />
+    <result column="addUserKey" property="adduserkey" jdbcType="VARCHAR" />
+    <result column="updTimestamp" property="updtimestamp" jdbcType="TIMESTAMP" />
+    <result column="updUserKey" property="upduserkey" jdbcType="VARCHAR" />
+    <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.org.mgws.entity.TRecruitmentInfo" extends="BaseResultMap" >
+    <result column="recruitDetails" property="recruitdetails" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, recruitNo, releaseDate, releaseFlg, recruitJobTitle, recruitNumber, recruitLocale, 
+    recruitObject, addTimestamp, addUserKey, updTimestamp, updUserKey, updPgmId
+  </sql>
+  <sql id="Blob_Column_List" >
+    recruitDetails
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_recruitment_info
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_recruitment_info
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
+    insert into t_recruitment_info (no, recruitNo, releaseDate, 
+      releaseFlg, recruitJobTitle, recruitNumber, 
+      recruitLocale, recruitObject, addTimestamp, 
+      addUserKey, updTimestamp, updUserKey, 
+      updPgmId, recruitDetails)
+    values (#{no,jdbcType=BIGINT}, #{recruitno,jdbcType=VARCHAR}, #{releasedate,jdbcType=TIMESTAMP}, 
+      #{releaseflg,jdbcType=CHAR}, #{recruitjobtitle,jdbcType=VARCHAR}, #{recruitnumber,jdbcType=INTEGER}, 
+      #{recruitlocale,jdbcType=CHAR}, #{recruitobject,jdbcType=VARCHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
+      #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, 
+      #{updpgmid,jdbcType=VARCHAR}, #{recruitdetails,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
+    insert into t_recruitment_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="recruitno != null" >
+        recruitNo,
+      </if>
+      <if test="releasedate != null" >
+        releaseDate,
+      </if>
+      <if test="releaseflg != null" >
+        releaseFlg,
+      </if>
+      <if test="recruitjobtitle != null" >
+        recruitJobTitle,
+      </if>
+      <if test="recruitnumber != null" >
+        recruitNumber,
+      </if>
+      <if test="recruitlocale != null" >
+        recruitLocale,
+      </if>
+      <if test="recruitobject != null" >
+        recruitObject,
+      </if>
+      <if test="addtimestamp != null" >
+        addTimestamp,
+      </if>
+      <if test="adduserkey != null" >
+        addUserKey,
+      </if>
+      <if test="updtimestamp != null" >
+        updTimestamp,
+      </if>
+      <if test="upduserkey != null" >
+        updUserKey,
+      </if>
+      <if test="updpgmid != null" >
+        updPgmId,
+      </if>
+      <if test="recruitdetails != null" >
+        recruitDetails,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="recruitno != null" >
+        #{recruitno,jdbcType=VARCHAR},
+      </if>
+      <if test="releasedate != null" >
+        #{releasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseflg != null" >
+        #{releaseflg,jdbcType=CHAR},
+      </if>
+      <if test="recruitjobtitle != null" >
+        #{recruitjobtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitnumber != null" >
+        #{recruitnumber,jdbcType=INTEGER},
+      </if>
+      <if test="recruitlocale != null" >
+        #{recruitlocale,jdbcType=CHAR},
+      </if>
+      <if test="recruitobject != null" >
+        #{recruitobject,jdbcType=VARCHAR},
+      </if>
+      <if test="addtimestamp != null" >
+        #{addtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserkey != null" >
+        #{adduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updtimestamp != null" >
+        #{updtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduserkey != null" >
+        #{upduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updpgmid != null" >
+        #{updpgmid,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitdetails != null" >
+        #{recruitdetails,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
+    update t_recruitment_info
+    <set >
+      <if test="recruitno != null" >
+        recruitNo = #{recruitno,jdbcType=VARCHAR},
+      </if>
+      <if test="releasedate != null" >
+        releaseDate = #{releasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseflg != null" >
+        releaseFlg = #{releaseflg,jdbcType=CHAR},
+      </if>
+      <if test="recruitjobtitle != null" >
+        recruitJobTitle = #{recruitjobtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitnumber != null" >
+        recruitNumber = #{recruitnumber,jdbcType=INTEGER},
+      </if>
+      <if test="recruitlocale != null" >
+        recruitLocale = #{recruitlocale,jdbcType=CHAR},
+      </if>
+      <if test="recruitobject != null" >
+        recruitObject = #{recruitobject,jdbcType=VARCHAR},
+      </if>
+      <if test="addtimestamp != null" >
+        addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserkey != null" >
+        addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updtimestamp != null" >
+        updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduserkey != null" >
+        updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updpgmid != null" >
+        updPgmId = #{updpgmid,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitdetails != null" >
+        recruitDetails = #{recruitdetails,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
+    update t_recruitment_info
+    set recruitNo = #{recruitno,jdbcType=VARCHAR},
+      releaseDate = #{releasedate,jdbcType=TIMESTAMP},
+      releaseFlg = #{releaseflg,jdbcType=CHAR},
+      recruitJobTitle = #{recruitjobtitle,jdbcType=VARCHAR},
+      recruitNumber = #{recruitnumber,jdbcType=INTEGER},
+      recruitLocale = #{recruitlocale,jdbcType=CHAR},
+      recruitObject = #{recruitobject,jdbcType=VARCHAR},
+      addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      updPgmId = #{updpgmid,jdbcType=VARCHAR},
+      recruitDetails = #{recruitdetails,jdbcType=LONGVARBINARY}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
+    update t_recruitment_info
+    set recruitNo = #{recruitno,jdbcType=VARCHAR},
+      releaseDate = #{releasedate,jdbcType=TIMESTAMP},
+      releaseFlg = #{releaseflg,jdbcType=CHAR},
+      recruitJobTitle = #{recruitjobtitle,jdbcType=VARCHAR},
+      recruitNumber = #{recruitnumber,jdbcType=INTEGER},
+      recruitLocale = #{recruitlocale,jdbcType=CHAR},
+      recruitObject = #{recruitobject,jdbcType=VARCHAR},
+      addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      updPgmId = #{updpgmid,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+</mapper>
