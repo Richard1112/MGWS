@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TAdminLoginInfoDao" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TAdminLoginInfo" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="adminNo" property="adminno" jdbcType="VARCHAR" />
+    <result column="loginPass" property="loginpass" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="loginStatus" property="loginstatus" jdbcType="CHAR" />
+    <result column="deleteFlg" property="deleteflg" jdbcType="CHAR" />
+    <result column="addTimestamp" property="addtimestamp" jdbcType="TIMESTAMP" />
+    <result column="addUserKey" property="adduserkey" jdbcType="VARCHAR" />
+    <result column="updTimestamp" property="updtimestamp" jdbcType="TIMESTAMP" />
+    <result column="updUserKey" property="upduserkey" jdbcType="VARCHAR" />
+    <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, adminNo, loginPass, salt, loginStatus, deleteFlg, addTimestamp, addUserKey, updTimestamp, 
+    updUserKey, updPgmId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_admin_login_info
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_admin_login_info
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TAdminLoginInfo" >
+    insert into t_admin_login_info (no, adminNo, loginPass, 
+      salt, loginStatus, deleteFlg, 
+      addTimestamp, addUserKey, updTimestamp, 
+      updUserKey, updPgmId)
+    values (#{no,jdbcType=BIGINT}, #{adminno,jdbcType=VARCHAR}, #{loginpass,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{loginstatus,jdbcType=CHAR}, #{deleteflg,jdbcType=CHAR}, 
+      #{addtimestamp,jdbcType=TIMESTAMP}, #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, 
+      #{upduserkey,jdbcType=VARCHAR}, #{updpgmid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TAdminLoginInfo" >
+    insert into t_admin_login_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="adminno != null" >
+        adminNo,
+      </if>
+      <if test="loginpass != null" >
+        loginPass,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="loginstatus != null" >
+        loginStatus,
+      </if>
+      <if test="deleteflg != null" >
+        deleteFlg,
+      </if>
+      <if test="addtimestamp != null" >
+        addTimestamp,
+      </if>
+      <if test="adduserkey != null" >
+        addUserKey,
+      </if>
+      <if test="updtimestamp != null" >
+        updTimestamp,
+      </if>
+      <if test="upduserkey != null" >
+        updUserKey,
+      </if>
+      <if test="updpgmid != null" >
+        updPgmId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="adminno != null" >
+        #{adminno,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpass != null" >
+        #{loginpass,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="loginstatus != null" >
+        #{loginstatus,jdbcType=CHAR},
+      </if>
+      <if test="deleteflg != null" >
+        #{deleteflg,jdbcType=CHAR},
+      </if>
+      <if test="addtimestamp != null" >
+        #{addtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserkey != null" >
+        #{adduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updtimestamp != null" >
+        #{updtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduserkey != null" >
+        #{upduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updpgmid != null" >
+        #{updpgmid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TAdminLoginInfo" >
+    update t_admin_login_info
+    <set >
+      <if test="adminno != null" >
+        adminNo = #{adminno,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpass != null" >
+        loginPass = #{loginpass,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="loginstatus != null" >
+        loginStatus = #{loginstatus,jdbcType=CHAR},
+      </if>
+      <if test="deleteflg != null" >
+        deleteFlg = #{deleteflg,jdbcType=CHAR},
+      </if>
+      <if test="addtimestamp != null" >
+        addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserkey != null" >
+        addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updtimestamp != null" >
+        updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduserkey != null" >
+        updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updpgmid != null" >
+        updPgmId = #{updpgmid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TAdminLoginInfo" >
+    update t_admin_login_info
+    set adminNo = #{adminno,jdbcType=VARCHAR},
+      loginPass = #{loginpass,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      loginStatus = #{loginstatus,jdbcType=CHAR},
+      deleteFlg = #{deleteflg,jdbcType=CHAR},
+      addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      updPgmId = #{updpgmid,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+</mapper>

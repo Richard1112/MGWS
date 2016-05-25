@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TSysModuleDao" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TSysModule" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="moduleNo" property="moduleno" jdbcType="VARCHAR" />
+    <result column="fatherModuleNo" property="fathermoduleno" jdbcType="VARCHAR" />
+    <result column="moduleName" property="modulename" jdbcType="VARCHAR" />
+    <result column="moduleDesc" property="moduledesc" jdbcType="VARCHAR" />
+    <result column="openFlg" property="openflg" jdbcType="CHAR" />
+    <result column="addTimestamp" property="addtimestamp" jdbcType="TIMESTAMP" />
+    <result column="addUserKey" property="adduserkey" jdbcType="VARCHAR" />
+    <result column="updTimestamp" property="updtimestamp" jdbcType="TIMESTAMP" />
+    <result column="updUserKey" property="upduserkey" jdbcType="VARCHAR" />
+    <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, moduleNo, fatherModuleNo, moduleName, moduleDesc, openFlg, addTimestamp, addUserKey, 
+    updTimestamp, updUserKey, updPgmId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_module
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sys_module
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TSysModule" >
+    insert into t_sys_module (no, moduleNo, fatherModuleNo, 
+      moduleName, moduleDesc, openFlg, 
+      addTimestamp, addUserKey, updTimestamp, 
+      updUserKey, updPgmId)
+    values (#{no,jdbcType=BIGINT}, #{moduleno,jdbcType=VARCHAR}, #{fathermoduleno,jdbcType=VARCHAR}, 
+      #{modulename,jdbcType=VARCHAR}, #{moduledesc,jdbcType=VARCHAR}, #{openflg,jdbcType=CHAR}, 
+      #{addtimestamp,jdbcType=TIMESTAMP}, #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, 
+      #{upduserkey,jdbcType=VARCHAR}, #{updpgmid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TSysModule" >
+    insert into t_sys_module
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="moduleno != null" >
+        moduleNo,
+      </if>
+      <if test="fathermoduleno != null" >
+        fatherModuleNo,
+      </if>
+      <if test="modulename != null" >
+        moduleName,
+      </if>
+      <if test="moduledesc != null" >
+        moduleDesc,
+      </if>
+      <if test="openflg != null" >
+        openFlg,
+      </if>
+      <if test="addtimestamp != null" >
+        addTimestamp,
+      </if>
+      <if test="adduserkey != null" >
+        addUserKey,
+      </if>
+      <if test="updtimestamp != null" >
+        updTimestamp,
+      </if>
+      <if test="upduserkey != null" >
+        updUserKey,
+      </if>
+      <if test="updpgmid != null" >
+        updPgmId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="moduleno != null" >
+        #{moduleno,jdbcType=VARCHAR},
+      </if>
+      <if test="fathermoduleno != null" >
+        #{fathermoduleno,jdbcType=VARCHAR},
+      </if>
+      <if test="modulename != null" >
+        #{modulename,jdbcType=VARCHAR},
+      </if>
+      <if test="moduledesc != null" >
+        #{moduledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="openflg != null" >
+        #{openflg,jdbcType=CHAR},
+      </if>
+      <if test="addtimestamp != null" >
+        #{addtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserkey != null" >
+        #{adduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updtimestamp != null" >
+        #{updtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduserkey != null" >
+        #{upduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updpgmid != null" >
+        #{updpgmid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TSysModule" >
+    update t_sys_module
+    <set >
+      <if test="moduleno != null" >
+        moduleNo = #{moduleno,jdbcType=VARCHAR},
+      </if>
+      <if test="fathermoduleno != null" >
+        fatherModuleNo = #{fathermoduleno,jdbcType=VARCHAR},
+      </if>
+      <if test="modulename != null" >
+        moduleName = #{modulename,jdbcType=VARCHAR},
+      </if>
+      <if test="moduledesc != null" >
+        moduleDesc = #{moduledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="openflg != null" >
+        openFlg = #{openflg,jdbcType=CHAR},
+      </if>
+      <if test="addtimestamp != null" >
+        addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserkey != null" >
+        addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updtimestamp != null" >
+        updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduserkey != null" >
+        updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updpgmid != null" >
+        updPgmId = #{updpgmid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TSysModule" >
+    update t_sys_module
+    set moduleNo = #{moduleno,jdbcType=VARCHAR},
+      fatherModuleNo = #{fathermoduleno,jdbcType=VARCHAR},
+      moduleName = #{modulename,jdbcType=VARCHAR},
+      moduleDesc = #{moduledesc,jdbcType=VARCHAR},
+      openFlg = #{openflg,jdbcType=CHAR},
+      addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      updPgmId = #{updpgmid,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+</mapper>
