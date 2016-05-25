@@ -8,87 +8,76 @@
 <head>
   <meta charset="utf-8">
   <title><sitemesh:write property='title' /></title>
-  <%@ include file="../commoncssHead.jsp"%>
-  <%@ include file="../commonjsFooter.jsp"%>
   <sitemesh:write property='head' />
 </head>
-<!-- Head END -->
-<script>
-	function toShopCart(){
-		var currentUserId = $("#currentUserId").val();
-		if (currentUserId == null || currentUserId.length == 0) {
-			location.href = "${ctx}/login/init"
-		} else {
-			location.href = "${ctx}/shopcart/init"
-		}
-	}
-	
-	function updateShopCart(){
-		$.ajax({
-			type : "GET",
-			contentType:'application/json',
-			url : '${pageContext.request.contextPath}/COMMON/getShopCartCount',
-			dataType : "json",
-			async : false,
-			data : '', 
-			success : function(data) {
-				if(!data.isException){
-					$("#decoratorShopCart").text(data.sccount)
-				} else {
-					// 同步购物车失败
-					return;
-				}
-			},
-			error : function(data) {
-				
-			}
-		});
-	}
-</script>
 
 <!-- Body BEGIN -->
 <body id="container">
+	<div class="notMainhead">
+			<div class="notMainLogo">
+				<img src="${ctx}/images/logo.png">
+			</div>
+			<div class="notMainTitle tabbable">
+				<div class="navbar-header">
+					<nav class="navbar navbar-default" role="navigation">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" 
+					         data-target="#ziwu-navbar-collapse">
+					         <span class="icon-bar"></span>
+					         <span class="icon-bar"></span>
+					         <span class="icon-bar"></span>
+					    </button>
+					</nav>
+				</div>
+				<div class="collapse navbar-collapse" id="ziwu-navbar-collapse">
+					<ul class="nav navbar-nav">
+				        <li id="main_li">
+				        	<a href="${ctx}/main/init">
+								<span class="fontshow">首页</span>
+								<span class="fontinfo">Home</span>
+							</a>
+				        </li>
+				        <li id="financelab_li">
+				        	<a href="${ctx}/financelab/init">
+								<span class="fontshow">金融实验室</span>
+								<span class="fontinfo">Financial Laboratory</span>
+							</a>
+				        </li>
+				        <li>
+				        	<a>
+								<span class="fontshow">资产管理</span>
+								<span class="fontinfo">Asset managerment</span>
+							</a>
+				        </li>
+				        <li>
+				        	<a>
+								<span class="fontshow">子午科技</span>
+								<span class="fontinfo">Meridian Science</span>
+							</a>
+				        </li>
+				        <li id="contactus_li">
+				        	<a href="${ctx}/contactus/init">
+								<span class="fontshow">联系我们</span>
+								<span class="fontinfo">Contact Us</span>
+							</a>
+				        </li>
+				    </ul>
+				</div>
+			</div>
+		</div>
 	<sitemesh:write property='body' />
-
-    <!-- BEGIN FOOTER -->
-    <div class="main-nav" id="main-nav-id">
-		<a href="${ctx}/main/init" class="main-nav-item main-nav-home main-nav-active">
-			<img alt="home" src="${ctx}/images/main.png">
-			<span><fmt:message key="DECORATOR_MAIN"/></span>
-		</a>
-		<a href="${ctx}/category/init" class="main-nav-item main-nav-cat ">
-			<img alt="category" src="${ctx}/images/category.png">
-			<span><fmt:message key="DECORATOR_CATEGORY"/></span>
-		</a>
-		<a href="#" onclick="toShopCart()" class="main-nav-item main-nav-cart " id="navCart">
-			<img alt="shopcart" src="${ctx}/images/shopcart.png">
-			<span><fmt:message key="DECORATOR_SHOPCART"/></span>
-			<span class="decoratorShopCart" id="decoratorShopCart"></span>
-		</a>
-		<a href="${ctx}/user/init" class="main-nav-item main-nav-profile ">
-			<img alt="me" src="${ctx}/images/me.png">
-			<span><fmt:message key="DECORATOR_ME"/></span>
-		</a>
-	</div>
-    <!-- END FOOTER -->
-    <input type="hidden" value="${currentUserId}" id="currentUserId">
-    
-    <script type="text/javascript">
-    var currentPath = window.location.pathname;
-	if (currentPath.indexOf("login/init") > 0) {
-		$("#main-nav-id").remove();
-	}
-	
-	var sessionUserId = '${currentUserId}';
-	if (sessionUserId == null || sessionUserId == "") {
-		// 没有登录
-		$("#decoratorShopCart").remove();
-	} else {
-		updateShopCart();
-	}
-    
-    
-    </script>
 </body>
 <!-- END BODY -->
+<script type="text/javascript">
+	var currentPath = window.location.pathname;
+	if (currentPath.indexOf("main") > 0) {
+		$("#main_li").addClass("active");
+	}
+	if (currentPath.indexOf("financelab") > 0) {
+		$("#financelab_li").addClass("active");
+	}
+	if (currentPath.indexOf("contactus") > 0) {
+		$("#contactus_li").addClass("active");
+	}
+
+</script>
 </html>

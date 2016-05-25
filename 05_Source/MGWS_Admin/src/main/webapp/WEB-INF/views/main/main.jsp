@@ -200,7 +200,6 @@
     </div>
 
     <!-- BEGIN fast view of a product -->
-	<%@ include file="../commonpopup.jsp"%>
     <%@ include file="../commonjsFooter.jsp"%>
 </body>
 <!-- END BODY -->
