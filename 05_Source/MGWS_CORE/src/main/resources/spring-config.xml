@@ -17,7 +17,7 @@
                         http://www.springframework.org/schema/mvc  
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.org.oztt" />
+	<context:component-scan base-package="com.org.mgws" />
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
@@ -100,12 +100,12 @@
 	
 	<aop:config>
 		<aop:pointcut id="userOperation"
-			expression="execution(public  * com.org.oztt.service.impl.*.*(..))" />
+			expression="execution(public  * com.org.mgws.service.impl.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="userOperation" />
 	</aop:config>
 	
 	
-	<bean class="com.org.oztt.base.shiro.spring.SpringUtils"/>
+	<bean class="com.org.mgws.base.shiro.spring.SpringUtils"/>
 
     <import resource="classpath:spring-config-cache.xml"/>
     <import resource="classpath:spring-config-shiro.xml"/>

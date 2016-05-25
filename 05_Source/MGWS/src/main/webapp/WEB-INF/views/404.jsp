@@ -9,8 +9,6 @@
 <head>
 <meta charset="utf-8">
 <title>404</title>
-<%@ include file="./commoncssHead.jsp"%>
-
 </head>
 <!-- Head END -->
 
@@ -42,16 +40,7 @@
       </div>
 	</div>
 
-	<%@ include file="./commonjsFooter.jsp"%>
 	<script type="text/javascript">
-
-	//这里重新加载画面的高度
-	var viewHeight = window.screen.height ;
-	var offTop = $("#mainDiv").offset().top;
-	if ($("#mainDiv").height() < viewHeight - offTop - 62) {
-		$("#mainDiv").height(viewHeight - offTop - 62);
-	}
-	
 	
 </script>
 </body>

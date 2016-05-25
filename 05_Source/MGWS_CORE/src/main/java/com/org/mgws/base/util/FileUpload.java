@@ -64,7 +64,7 @@ public class FileUpload extends HttpServlet {
 				File file = null;
 				do {
 					//生成文件名：
-					name = "oztt" + "_" + UUID.randomUUID().toString();
+					name = "mgws" + "_" + UUID.randomUUID().toString();
 					file = new File(savePath + name + extName);
 				} while (file.exists());
 				File saveFile = new File(savePath + name + extName);

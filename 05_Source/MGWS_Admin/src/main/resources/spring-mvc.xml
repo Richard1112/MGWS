@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc  
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-	<context:component-scan base-package="com.org.oztt.admin.controller" />
+	<context:component-scan base-package="com.org.mgws.admin.controller" />
 	
 	<mvc:annotation-driven />	
 	<!-- json解析 -->
@@ -85,7 +85,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*/*" />
-			<bean class="com.org.oztt.admin.interceptor.SessionTimeoutInterceptor" >
+			<bean class="com.org.mgws.admin.interceptor.SessionTimeoutInterceptor" >
 				<property name="allowUrls">
 			        <list>
 			          <value>/OZ_TT_AD_LG/init</value>
@@ -102,7 +102,7 @@
 	<bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" >
 		<property name="exceptionMappings">
 			<props>
-				<prop key="com.org.oztt.admin.exception.SessionTimeoutException">redirect:/OZ_TT_AD_LG/init</prop>
+				<prop key="com.org.mgws.admin.exception.SessionTimeoutException">redirect:/OZ_TT_AD_LG/init</prop>
 			</props>
 		</property>
 	</bean>

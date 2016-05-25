@@ -253,6 +253,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>OZTT_Phone</finalName>
+		<finalName>MGWS</finalName>
 	</build>
 </project>
