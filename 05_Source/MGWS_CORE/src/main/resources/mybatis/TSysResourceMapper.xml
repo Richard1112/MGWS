@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TSysResourceDao" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TSysResource" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="resourceName" property="resourcename" jdbcType="VARCHAR" />
+    <result column="resourceType" property="resourcetype" jdbcType="VARCHAR" />
+    <result column="resourceUrl" property="resourceurl" jdbcType="VARCHAR" />
+    <result column="parentResourceId" property="parentresourceid" jdbcType="BIGINT" />
+    <result column="parentResourceIds" property="parentresourceids" jdbcType="VARCHAR" />
+    <result column="resourcePermission" property="resourcepermission" jdbcType="VARCHAR" />
+    <result column="resourceAvailable" property="resourceavailable" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, resourceName, resourceType, resourceUrl, parentResourceId, parentResourceIds, 
+    resourcePermission, resourceAvailable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_resource
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sys_resource
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TSysResource" >
+    insert into t_sys_resource (id, resourceName, resourceType, 
+      resourceUrl, parentResourceId, parentResourceIds, 
+      resourcePermission, resourceAvailable)
+    values (#{id,jdbcType=BIGINT}, #{resourcename,jdbcType=VARCHAR}, #{resourcetype,jdbcType=VARCHAR}, 
+      #{resourceurl,jdbcType=VARCHAR}, #{parentresourceid,jdbcType=BIGINT}, #{parentresourceids,jdbcType=VARCHAR}, 
+      #{resourcepermission,jdbcType=VARCHAR}, #{resourceavailable,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TSysResource" >
+    insert into t_sys_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="resourcename != null" >
+        resourceName,
+      </if>
+      <if test="resourcetype != null" >
+        resourceType,
+      </if>
+      <if test="resourceurl != null" >
+        resourceUrl,
+      </if>
+      <if test="parentresourceid != null" >
+        parentResourceId,
+      </if>
+      <if test="parentresourceids != null" >
+        parentResourceIds,
+      </if>
+      <if test="resourcepermission != null" >
+        resourcePermission,
+      </if>
+      <if test="resourceavailable != null" >
+        resourceAvailable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="resourcename != null" >
+        #{resourcename,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcetype != null" >
+        #{resourcetype,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceurl != null" >
+        #{resourceurl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentresourceid != null" >
+        #{parentresourceid,jdbcType=BIGINT},
+      </if>
+      <if test="parentresourceids != null" >
+        #{parentresourceids,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcepermission != null" >
+        #{resourcepermission,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceavailable != null" >
+        #{resourceavailable,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TSysResource" >
+    update t_sys_resource
+    <set >
+      <if test="resourcename != null" >
+        resourceName = #{resourcename,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcetype != null" >
+        resourceType = #{resourcetype,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceurl != null" >
+        resourceUrl = #{resourceurl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentresourceid != null" >
+        parentResourceId = #{parentresourceid,jdbcType=BIGINT},
+      </if>
+      <if test="parentresourceids != null" >
+        parentResourceIds = #{parentresourceids,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcepermission != null" >
+        resourcePermission = #{resourcepermission,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceavailable != null" >
+        resourceAvailable = #{resourceavailable,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TSysResource" >
+    update t_sys_resource
+    set resourceName = #{resourcename,jdbcType=VARCHAR},
+      resourceType = #{resourcetype,jdbcType=VARCHAR},
+      resourceUrl = #{resourceurl,jdbcType=VARCHAR},
+      parentResourceId = #{parentresourceid,jdbcType=BIGINT},
+      parentResourceIds = #{parentresourceids,jdbcType=VARCHAR},
+      resourcePermission = #{resourcepermission,jdbcType=VARCHAR},
+      resourceAvailable = #{resourceavailable,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
