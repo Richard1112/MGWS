@@ -13,8 +13,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.org.mgws.base.shiro.entity.User;
-import com.org.mgws.base.shiro.service.UserService;
+import com.org.mgws.base.shiro.service.AdminService;
+import com.org.mgws.entity.TAdminLoginInfo;
 
 /**
  * <p>User: Zhang Kaitao
@@ -24,38 +24,38 @@ import com.org.mgws.base.shiro.service.UserService;
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
-    private UserService userService;
+    private AdminService adminService;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = (String)principals.getPrimaryPrincipal();
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        authorizationInfo.setRoles(userService.findRoles(username));
-        authorizationInfo.setStringPermissions(userService.findPermissions(username));
+//        authorizationInfo.setRoles(adminService.findRoles(username));
+//        authorizationInfo.setStringPermissions(adminService.findPermissions(username));
         return authorizationInfo;
     }
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
-        String username = (String)token.getPrincipal();
+        String adminno = (String)token.getPrincipal();
 
-        User user = userService.findByUsername(username);
+        TAdminLoginInfo adminInfo = adminService.findByAdminNo(adminno);
 
-        if(user == null) {
+        if(adminInfo == null) {
             throw new UnknownAccountException();//没找到帐号
         }
 
-        if(Boolean.TRUE.equals(user.getLocked())) {
+        if("1".equals(adminInfo.getDeleteflg())) {
             throw new LockedAccountException(); //帐号锁定
         }
 
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user.getUsername(), //用户名
-                user.getPassword(), //密码
-                ByteSource.Util.bytes(user.getCredentialsSalt()),//salt=username+salt
+        		adminInfo.getAdminno(), //用户名
+        		adminInfo.getLoginpass(), //密码
+                ByteSource.Util.bytes(adminInfo.getCredentialsSalt()),//salt=username+salt
                 getName()  //realm name
         );
         return authenticationInfo;
