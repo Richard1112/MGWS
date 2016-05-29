@@ -9,6 +9,7 @@ CREATE TABLE `t_recruitment_info` (
   `recruitLocale` char(100),
   `recruitObject` varchar(500) DEFAULT NULL,
   `recruitDetails` blob,
+  `sortOrder` int(8),
   `addTimestamp` timestamp NULL DEFAULT NULL,
   `addUserKey` varchar(40) DEFAULT NULL,
   `updTimestamp` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
