@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TSysCodeDao" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TSysCode" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="codeId" property="codeid" jdbcType="VARCHAR" />
+    <result column="codeDetailId" property="codedetailid" jdbcType="VARCHAR" />
+    <result column="codeName" property="codename" jdbcType="VARCHAR" />
+    <result column="codeDetailName" property="codedetailname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, codeId, codeDetailId, codeName, codeDetailName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_code
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sys_code
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TSysCode" >
+    insert into t_sys_code (no, codeId, codeDetailId, 
+      codeName, codeDetailName)
+    values (#{no,jdbcType=BIGINT}, #{codeid,jdbcType=VARCHAR}, #{codedetailid,jdbcType=VARCHAR}, 
+      #{codename,jdbcType=VARCHAR}, #{codedetailname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TSysCode" >
+    insert into t_sys_code
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="codeid != null" >
+        codeId,
+      </if>
+      <if test="codedetailid != null" >
+        codeDetailId,
+      </if>
+      <if test="codename != null" >
+        codeName,
+      </if>
+      <if test="codedetailname != null" >
+        codeDetailName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="codeid != null" >
+        #{codeid,jdbcType=VARCHAR},
+      </if>
+      <if test="codedetailid != null" >
+        #{codedetailid,jdbcType=VARCHAR},
+      </if>
+      <if test="codename != null" >
+        #{codename,jdbcType=VARCHAR},
+      </if>
+      <if test="codedetailname != null" >
+        #{codedetailname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TSysCode" >
+    update t_sys_code
+    <set >
+      <if test="codeid != null" >
+        codeId = #{codeid,jdbcType=VARCHAR},
+      </if>
+      <if test="codedetailid != null" >
+        codeDetailId = #{codedetailid,jdbcType=VARCHAR},
+      </if>
+      <if test="codename != null" >
+        codeName = #{codename,jdbcType=VARCHAR},
+      </if>
+      <if test="codedetailname != null" >
+        codeDetailName = #{codedetailname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TSysCode" >
+    update t_sys_code
+    set codeId = #{codeid,jdbcType=VARCHAR},
+      codeDetailId = #{codedetailid,jdbcType=VARCHAR},
+      codeName = #{codename,jdbcType=VARCHAR},
+      codeDetailName = #{codedetailname,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+</mapper>

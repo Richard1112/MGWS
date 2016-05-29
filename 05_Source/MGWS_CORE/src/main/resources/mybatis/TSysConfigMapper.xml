@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TSysConfigDao" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TSysConfig" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="advertisingPics" property="advertisingpics" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, advertisingPics
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_config
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sys_config
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TSysConfig" >
+    insert into t_sys_config (no, advertisingPics)
+    values (#{no,jdbcType=BIGINT}, #{advertisingpics,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TSysConfig" >
+    insert into t_sys_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="advertisingpics != null" >
+        advertisingPics,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="advertisingpics != null" >
+        #{advertisingpics,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TSysConfig" >
+    update t_sys_config
+    <set >
+      <if test="advertisingpics != null" >
+        advertisingPics = #{advertisingpics,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TSysConfig" >
+    update t_sys_config
+    set advertisingPics = #{advertisingpics,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+</mapper>

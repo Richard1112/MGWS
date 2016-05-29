@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TSysRoleDao" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TSysRole" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="roleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="roleDesc" property="roledesc" jdbcType="VARCHAR" />
+    <result column="resourceIds" property="resourceids" jdbcType="VARCHAR" />
+    <result column="openFlg" property="openflg" jdbcType="CHAR" />
+    <result column="addTimestamp" property="addtimestamp" jdbcType="TIMESTAMP" />
+    <result column="addUserKey" property="adduserkey" jdbcType="VARCHAR" />
+    <result column="updTimestamp" property="updtimestamp" jdbcType="TIMESTAMP" />
+    <result column="updUserKey" property="upduserkey" jdbcType="VARCHAR" />
+    <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, roleName, roleDesc, resourceIds, openFlg, addTimestamp, addUserKey, updTimestamp, 
+    updUserKey, updPgmId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_sys_role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TSysRole" >
+    insert into t_sys_role (id, roleName, roleDesc, 
+      resourceIds, openFlg, addTimestamp, 
+      addUserKey, updTimestamp, updUserKey, 
+      updPgmId)
+    values (#{id,jdbcType=BIGINT}, #{rolename,jdbcType=VARCHAR}, #{roledesc,jdbcType=VARCHAR}, 
+      #{resourceids,jdbcType=VARCHAR}, #{openflg,jdbcType=CHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
+      #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, 
+      #{updpgmid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TSysRole" >
+    insert into t_sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rolename != null" >
+        roleName,
+      </if>
+      <if test="roledesc != null" >
+        roleDesc,
+      </if>
+      <if test="resourceids != null" >
+        resourceIds,
+      </if>
+      <if test="openflg != null" >
+        openFlg,
+      </if>
+      <if test="addtimestamp != null" >
+        addTimestamp,
+      </if>
+      <if test="adduserkey != null" >
+        addUserKey,
+      </if>
+      <if test="updtimestamp != null" >
+        updTimestamp,
+      </if>
+      <if test="upduserkey != null" >
+        updUserKey,
+      </if>
+      <if test="updpgmid != null" >
+        updPgmId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="roledesc != null" >
+        #{roledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceids != null" >
+        #{resourceids,jdbcType=VARCHAR},
+      </if>
+      <if test="openflg != null" >
+        #{openflg,jdbcType=CHAR},
+      </if>
+      <if test="addtimestamp != null" >
+        #{addtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserkey != null" >
+        #{adduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updtimestamp != null" >
+        #{updtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduserkey != null" >
+        #{upduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updpgmid != null" >
+        #{updpgmid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TSysRole" >
+    update t_sys_role
+    <set >
+      <if test="rolename != null" >
+        roleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="roledesc != null" >
+        roleDesc = #{roledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceids != null" >
+        resourceIds = #{resourceids,jdbcType=VARCHAR},
+      </if>
+      <if test="openflg != null" >
+        openFlg = #{openflg,jdbcType=CHAR},
+      </if>
+      <if test="addtimestamp != null" >
+        addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserkey != null" >
+        addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updtimestamp != null" >
+        updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduserkey != null" >
+        updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      </if>
+      <if test="updpgmid != null" >
+        updPgmId = #{updpgmid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TSysRole" >
+    update t_sys_role
+    set roleName = #{rolename,jdbcType=VARCHAR},
+      roleDesc = #{roledesc,jdbcType=VARCHAR},
+      resourceIds = #{resourceids,jdbcType=VARCHAR},
+      openFlg = #{openflg,jdbcType=CHAR},
+      addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
+      addUserKey = #{adduserkey,jdbcType=VARCHAR},
+      updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
+      updUserKey = #{upduserkey,jdbcType=VARCHAR},
+      updPgmId = #{updpgmid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
