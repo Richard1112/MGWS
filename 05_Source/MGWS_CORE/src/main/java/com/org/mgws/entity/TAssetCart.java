@@ -23,7 +23,7 @@ public class TAssetCart {
 
     private String updpgmid;
 
-    private byte[] assetdetails;
+    private String assetdetails;
 
     public Long getNo() {
         return no;
@@ -105,11 +105,11 @@ public class TAssetCart {
         this.updpgmid = updpgmid;
     }
 
-    public byte[] getAssetdetails() {
+    public String getAssetdetails() {
         return assetdetails;
     }
 
-    public void setAssetdetails(byte[] assetdetails) {
+    public void setAssetdetails(String assetdetails) {
         this.assetdetails = assetdetails;
     }
 }

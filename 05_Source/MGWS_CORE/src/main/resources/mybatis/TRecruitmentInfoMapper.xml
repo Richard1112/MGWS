@@ -18,7 +18,7 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.org.mgws.entity.TRecruitmentInfo" extends="BaseResultMap" >
-    <result column="recruitDetails" property="recruitdetails" jdbcType="LONGVARBINARY" />
+    <result column="recruitDetails" property="recruitdetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     no, recruitNo, releaseDate, releaseFlg, recruitJobTitle, recruitNumber, recruitLocale, 
@@ -49,7 +49,7 @@
       #{releaseflg,jdbcType=CHAR}, #{recruitjobtitle,jdbcType=VARCHAR}, #{recruitnumber,jdbcType=INTEGER}, 
       #{recruitlocale,jdbcType=CHAR}, #{recruitobject,jdbcType=VARCHAR}, #{sortOrder,jdbcType=VARCHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
       #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, 
-      #{updpgmid,jdbcType=VARCHAR}, #{recruitdetails,jdbcType=LONGVARBINARY})
+      #{updpgmid,jdbcType=VARCHAR}, #{recruitdetails,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
     insert into t_recruitment_info
@@ -144,7 +144,7 @@
         #{updpgmid,jdbcType=VARCHAR},
       </if>
       <if test="recruitdetails != null" >
-        #{recruitdetails,jdbcType=LONGVARBINARY},
+        #{recruitdetails,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -191,7 +191,7 @@
         updPgmId = #{updpgmid,jdbcType=VARCHAR},
       </if>
       <if test="recruitdetails != null" >
-        recruitDetails = #{recruitdetails,jdbcType=LONGVARBINARY},
+        recruitDetails = #{recruitdetails,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where no = #{no,jdbcType=BIGINT}
@@ -211,7 +211,7 @@
       updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
       updUserKey = #{upduserkey,jdbcType=VARCHAR},
       updPgmId = #{updpgmid,jdbcType=VARCHAR},
-      recruitDetails = #{recruitdetails,jdbcType=LONGVARBINARY}
+      recruitDetails = #{recruitdetails,jdbcType=LONGVARCHAR}
     where no = #{no,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
@@ -231,4 +231,13 @@
       updPgmId = #{updpgmid,jdbcType=VARCHAR}
     where no = #{no,jdbcType=BIGINT}
   </update>
+  
+  <select id="getAllTRecruitmentInfo" resultMap="ResultMapWithBLOBs" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_recruitment_info
+    order by sortOrder
+  </select>
 </mapper>

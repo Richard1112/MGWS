@@ -14,7 +14,7 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.org.mgws.entity.TAssetCart" extends="BaseResultMap" >
-    <result column="assetDetails" property="assetdetails" jdbcType="LONGVARBINARY" />
+    <result column="assetDetails" property="assetdetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     no, partnerNo, releaseDate, releaseFlg, assetName, addTimestamp, addUserKey, updTimestamp, 
@@ -43,7 +43,7 @@
     values (#{no,jdbcType=BIGINT}, #{partnerno,jdbcType=VARCHAR}, #{releasedate,jdbcType=TIMESTAMP}, 
       #{releaseflg,jdbcType=CHAR}, #{assetname,jdbcType=VARCHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
       #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, 
-      #{updpgmid,jdbcType=VARCHAR}, #{assetdetails,jdbcType=LONGVARBINARY})
+      #{updpgmid,jdbcType=VARCHAR}, #{assetdetails,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.org.mgws.entity.TAssetCart" >
     insert into t_asset_info
@@ -114,7 +114,7 @@
         #{updpgmid,jdbcType=VARCHAR},
       </if>
       <if test="assetdetails != null" >
-        #{assetdetails,jdbcType=LONGVARBINARY},
+        #{assetdetails,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -149,7 +149,7 @@
         updPgmId = #{updpgmid,jdbcType=VARCHAR},
       </if>
       <if test="assetdetails != null" >
-        assetDetails = #{assetdetails,jdbcType=LONGVARBINARY},
+        assetDetails = #{assetdetails,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where no = #{no,jdbcType=BIGINT}
@@ -165,7 +165,7 @@
       updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
       updUserKey = #{upduserkey,jdbcType=VARCHAR},
       updPgmId = #{updpgmid,jdbcType=VARCHAR},
-      assetDetails = #{assetdetails,jdbcType=LONGVARBINARY}
+      assetDetails = #{assetdetails,jdbcType=LONGVARCHAR}
     where no = #{no,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TAssetCart" >

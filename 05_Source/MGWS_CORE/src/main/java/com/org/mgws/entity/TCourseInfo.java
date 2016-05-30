@@ -23,7 +23,7 @@ public class TCourseInfo {
 
     private String updpgmid;
 
-    private byte[] coursedetails;
+    private String coursedetails;
 
     public Long getNo() {
         return no;
@@ -105,11 +105,11 @@ public class TCourseInfo {
         this.updpgmid = updpgmid;
     }
 
-    public byte[] getCoursedetails() {
+    public String getCoursedetails() {
         return coursedetails;
     }
 
-    public void setCoursedetails(byte[] coursedetails) {
+    public void setCoursedetails(String coursedetails) {
         this.coursedetails = coursedetails;
     }
 }
