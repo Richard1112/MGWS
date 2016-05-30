@@ -20,9 +20,9 @@ public class StockExchangeController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/init")
-    public String init(Model model, HttpServletResponse response, HttpSession session) {
+    public String init(Model model, HttpServletResponse response, HttpSession session, String tab) {
         try {
-            
+            model.addAttribute("tab", tab);
             return "stockexchange";
         }
         catch (Exception e) {

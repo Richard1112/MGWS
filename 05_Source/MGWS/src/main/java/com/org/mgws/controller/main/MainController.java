@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.org.mgws.base.util.DateFormatUtils;
 import com.org.mgws.contants.CommonConstants;
 import com.org.mgws.controller.BaseController;
 
@@ -23,6 +24,12 @@ public class MainController extends BaseController {
     @RequestMapping(value = "/init")
     public String init(Model model, HttpServletResponse response, HttpSession session) {
         try {
+        	// 检索所有的招聘信息
+        	
+        	// 投资信息
+        	model.addAttribute("msg_info", super.getPageMessage("MAIN_MSG_INFO"));
+        	// 当前时间
+        	model.addAttribute("curtime", DateFormatUtils.getAbbreviationEngTime());
             return "main";
         }
         catch (Exception e) {
