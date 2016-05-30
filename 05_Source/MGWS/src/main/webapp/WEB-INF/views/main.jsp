@@ -23,70 +23,98 @@
 	<div class="my_container">
 		<div class="flexslider" id="slider_main_banner">
 	  		<ul class="slides">
-	  			<li><img src="${ctx}/images/jrsys_banner.png"></li>
-	  			<li><img src="${ctx}/images/jrsys_banner.png"></li>
+	  			<li><img src="${ctx}/images/main/main_banner.png"></li>
+	  			<li><img src="${ctx}/images/main/main_banner.png"></li>
 	  		</ul>
 	    </div>
 		<div class="main_section">
 			<div class="main_invite">
 				<div class="main_invite_left">
-						<div class="line"></div>
+					<div class="flexslider main_invite_li" id="main_invite_div">
+						<ul class="slides">
+							<c:forEach var="inviteItem" items="${ inviteInfo }">
+							<li>
+								<div class="main_invite_li_left">
+									<div class="line"></div>
+								</div>
+								<div class="main_invite_li_right">
+									<span class="main_invite_left_span1">${inviteItem.recruitlocale }</span>
+									<span>招聘职位：${inviteItem.recruitjobtitle }</span>
+									<span>招聘人数：${inviteItem.recruitnumber }人</span>
+									<span>招聘对象：${inviteItem.recruitobject }</span>
+									<span>为您提供：<br/>${inviteItem.recruitdetails }</span>
+									<div class="main_invite_detail" onclick="toInviteDetail()"></div>
+								</div> 
+							</li>
+							</c:forEach>
+							<li>
+								<div class="main_invite_li_left">
+									<div class="line"></div>
+								</div>
+								<div class="main_invite_li_right">
+									<span class="main_invite_left_span1">Meridian 金融实验室招聘</span>
+									<span>招聘职位：环球市场交易员</span>
+									<span>招聘人数：8人</span>
+									<span>招聘对象：2013/2014应届大学毕业生</span>
+									<span>为您提供：<br/>业内领先水平的薪资待遇和奖励机制</span>
+									<div class="main_invite_detail" onclick="toInviteDetail()"></div>
+								</div> 
+							</li>
+						</ul>
+					</div>
 				</div>
 				<div class="main_invite_right">
-					<span class="main_invite_right_span1">Meridian 金融实验室招聘</span>
-					<span>招聘职位：环球市场交易员</span>
-					<span>招聘人数：8人</span>
-					<span>招聘对象：2013/2014应届大学毕业生</span>
-					<span>为您提供：<br/>业内领先水平的薪资待遇和奖励机制</span>
-
-					<div class="main_invite_detail" onclick="toInviteDetail()"></div>
+					&nbsp;
 				</div>
 			</div>
+			
 			<div class="main_exchange">
-				<div class="flexslider" id="jiaoyisuo_img_div">
-					<ul class="slides">
-			  			<li><img src="${ctx}/images/main/jiaoyisuo_1.png"></li>
-			  			<li><img src="${ctx}/images/main/jiaoyisuo_1.png"></li>
-			  		</ul>
+				<div class="main_exchange_left">
+					&nbsp;
+				</div>
+				<div class="main_exchange_right">
+					<img src="${ctx}/images/main/jiaoyisuo_1.png">
+					<span class="main_exchange_span font_xl">
+						${curtime}
+					</span>
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="main_jys_detail">
-			<div class="fontshow">欧洲期货交易所</div>
-			<div class="fontinfo">EXREX Exchange</div>
-			<div class="fontshow magin-top-30px">欧洲期货交易所（EXREX）是一全面电子化交易所，其电子交易平台可以提供广泛的国际基准产品的访问。EXREX标准化、分权式的交易系统，使其市场参与者在全球各地都能下单交易...</div>
-			<div class="jsy_showdetail">
-				<a href="${ctx }/stockexchange/init">查看更多</a>
+			<div class="fontshow main_jys_detail_div">欧洲期货交易所</div>
+			<div class="fontinfo main_jys_detail_div">EXREX Exchange</div>
+			<div class="fontshow main_jys_detail_div magin-top-30px">欧洲期货交易所（EXREX）是一全面电子化交易所，其电子交易平台可以提供广泛的国际基准产品的访问。EXREX标准化、分权式的交易系统，使其市场参与者在全球各地都能下单交易...</div>
+			<div class="jsy_showdetail main_jys_detail_div">
+				<a href="${ctx }/stockexchange/init?tab=2">查看更多</a>
 			</div>
 			<div class="circle_size_xl position_r100_t5"></div>
 			<div class="circle_size_m position_l100_b5"></div>
 		</div>
-
-
+		 		
 		<div class="main_jys_sel">
 			<a href="${ctx }/stockexchange/init?tab=1">
-				<img src="${ctx}/images/main/po_circle_no.png">
+				<i class="main_po_all"></i>
 				<span class="fontshow">纽约泛欧交易所</span>
 				<span class="fontinfo">NYSE Euronext</span>
 			</a>
 			<a href="${ctx }/stockexchange/init?tab=2">
-				<img src="${ctx}/images/main/po_circle_no.png">
+				<i class="main_po_all"></i>
 				<span class="fontshow">欧洲期货交易所</span>
 				<span class="fontinfo">EXREX Exchange</span>
 			</a>
 			<a href="${ctx }/stockexchange/init?tab=3">
-				<img src="${ctx}/images/main/po_circle_yes.png">
+				<i class="main_po_all"></i>
 				<span class="fontshow">芝加哥商业交易所</span>
 				<span class="fontinfo">CME Group</span>
 			</a>
 			<a href="${ctx }/stockexchange/init?tab=4">
-				<img src="${ctx}/images/main/po_circle_no.png">
+				<i class="main_po_all"></i>
 				<span class="fontshow">中国沪深证券交易所</span>
 				<span class="fontinfo">Stock Exchange</span>
 			</a>
 		</div>
-
+ 
 		<div class="main_about_us">
 			<div class="main_about_us_back">
 				<img src="${ctx}/images/main/about_us_bg.png">
@@ -134,8 +162,7 @@
 				
 			</div>
 		</div>
-
-		<div class="footer magin-top-200px">
+		<div class="footer magin-top-250px">
 			<div class="fontshow">Copyright 2013 Meridian Global Inc.</div>
 			<div class="footer-split"></div>
 		</div>
@@ -149,19 +176,29 @@
 				animationSpeed: 400, //滚动时间ms
 				directionNav:false,
 				touch: true //是否支持触屏滑动
-			});
-
-			$("#jiaoyisuo_img_div").flexslider({
+			}); 
+		    
+		    $("#jiaoyisuo_img_div").flexslider({
 				animation: "slide",
 				slideshow: false,
 				controlNav:false,
 				after:function(){
 				}
 			});
+			
+			$("#main_invite_div").flexslider({
+				animation: "slide",
+				slideshow: false,
+				controlNav:false,
+				after:function(){
+				}
+			});
+			
 
 			Lobibox.notify('success', {
+				sound:false,
 				size: 'mini',
-                msg: '这里有最新的投资信息。'
+                msg: '${msg_info}'
             });
 		});
 		

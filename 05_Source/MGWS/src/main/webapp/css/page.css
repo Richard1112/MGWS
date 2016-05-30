@@ -133,28 +133,28 @@ a{
 .circle_size_xll{
 	background: url("../images/circle.png") no-repeat;
 	background-size: 100px 100px;
-	width: 100px;
+	width: 100px !important;
 	height: 100px;
 }
 
 .circle_size_xl{
 	background: url("../images/circle.png") no-repeat;
 	background-size: 50px 50px;
-	width: 50px;
+	width: 50px !important;
 	height: 50px;
 }
 
 .circle_size_l{
 	background: url("../images/circle.png") no-repeat;
 	background-size: 35px 35px;
-	width: 35px;
+	width: 35px !important;
 	height: 35px;
 }
 
 .circle_size_m{
 	background: url("../images/circle.png") no-repeat;
 	background-size: 20px 20px;
-	width: 20px;
+	width: 20px !important;
 	height: 20px;
 }
 
@@ -225,6 +225,10 @@ a{
 	margin-top: 200px;
 }
 
+.magin-top-250px{
+	margin-top: 250px;
+}
+
 .float_left{
 	float: left;
 }
@@ -259,54 +263,63 @@ a{
 .main_section{
 	width: 70%;
 	margin: 50px auto;
-	display: flex;
-}
-
-.main_invite{
-	width: 50%;
-	float: left;
-	background: url("../images/main/invite_area.png") no-repeat;
-	background-size: 100% 100%;
+	display: block;
 	position: relative;
 }
 
-.main_exchange{
-	width: 50%;
-	float: left;
-}
-
-.main_exchange img{
+.main_invite{
 	width: 100%;
+	position: relative;
+	display: inline-block;
+	margin-top: 40px;
 }
 
 .main_invite .main_invite_left{
-	width: 40%;
+	width: 50%;
 	float: left;
+	box-shadow: 0 5px 5px rgba(47, 20, 20, 0.44);
 }
-
-.main_invite .main_invite_left .line{
-	border: 1px solid #fff;
-    width: 50%;
-    float: right;
-    margin: 90px 5px 0 5px;
-}
-
 .main_invite .main_invite_right{
-	padding: 75px 3px 3px 25px;
-    width: 60%;
+    width: 50%;
     float: left;
 }
 
-.main_invite .main_invite_right span{
+.main_invite .main_invite_li{
+	background: url("../images/main/invite_area.png") no-repeat;
+	background-size: 100% 100%;
+	padding: 50px 0px 0px 0px;
+}
+
+.main_invite .main_invite_li_left{
+	width:40%;
+	float: left;
+}
+
+.main_invite .main_invite_li_right{
+	width:60%;
+	float: left;
+	padding: 0px 0px 70px 30px;
+	position: relative;
+}
+
+.main_invite .main_invite_li_left .line{
+	border: 1px solid #fff;
+    width: 50%;
+    float: right;
+    margin: 10px 5px 0 5px;
+}
+
+.main_invite .main_invite_li_right span{
 	display: block;
 	width: 100%;
 	margin-top: 10px;
-	color: #fff;
+ 	color: #fff;
 }
 
-.main_invite .main_invite_right .main_invite_right_span1{
+.main_invite .main_invite_li_right .main_invite_left_span1{
 	font-size: 20px;
 	margin-top: 0px;
+	margin-bottom: 25px;
 }
 
 .main_invite_detail{
@@ -319,14 +332,39 @@ a{
     bottom: 20px;
     cursor: pointer;
 }
+
+.main_exchange{
+	width: 100%;
+	position: absolute;
+	display: inline-block;
+	top: 0px;
+    z-index: -1;
+}
+
+.main_exchange .main_exchange_left{
+	width: 40%;
+	float: left;
+}
+
+.main_exchange .main_exchange_right{
+	width: 60%;
+	float: left;
+	box-shadow: 0 5px 5px rgba(47, 20, 20, 0.44);
+}
+
+.main_exchange img{
+	width: 100%;
+}
+
 .main_jys_detail{
 	width: 40%;
 	margin:0 auto;
 	position: relative;
+	padding: 50px 0px 0px 0px;
 }
 
-.main_jys_detail > div{
-	width: 100%
+.main_jys_detail .main_jys_detail_div{
+	width: 100%;
 	display:block;
 	text-align: center;
 }
@@ -346,9 +384,9 @@ a{
 }
 
 .main_jys_sel{
-	width: 50%;
-	margin: 25px auto;
-	display: flex;
+	width: 100%;
+    padding: 20px 25%;
+    display: inline-block;
 }
 
 .main_jys_sel a{
@@ -356,6 +394,24 @@ a{
 	display: inline-block;
 	text-align: center;
 	float: left;
+}
+
+.main_jys_sel a i{
+	background: url("../images/po_all.png") no-repeat;
+    background-size: 200px 100px;
+    background-position: -100px 0px;
+    width: 100px;
+    height: 120px;
+    display: inline-block;
+}
+
+.main_jys_sel a i:HOVER,.main_jys_sel a i:FOCUS{
+	background: url("../images/po_all.png") no-repeat;
+    background-size: 200px 100px;
+    background-position: 0px 0px;
+    width: 100px;
+    height: 120px;
+    display: inline-block;
 }
 
 .main_jys_sel a img{
@@ -380,6 +436,7 @@ a{
 .main_about_us_back{
 	width: 70%;
 	margin: 50px auto;
+	box-shadow: 0 5px 5px rgba(47, 20, 20, 0.44);
 }
 
 .main_about_us_back img{
@@ -464,6 +521,14 @@ a{
     margin: 15px 0px;
     border: 0.5px solid #45E1D4;
     font-size: 15px;
+}
+
+.main_exchange .main_exchange_span{
+	color: #45E1D4;
+    font-style: italic;
+    position: absolute;
+    top: 10px;
+    right: 30px;
 }
 
 
@@ -612,6 +677,7 @@ a{
 	border:2px solid #45E1D4;
 	width:7%;
 }
+
 .join_content .invite_time{
 	color:#45E1D4;
 	font-style: italic;

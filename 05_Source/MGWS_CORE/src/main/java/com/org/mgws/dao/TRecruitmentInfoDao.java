@@ -1,5 +1,7 @@
 package com.org.mgws.dao;
 
+import java.util.List;
+
 import com.org.mgws.entity.TRecruitmentInfo;
 
 public interface TRecruitmentInfoDao {
@@ -37,4 +39,9 @@ public interface TRecruitmentInfoDao {
      * 根据主键更新记录
      */
     int updateByPrimaryKey(TRecruitmentInfo record);
+    
+    /**
+     * 获取所有的招聘信息
+     */
+    List<TRecruitmentInfo> getAllTRecruitmentInfo();
 }

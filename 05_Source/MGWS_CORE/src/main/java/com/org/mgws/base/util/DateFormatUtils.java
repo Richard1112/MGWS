@@ -79,6 +79,11 @@ public class DateFormatUtils {
      * MMdd
      */
     public static String       PATTEN_MD                       = "MMdd";
+    
+    /**
+     * MMdd
+     */
+    public static String       PATTEN_M                        = "MM";
 
     /**
      * MM-dd HH:mm
@@ -134,6 +139,16 @@ public class DateFormatUtils {
      * MM/dd
      */
     public static String       PATTEN_MD_RIGHT_SLASH           = "MM/dd";
+    
+    /**
+     * 月份英文缩写
+     */
+    public static final String[] MONTH_ENGLISH_ARRAY = {"Jan.","Feb.","Mar.","Apr.","May.","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec."};
+    
+    /**
+     * 月份数字
+     */
+    public static final String[] MONTH_NUMBER_ARRAY = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 
     public static int getDateSx() {
         Calendar cal = Calendar.getInstance();
@@ -940,5 +955,22 @@ public class DateFormatUtils {
     public static String getBetweenDayTime(Date date) {
         long time = (date.getTime()-new Date().getTime()) / 1000 / 60 / 60 /24;
         return String.valueOf(time);
+    }
+    
+    /**
+     * 获取当前时间的英文缩写
+     * @return
+     */
+    public static String getAbbreviationEngTime(){
+    	SimpleDateFormat sdf = new SimpleDateFormat(PATTEN_M);
+    	String curMM = sdf.format(new Date());
+    	int count = 0;
+    	for (String str : MONTH_NUMBER_ARRAY) {
+    		if (curMM.equals(str)) {
+    			break;
+    		}
+    		count++;
+    	}
+    	return MONTH_ENGLISH_ARRAY[count] + Integer.valueOf(curMM);
     }
 }
