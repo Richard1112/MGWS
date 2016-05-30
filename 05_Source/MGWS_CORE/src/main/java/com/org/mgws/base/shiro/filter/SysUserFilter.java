@@ -8,23 +8,21 @@ import org.apache.shiro.web.filter.PathMatchingFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.org.mgws.base.shiro.Constants;
-import com.org.mgws.base.shiro.service.UserService;
+import com.org.mgws.base.shiro.service.AdminService;
 
 /**
- * <p>User: Zhang Kaitao
- * <p>Date: 14-2-15
- * <p>Version: 1.0
+ * <p>User: x-wang
  */
 public class SysUserFilter extends PathMatchingFilter {
 
     @Autowired
-    private UserService userService;
+    private AdminService adminService;
 
     @Override
     protected boolean onPreHandle(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
 
         String username = (String)SecurityUtils.getSubject().getPrincipal();
-        request.setAttribute(Constants.CURRENT_USER, userService.findByUsername(username));
+        request.setAttribute(Constants.CURRENT_USER, adminService.findOne(username));
         return true;
     }
 }

@@ -18,6 +18,8 @@ public class TRecruitmentInfo {
     private String recruitlocale;
 
     private String recruitobject;
+    
+    private String sortOrder;
 
     private Date addtimestamp;
 
@@ -95,7 +97,15 @@ public class TRecruitmentInfo {
         this.recruitobject = recruitobject;
     }
 
-    public Date getAddtimestamp() {
+    public String getSortOrder() {
+		return sortOrder;
+	}
+
+	public void setSortOrder(String sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
+	public Date getAddtimestamp() {
         return addtimestamp;
     }
 

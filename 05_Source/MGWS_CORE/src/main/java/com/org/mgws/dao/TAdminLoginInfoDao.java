@@ -1,5 +1,8 @@
 package com.org.mgws.dao;
 
+import java.util.List;
+
+import com.org.mgws.base.shiro.entity.User;
 import com.org.mgws.entity.TAdminLoginInfo;
 
 public interface TAdminLoginInfoDao {
@@ -11,7 +14,7 @@ public interface TAdminLoginInfoDao {
     /**
      * 保存记录,不管记录里面的属性是否为空
      */
-    int insert(TAdminLoginInfo record);
+    TAdminLoginInfo insert(TAdminLoginInfo record);
 
     /**
      * 保存属性不为空的记录
@@ -31,5 +34,12 @@ public interface TAdminLoginInfoDao {
     /**
      * 根据主键更新记录
      */
-    int updateByPrimaryKey(TAdminLoginInfo record);
+    TAdminLoginInfo updateByPrimaryKey(TAdminLoginInfo record);
+    
+    /**
+     * 根据AdminNo查询
+     */
+    TAdminLoginInfo findByAdminNo(String adminNo);
+    
+    List<TAdminLoginInfo> findAll();
 }

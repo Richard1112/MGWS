@@ -78,7 +78,7 @@ public final class CommonConstants {
 
     public static final String SESSION_ADMIN_USER_ID = "sessionUserId";
 
-    public static final String MGWS_ADMIN_PROJECT    = "MGWS_ADMIN";
+    public static final String mgws_ADMIN_PROJECT    = "mgws_ADMIN";
 
     public static final String OPEN                  = "开放";
 

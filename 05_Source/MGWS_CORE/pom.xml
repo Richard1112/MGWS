@@ -4,7 +4,7 @@
 
   <groupId>MGWS_CORE</groupId>
   <artifactId>MGWS_CORE</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
   <name>MGWS_CORE</name>
@@ -248,19 +248,9 @@
 			<version>2.3</version>
 			<classifier>jdk15</classifier>
 		</dependency>
-		
-		<dependency>  
-		    <groupId>net.sf.jasperreports</groupId>  
-		    <artifactId>jasperreports</artifactId>  
-		    <version>4.0.1</version>  
-		</dependency>  
-		<dependency>  
-		    <groupId>org.codehaus.groovy</groupId>  
-		    <artifactId>groovy-all</artifactId>  
-		    <version>2.2.2</version>  
-		</dependency>
+
 	</dependencies>
 	<build>
-		<finalName>OZTT_CORE</finalName>
+		<finalName>MGWS_CORE</finalName>
 	</build>
 </project>

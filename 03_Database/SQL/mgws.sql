@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : localMysql
@@ -140,6 +140,7 @@ CREATE TABLE `t_recruitment_info` (
   `recruitLocale` char(100) DEFAULT NULL,
   `recruitObject` varchar(500) DEFAULT NULL,
   `recruitDetails` blob,
+  `sortOrder` int(8),
   `addTimestamp` timestamp NULL DEFAULT NULL,
   `addUserKey` varchar(40) DEFAULT NULL,
   `updTimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
