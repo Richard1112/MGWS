@@ -20,18 +20,59 @@
 		<div class="notMainBanner">
 			<img src="${ctx }/images/jys/nyfojys.png">
 		</div>
-
-		<div class="jys_detail_section">
-			<div class="detail_title fontshow magin-top-50px">
-				纽约泛欧交易所
+		<c:if test="${tab == '1'}">
+			<div class="jys_detail_section">
+				<div class="detail_title fontshow magin-top-50px">
+					纽约泛欧交易所
+				</div>
+				<div class="detail_content fontinfo magin-top-30px">
+					NYSE Euronext 是全球规模最大、最具流动性的政权交易集团，为全球投资者及上市公司提供最多样化的金融产品和服务。纽约泛欧交易所集团旗下的伦敦国际金融期货交易所(NYSE LIFFE)，是欧洲领先、全球第二位的衍生品交易市场。
+				</div>
+	
+				<div class="circle_size_l position_r50_b300"></div>
+				<div class="circle_size_m position_l100_b50"></div>
 			</div>
-			<div class="detail_content fontinfo magin-top-30px">
-				NYSE Euronext 是全球规模最大、最具流动性的政权交易集团，为全球投资者及上市公司提供最多样化的金融产品和服务。纽约泛欧交易所集团旗下的伦敦国际金融期货交易所(NYSE LIFFE)，是欧洲领先、全球第二位的衍生品交易市场。
+		</c:if>
+		<c:if test="${tab == '2'}">
+			<div class="jys_detail_section">
+				<div class="detail_title fontshow magin-top-50px">
+					欧洲期货交易所
+				</div>
+				<div class="detail_content fontinfo magin-top-30px">
+					NYSE Euronext 是全球规模最大、最具流动性的政权交易集团，为全球投资者及上市公司提供最多样化的金融产品和服务。纽约泛欧交易所集团旗下的伦敦国际金融期货交易所(NYSE LIFFE)，是欧洲领先、全球第二位的衍生品交易市场。
+				</div>
+	
+				<div class="circle_size_l position_r50_b300"></div>
+				<div class="circle_size_m position_l100_b50"></div>
 			</div>
-
-			<div class="circle_size_l position_r50_b300"></div>
-			<div class="circle_size_m position_l100_b50"></div>
-		</div>
+		</c:if>
+		<c:if test="${tab == '3'}">
+			<div class="jys_detail_section">
+				<div class="detail_title fontshow magin-top-50px">
+					芝加哥商业交易所
+				</div>
+				<div class="detail_content fontinfo magin-top-30px">
+					NYSE Euronext 是全球规模最大、最具流动性的政权交易集团，为全球投资者及上市公司提供最多样化的金融产品和服务。纽约泛欧交易所集团旗下的伦敦国际金融期货交易所(NYSE LIFFE)，是欧洲领先、全球第二位的衍生品交易市场。
+				</div>
+	
+				<div class="circle_size_l position_r50_b300"></div>
+				<div class="circle_size_m position_l100_b50"></div>
+			</div>
+		</c:if>
+		<c:if test="${tab == '4'}">
+			<div class="jys_detail_section">
+				<div class="detail_title fontshow magin-top-50px">
+					中国沪深证券交易所
+				</div>
+				<div class="detail_content fontinfo magin-top-30px">
+					NYSE Euronext 是全球规模最大、最具流动性的政权交易集团，为全球投资者及上市公司提供最多样化的金融产品和服务。纽约泛欧交易所集团旗下的伦敦国际金融期货交易所(NYSE LIFFE)，是欧洲领先、全球第二位的衍生品交易市场。
+				</div>
+	
+				<div class="circle_size_l position_r50_b300"></div>
+				<div class="circle_size_m position_l100_b50"></div>
+			</div>
+		</c:if>
+		
 
 
 		<div class="footer">
