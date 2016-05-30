@@ -1,365 +1,118 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@ taglib prefix="ms" uri="http://www.springframework.org/tags" %>
+<c:set var="basePath" value="${pageContext.request.contextPath}" />
 <html>
 <head>
-  <meta charset="utf-8">
-  <%@ include file="../commoncssHead.jsp"%>
-  <title><sitemesh:write property='title' /></title>
-  <sitemesh:write property='head' />
-  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title><ms:message code="baseTitle"/> - <sitemesh:write property='title' /></title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<link rel="stylesheet"
+	href="${basePath}/static/bootstrap/css/bootstrap.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="${basePath}/static/dist/css/AdminLTE.css">
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+		 folder instead of downloading all of them to reduce the load. -->
+<link rel="stylesheet"
+	href="${basePath}/static/dist/css/skins/_all-skins.css">
+<link rel="stylesheet"
+	href="${basePath}/static/font/css/font-awesome.css">
+<link rel="stylesheet"
+	href="${basePath}/static/bootstrap/css/bootstrap-addtabs.css">
+
+<script
+	src="${basePath}/static/js/jquery-1.11.0.min.js"
+	type="text/javascript"></script>
+<script
+	src="${basePath}/static/bootstrap/js/bootstrap.js"
+	type="text/javascript"></script>
+<script
+	src="${basePath}/static/dist/js/app.js"
+	type="text/javascript"></script>
+<script
+	src="${basePath}/static/dist/js/demo.js"
+	type="text/javascript"></script>
+<script
+	src="${basePath}/static/dist/js/slimScroll/jquery.slimscroll.js"
+	type="text/javascript"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+<script
+	src="${basePath}/static/bootstrap/js/bootstrap-addtabs.js"
+	type="text/javascript"></script>
+<style type="text/css">
+.dropdown-submenu {
+	position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+	top: 0;
+	left: 100%;
+	margin-top: -6px;
+	margin-left: -1px;
+	-webkit-border-radius: 0 6px 6px 6px;
+	-moz-border-radius: 0 6px 6px;
+	border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+	display: block;
+}
+.dropdown-menu > li > a {
+	color:#fff;
+}
+.dropdown-submenu > li > a {
+	color:#fff;
+}
+.dropdown-submenu>a:after {
+	display: block;
+	content: " ";
+	float: right;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 5px 0 5px 5px;
+	border-left-color: #ccc;
+	margin-top: 5px;
+	margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+	border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+	float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+	left: -100%;
+	margin-left: 10px;
+	-webkit-border-radius: 6px 0 6px 6px;
+	-moz-border-radius: 6px 0 6px 6px;
+	border-radius: 6px 0 6px 6px;
+}
+.content-wrapper, .right-side, .main-footer{
+	/* margin-left: 0px!important; */
+}
+</style>
+<sitemesh:write property='head' />
+
 </head>
-<!-- Head END -->
-<script>
-	
-</script>
-
-<!-- Body BEGIN -->
-<body>
-<!-- BEGIN HEADER -->
-<div class="header navbar">
-	<!-- BEGIN TOP NAVIGATION BAR -->
-	<div class="header-inner">
-		<!-- BEGIN LOGO -->
-		<a class="navbar-brand" href="index.html">
-			<img src="${ctx}/images/logo-letter.png" alt="logo" class="img-responsive" width="80px"/>
-		</a>
-		<!-- END LOGO -->
-		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-		<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<img src="${ctx}/assets/img/menu-toggler.png" alt=""/>
-		</a>
+<body class="hold-transition skin-green sidebar-mini">
+	<div class="wrapper">
+		<%@ include file="header.jsp"%>
 		
-		<!-- END RESPONSIVE MENU TOGGLER -->
-		<!-- BEGIN TOP NAVIGATION MENU -->
-		<ul class="nav navbar-nav pull-right">
-
-			<!-- BEGIN USER LOGIN DROPDOWN -->
-			<li class="dropdown user">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<span class="username">
-						 ${userName}
-					</span>
-					<i class="fa fa-angle-down"></i>
-				</a>
-				<ul class="dropdown-menu">
-					<%-- <li>
-						<a href="extra_profile.html">
-							<i class="fa fa-user"></i> <fmt:message key="OZ_TT_AD_MN_myprofile" />
-						</a>
-					</li> --%>
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_LG/logout">
-							<i class="fa fa-key"></i> <fmt:message key="OZ_TT_AD_MN_logout" />
-						</a>
-					</li>
-				</ul>
-			</li>
-			<!-- END USER LOGIN DROPDOWN -->
-		</ul>
-		<!-- END TOP NAVIGATION MENU -->
+		<sitemesh:write property='body' />
 	</div>
-	<!-- END TOP NAVIGATION BAR -->
-</div>
-<!-- END HEADER -->
-
-<!-- LEFT MENU START -->
-<div class="page-container">
-	<div class="page-sidebar-wrapper">
-
-	<div class="page-sidebar navbar-collapse collapse">
-
-		<!-- BEGIN SIDEBAR MENU -->
-
-		<ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
-
-			<li class="sidebar-toggler-wrapper">
-
-				<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-
-				<div class="sidebar-toggler hidden-phone">
-
-				</div>
-
-				<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-
-			</li>
-			</br>
-			<li id="orderLi" class="start">
-				<a href="javascript:;">
-					<i class="fa fa-shopping-cart"></i>
-					<span class="title">
-						<fmt:message key="OZ_TT_AD_MN_order" />
-					</span>
-					<span class="arrow ">
-					</span>
-				</a>
-				<ul class="sub-menu">
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_OL/init">
-							<i class="fa fa-list-ol"></i>
-							<fmt:message key="OZ_TT_AD_MN_orderList" />
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li id="goodsClassLi">
-				<a href="javascript:;">
-					<i class="fa fa-sitemap"></i>
-					<span class="title">
-						<fmt:message key="OZ_TT_AD_MN_classfication" />
-					</span>
-					<span class="arrow ">
-					</span>
-				</a>
-				<ul class="sub-menu">
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_CL/init">
-							<i class="fa fa-list-ol"></i>
-							<fmt:message key="OZ_TT_AD_CL_title" />
-						</a>
-					</li>
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_CD/detail">
-							<i class="fa fa-plus"></i>
-							<fmt:message key="OZ_TT_AD_CD_title" />
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li id="priceLi">
-				<a href="javascript:;">
-					<i class="fa fa-barcode"></i>
-					<span class="title">
-						<fmt:message key="OZ_TT_AD_MN_goods" />
-					</span>
-					<span class="arrow ">
-					</span>
-				</a>
-				<ul class="sub-menu">
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_PL/init">
-							<i class="fa fa-list-ol"></i>
-							<fmt:message key="OZ_TT_AD_PL_title" />
-						</a>
-					</li>
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_PD/init">
-							<i class="fa fa-plus"></i>
-							<fmt:message key="OZ_TT_AD_PD_title" />
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li id="groupviewLi">
-				<a href="javascript:;">
-					<i class="fa fa-group"></i>
-					<span class="title">
-						<fmt:message key="OZ_TT_AD_MN_group" />
-					</span>
-					<span class="arrow ">
-					</span>
-				</a>
-				<ul class="sub-menu">
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_GL/init">
-							<i class="fa fa-list-ol"></i>
-							<fmt:message key="OZ_TT_AD_GL_title" />
-						</a>
-					</li>
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_GB/init">
-							<i class="fa fa-tasks"></i>
-							<fmt:message key="OZ_TT_AD_GB_title" />
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li id="memberLi">
-				<a href="javascript:;">
-					<i class="fa fa-user"></i>
-					<span class="title">
-						<fmt:message key="OZ_TT_AD_MN_member" />
-					</span>
-					<span class="arrow ">
-					</span>
-				</a>
-				<ul class="sub-menu">
-					<li>
-						<a href="${pageContext.request.contextPath}/OZ_TT_AD_RL/search">
-							<i class="fa fa-list-ol"></i>
-							<fmt:message key="OZ_TT_AD_RL_title" />
-						</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-		<!-- END SIDEBAR MENU -->
-
-	</div>
-
-</div>
-	<!-- 页面内容 START -->
-	<sitemesh:write property='body' />
-	<!-- 页面内容 END -->
-</div>
-<!-- LEFT MENU END -->
-
-	<%@ include file="../commonjsFooter.jsp"%> 
 </body>
-<!-- END BODY -->
-<script type="text/javascript">
-	var currentPath = window.location.pathname;
-	var saveImgUrl = '<fmt:message key="saveImgUrl" />';
-	if (currentPath.indexOf("OZ_TT_AD_OL") > 0) {
-		$("#orderLi").find("span.arrow").addClass("open");
-		$("#orderLi").addClass("active")
-		$("#orderLi").click();
-	}
-	
-	if (currentPath.indexOf("OZ_TT_AD_PL") > 0 || currentPath.indexOf("OZ_TT_AD_PD") > 0) {
-		$("#priceLi").find("span.arrow").addClass("open");
-		$("#priceLi").addClass("active")
-		$("#priceLi").click();
-	}
-	
-	if (currentPath.indexOf("OZ_TT_AD_RL") > 0) {
-		$("#memberLi").find("span.arrow").addClass("open");
-		$("#memberLi").addClass("active")
-		$("#memberLi").click();
-	}
-	
-	if (currentPath.indexOf("OZ_TT_AD_GL") > 0) {
-		$("#groupviewLi").find("span.arrow").addClass("open");
-		$("#groupviewLi").addClass("active")
-		$("#groupviewLi").click();
-	}
-	
-	if (currentPath.indexOf("OZ_TT_AD_CL") > 0) {
-		$("#goodsClassLi").find("span.arrow").addClass("open");
-		$("#goodsClassLi").addClass("active")
-		$("#goodsClassLi").click();
-	}
-	
-	if (currentPath.indexOf("OZ_TT_AD_PL") > 0) {
-		ComponentsEditors.init();
-	}
-	
-	if (currentPath.indexOf("OZ_TT_AD_PD") > 0) {
-		var goodsId = $("#goodsId").val();
-		var previewThumbJson = [];
-		var preThumbConfigList = [];
-		if ($("#goodsThumbnail").val() != null && $("#goodsThumbnail").val() != "") {
-			var tempImg = '<img src="{0}" class="file-preview-image" style="width:auto;height:160px;"/>';
-			previewThumbJson.push(tempImg.replace('{0}',saveImgUrl + goodsId + '/' + $("#goodsThumbnail").val()));
-			var tjson = {caption: $("#goodsThumbnail").val(), // 展示的文件名  
-	                width: '120px',   
-	                url: '${ctx}/COMMON/deleteThumbFile', // 删除url  
-	                key: $("#goodsThumbnail").val(), // 删除是Ajax向后台传递的参数  
-	                extra: {fileId: $("#goodsThumbnail").val(), goodId:goodsId}  
-	            };
-			preThumbConfigList.push(tjson);
-		}
-		
-		$("#fileThumbnailPic").fileinput({
-	        uploadUrl: '${pageContext.request.contextPath}/COMMON/uploadFile?goodId='+goodsId,
-	        allowedFileExtensions : ['jpg', 'png','gif'],
-	        uploadAsync: true,  
-			showCaption: true,  
-			showUpload: true,//是否显示上传按钮
-			showRemove: false,//是否显示删除按钮  
-			showCaption: true,//是否显示输入框
-			showPreview:true,   
-			showCancel:true,  
-			dropZoneEnabled: false,
-			minFileCount: 1,
-			maxFileCount: 1,
-			initialPreviewShowDelete:true,  
-			initialPreview: previewThumbJson,  
-	        allowedFileTypes: ['image'],
-	        initialPreviewConfig: preThumbConfigList,  
-	        slugCallback: function(filename) {
-	            return filename.replace('(', '_').replace(']', '_');
-	        }
-		}).on("fileuploaded", function(event, outData) {  
-            //文件上传成功后返回的数据， 此处我只保存返回文件的id  
-            var result = outData.response.fileId;  
-            // 对应的input 赋值  
-            $("#goodsThumbnail").val(result);
-            
-     	});
-	    // 以上是缩略图
-	    
-	    // 以下是商品图
-		var normalImagesStr = $("#goodsNormalPic").val();
-	    var imagesArr = normalImagesStr.split(",");
-	    var preList = [];
-	    var preConfigList = [];
-	    if (normalImagesStr != null && normalImagesStr != "" && imagesArr.length > 0) {
-	    	for (var i = 0; i < imagesArr.length; i++) {
-		    	var tempImg = '<img src="{0}" class="file-preview-image" style="width:auto;height:160px;"/>';
-		    	preList.push(tempImg.replace('{0}',saveImgUrl + goodsId + '/' + imagesArr[i]));
-		    }
-	    	// 与上面 预览图片json数据组 对应的config数据  
-		    for ( var i = 0; i < imagesArr.length; i++) {
-		        var array_element = imagesArr[i];  
-		        var tjson = {caption: array_element, // 展示的文件名  
-		                    width: '120px',   
-		                    url: '${ctx}/COMMON/deleteFile', // 删除url  
-		                    key: array_element, // 删除是Ajax向后台传递的参数  
-		                    extra: {fileId: array_element, goodId:goodsId}  
-		                    };  
-		        preConfigList.push(tjson);  
-		     }  
-	    }
-		
-		$("#fileNormalPic").fileinput({
-	        uploadUrl: '${pageContext.request.contextPath}/COMMON/uploadFile?goodId='+goodsId,
-	        allowedFileExtensions : ['jpg', 'png','gif'],
-	        uploadAsync:true,  
-			showCaption: true,  
-			showUpload: true,//是否显示上传按钮  
-			showRemove: false,//是否显示删除按钮  
-			showCaption: true,//是否显示输入框  
-			showPreview:true,   
-			showCancel:true,  
-			dropZoneEnabled: false,  
-			minFileCount:1,
-			maxFileCount: 10, 
-			initialPreviewShowDelete:true,  
-			initialPreview: preList,  
-	        allowedFileTypes: ['image'],
-	        initialPreviewConfig: preConfigList,  
-	        slugCallback: function(filename) {
-	            return filename.replace('(', '_').replace(']', '_');
-	        }
-		}).on("fileuploaded", function(event, outData) {
-            //文件上传成功后返回的数据， 此处我只保存返回文件的id  
-            var result = outData.response.fileId;  
-            // 对应的input 赋值  
-            if ($("#goodsNormalPic").val() == "") {
-            	$("#goodsNormalPic").val(result);
-            } else {
-            	$("#goodsNormalPic").val($("#goodsNormalPic").val() + "," + result);
-            }
-     	}).on("filedeleted", function(event, extraData) {  
-            //文件上传成功后返回的数据， 此处我只保存返回文件的id  
-            var result = extraData;
-            $("#goodsNormalPic").val($("#goodsNormalPic").val().replace(result + ",","").replace("," + result,"").replace(result,""));
-     	});
-	}
-	
-	if (currentPath.indexOf("OZ_TT_AD_GB") > 0) {
-		$('.multiselect').multiselect({
-	    	maxHeight: 200,
-	    });
-		ComponentsEditors.init();
-	}
-	
-	
-
-</script>
 </html>

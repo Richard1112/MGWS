@@ -112,4 +112,8 @@ public class TAdminLoginInfo {
     public void setUpdpgmid(String updpgmid) {
         this.updpgmid = updpgmid;
     }
+
+	public String getCredentialsSalt() {
+		return adminno + salt;
+	}
 }
