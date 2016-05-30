@@ -14,7 +14,7 @@
     <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.org.mgws.entity.TCourseInfo" extends="BaseResultMap" >
-    <result column="courseDetails" property="coursedetails" jdbcType="LONGVARBINARY" />
+    <result column="courseDetails" property="coursedetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     no, courseNo, releaseDate, releaseFlg, courseName, addTimestamp, addUserKey, updTimestamp, 
@@ -43,7 +43,7 @@
     values (#{no,jdbcType=BIGINT}, #{courseno,jdbcType=VARCHAR}, #{releasedate,jdbcType=TIMESTAMP}, 
       #{releaseflg,jdbcType=CHAR}, #{coursename,jdbcType=VARCHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
       #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, 
-      #{updpgmid,jdbcType=VARCHAR}, #{coursedetails,jdbcType=LONGVARBINARY})
+      #{updpgmid,jdbcType=VARCHAR}, #{coursedetails,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.org.mgws.entity.TCourseInfo" >
     insert into t_course_info
@@ -114,7 +114,7 @@
         #{updpgmid,jdbcType=VARCHAR},
       </if>
       <if test="coursedetails != null" >
-        #{coursedetails,jdbcType=LONGVARBINARY},
+        #{coursedetails,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -149,7 +149,7 @@
         updPgmId = #{updpgmid,jdbcType=VARCHAR},
       </if>
       <if test="coursedetails != null" >
-        courseDetails = #{coursedetails,jdbcType=LONGVARBINARY},
+        courseDetails = #{coursedetails,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where no = #{no,jdbcType=BIGINT}
@@ -165,7 +165,7 @@
       updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
       updUserKey = #{upduserkey,jdbcType=VARCHAR},
       updPgmId = #{updpgmid,jdbcType=VARCHAR},
-      courseDetails = #{coursedetails,jdbcType=LONGVARBINARY}
+      courseDetails = #{coursedetails,jdbcType=LONGVARCHAR}
     where no = #{no,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TCourseInfo" >

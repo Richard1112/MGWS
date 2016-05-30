@@ -31,7 +31,7 @@ public class TRecruitmentInfo {
 
     private String updpgmid;
 
-    private byte[] recruitdetails;
+    private String recruitdetails;
 
     public Long getNo() {
         return no;
@@ -145,11 +145,11 @@ public class TRecruitmentInfo {
         this.updpgmid = updpgmid;
     }
 
-    public byte[] getRecruitdetails() {
+    public String getRecruitdetails() {
         return recruitdetails;
     }
 
-    public void setRecruitdetails(byte[] recruitdetails) {
+    public void setRecruitdetails(String recruitdetails) {
         this.recruitdetails = recruitdetails;
     }
 }
