@@ -47,19 +47,6 @@
 								</div> 
 							</li>
 							</c:forEach>
-							<li>
-								<div class="main_invite_li_left">
-									<div class="line"></div>
-								</div>
-								<div class="main_invite_li_right">
-									<span class="main_invite_left_span1">Meridian 金融实验室招聘</span>
-									<span>招聘职位：环球市场交易员</span>
-									<span>招聘人数：8人</span>
-									<span>招聘对象：2013/2014应届大学毕业生</span>
-									<span>为您提供：<br/>业内领先水平的薪资待遇和奖励机制</span>
-									<div class="main_invite_detail" onclick="toInviteDetail()"></div>
-								</div> 
-							</li>
 						</ul>
 					</div>
 				</div>
