@@ -8,7 +8,7 @@ CREATE TABLE `t_recruitment_info` (
   `recruitNumber` int(3),
   `recruitLocale` char(100),
   `recruitObject` varchar(500) DEFAULT NULL,
-  `recruitDetails` blob,
+  `recruitDetails` longtext,
   `sortOrder` int(8),
   `addTimestamp` timestamp NULL DEFAULT NULL,
   `addUserKey` varchar(40) DEFAULT NULL,
