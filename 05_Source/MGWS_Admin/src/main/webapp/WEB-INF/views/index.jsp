@@ -6,7 +6,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Index</title>
-
+<script type="text/javascript">
+	$(function() {
+		$('#tabs').addtabs();
+	})
+</script>
 </head>
 <body>
 	<div class="content-wrapper">
@@ -15,8 +19,7 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist" id="tablist">
 					<li role="presentation" class="active"><a href="#home"
-						aria-controls="home" role="tab" data-toggle="tab"><ms:message
-								code="homepage" /></a></li>
+						aria-controls="home" role="tab" data-toggle="tab">首页</a></li>
 				</ul>
 				<!-- Tab panes -->
 				<div class="tab-content" id="tab-content">
