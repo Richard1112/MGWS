@@ -16,8 +16,11 @@ public class TCourseInfo extends BaseEntity {
     private String releasedate_v;
 
     private String releaseflg;
+    private String releaseflg_v;
 
     private String coursename;
+    
+    private String coursepic;
 
     private Date addtimestamp;
 
@@ -37,6 +40,14 @@ public class TCourseInfo extends BaseEntity {
 
 	public void setReleasedate_v(String releasedate_v) {
 		this.releasedate_v = releasedate_v;
+	}
+
+	public String getCoursepic() {
+		return coursepic;
+	}
+
+	public void setCoursepic(String coursepic) {
+		this.coursepic = coursepic;
 	}
 
 	public Long getNo() {
@@ -111,7 +122,15 @@ public class TCourseInfo extends BaseEntity {
         this.upduserkey = upduserkey;
     }
 
-    public String getUpdpgmid() {
+    public String getReleaseflg_v() {
+		return releaseflg_v;
+	}
+
+	public void setReleaseflg_v(String releaseflg_v) {
+		this.releaseflg_v = releaseflg_v;
+	}
+
+	public String getUpdpgmid() {
         return updpgmid;
     }
 

@@ -7,7 +7,9 @@
     <result column="releaseDate" property="releasedate" jdbcType="TIMESTAMP" />
     <result column="releaseDate" property="releasedate_v" jdbcType="VARCHAR" />
     <result column="releaseFlg" property="releaseflg" jdbcType="CHAR" />
+    <result column="releaseflg_v" property="releaseflg_v" jdbcType="VARCHAR" />
     <result column="assetName" property="assetname" jdbcType="VARCHAR" />
+    <result column="assetPic" property="assetpic" jdbcType="VARCHAR" />
     <result column="addTimestamp" property="addtimestamp" jdbcType="TIMESTAMP" />
     <result column="addUserKey" property="adduserkey" jdbcType="VARCHAR" />
     <result column="updTimestamp" property="updtimestamp" jdbcType="TIMESTAMP" />
@@ -18,7 +20,8 @@
     <result column="assetDetails" property="assetdetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    no, partnerNo, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v, releaseFlg, assetName, addTimestamp, addUserKey, updTimestamp, 
+    no, partnerNo, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v, releaseFlg,
+    case releaseFlg when '0' then '暂存' when '1' then '发布' when '2' then '关闭' end as releaseFlg_v, assetName,assetPic, addTimestamp, addUserKey, updTimestamp, 
     updUserKey, updPgmId
   </sql>
   <sql id="Blob_Column_List" >
@@ -38,11 +41,11 @@
   </delete>
   <insert id="insert" parameterType="com.org.mgws.entity.TAssetCart" >
     insert into t_asset_info (no, partnerNo, releaseDate, 
-      releaseFlg, assetName, addTimestamp, 
+      releaseFlg, assetName,assetPic, addTimestamp, 
       addUserKey, updTimestamp, updUserKey, 
       updPgmId, assetDetails)
     values (#{no,jdbcType=BIGINT}, #{partnerno,jdbcType=VARCHAR}, #{releasedate,jdbcType=TIMESTAMP}, 
-      #{releaseflg,jdbcType=CHAR}, #{assetname,jdbcType=VARCHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
+      #{releaseflg,jdbcType=CHAR}, #{assetname,jdbcType=VARCHAR}, #{assetpic,jdbcType=VARCHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
       #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, 
       #{updpgmid,jdbcType=VARCHAR}, #{assetdetails,jdbcType=LONGVARCHAR})
   </insert>
@@ -63,6 +66,9 @@
       </if>
       <if test="assetname != null" >
         assetName,
+      </if>
+      <if test="assetpic != null" >
+        assetPic,
       </if>
       <if test="addtimestamp != null" >
         addTimestamp,
@@ -99,6 +105,9 @@
       <if test="assetname != null" >
         #{assetname,jdbcType=VARCHAR},
       </if>
+      <if test="assetpic != null" >
+        #{assetpic,jdbcType=VARCHAR},
+      </if>
       <if test="addtimestamp != null" >
         #{addtimestamp,jdbcType=TIMESTAMP},
       </if>
@@ -134,6 +143,9 @@
       <if test="assetname != null" >
         assetName = #{assetname,jdbcType=VARCHAR},
       </if>
+      <if test="assetpic != null" >
+        assetPic = #{assetpic,jdbcType=VARCHAR},
+      </if>
       <if test="addtimestamp != null" >
         addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
       </if>
@@ -153,7 +165,7 @@
         assetDetails = #{assetdetails,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where no = #{no,jdbcType=BIGINT}
+    where partnerNo = #{partnerno,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.org.mgws.entity.TAssetCart" >
     update t_asset_info
@@ -161,13 +173,14 @@
       releaseDate = #{releasedate,jdbcType=TIMESTAMP},
       releaseFlg = #{releaseflg,jdbcType=CHAR},
       assetName = #{assetname,jdbcType=VARCHAR},
+      assetPic = #{assetpic,jdbcType=VARCHAR},
       addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
       addUserKey = #{adduserkey,jdbcType=VARCHAR},
       updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
       updUserKey = #{upduserkey,jdbcType=VARCHAR},
       updPgmId = #{updpgmid,jdbcType=VARCHAR},
       assetDetails = #{assetdetails,jdbcType=LONGVARCHAR}
-    where no = #{no,jdbcType=BIGINT}
+    where partnerNo = #{partnerno,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TAssetCart" >
     update t_asset_info
@@ -175,12 +188,13 @@
       releaseDate = #{releasedate,jdbcType=TIMESTAMP},
       releaseFlg = #{releaseflg,jdbcType=CHAR},
       assetName = #{assetname,jdbcType=VARCHAR},
+      assetPic = #{assetpic,jdbcType=VARCHAR},
       addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
       addUserKey = #{adduserkey,jdbcType=VARCHAR},
       updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
       updUserKey = #{upduserkey,jdbcType=VARCHAR},
       updPgmId = #{updpgmid,jdbcType=VARCHAR}
-    where no = #{no,jdbcType=BIGINT}
+    where partnerNo = #{partnerno,jdbcType=BIGINT}
   </update>
       
   <select id="selectAllByParam" resultMap="BaseResultMap"

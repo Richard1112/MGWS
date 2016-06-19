@@ -741,13 +741,13 @@
 }
 .skin-green .sidebar-form input[type="text"],
 .skin-green .sidebar-form .btn {
-  box-shadow: none;
+  /* box-shadow: none;
   background-color: #374850;
   border: 1px solid transparent;
   height: 35px;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; */
 }
 .skin-green .sidebar-form input[type="text"] {
   color: #666;
@@ -765,11 +765,11 @@
   border-left-color: #fff;
 }
 .skin-green .sidebar-form .btn {
-  color: #999;
+  /* color: #999;
   border-top-left-radius: 0;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0; */
 }
 /*
  * Skin: Green

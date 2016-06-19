@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,11 +36,16 @@ public class AssetCartController extends BaseController {
 		return "/assetCart";
 	}
 	
+	@RequestMapping(value = "/assetCartAddInit")
+	public String addInit(Model model) {
+		model.addAttribute("tAssetCart", new TAssetCart());
+		return "/assetCartEdit";
+	}
+	
 	@RequestMapping(value = "/assetCart", method = RequestMethod.GET)
 	@ResponseBody
 	public PagingResult<Map<String, Object>> getAllCourse(HttpServletRequest req, HttpServletResponse response) {
-
-		String courseName = req.getParameter("courseName");
+		String assetName = req.getParameter("assetName");
 		String releaseFlg = req.getParameter("releaseFlg");
 		String releaseDateF = req.getParameter("releaseDateF");
 		String releaseDateT = req.getParameter("releaseDateT");
@@ -50,7 +57,7 @@ public class AssetCartController extends BaseController {
 		String rows = req.getParameter("rows");
 		pagination.setPage(Integer.parseInt(page));
 		pagination.setSize(Integer.parseInt(rows));
-		param.put("courseName", courseName);
+		param.put("assetName", assetName);
 		param.put("releaseFlg", releaseFlg);
 		param.put("releaseDateF", releaseDateF);
 		param.put("releaseDateT", releaseDateT);
@@ -62,9 +69,9 @@ public class AssetCartController extends BaseController {
 	}
 
 	@RequestMapping(value = "/assetCartEdit", method = RequestMethod.POST)
-	public String save(@CurrentUser TAdminLoginInfo loginUser, TAssetCart tAssetCartInfo, Model model) {
+	public String save(@CurrentUser TAdminLoginInfo loginUser, @ModelAttribute TAssetCart tAssetCartInfo, Model model) {
 		
-		if (tAssetCartInfo.getPartnerno() == null) {
+		if (StringUtils.isEmpty(tAssetCartInfo.getPartnerno())) {
 			String AssetCartno = "PA" + DateFormatUtils.getDateFormatStr(DateFormatUtils.PATTEN_YMD_NO_SEPRATE) + CommonUtils.getRandomNum(6);
 			tAssetCartInfo.setPartnerno(AssetCartno);
 			tAssetCartInfo.setAdduserkey(loginUser.getAdminno());
@@ -85,21 +92,25 @@ public class AssetCartController extends BaseController {
 		return "/assetCart";
 	}
 	
-	@RequestMapping(value = "/assetCartEdit", method = RequestMethod.DELETE)
-	public void delete(HttpServletRequest req) {
+	@RequestMapping(value = "/assetCartDelete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> delete(HttpServletRequest req) {
 		String no = req.getParameter("no");
+		Map<String, Object> map = new HashMap<String, Object>();
 		if (no != null && !"".equals(no)) {
 			TAssetCart tAssetCartInfo =assetCartService.selectByPrimaryKey(Long.parseLong(no));
 			assetCartService.deleteByPrimaryKey(tAssetCartInfo);
+			map.put("isSuccess", true);
 		}
+		return map;
 	}
 	
 	@RequestMapping(value = "/assetCart/{no}", method = RequestMethod.GET)
 	public String updateInit(@PathVariable String no, Model model) {
 		if (no != null && !"".equals(no)) {
 			TAssetCart tAssetCartInfo =assetCartService.selectByPrimaryKey(Long.parseLong(no));
-			model.addAttribute("tAssetCartInfo", tAssetCartInfo);
+			model.addAttribute("tAssetCart", tAssetCartInfo);
 		}
-		return "/AssetCartEdit";
+		return "/assetCartEdit";
 	}
 }

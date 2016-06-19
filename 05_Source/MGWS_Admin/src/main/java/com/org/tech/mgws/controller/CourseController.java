@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +33,12 @@ public class CourseController extends BaseController {
 	@RequestMapping(value = "/courseInit")
 	public String init() {
 		return "/course";
+	}
+	
+	@RequestMapping(value = "/courseAddInit")
+	public String addInit(Model model) {
+		model.addAttribute("tCourseInfo", new TCourseInfo());
+		return "/courseEdit";
 	}
 	
 	@RequestMapping(value = "/course", method = RequestMethod.GET)
@@ -61,10 +68,10 @@ public class CourseController extends BaseController {
 		return pagingResult;
 	}
 
-	@RequestMapping(value = "/course", method = RequestMethod.POST)
-	public String save(@CurrentUser TAdminLoginInfo loginUser, TCourseInfo tCourseInfo, Model model) {
+	@RequestMapping(value = "/courseEdit", method = RequestMethod.POST)
+	public String save(@CurrentUser TAdminLoginInfo loginUser, @ModelAttribute TCourseInfo tCourseInfo, Model model) {
 		
-		if (tCourseInfo.getNo() == null) {
+		if (tCourseInfo.getCourseno() == null) {
 			String courseno = "CO" + DateFormatUtils.getDateFormatStr(DateFormatUtils.PATTEN_YMD_NO_SEPRATE) + CommonUtils.getRandomNum(6);
 			tCourseInfo.setCourseno(courseno);
 			tCourseInfo.setAdduserkey(loginUser.getAdminno());
@@ -82,16 +89,20 @@ public class CourseController extends BaseController {
 		}
 		
 		model.addAttribute("init", 0);
-		return "/Course";
+		return "/course";
 	}
 	
-	@RequestMapping(value = "/course", method = RequestMethod.DELETE)
-	public void delete(HttpServletRequest req) {
+	@RequestMapping(value = "/courseDelete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> delete(HttpServletRequest req) {
 		String no = req.getParameter("no");
+		Map<String, Object> map = new HashMap<String, Object>();
 		if (no != null && !"".equals(no)) {
 			TCourseInfo tCourseInfo =courseService.selectByPrimaryKey(Long.parseLong(no));
 			courseService.deleteByPrimaryKey(tCourseInfo);
+			map.put("isSuccess", true);
 		}
+		return map;
 	}
 	
 	@RequestMapping(value = "/course/{no}", method = RequestMethod.GET)
@@ -100,6 +111,6 @@ public class CourseController extends BaseController {
 			TCourseInfo tCourseInfo =courseService.selectByPrimaryKey(Long.parseLong(no));
 			model.addAttribute("tCourseInfo", tCourseInfo);
 		}
-		return "/CourseEdit";
+		return "/courseEdit";
 	}
 }

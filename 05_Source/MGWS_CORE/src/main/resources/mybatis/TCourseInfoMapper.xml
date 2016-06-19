@@ -7,7 +7,9 @@
     <result column="releaseDate" property="releasedate" jdbcType="TIMESTAMP" />
     <result column="releaseDate" property="releasedate_v" jdbcType="VARCHAR" />
     <result column="releaseFlg" property="releaseflg" jdbcType="CHAR" />
+    <result column="releaseflg_v" property="releaseflg_v" jdbcType="VARCHAR" />
     <result column="courseName" property="coursename" jdbcType="VARCHAR" />
+    <result column="coursePic" property="coursepic" jdbcType="VARCHAR" />
     <result column="addTimestamp" property="addtimestamp" jdbcType="TIMESTAMP" />
     <result column="addUserKey" property="adduserkey" jdbcType="VARCHAR" />
     <result column="updTimestamp" property="updtimestamp" jdbcType="TIMESTAMP" />
@@ -18,7 +20,8 @@
     <result column="courseDetails" property="coursedetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    no, courseNo, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v,, releaseFlg, courseName, addTimestamp, addUserKey, updTimestamp, 
+    no, courseNo, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v, releaseFlg,
+    case releaseFlg when '0' then '暂存' when '1' then '发布' when '2' then '关闭' end as releaseFlg_v, courseName,coursePic, addTimestamp, addUserKey, updTimestamp, 
     updUserKey, updPgmId
   </sql>
   <sql id="Blob_Column_List" >
@@ -38,11 +41,11 @@
   </delete>
   <insert id="insert" parameterType="com.org.mgws.entity.TCourseInfo" >
     insert into t_course_info (no, courseNo, releaseDate, 
-      releaseFlg, courseName, addTimestamp, 
+      releaseFlg, courseName,coursePic, addTimestamp, 
       addUserKey, updTimestamp, updUserKey, 
       updPgmId, courseDetails)
     values (#{no,jdbcType=BIGINT}, #{courseno,jdbcType=VARCHAR}, #{releasedate,jdbcType=TIMESTAMP}, 
-      #{releaseflg,jdbcType=CHAR}, #{coursename,jdbcType=VARCHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
+      #{releaseflg,jdbcType=CHAR}, #{coursename,jdbcType=VARCHAR}, #{coursepic,jdbcType=VARCHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
       #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, 
       #{updpgmid,jdbcType=VARCHAR}, #{coursedetails,jdbcType=LONGVARCHAR})
   </insert>
@@ -63,6 +66,9 @@
       </if>
       <if test="coursename != null" >
         courseName,
+      </if>
+      <if test="coursepic != null" >
+        coursePic,
       </if>
       <if test="addtimestamp != null" >
         addTimestamp,
@@ -99,6 +105,9 @@
       <if test="coursename != null" >
         #{coursename,jdbcType=VARCHAR},
       </if>
+      <if test="coursepic != null" >
+        #{coursepic,jdbcType=VARCHAR},
+      </if>
       <if test="addtimestamp != null" >
         #{addtimestamp,jdbcType=TIMESTAMP},
       </if>
@@ -134,6 +143,9 @@
       <if test="coursename != null" >
         courseName = #{coursename,jdbcType=VARCHAR},
       </if>
+      <if test="coursepic != null" >
+        coursePic = #{coursepic,jdbcType=VARCHAR},
+      </if>
       <if test="addtimestamp != null" >
         addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
       </if>
@@ -153,7 +165,7 @@
         courseDetails = #{coursedetails,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where no = #{no,jdbcType=BIGINT}
+    where courseNo = #{courseno,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.org.mgws.entity.TCourseInfo" >
     update t_course_info
@@ -180,7 +192,7 @@
       updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
       updUserKey = #{upduserkey,jdbcType=VARCHAR},
       updPgmId = #{updpgmid,jdbcType=VARCHAR}
-    where no = #{no,jdbcType=BIGINT}
+    where courseNo = #{courseno,jdbcType=BIGINT}
   </update>
     
   <select id="selectAllByParam" resultMap="BaseResultMap"
