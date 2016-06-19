@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><ms:message code="baseTitle"/> - <sitemesh:write property='title' /></title>
+<title><sitemesh:write property='title' /></title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -35,9 +35,6 @@
 	type="text/javascript"></script>
 <script
 	src="${basePath}/static/dist/js/demo.js"
-	type="text/javascript"></script>
-<script
-	src="${basePath}/static/dist/js/slimScroll/jquery.slimscroll.js"
 	type="text/javascript"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -111,7 +108,7 @@
 <body class="hold-transition skin-green sidebar-mini">
 	<div class="wrapper">
 		<%@ include file="header.jsp"%>
-		
+		<%@ include file="aside.jsp"%>
 		<sitemesh:write property='body' />
 	</div>
 </body>

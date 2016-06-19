@@ -2,12 +2,21 @@ package com.org.mgws.entity;
 
 import java.util.Date;
 
-public class TRecruitmentInfo {
-    private Long no;
+import com.org.mgws.base.entity.BaseEntity;
+
+public class TRecruitmentInfo extends BaseEntity {
+
+	private static final long serialVersionUID = -6485947160720829944L;
+
+	private Long no;
 
     private String recruitno;
 
     private Date releasedate;
+    
+    private String releasedate_v;
+    
+    private String recruit_url;
 
     private String releaseflg;
 
@@ -57,7 +66,15 @@ public class TRecruitmentInfo {
         this.releasedate = releasedate;
     }
 
-    public String getReleaseflg() {
+    public String getReleasedate_v() {
+		return releasedate_v;
+	}
+
+	public void setReleasedate_v(String releasedate_v) {
+		this.releasedate_v = releasedate_v;
+	}
+
+	public String getReleaseflg() {
         return releaseflg;
     }
 
@@ -152,4 +169,12 @@ public class TRecruitmentInfo {
     public void setRecruitdetails(String recruitdetails) {
         this.recruitdetails = recruitdetails;
     }
+
+	public String getRecruit_url() {
+		return recruit_url;
+	}
+
+	public void setRecruit_url(String recruit_url) {
+		this.recruit_url = recruit_url;
+	}
 }

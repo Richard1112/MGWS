@@ -2,12 +2,18 @@ package com.org.mgws.entity;
 
 import java.util.Date;
 
-public class TAssetCart {
-    private Long no;
+import com.org.mgws.base.entity.BaseEntity;
+
+public class TAssetCart extends BaseEntity {
+
+	private static final long serialVersionUID = -7781226485285324854L;
+
+	private Long no;
 
     private String partnerno;
 
     private Date releasedate;
+    private String releasedate_v;
 
     private String releaseflg;
 
@@ -25,7 +31,15 @@ public class TAssetCart {
 
     private String assetdetails;
 
-    public Long getNo() {
+    public String getReleasedate_v() {
+		return releasedate_v;
+	}
+
+	public void setReleasedate_v(String releasedate_v) {
+		this.releasedate_v = releasedate_v;
+	}
+
+	public Long getNo() {
         return no;
     }
 
