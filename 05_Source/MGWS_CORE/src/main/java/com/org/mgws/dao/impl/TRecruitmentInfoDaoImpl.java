@@ -44,4 +44,9 @@ public class TRecruitmentInfoDaoImpl extends BaseDao implements
 	public PagingResult<Map<String, Object>> queryByPage(Pagination page) {
 		return selectPagination("recruitmentMapper.selectAllByParam", "recruitmentMapper.selectAllByParamCount", page);
 	}
+
+	@Override
+	public List<TRecruitmentInfo> getAllTRecruitmentInfoForPre() {
+		return select("recruitmentMapper.getAllTRecruitmentInfoForPre");
+	}
 }

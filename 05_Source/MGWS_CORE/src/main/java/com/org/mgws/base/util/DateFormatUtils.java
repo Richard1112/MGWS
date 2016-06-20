@@ -973,4 +973,21 @@ public class DateFormatUtils {
     	}
     	return MONTH_ENGLISH_ARRAY[count] + Integer.valueOf(curMM);
     }
+    
+    /**
+     * 获取当前时间的英文缩写
+     * @return
+     */
+    public static String getAbbreviationEngTimeByDate(Date date){
+    	SimpleDateFormat sdf = new SimpleDateFormat(PATTEN_M);
+    	String curMM = sdf.format(date);
+    	int count = 0;
+    	for (String str : MONTH_NUMBER_ARRAY) {
+    		if (curMM.equals(str)) {
+    			break;
+    		}
+    		count++;
+    	}
+    	return MONTH_ENGLISH_ARRAY[count] + Integer.valueOf(curMM);
+    }
 }
