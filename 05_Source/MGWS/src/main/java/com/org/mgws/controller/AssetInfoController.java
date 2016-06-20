@@ -11,12 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.org.mgws.contants.CommonConstants;
-import com.org.mgws.entity.TCourseInfo;
+import com.org.mgws.entity.TAssetCart;
 import com.org.mgws.service.MainService;
 
 @Controller
-@RequestMapping("/financelab")
-public class FinanceLabController extends BaseController {
+@RequestMapping("/assetInfo")
+public class AssetInfoController extends BaseController {
     
 	@Resource
 	private MainService mainService;
@@ -29,9 +29,9 @@ public class FinanceLabController extends BaseController {
     @RequestMapping(value = "/init")
     public String init(Model model, HttpServletResponse response, HttpSession session) {
         try {
-        	List<TCourseInfo> courseList = mainService.getAllTCourseInfo();
-        	model.addAttribute("courseList", courseList);
-            return "financelab";
+        	List<TAssetCart> assetCartList = mainService.getAllAssetCard();
+        	model.addAttribute("assetCartList", assetCartList);
+            return "assetinfo";
         }
         catch (Exception e) {
             e.printStackTrace();
