@@ -33,7 +33,14 @@
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
-
+	<servlet>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>com.org.mgws.base.util.FileUpload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/servlet/Upload</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<description>logstatus</description>
 		<servlet-name>ViewStatusMessages</servlet-name>

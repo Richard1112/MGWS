@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +34,12 @@ public class RecruitmentController extends BaseController {
 	@RequestMapping(value = "/recruitmentInit")
 	public String init() {
 		return "/recruitment";
+	}
+	
+	@RequestMapping(value = "/recruitmentAddInit")
+	public String addInit(Model model) {
+		model.addAttribute("tRecruitmentInfo", new TRecruitmentInfo());
+		return "/recruitmentEdit";
 	}
 
 	@RequestMapping(value = "/recruitment", method = RequestMethod.GET)
@@ -62,9 +70,9 @@ public class RecruitmentController extends BaseController {
 	}
 
 	@RequestMapping(value = "/recruitmentEdit", method = RequestMethod.POST)
-	public String save(HttpServletRequest req,@CurrentUser TAdminLoginInfo loginUser, TRecruitmentInfo tRecruitmentInfo, Model model) {
+	public String save(HttpServletRequest req,@CurrentUser TAdminLoginInfo loginUser,@ModelAttribute TRecruitmentInfo tRecruitmentInfo, Model model) {
 		
-		if (tRecruitmentInfo.getRecruitno() == null) {
+		if (StringUtils.isEmpty(tRecruitmentInfo.getRecruitno())) {
 			String recruitNo = "RE" + DateFormatUtils.getDateFormatStr(DateFormatUtils.PATTEN_YMD_NO_SEPRATE) + CommonUtils.getRandomNum(6);
 			tRecruitmentInfo.setRecruitno(recruitNo);
 			tRecruitmentInfo.setAdduserkey(loginUser.getAdminno());
@@ -86,12 +94,16 @@ public class RecruitmentController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/recruitmentDelete", method = RequestMethod.POST)
-	public void delete(HttpServletRequest req) {
+	@ResponseBody
+	public Map<String, Object> delete(HttpServletRequest req) {
 		String no = req.getParameter("no");
+		Map<String, Object> map = new HashMap<String, Object>();
 		if (no != null && !"".equals(no)) {
 			TRecruitmentInfo tRecruitmentInfo =recruitmentService.selectByPrimaryKey(Long.parseLong(no));
 			recruitmentService.deleteByPrimaryKey(tRecruitmentInfo);
+			map.put("isSuccess", true);
 		}
+		return map;
 	}
 	
 	@RequestMapping(value = "/recruitment/{no}", method = RequestMethod.GET)

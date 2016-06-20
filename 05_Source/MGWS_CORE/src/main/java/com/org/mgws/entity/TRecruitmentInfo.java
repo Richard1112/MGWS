@@ -19,6 +19,7 @@ public class TRecruitmentInfo extends BaseEntity {
     private String recruit_url;
 
     private String releaseflg;
+    private String releaseflg_v;
 
     private String recruitjobtitle;
 
@@ -42,7 +43,15 @@ public class TRecruitmentInfo extends BaseEntity {
 
     private String recruitdetails;
 
-    public Long getNo() {
+    public String getReleaseflg_v() {
+		return releaseflg_v;
+	}
+
+	public void setReleaseflg_v(String releaseflg_v) {
+		this.releaseflg_v = releaseflg_v;
+	}
+
+	public Long getNo() {
         return no;
     }
 

@@ -4,14 +4,6 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="${basePath}/static/bootstrap/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${basePath}/static/dist/css/skins/_all-skins.css">
-<link rel="stylesheet"
-	href="${basePath}/static/font/css/font-awesome.css">
-<link rel="stylesheet"
-	href="${basePath}/static/bootstrap/css/bootstrap-addtabs.css">
-<link rel="stylesheet"
 	href="${basePath}/static/jqGrid/css/ui.jqgrid.css" />
 <link rel="stylesheet"
 	href="${basePath}/static/jqGrid/css/jquery-ui-1.10.3.full.min.css" />
@@ -33,6 +25,10 @@
 #editmodtable{
 	min-width:620px;
 }
+.ui-th-column{
+font-size:12px;
+line-height:17px;}
+
 </style>
 </head>
 <body>
@@ -42,15 +38,15 @@
 			<table class="search_table">
 				<tr>
 					<td style="width:200px"><input type="text" name="recruitjobtitle"
-						class="form-control" style="background: #F7F8F9;"
+						class="form-control" style="background: #fff;"
 						placeholder="招聘职位" id="recruitjobtitle"><span class="input-group-btn">
 						<button type="button" name="search" id="search-btn"
-							style="background: #F7F8F9;margin-left:-40px;margin-top:3px;"
+							style="background: #fff;margin-left:-40px;margin-top:3px;"
 							class="btn btn-flat" onclick="searchTable();">
 							<i class="fa fa-search"></i>
 						</button></span></td>
 					<td style="width:100px"><select name="releaseFlg" class="form-control"
-						style="background: #F7F8F9;"
+						style="background: #fff;"
 						placeholder="开放标识" id="releaseFlg">
 							<option value="">全部</option>
 							<option value="0">暂存</option>
@@ -58,7 +54,7 @@
 							<option value="2">关闭</option>
 					</select></td>
 					<td align="right">
-					
+					<a href="${basePath}/recruitmentAddInit" class="btn btn-info" title="招聘信息-新增">新增</a>
 					</td>
 				</tr>
 			</table>
@@ -66,7 +62,7 @@
 		</div>
 	</form>
 
-	<table id="table"></table>
+	<table id="table" class="data_table" style="font-size:12px;"></table>
 	<div id="pager"></div>
 
 	<script type="text/javascript">
@@ -79,16 +75,16 @@
 						url : '${basePath}/recruitment',
 						method: "GET",
 						datatype : "json",
-						colNames : ['', '招聘编号', '发布时间', '开放标识', '招聘职位', '招聘人数', '招聘地点', '招聘对象', '招聘详情' ],
+						colNames : ['', '招聘编号', '发布时间', '开放标识', '招聘职位', '招聘人数', '招聘地点', '招聘对象',"","" ],
 						colModel : [ {
 							name : 'no',
 							index : 'no',
-							hidden : false,
+							hidden : true,
 							sortable : true
 						}, {
 							name : 'recruitno',
 							index : 'recruitno',
-							width : 50,
+							width : 80,
 							align : "left",
 							editoptions : {
 								readonly : true,
@@ -99,24 +95,24 @@
 						}, {
 							name : 'releasedate_v',
 							index : 'releasedate_v',
-							width : 80,
-							align : "left",
-							editoptions : {size : 10},
+							width : 50,
+							align : "center",
+							editoptions : {readonly : true,size : 10},
 							editable : false,
 							sortable : true
 						}, {
-							name : 'releaseflg',
-							index : 'releaseflg',
+							name : 'releaseflg_v',
+							index : 'releaseflg_v',
 							width : 50,
 							edittype : "select",
 							editoptions : {value : "0:暂存;1:发布;2:关闭"},
-							align : "left",
+							align : "center",
 							editable : true,
 							sortable : true
 						}, {
 							name : 'recruitjobtitle',
 							index : 'recruitlobtitle',
-							width : 80,
+							width : 50,
 							align : "left",
 							editoptions : {size : 30},
 							editable : true,
@@ -126,7 +122,7 @@
 							index : 'recruitnumber',
 							width : 50,
 							editoptions : {size : 10},
-							align : "left",
+							align : "center",
 							editable : true,
 							sortable : true
 						}, {
@@ -146,14 +142,17 @@
 							editable : true,
 							sortable : true
 						}, {
-							name : 'recruitdetails',
-							index : 'recruitdetails',
-							width : 160,
-							edittype : "textarea",
-							editoptions : {rows : "5",cols : "50"},
-							align : "left",
-							editable : true,
-							sortable : true
+							name : 'Modify',
+							index : 'no',
+							width : 30,
+							align : "center",
+							sortable : false
+						}, {
+							name : 'Delete',
+							index : 'no',
+							width : 30,
+							align : "center",
+							sortable : false
 						} ],
 						rowNum : 20,
 						autowidth : true,
@@ -172,6 +171,16 @@
 							repeatitems : false,
 							id : "0"
 						},
+						gridComplete:function(){
+							var ids = jQuery("#table").jqGrid("getDataIDs");
+							for (var i=0;i<ids.length;i++){
+								var id=ids[i];
+								var model = jQuery("#table").jqGrid("getRowData",id);
+								modify = "<a href='${basePath}/recruitment/"+model.no+"' style='color:#f60'>修改</a>";
+								del = "<a href='javascript:void(0)' style='color:#f60' onclick='Delete("+model.no+")'>删除</a>";
+								jQuery("#table").jqGrid("setRowData",ids[i],{Modify:modify,Delete:del});
+							}
+						},
 						caption : "",
 						loadComplete : function() {
 							var objWindow = $(window);
@@ -181,16 +190,35 @@
 						}
 					});
 			jQuery("#table").jqGrid('navGrid', "#pager", {
-				edit : true,
-				add : true,
-				del : true
-			},        {},
-            {mtype:"POST",closeAfterAdd:true,reloadAfterSubmit:true}, // add options
-            {mtype:"POST",reloadAfterSubmit:true}, // del options
-                     {} // search options
-                     );
+				edit : false,
+				add : false,
+				del : false,
+				search : false
+			});
 		}
 
+		function Delete(no){
+			if(confirm("确定删除吗？")){
+				jQuery.ajax({
+					type : 'POST',
+					contentType : 'application/json',
+					url : '${pageContext.request.contextPath}/recruitmentDelete?no='+no,
+					cache : false,
+					async : false,
+					dataType : 'json',
+					success : function(data) {
+						if(data.isSuccess){
+							searchTable();
+						} else{
+							alert("ERROR");
+						}
+					},
+					error : function(data) {
+						
+					}
+				});	
+			}
+		}
 		function searchTable() {
 			var recruitjobtitle = $("#recruitjobtitle").val();
 			var releaseFlg = $("#releaseFlg").val();
