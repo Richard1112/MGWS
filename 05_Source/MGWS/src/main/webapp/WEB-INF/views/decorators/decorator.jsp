@@ -42,14 +42,14 @@
 								<span class="fontinfo">Financial Laboratory</span>
 							</a>
 				        </li>
-				        <li>
-				        	<a>
+				        <li id="assetInfo_li">
+				        	<a href="${ctx}/assetInfo/init">
 								<span class="fontshow">资产管理</span>
 								<span class="fontinfo">Asset managerment</span>
 							</a>
 				        </li>
-				        <li>
-				        	<a>
+				        <li id="science_li">
+				        	<a href="${ctx}/science/init">
 								<span class="fontshow">子午科技</span>
 								<span class="fontinfo">Meridian Science</span>
 							</a>
@@ -77,6 +77,12 @@
 	}
 	if (currentPath.indexOf("contactus") > 0) {
 		$("#contactus_li").addClass("active");
+	}
+	if (currentPath.indexOf("assetInfo") > 0) {
+		$("#assetInfo_li").addClass("active");
+	}
+	if (currentPath.indexOf("science") > 0) {
+		$("#science_li").addClass("active");
 	}
 
 </script>

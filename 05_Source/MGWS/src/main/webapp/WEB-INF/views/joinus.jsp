@@ -26,75 +26,39 @@
 				<span class="fontshow">招聘信息</span>
 				<span class="fontinfo">Career information</span>
 			</div>
-			<div class="join_content">
-				<div class="join_info_left">
-					<div class="border_left"></div>
-				</div>
-				<div class="join_info_right">
-					<div class="border_right"></div>
-				</div>
-				<div class="join_info_left">
-					<div class="invite_time font_xl magin-top-30px">May.15</div>
-					<div class="invite_job font_xxl magin-top-30px">环球市场交易员</div>
-					<div class="invite_obj magin-top-50px">
-						<div class="invite_obj_info">
-							<a class="point_m float_left invite_point_left"></a>
-							<span class="float_left invite_percount_title">招聘人数:</span>
-							<span class="float_left invite_percount_content">8人</span>
-						</div>
-						<div class="invite_obj_info">
-							<a class="point_m float_left invite_point_left"></a>
-							<span class="float_left invite_obj_title">招聘对象:</span>
-							<span class="float_left invite_obj_content">2014年应届毕业生</span>
-						</div>
+			<c:forEach var="inviteItem" items="${ inviteInfo }">
+				<div class="join_content">
+					<div class="join_info_left">
+						<div class="border_left"></div>
 					</div>
-				</div>
-				<div class="join_info_right">
-					<div class="invite_require magin-top-30px">
-						<span class="invite_require_title">招聘要求:</span>
-						<span class="invite_require_content">良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，</span>
+					<div class="join_info_right">
+						<div class="border_right"></div>
 					</div>
-					<div class="invite_require magin-top-20px">
-						<span class="invite_require_title">职位描述:</span>
-						<span class="invite_require_content">良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，</span>
-					</div>
-				</div>
-			</div>
-			
-			<div class="join_content">
-				<div class="join_info_left">
-					<div class="border_left"></div>
-				</div>
-				<div class="join_info_right">
-					<div class="border_right"></div>
-				</div>
-				<div class="join_info_left">
-					<div class="invite_time font_xl magin-top-30px">May.15</div>
-					<div class="invite_job font_xxl magin-top-30px">环球市场交易员</div>
-					<div class="invite_obj magin-top-50px">
-						<div class="invite_obj_info">
-							<a class="point_m float_left invite_point_left"></a>
-							<span class="float_left invite_percount_title">招聘人数:</span>
-							<span class="float_left invite_percount_content">8人</span>
-						</div>
-						<div class="invite_obj_info">
-							<a class="point_m float_left invite_point_left"></a>
-							<span class="float_left invite_obj_title">招聘对象:</span>
-							<span class="float_left invite_obj_content">2014年应届毕业生</span>
+					<div class="join_info_left">
+						<div class="invite_time font_xl magin-top-30px">${inviteItem.releasedate }</div>
+						<div class="invite_job font_xxl magin-top-30px">${inviteItem.recruitjobtitle }</div>
+						<div class="invite_obj magin-top-50px">
+							<div class="invite_obj_info">
+								<a class="point_m float_left invite_point_left"></a>
+								<span class="float_left invite_percount_title">招聘人数:</span>
+								<span class="float_left invite_percount_content">${inviteItem.recruitnumber }人</span>
+							</div>
+							<div class="invite_obj_info">
+								<a class="point_m float_left invite_point_left"></a>
+								<span class="float_left invite_obj_title">招聘对象:</span>
+								<span class="float_left invite_obj_content">${inviteItem.recruitobject }</span>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="join_info_right">
-					<div class="invite_require magin-top-30px">
-						<span class="invite_require_title">招聘要求:</span>
-						<span class="invite_require_content">良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，</span>
-					</div>
-					<div class="invite_require magin-top-20px">
-						<span class="invite_require_title">职位描述:</span>
-						<span class="invite_require_content">良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，招聘要求:良好的心里素质和迹象的萨达短发短发良好的心里素质和迹象的萨达短发短发，</span>
+					<div class="join_info_right">
+						<div class="invite_require magin-top-30px">
+							<span class="invite_require_title">招聘详情:</span>
+							<span class="invite_require_content">${inviteItem.recruitdetails }</span>
+						</div>
+						
 					</div>
 				</div>
-			</div>
+			</c:forEach>
 
 			<div class="circle_size_m position_l100_t5"></div>
 		</div>

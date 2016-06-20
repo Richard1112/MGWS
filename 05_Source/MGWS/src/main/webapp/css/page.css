@@ -535,6 +535,10 @@ a{
     right: 30px;
 }
 
+.modal-content{
+	padding: 10px;
+}
+
 
 
 /******==============================================金融实验室===============================================******/
@@ -543,8 +547,8 @@ a{
     border: 2px solid #45E1D4;
 }
 .financial_content{
-	width: 80%;
-    margin-left: 10%;
+	width: 70%;
+    margin-left: 15%;
     display: inline-block;
 }
 .financial_section{
@@ -556,6 +560,7 @@ a{
 	width: 30%;
 	float: left;
 	display: block;
+	margin-top: 30px;
 }
 
 .financial_sel a{
@@ -607,6 +612,73 @@ a{
 	text-align: center;
 	margin-top: 30px;
 	min-height: 500px;
+}
+
+.financial_lab_sel{
+	margin-top: 10px;
+	border-bottom:none;
+	list-style: none;
+	padding-left: 0px;
+}
+
+.financial_lab_sel li{
+	width: 100%;
+	margin-top: 20px;
+	display: inline-block;
+}
+
+.financial_lab_sel li:hover > div > span,
+.financial_lab_sel li:focus > div > span{
+  color:#45E1D4;
+}
+
+.financial_lab_sel li:hover > i,
+.financial_lab_sel li:focus > i{
+  background: url("../images/po_yes.png") no-repeat;
+  background-size: 30px 30px;
+}
+
+.financial_lab_sel li > i{
+	display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    background: url("../images/po_not.png") no-repeat;
+    background-size: 30px 30px;
+}
+
+.financial_lab_sel li.active > i{
+	display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    background: url("../images/po_yes.png") no-repeat;
+    background-size: 30px 30px;
+}
+
+
+.financial_lab_sel li > div{
+	display: block;
+	float: left;
+	margin-left: 10px;
+}
+.financial_lab_sel li > div > span{
+	width:100%;
+	display: inline-block;
+	font-size: 16px;
+	padding-top: 4px;
+}
+
+.financial_lab_sel li.active > div > span{
+	width:100%;
+	display: inline-block;
+	color:#45E1D4;
+	font-size: 16px;
+}
+
+.financial_content .financial_title span{
+	width: 100%;
+	display: block;
 }
 
 /******==========================交易所详细页===================================******/
@@ -742,12 +814,79 @@ a{
 	color:#b8b8b8;
 }
 
+/******==========================资产管理===================================******/
+.assetinfo_left{
+	width: 45%;
+}
+.assetinfo_left .border_left{
+	width:10%;
+	border:2px solid #45E1D4;
+}
+.assetinfo_section{
+	width: 60%;
+    margin-left: 20%;
+    display: inline-block;
+    min-height: 500px;
+}
 
+.assetinfo_title{
+	display: block;
+	width: 100%;
+	margin: 15px 0px 15px 0px;
+}
+.assetinfo_content{
+	display: block;
+	width: 100%;
+	margin: 5px 0px 25px 0px;
+	color: #d8d8d8;
+}
 
+.assetinfo_section .asset_title{
+	margin-bottom: 25px;
+}
 
+.assetinfo_section .asset_title span{
+	width: 100%;
+	display: block;
+}
 
+/******==========================子午科技===================================******/
+.science_section{
+	width: 60%;
+    margin-left: 20%;
+    display: inline-block;
+    min-height: 500px;
+}
 
+.science_section .science_head{
+	margin-bottom: 25px;
+}
 
+.science_section .science_head span{
+	width: 100%;
+	display: block;
+}
 
+.science_div{
+	width: 33%;
+	float: left;
+	padding:5px;
+}
 
+.science_div img{
+	width: 100%;
+	display: inline-block;
+}
 
+.science_div .science_title{
+	width: 100%;
+	display: inline-block;
+	margin-top: 15px;
+}
+
+.science_div .science_content{
+	width: 100%;
+	display: inline-block;
+	margin-top: 5px;
+	color: #d8d8d8;
+}

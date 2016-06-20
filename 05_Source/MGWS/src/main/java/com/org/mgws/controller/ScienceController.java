@@ -1,8 +1,5 @@
 package com.org.mgws.controller;
 
-import java.util.List;
-
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -11,17 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.org.mgws.contants.CommonConstants;
-import com.org.mgws.entity.TCourseInfo;
-import com.org.mgws.service.MainService;
 
 @Controller
-@RequestMapping("/financelab")
-public class FinanceLabController extends BaseController {
-    
-	@Resource
-	private MainService mainService;
+@RequestMapping("/science")
+public class ScienceController extends BaseController {
+	
     /**
-     * 金融实验室
+     * 子午科技
      * 
      * @param model
      * @return
@@ -29,9 +22,7 @@ public class FinanceLabController extends BaseController {
     @RequestMapping(value = "/init")
     public String init(Model model, HttpServletResponse response, HttpSession session) {
         try {
-        	List<TCourseInfo> courseList = mainService.getAllTCourseInfo();
-        	model.addAttribute("courseList", courseList);
-            return "financelab";
+            return "science";
         }
         catch (Exception e) {
             e.printStackTrace();
