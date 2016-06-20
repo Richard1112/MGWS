@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,7 +72,7 @@ public class RecruitmentController extends BaseController {
 	@RequestMapping(value = "/recruitmentEdit", method = RequestMethod.POST)
 	public String save(HttpServletRequest req,@CurrentUser TAdminLoginInfo loginUser,@ModelAttribute TRecruitmentInfo tRecruitmentInfo, Model model) {
 		
-		if (tRecruitmentInfo.getRecruitno() == null) {
+		if (StringUtils.isEmpty(tRecruitmentInfo.getRecruitno())) {
 			String recruitNo = "RE" + DateFormatUtils.getDateFormatStr(DateFormatUtils.PATTEN_YMD_NO_SEPRATE) + CommonUtils.getRandomNum(6);
 			tRecruitmentInfo.setRecruitno(recruitNo);
 			tRecruitmentInfo.setAdduserkey(loginUser.getAdminno());

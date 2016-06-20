@@ -9,11 +9,7 @@
 <link rel="stylesheet"
 	href="${basePath}/static/jqGrid/css/jquery-ui-1.10.3.full.min.css" />
 <link href="${basePath}/static/upload/uploadify.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src='${basePath}/static/upload/jquery.uploadifive.js'></script>
-<script src="${basePath}/static/jqGrid/js/jquery-1.7.2.min.js"></script>
-<script src="${basePath}/static/jqGrid/js/i18n/grid.locale-cn.js"></script>
-<script src="${basePath}/static/jqGrid/js/jquery.jqGrid.src.js"
-	type="text/javascript"></script>
+<script src='${basePath}/static/upload/jquery.uploadifive.js'></script>
 <script type="text/javascript" charset="utf-8"
 	src="${basePath}/static/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8"
@@ -38,16 +34,21 @@
 	text-align: left;
 	padding: 5px 10px;
 }
+.up_btn{
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 4px;
+}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var folder = '/home/mgws';
+		var folder = '/picUpload/course/';
 		$('#uploadify').uploadifive({
 			'auto'             : true,
 			'queueID'          : 'queue',
 			'uploadScript'     : '${pageContext.request.contextPath}/servlet/Upload?folder='+folder,
 			'buttonText'       : '上传',
-			'buttonClass'      : 'btn btn-info',
+			'buttonClass'      : 'up_btn',
 			'multi'            : false,
 			'fileSizeLimit'    : '20MB',
 			'simUploadLimit'   : 1,
@@ -85,16 +86,16 @@
 		action="${basePath}/courseEdit" method="post"
 		commandName="tCourseInfo" modelAttribute="tCourseInfo">
 		<div class="input-group" style="margin: 15px 25px; min-width: 240px;">
-			<table class="editTable">
+			<table class="editTable" border="0">
 				<tr>
-					<td colspan="2" align="left"><a href="javascript:void(0)"
+					<td colspan="3" align="left"><a href="javascript:void(0)"
 						onclick="save();" class="btn btn-info">保存</a> &nbsp; <a
 						href="${pageContext.request.contextPath}/courseInit"
 						class="btn btn-default">取消</a></td>
 				</tr>
 				<tr>
 					<td class="_label">开放标识</td>
-					<td class="_cont"><form:select path="releaseflg"
+					<td class="_cont" colspan="2" ><form:select path="releaseflg"
 							class="form-control" style="background: #fff;width:100px;">
 							<form:option value=""></form:option>
 							<form:option value="0">暂存</form:option>
@@ -104,21 +105,20 @@
 				</tr>
 				<tr>
 					<td class="_label">课程名称</td>
-					<td class="_cont"><form:input path="coursename"
+					<td class="_cont" colspan="2"><form:input path="coursename"
 							class="form-control" style="background: #fff;width:200px;" maxlength="200" /></td>
 				</tr>
 				<tr>
 					<td class="_label">课程图片</td>
-					<td class="_cont">
-					<input type="file" name="uploadify" id="uploadify"/><div id="queue"></div>
+					<td class="_cont" style="width:100px;">
+					<input type="file" name="uploadify" id="uploadify"/>
+					</td><td><div id="queue"></div>
 					<form:hidden path="coursepic"/></td>
 				</tr>
 				<tr>
 					<td class="_label" valign="top">课程详情</td>
-					<td class="_cont"><script id="editor" type="text/plain"
-							style="width: 98%; height: 240px;">
-									${tCourseInfo.coursedetails }
-								</script> <form:hidden path="coursedetails" /></td>
+					<td class="_cont" colspan="2"><script id="editor" type="text/plain"
+							style="width: 98%; height: 240px;">${tCourseInfo.coursedetails }</script> <form:hidden path="coursedetails" /></td>
 				</tr>
 			</table>
 			<form:hidden path="no" />

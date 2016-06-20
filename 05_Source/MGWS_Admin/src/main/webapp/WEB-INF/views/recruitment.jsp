@@ -28,6 +28,7 @@
 .ui-th-column{
 font-size:12px;
 line-height:17px;}
+
 </style>
 </head>
 <body>
@@ -74,7 +75,7 @@ line-height:17px;}
 						url : '${basePath}/recruitment',
 						method: "GET",
 						datatype : "json",
-						colNames : ['', '招聘编号', '发布时间', '开放标识', '招聘职位', '招聘人数', '招聘地点', '招聘对象', '招聘详情',"","" ],
+						colNames : ['', '招聘编号', '发布时间', '开放标识', '招聘职位', '招聘人数', '招聘地点', '招聘对象',"","" ],
 						colModel : [ {
 							name : 'no',
 							index : 'no',
@@ -137,15 +138,6 @@ line-height:17px;}
 							index : 'recruitobject',
 							width : 70,
 							editoptions : {size : 50},
-							align : "left",
-							editable : true,
-							sortable : true
-						}, {
-							name : 'recruitdetails',
-							index : 'recruitdetails',
-							width : 160,
-							edittype : "textarea",
-							editoptions : {rows : "5",cols : "50"},
 							align : "left",
 							editable : true,
 							sortable : true

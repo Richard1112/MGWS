@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,7 +72,7 @@ public class CourseController extends BaseController {
 	@RequestMapping(value = "/courseEdit", method = RequestMethod.POST)
 	public String save(@CurrentUser TAdminLoginInfo loginUser, @ModelAttribute TCourseInfo tCourseInfo, Model model) {
 		
-		if (tCourseInfo.getCourseno() == null) {
+		if (StringUtils.isEmpty(tCourseInfo.getCourseno())) {
 			String courseno = "CO" + DateFormatUtils.getDateFormatStr(DateFormatUtils.PATTEN_YMD_NO_SEPRATE) + CommonUtils.getRandomNum(6);
 			tCourseInfo.setCourseno(courseno);
 			tCourseInfo.setAdduserkey(loginUser.getAdminno());

@@ -66,7 +66,7 @@ line-height:17px;}
 		</div>
 	</form>
 
-	<table id="table"></table>
+	<table id="table" class="data_table" style="font-size:12px;"></table>
 	<div id="pager"></div>
 
 	<script type="text/javascript">
@@ -78,7 +78,7 @@ line-height:17px;}
 				url : '${basePath}/course',
 				method : "GET",
 				datatype : "json",
-				colNames : [ '', '课程编号', '发布时间', '开放标识code','开放标识', '课程名称', '课程详情','','' ],
+				colNames : [ '', '课程编号', '发布时间', '开放标识code','开放标识', '课程名称','','' ],
 				colModel : [ {
 					name : 'no',
 					index : 'no',
@@ -115,7 +115,7 @@ line-height:17px;}
 					name : 'releaseflg_v',
 					index : 'releasefl_v',
 					width : 80,
-					align : "left",
+					align : "center",
 					edittype : "select",
 					editoptions : {value : "0:暂存;1:发布;2:关闭"},
 					editable : true,
@@ -125,15 +125,6 @@ line-height:17px;}
 					index : 'coursename',
 					width : 80,
 					align : "left",
-					editable : true,
-					sortable : true
-				}, {
-					name : 'coursedetails',
-					index : 'coursedetails',
-					width : 180,
-					align : "left",
-					edittype : "textarea",
-					editoptions : {rows : "5",cols : "50"},
 					editable : true,
 					sortable : true
 				}, {

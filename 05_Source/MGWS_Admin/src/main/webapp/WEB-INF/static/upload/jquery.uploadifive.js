@@ -100,6 +100,7 @@ Released under the UploadiFive Standard License <http://www.uploadify.com/upload
                 .css({
                     'font-size' : settings.height + 'px',
                     'opacity'   : 0,
+                    'cursor'    : 'pointer',
                     'position'  : 'absolute',
                     'right'     : '-3px',
                     'top'       : '-3px',
