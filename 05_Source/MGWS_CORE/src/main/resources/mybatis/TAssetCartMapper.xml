@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.mgws.dao.TAssetCartDao" >
+<mapper namespace="assetMapper" >
   <resultMap id="BaseResultMap" type="com.org.mgws.entity.TAssetCart" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="partnerNo" property="partnerno" jdbcType="VARCHAR" />
     <result column="releaseDate" property="releasedate" jdbcType="TIMESTAMP" />
+    <result column="releaseDate" property="releasedate_v" jdbcType="VARCHAR" />
     <result column="releaseFlg" property="releaseflg" jdbcType="CHAR" />
     <result column="assetName" property="assetname" jdbcType="VARCHAR" />
     <result column="addTimestamp" property="addtimestamp" jdbcType="TIMESTAMP" />
@@ -17,7 +18,7 @@
     <result column="assetDetails" property="assetdetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    no, partnerNo, releaseDate, releaseFlg, assetName, addTimestamp, addUserKey, updTimestamp, 
+    no, partnerNo, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v, releaseFlg, assetName, addTimestamp, addUserKey, updTimestamp, 
     updUserKey, updPgmId
   </sql>
   <sql id="Blob_Column_List" >
@@ -181,4 +182,39 @@
       updPgmId = #{updpgmid,jdbcType=VARCHAR}
     where no = #{no,jdbcType=BIGINT}
   </update>
+      
+  <select id="selectAllByParam" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+	    ,
+	    <include refid="Blob_Column_List" />
+		from t_asset_info
+		where 1=1
+		<if test="assetName != null and assetName != ''">
+			and assetName like '%' || #{assetName,jdbcType=VARCHAR} || '%'
+		</if>
+		<if test="releaseFlg != null and releaseFlg != ''">
+			and releaseFlg = #{releaseFlg,jdbcType=VARCHAR}
+		</if>
+		<if test="releaseDateF != null and releaseDateF != ''">
+			and releaseDate = #{releaseDateF,jdbcType=VARCHAR} and releaseDate = #{releaseDateT,jdbcType=VARCHAR}
+		</if>
+	</select>
+
+	<select id="selectAllByParamCount" resultType="int" parameterType="java.lang.String">
+		select
+		count(1)
+		from t_asset_info
+		where 1=1
+		<if test="assetName != null and assetName != ''">
+			and assetName like '%' || #{assetName,jdbcType=VARCHAR} || '%'
+		</if>
+		<if test="releaseFlg != null and releaseFlg != ''">
+			and releaseFlg = #{releaseFlg,jdbcType=VARCHAR}
+		</if>
+		<if test="releaseDateF != null and releaseDateF != ''">
+			and releaseDate = #{releaseDateF,jdbcType=VARCHAR} and releaseDate = #{releaseDateT,jdbcType=VARCHAR}
+		</if>
+	</select>
 </mapper>
