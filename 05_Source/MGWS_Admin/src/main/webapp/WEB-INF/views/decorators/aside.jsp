@@ -12,9 +12,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#" url="${pageContext.request.contextPath}/recruitmentInit" data-addtab="recruitment" title="招聘信息"><i class="fa fa-circle-o"></i> 招聘信息</a></li>
-                <li><a href="#" url="${pageContext.request.contextPath}/courseInit" data-addtab="course" title="课程信息"><i class="fa fa-circle-o"></i> 课程信息</a></li>
-                <li><a href="#" url="${pageContext.request.contextPath}/assetCartInit" data-addtab="asset" title="资产管理"><i class="fa fa-circle-o"></i> 资产管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/recruitmentInit" data-addtab="recruitment" title="招聘信息"><i class="fa fa-circle-o"></i> 招聘信息</a></li>
+                <li><a href="${pageContext.request.contextPath}/courseInit" data-addtab="course" title="课程信息"><i class="fa fa-circle-o"></i> 课程信息</a></li>
+                <li><a href="${pageContext.request.contextPath}/assetCartInit" data-addtab="asset" title="资产管理"><i class="fa fa-circle-o"></i> 资产管理</a></li>
               </ul>
             </li>
           </ul>

@@ -4,14 +4,6 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="${basePath}/static/bootstrap/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${basePath}/static/dist/css/skins/_all-skins.css">
-<link rel="stylesheet"
-	href="${basePath}/static/font/css/font-awesome.css">
-<link rel="stylesheet"
-	href="${basePath}/static/bootstrap/css/bootstrap-addtabs.css">
-<link rel="stylesheet"
 	href="${basePath}/static/jqGrid/css/ui.jqgrid.css" />
 <link rel="stylesheet"
 	href="${basePath}/static/jqGrid/css/jquery-ui-1.10.3.full.min.css" />
@@ -25,6 +17,9 @@
 	text-align: center;
 }
 
+.search_table {
+	width: 100%;
+}
 .search_table td {
 	padding: 5px 10px;
 }
@@ -32,6 +27,9 @@
 #editmodtable {
 	min-width: 620px;
 }
+.ui-th-column{
+font-size:12px;
+line-height:17px;}
 </style>
 </head>
 <body>
@@ -42,10 +40,10 @@
 				<tr>
 					<td style="width: 200px"><input type="text"
 						name="assetCartName" class="form-control"
-						style="background: #fff;" placeholder="资产名称" id="assetCartName">
+						style="background: #fff;width: 200px;" placeholder="资产名称" id="assetCartName">
 						<span class="input-group-btn">
 							<button type="button" name="search" id="search-btn"
-								style="background: #fff; margin-left: -40px;margin-top:3px;width: 200px;"
+								style="background: #fff; margin-left: -40px;margin-top:3px;"
 								class="btn btn-flat"
 								onclick="searchTable();">
 								<i class="fa fa-search"></i>
@@ -59,13 +57,15 @@
 							<option value="1">发布</option>
 							<option value="2">关闭</option>
 					</select></td>
-					<td align="right"></td>
+					<td align="right">
+					<a href="${basePath}/assetCartAddInit" class="btn btn-info" title="课程信息-新增">新增</a>
+					</td>
 				</tr>
 			</table>
 		</div>
 	</form>
 
-	<table id="table"></table>
+	<table id="table" class="data_table" style="font-size:12px;"></table>
 	<div id="pager"></div>
 
 	<script type="text/javascript">
@@ -74,10 +74,10 @@
 		});
 		function pageInit() {
 			jQuery("#table").jqGrid({
-				url : '${basePath}/assetCartInit',
+				url : '${basePath}/assetCart',
 				method : "GET",
 				datatype : "json",
-				colNames : [ '', '资产编号', '发布时间', '开放标识', '资产名称', '资产详情' ],
+				colNames : [ '', '资产编号', '发布时间', '开放标识code', '开放标识', '资产名称','','' ],
 				colModel : [ {
 					name : 'no',
 					index : 'no',
@@ -86,36 +86,55 @@
 				}, {
 					name : 'partnerno',
 					index : 'partnerno',
-					width : 90,
-					editable : false,
+					width : 100,
+					editable : true,
+					editoptions : {readonly : true,size : 10},
 					sortable : true
 				}, {
-					name : 'releasedate',
-					index : 'releasedate',
-					width : 100,
-					editable : false,
+					name : 'releasedate_v',
+					index : 'releasedate_v',
+					width : 50,
+					editable : true,
+					editoptions : {readonly : true,size : 10},
 					sortable : true
 				}, {
 					name : 'releaseflg',
 					index : 'releaseflg',
-					width : 80,
-					align : "center",
-					editable : false,
+					width : 50,
+					edittype : "select",
+					editoptions : {value : "0:暂存;1:发布;2:关闭"},
+					align : "left",
+					editable : true,
+					hidden : true,
 					sortable : true
 				}, {
-					name : 'partnername',
-					index : 'partnername',
-					width : 80,
+					name : 'releaseflg_v',
+					index : 'releaseflg_v',
+					width : 50,
 					align : "center",
-					editable : false,
+					edittype : "select",
+					editoptions : {value : "0:暂存;1:发布;2:关闭"},
+					editable : true,
 					sortable : true
 				}, {
-					name : 'partnerdetails',
-					index : 'partnerdetails',
+					name : 'assetname',
+					index : 'assetname',
 					width : 80,
-					align : "center",
-					editable : false,
+					align : "left",
+					editable : true,
 					sortable : true
+				}, {
+					name : 'Modify',
+					index : 'no',
+					width : 30,
+					align : "center",
+					sortable : false
+				}, {
+					name : 'Delete',
+					index : 'no',
+					width : 30,
+					align : "center",
+					sortable : false
 				} ],
 				rowNum : 20,
 				autowidth : true,
@@ -133,6 +152,16 @@
 					repeatitems : false,
 					id : "0"
 				},
+				gridComplete:function(){
+					var ids = jQuery("#table").jqGrid("getDataIDs");
+					for (var i=0;i<ids.length;i++){
+						var id=ids[i];
+						var model = jQuery("#table").jqGrid("getRowData",id);
+						modify = "<a href='${basePath}/assetCart/"+model.no+"' style='color:#f60'>修改</a>";
+						del = "<a href='javascript:void(0)' style='color:#f60' onclick='Delete("+model.no+")'>删除</a>";
+						jQuery("#table").jqGrid("setRowData",ids[i],{Modify:modify,Delete:del});
+					}
+				},
 				editurl : "${basePath}/assetCartEdit",
 				caption : "",
 				loadComplete : function() {
@@ -140,24 +169,47 @@
 					var brsWindow = objWindow.width();
 					var brsHindow = objWindow.height();
 					$("#table").jqGrid('setGridHeight', brsHindow - 150);
+					
 				}
 			});
 			jQuery("#table").jqGrid('navGrid', "#pager", {
-				edit : true,
+				edit : false,
 				add : false,
-				del : true
+				del : false
 			});
 		}
+		function Delete(no){
+			if(confirm("确定删除吗？")){
+				jQuery.ajax({
+					type : 'POST',
+					contentType : 'application/json',
+					url : '${pageContext.request.contextPath}/assetCartDelete?no='+no,
+					cache : false,
+					async : false,
+					dataType : 'json',
+					success : function(data) {
+						if(data.isSuccess){
+							searchTable();
+						} else{
+							alert("ERROR");
+						}
+					},
+					error : function(data) {
+						
+					}
+				});	
+			}
+		}
 		function searchTable() {
-			var courseName = $("#assetCartName").val();
-			var releaseFlg = $("#releaseFlg").val();
+			var assetName = $("#assetcartname").val();
+			var releaseFlg = $("#releaseflg").val();
 
 			$("#table").jqGrid('setGridParam', {
 				url : "${basePath}/assetCart",
 				method : 'GET',
 				postData : {
 					//条件
-					'courseName' : courseName,
+					'assetName' : assetName,
 					'releaseFlg' : releaseFlg
 				//,'releaseDateF' : releaseDateF
 				//,'releaseDateT' : releaseDateT

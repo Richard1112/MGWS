@@ -8,6 +8,7 @@
     <result column="releaseDate_v" property="releasedate_v" jdbcType="VARCHAR" />
     <result column="recruit_url" property="recruit_url" jdbcType="VARCHAR" />
     <result column="releaseFlg" property="releaseflg" jdbcType="CHAR" />
+    <result column="releaseflg_v" property="releaseflg_v" jdbcType="VARCHAR" />
     <result column="recruitJobTitle" property="recruitjobtitle" jdbcType="VARCHAR" />
     <result column="recruitNumber" property="recruitnumber" jdbcType="INTEGER" />
     <result column="recruitLocale" property="recruitlocale" jdbcType="CHAR" />
@@ -23,7 +24,8 @@
     <result column="recruitDetails" property="recruitdetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    no, recruitNo, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v, releaseFlg, recruitJobTitle, recruitNumber, recruitLocale, 
+    no, recruitNo, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v, releaseFlg,
+    case releaseFlg when '0' then '暂存' when '1' then '发布' when '2' then '关闭' end as releaseFlg_v, recruitJobTitle, recruitNumber, recruitLocale, 
     recruitObject, sortOrder, addTimestamp, addUserKey, updTimestamp, updUserKey, updPgmId
   </sql>
   <sql id="Blob_Column_List" >
@@ -196,7 +198,7 @@
         recruitDetails = #{recruitdetails,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where no = #{no,jdbcType=BIGINT}
+    where recruitNo = #{recruitno,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
     update t_recruitment_info
@@ -214,7 +216,7 @@
       updUserKey = #{upduserkey,jdbcType=VARCHAR},
       updPgmId = #{updpgmid,jdbcType=VARCHAR},
       recruitDetails = #{recruitdetails,jdbcType=LONGVARCHAR}
-    where no = #{no,jdbcType=BIGINT}
+    where recruitNo = #{recruitno,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TRecruitmentInfo" >
     update t_recruitment_info
@@ -231,7 +233,7 @@
       updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
       updUserKey = #{upduserkey,jdbcType=VARCHAR},
       updPgmId = #{updpgmid,jdbcType=VARCHAR}
-    where no = #{no,jdbcType=BIGINT}
+    where recruitNo = #{recruitno,jdbcType=BIGINT}
   </update>
   
   <select id="getAllTRecruitmentInfo" resultMap="ResultMapWithBLOBs" >

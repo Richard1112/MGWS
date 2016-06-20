@@ -6,13 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><sitemesh:write property='title' /></title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
-<link rel="stylesheet"
-	href="${basePath}/static/bootstrap/css/bootstrap.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="${basePath}/static/dist/css/AdminLTE.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -23,7 +22,8 @@
 	href="${basePath}/static/font/css/font-awesome.css">
 <link rel="stylesheet"
 	href="${basePath}/static/bootstrap/css/bootstrap-addtabs.css">
-
+<link rel="stylesheet"
+	href="${basePath}/static/bootstrap/css/bootstrap.css">
 <script
 	src="${basePath}/static/js/jquery-1.11.0.min.js"
 	type="text/javascript"></script>
@@ -109,7 +109,13 @@
 	<div class="wrapper">
 		<%@ include file="header.jsp"%>
 		<%@ include file="aside.jsp"%>
+		<div class="content-wrapper">
+		<div class="col-md-12">
+		<div id="tabs">
 		<sitemesh:write property='body' />
+		</div>
+		</div>
+		</div>
 	</div>
 </body>
 </html>

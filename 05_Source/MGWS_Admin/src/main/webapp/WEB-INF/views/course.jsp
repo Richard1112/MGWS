@@ -4,14 +4,6 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="${basePath}/static/bootstrap/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${basePath}/static/dist/css/skins/_all-skins.css">
-<link rel="stylesheet"
-	href="${basePath}/static/font/css/font-awesome.css">
-<link rel="stylesheet"
-	href="${basePath}/static/bootstrap/css/bootstrap-addtabs.css">
-<link rel="stylesheet"
 	href="${basePath}/static/jqGrid/css/ui.jqgrid.css" />
 <link rel="stylesheet"
 	href="${basePath}/static/jqGrid/css/jquery-ui-1.10.3.full.min.css" />
@@ -36,6 +28,9 @@
 #editmodtable {
 	min-width: 620px;
 }
+.ui-th-column{
+font-size:12px;
+line-height:17px;}
 </style>
 </head>
 <body>
@@ -48,7 +43,6 @@
 						class="form-control" style="background: #fff;width: 200px"
 						placeholder="课程名称" id="courseName"> <span
 						class="input-group-btn">
-
 							<button type="button" name="search" id="search-btn"
 								style="background: #fff; margin-left: -40px;margin-top:3px;"
 								class="btn btn-flat"
@@ -64,13 +58,15 @@
 							<option value="1">发布</option>
 							<option value="2">关闭</option>
 					</select></td>
-					<td align="right"></td>
+					<td align="right">
+					<a href="${basePath}/courseAddInit" class="btn btn-info" title="课程信息-新增">新增</a>
+					</td>
 				</tr>
 			</table>
 		</div>
 	</form>
 
-	<table id="table"></table>
+	<table id="table" class="data_table" style="font-size:12px;"></table>
 	<div id="pager"></div>
 
 	<script type="text/javascript">
@@ -82,10 +78,11 @@
 				url : '${basePath}/course',
 				method : "GET",
 				datatype : "json",
-				colNames : [ '', '课程编号', '发布时间', '开放标识', '课程名称', '课程详情' ],
+				colNames : [ '', '课程编号', '发布时间', '开放标识code','开放标识', '课程名称','','' ],
 				colModel : [ {
 					name : 'no',
 					index : 'no',
+					editoptions : {readonly : true,size : 10},
 					hidden : true,
 					sortable : true
 				}, {
@@ -93,20 +90,34 @@
 					index : 'courseno',
 					width : 90,
 					align : "left",
+					editoptions : {readonly : true,size : 10},
 					editable : true,
 					sortable : true
 				}, {
-					name : 'releasedate',
-					index : 'releasedate',
+					name : 'releasedate_v',
+					index : 'releasedate_v',
 					width : 80,
 					align : "left",
+					editoptions : {readonly : true,size : 10},
 					editable : true,
 					sortable : true
 				}, {
 					name : 'releaseflg',
 					index : 'releaseflg',
 					width : 80,
+					edittype : "select",
+					editoptions : {value : "0:暂存;1:发布;2:关闭"},
 					align : "left",
+					editable : true,
+					hidden : true,
+					sortable : true
+				}, {
+					name : 'releaseflg_v',
+					index : 'releasefl_v',
+					width : 80,
+					align : "center",
+					edittype : "select",
+					editoptions : {value : "0:暂存;1:发布;2:关闭"},
 					editable : true,
 					sortable : true
 				}, {
@@ -117,14 +128,17 @@
 					editable : true,
 					sortable : true
 				}, {
-					name : 'coursedetails',
-					index : 'coursedetails',
-					width : 180,
-					align : "left",
-					edittype : "textarea",
-					editoptions : {rows : "5",cols : "50"},
-					editable : true,
-					sortable : true
+					name : 'Modify',
+					index : 'no',
+					width : 30,
+					align : "center",
+					sortable : false
+				}, {
+					name : 'Delete',
+					index : 'no',
+					width : 30,
+					align : "center",
+					sortable : false
 				} ],
 				rowNum : 20,
 				autowidth : true,
@@ -142,6 +156,16 @@
 					repeatitems : false,
 					id : "0"
 				},
+				gridComplete:function(){
+					var ids = jQuery("#table").jqGrid("getDataIDs");
+					for (var i=0;i<ids.length;i++){
+						var id=ids[i];
+						var model = jQuery("#table").jqGrid("getRowData",id);
+						modify = "<a href='${basePath}/course/"+model.no+"' style='color:#f60'>修改</a>";
+						del = "<a href='javascript:void(0)' style='color:#f60' onclick='Delete("+model.no+")'>删除</a>";
+						jQuery("#table").jqGrid("setRowData",ids[i],{Modify:modify,Delete:del});
+					}
+				},
 				editurl : "${basePath}/courseEdit",
 				caption : "",
 				loadComplete : function() {
@@ -152,10 +176,33 @@
 				}
 			});
 			jQuery("#table").jqGrid('navGrid', "#pager", {
-				edit : true,
-				add : true,
-				del : true
+				edit : false,
+				add : false,
+				del : false,
+				search : false
 			});
+		}
+		function Delete(no){
+			if(confirm("确定删除吗？")){
+				jQuery.ajax({
+					type : 'POST',
+					contentType : 'application/json',
+					url : '${pageContext.request.contextPath}/courseDelete?no='+no,
+					cache : false,
+					async : false,
+					dataType : 'json',
+					success : function(data) {
+						if(data.isSuccess){
+							searchTable();
+						} else{
+							alert("ERROR");
+						}
+					},
+					error : function(data) {
+						
+					}
+				});	
+			}
 		}
 		function searchTable() {
 			var courseName = $("#courseName").val();

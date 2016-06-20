@@ -16,9 +16,12 @@ public class TAssetCart extends BaseEntity {
     private String releasedate_v;
 
     private String releaseflg;
+    private String releaseflg_v;
 
     private String assetname;
-
+    
+    private String assetpic;
+    
     private Date addtimestamp;
 
     private String adduserkey;
@@ -31,7 +34,15 @@ public class TAssetCart extends BaseEntity {
 
     private String assetdetails;
 
-    public String getReleasedate_v() {
+    public String getReleaseflg_v() {
+		return releaseflg_v;
+	}
+
+	public void setReleaseflg_v(String releaseflg_v) {
+		this.releaseflg_v = releaseflg_v;
+	}
+
+	public String getReleasedate_v() {
 		return releasedate_v;
 	}
 
@@ -43,7 +54,15 @@ public class TAssetCart extends BaseEntity {
         return no;
     }
 
-    public void setNo(Long no) {
+    public String getAssetpic() {
+		return assetpic;
+	}
+
+	public void setAssetpic(String assetpic) {
+		this.assetpic = assetpic;
+	}
+
+	public void setNo(Long no) {
         this.no = no;
     }
 
