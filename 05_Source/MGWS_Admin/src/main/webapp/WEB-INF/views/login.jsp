@@ -14,6 +14,11 @@
 .error {
 	color: red;
 }
+.h_title{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
 </style>
 </head>
 <body>
@@ -22,6 +27,9 @@
 			<div class="error">${error}</div>
 			<div class="login_boder">
 				<div class="login_padding" id="login_model">
+					<div class="h_title">
+						子午投资 后台管理
+					</div><br/>
 					<div> <input type="text" id="username" name="username"
 						value="<shiro:principal/>" class="txt_input txt_input2"
 						placeholder="<ms:message code='username' />"
