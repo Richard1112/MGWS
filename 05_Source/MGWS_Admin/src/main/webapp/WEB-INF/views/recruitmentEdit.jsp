@@ -69,10 +69,6 @@
 	        	return;
 	        }
 		}
-		if (recruitLocale == "") {
-			alert("请输入招聘地点！");
-			return;
-		}
 		if (recruitObject == "") {
 			alert("请输入招聘对象！");
 			return;
@@ -129,7 +125,7 @@
 				<tr>
 					<td class="_label" valign="top">招聘详情</td>
 					<td class="_cont"><script id="editor" type="text/plain"
-							style="width: 98%; height: 240px;">
+							style="width: 98%; height: 160px;">
 									${tRecruitmentInfo.recruitdetails }
 								</script> <form:hidden path="recruitdetails" /></td>
 				</tr>

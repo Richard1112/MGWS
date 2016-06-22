@@ -172,7 +172,7 @@ line-height:17px;}
 					var objWindow = $(window);
 					var brsWindow = objWindow.width();
 					var brsHindow = objWindow.height();
-					$("#table").jqGrid('setGridHeight', brsHindow - 150);
+					$("#table").jqGrid('setGridHeight', brsHindow - 250);
 				}
 			});
 			jQuery("#table").jqGrid('navGrid', "#pager", {

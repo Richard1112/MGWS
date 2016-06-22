@@ -1,4 +1,4 @@
-body{ background:url(../images/login_bgx.gif);}
+body{ background-color: #00a65a !important;}
 /*--login--*/
 .login_m{ width:403px; margin:0 auto; height:375px; margin-top:98px; }
 .login_logo{ text-align:center; margin-bottom:25px;}
