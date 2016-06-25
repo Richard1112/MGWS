@@ -7,6 +7,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="shortcut icon" href="${ctx}/favicon.ico"  type="image/x-icon" />
   <title><sitemesh:write property='title' /></title>
   <sitemesh:write property='head' />
 </head>

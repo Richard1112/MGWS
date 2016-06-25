@@ -29,25 +29,25 @@
 				<span class="fontshow">子午科技</span>
 				<span class="fontinfo">Meridian Science</span>
 			</div>
-			<a href="http://www.baidu.com">
+			<a href="http://api.meridianglobal.com.cn">
 			<div class="science_div">
 				<img alt="" src="${ctx }/images/science/science_1.png">
-				<div class="science_title">X Trader</div>
-				<div class="science_content">Simultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously trader</div>
+				<div class="science_title">量化平台</div>
+				<div class="science_content">将子午的量化团队的多年的量化系统的开发经验开发为一个服务平台，为更多的量化开发者在数据资源、算法资源、交易资源等提供优质的服务。</div>
 			</div>
 			</a>
-			<a href="http://www.taobao.com">
+			<a href="http://116.228.204.42:8000/tweets/demo/">
 			<div class="science_div">
 				<img alt="" src="${ctx }/images/science/science_2.png">
-				<div class="science_title">X Trader</div>
-				<div class="science_content">Simultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously traderSimultaneously trader</div>
+				<div class="science_title">事件驱动</div>
+				<div class="science_content">提供公告、投资者互动及财经要闻的即时展示，为事件驱动提供信息支持。</div>
 			</div>
 			</a>
 		</div>
 
 
 		<div class="footer">
-			<div class="fontshow">Copyright 2013 Meridian Global Inc.</div>
+			<div class="fontshow">Copyright 2016 Meridian Global Inc.</div>
 			<div class="footer-split"></div>
 		</div>
 	</div>

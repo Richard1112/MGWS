@@ -32,10 +32,7 @@
 			<img src="${ctx }/images/jrsys_banner.png">
 		</div>
 		<div class="financial_content">
-			<div class="financial_title magin-top-30px">
-				<span class="fontshow">金融实验室</span>
-				<span class="fontinfo">Financial Laboratory</span>
-			</div>
+
 			<div class="financial_sel">
 				<div class="financial_border_left">
 					<div></div>
@@ -58,7 +55,7 @@
 					<div class="financial_info_img">
 						<img src="${ctx }/images/jrsysinfo-1.png">
 					</div>
-					<div class="financial_info_title fontshow font_xl">${courseItem.coursename }</div>
+					<div class="financial_info_title fontshow font_ml">${courseItem.coursename }</div>
 					<div class="financial_info_content fontinfo">${courseItem.coursedetails }</div>
 					<div class="circle_size_xll position_r100_b100"></div>
 					<div class="circle_size_m position_r50_b300"></div>
@@ -69,7 +66,7 @@
 
 
 		<div class="footer">
-			<div class="fontshow">Copyright 2013 Meridian Global Inc.</div>
+			<div class="fontshow">Copyright 2016 Meridian Global Inc.</div>
 			<div class="footer-split"></div>
 		</div>
 	</div>
