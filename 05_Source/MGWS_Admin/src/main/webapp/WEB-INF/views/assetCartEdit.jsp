@@ -97,7 +97,7 @@
 				<tr>
 					<td class="_label" valign="top">资产详情</td>
 					<td class="_cont" colspan="2"><script id="editor" type="text/plain"
-							style="width: 98%; height: 240px;">${tAssetCart.assetdetails }</script> <form:hidden path="assetdetails" /></td>
+							style="width: 98%; height: 200px;">${tAssetCart.assetdetails }</script> <form:hidden path="assetdetails" /></td>
 				</tr>
 			</table>
 			<form:hidden path="no" />
@@ -113,17 +113,23 @@
 			'uploadScript'     : '${pageContext.request.contextPath}/servlet/Upload?folder='+folder,
 			'buttonText'       : '上传',
 			'buttonClass'      : 'up_btn',
-			'multi'            : false,
+			'multi'            : true,
 			'fileSizeLimit'    : '20MB',
-			'simUploadLimit'   : 1,
-			'removeCompleted'  : true,
+			'queueSizeLimit'    : 3,
+			'simUploadLimit'   : 2,
+			'removeCompleted'  : false,
 			'removeTimeout'    : 1,
 			'width'            : 90,
 			'height'           : 38,
 			'onFallback'       : function() {alert("对不起，你的浏览器版本太低，请使用更高版本的浏览器！");},
 			'onUploadComplete' : function(file, data) {
 				var newName = decodeURI(decodeURI(data, "utf-8"));
-				$("#assetpic").val(newName);
+				
+				var fileNames = $("#assetpic").val();
+				if(fileNames!=""){
+					fileNames += "," + newName;
+				}
+				$("#assetpic").val(fileNames);
 			}
 		});
 	</script>

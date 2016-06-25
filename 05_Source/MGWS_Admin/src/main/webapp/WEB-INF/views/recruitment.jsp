@@ -38,7 +38,7 @@ line-height:17px;}
 			<table class="search_table">
 				<tr>
 					<td style="width:200px"><input type="text" name="recruitjobtitle"
-						class="form-control" style="background: #fff;"
+						class="form-control" style="background: #fff;width:200px"
 						placeholder="招聘职位" id="recruitjobtitle"><span class="input-group-btn">
 						<button type="button" name="search" id="search-btn"
 							style="background: #fff;margin-left:-40px;margin-top:3px;"
@@ -46,7 +46,7 @@ line-height:17px;}
 							<i class="fa fa-search"></i>
 						</button></span></td>
 					<td style="width:100px"><select name="releaseFlg" class="form-control"
-						style="background: #fff;"
+						style="background: #fff;width:100px"
 						placeholder="开放标识" id="releaseFlg">
 							<option value="">全部</option>
 							<option value="0">暂存</option>
@@ -186,7 +186,7 @@ line-height:17px;}
 							var objWindow = $(window);
 							var brsWindow = objWindow.width();
 							var brsHindow = objWindow.height();
-							$("#table").jqGrid('setGridHeight', brsHindow-150);
+							$("#table").jqGrid('setGridHeight', brsHindow-250);
 						}
 					});
 			jQuery("#table").jqGrid('navGrid', "#pager", {

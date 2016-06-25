@@ -49,17 +49,29 @@
 			'uploadScript'     : '${pageContext.request.contextPath}/servlet/Upload?folder='+folder,
 			'buttonText'       : '上传',
 			'buttonClass'      : 'up_btn',
-			'multi'            : false,
+			'multi'            : true,
 			'fileSizeLimit'    : '20MB',
-			'simUploadLimit'   : 1,
-			'removeCompleted'  : true,
+			'queueSizeLimit'    : 3,
+			'simUploadLimit'   : 3,
+			'removeCompleted'  : false,
 			'removeTimeout'    : 1,
 			'width'            : 90,
 			'height'           : 38,
 			'onFallback'       : function() {alert("对不起，你的浏览器版本太低，请使用更高版本的浏览器！");},
 			'onUploadComplete' : function(file, data) {
 				var newName = decodeURI(decodeURI(data, "utf-8"));
-				$("#coursepic").val(newName);
+				var fileNames = $("#coursepic").val();
+				if(fileNames!=""){
+					fileNames += "," + newName;
+				}
+				$("#coursepic").val(fileNames);
+			},
+			'onCancel': function(file){
+			      /* 注意：取消后应重新设置uploadLimit */
+			      $data= $(this).data('uploadifive'),
+			      settings = $data.settings;
+			      settings.uploadLimit++;
+			      alert(file.name + " 已取消上传~!");
 			}
 		});
 	});
@@ -118,7 +130,7 @@
 				<tr>
 					<td class="_label" valign="top">课程详情</td>
 					<td class="_cont" colspan="2"><script id="editor" type="text/plain"
-							style="width: 98%; height: 240px;">${tCourseInfo.coursedetails }</script> <form:hidden path="coursedetails" /></td>
+							style="width: 98%; height: 200px;">${tCourseInfo.coursedetails }</script> <form:hidden path="coursedetails" /></td>
 				</tr>
 			</table>
 			<form:hidden path="no" />
