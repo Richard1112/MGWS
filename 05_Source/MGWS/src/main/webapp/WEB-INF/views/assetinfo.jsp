@@ -43,7 +43,7 @@
 
 
 		<div class="footer">
-			<div class="fontshow">Copyright 2013 Meridian Global Inc.</div>
+			<div class="fontshow">Copyright 2016 Meridian Global Inc.</div>
 			<div class="footer-split"></div>
 		</div>
 	</div>
