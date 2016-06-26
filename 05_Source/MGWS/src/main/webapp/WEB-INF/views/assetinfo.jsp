@@ -39,6 +39,7 @@
 					<div class="assetinfo_content">${assetItem.assetdetails }</div>
 			</div>
 			</c:forEach>
+			<div class="circle_size_m position_l100_t30"></div>
 		</div>
 
 

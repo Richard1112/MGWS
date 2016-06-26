@@ -194,6 +194,12 @@ a{
 	top: 5px;
 }
 
+.position_l100_t30{
+	position: absolute;
+	left: 100px;
+	top: 30px;
+}
+
 .magin-top-15px{
 	margin-top: 15px;
 }
@@ -840,6 +846,7 @@ a{
     margin-left: 20%;
     display: inline-block;
     min-height: 500px;
+    position: relative;
 }
 
 .assetinfo_title{
@@ -869,6 +876,7 @@ a{
     margin-left: 20%;
     display: inline-block;
     min-height: 500px;
+    position: relative;
 }
 
 .science_section .science_head{
