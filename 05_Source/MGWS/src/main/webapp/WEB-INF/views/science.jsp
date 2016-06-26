@@ -43,6 +43,7 @@
 				<div class="science_content">提供公告、投资者互动及财经要闻的即时展示，为事件驱动提供信息支持。</div>
 			</div>
 			</a>
+			<div class="circle_size_m position_l100_t30"></div>
 		</div>
 
 

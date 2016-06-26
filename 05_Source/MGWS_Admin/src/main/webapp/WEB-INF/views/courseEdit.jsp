@@ -63,6 +63,8 @@
 				var fileNames = $("#coursepic").val();
 				if(fileNames!=""){
 					fileNames += "," + newName;
+				} else {
+					fileNames = newName;
 				}
 				$("#coursepic").val(fileNames);
 			},

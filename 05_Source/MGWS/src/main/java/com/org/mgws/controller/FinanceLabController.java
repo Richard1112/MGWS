@@ -31,6 +31,7 @@ public class FinanceLabController extends BaseController {
         try {
         	List<TCourseInfo> courseList = mainService.getAllTCourseInfo();
         	model.addAttribute("courseList", courseList);
+        	model.addAttribute("picpath", super.getApplicationMessage("PIC_PATH"));
             return "financelab";
         }
         catch (Exception e) {

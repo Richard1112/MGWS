@@ -28,8 +28,7 @@ public class FileUpload extends HttpServlet {
 		
 		String folder = request.getParameter("folder");
 		
-		String savePath = this.getServletConfig().getServletContext()
-				.getRealPath("");
+		String savePath = MessageUtils.getApplicationMessage("PIC_PATH");
 		savePath = savePath + "/" + folder + "/";
 		
 		request.getParameterNames();
