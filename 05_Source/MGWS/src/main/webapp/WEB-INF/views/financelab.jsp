@@ -31,7 +31,7 @@
 		<div class="notMainBanner">
 			<img src="${ctx }/images/jrsys_banner.png">
 		</div>
-		<div class="financial_content">
+		<div class="financial_content clearfix">
 
 			<div class="financial_sel">
 				<div class="financial_border_left">
@@ -49,7 +49,7 @@
 				</ul>
 			</div>
 
-			<div class="financial_section">
+			<div class="financial_section clearfix">
 			<c:forEach var="courseItem" items="${ courseList }" varStatus="step">
 				<div class="financial_info" style="display:none">
 					<div class="financial_info_img">

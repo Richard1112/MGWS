@@ -65,35 +65,24 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="main_jys_detail">
-			<div class="fontshow main_jys_detail_div">欧洲期货交易所</div>
-			<div class="fontinfo main_jys_detail_div">EXREX Exchange</div>
-			<div class="fontshow main_jys_detail_div magin-top-30px">欧洲期货交易所（EXREX）是一全面电子化交易所，其电子交易平台可以提供广泛的国际基准产品的访问。EXREX标准化、分权式的交易系统，使其市场参与者在全球各地都能下单交易...</div>
-			<div class="jsy_showdetail main_jys_detail_div">
-				<a href="${ctx }/stockexchange/init?tab=2">查看更多</a>
-			</div>
-			<div class="circle_size_xl position_r100_t5"></div>
-			<div class="circle_size_m position_l100_b5"></div>
-		</div>
 		 		
-		<div class="main_jys_sel">
-			<a href="${ctx }/stockexchange/init?tab=1">
+		<div class="main_jys_sel clearfix">
+			<a href="${ctx }/stockexchange/init?tab=1" class="clearfix">
 				<i class="main_po_all"></i>
 				<span class="fontshow">纽约泛欧交易所</span>
 				<span class="fontinfo">NYSE Euronext</span>
 			</a>
-			<a href="${ctx }/stockexchange/init?tab=2">
+			<a href="${ctx }/stockexchange/init?tab=2" class="clearfix">
 				<i class="main_po_all"></i>
 				<span class="fontshow">欧洲期货交易所</span>
 				<span class="fontinfo">EXREX Exchange</span>
 			</a>
-			<a href="${ctx }/stockexchange/init?tab=3">
+			<a href="${ctx }/stockexchange/init?tab=3" class="clearfix">
 				<i class="main_po_all"></i>
 				<span class="fontshow">芝加哥商业交易所</span>
 				<span class="fontinfo">CME Group</span>
 			</a>
-			<a href="${ctx }/stockexchange/init?tab=4">
+			<a href="${ctx }/stockexchange/init?tab=4" class="clearfix">
 				<i class="main_po_all"></i>
 				<span class="fontshow">中国沪深证券交易所</span>
 				<span class="fontinfo">Stock Exchange</span>
@@ -113,20 +102,20 @@
 
 					<div class="magin-top-10px">Meridian Global Inc.长期致力于环球金融市场交易，包括</div>
 
-					<div class="main_jy_icon magin-top-20px">
-						<a>
+					<div class="main_jy_icon magin-top-20px clearfix">
+						<a class="clearfix">
 							<img src="${ctx}/images/main/about_us_icon_1.png">
 							<span class="">证劵</span>
 						</a>
-						<a>
+						<a class="clearfix">
 							<img src="${ctx}/images/main/about_us_icon_2.png">
 							<span class="">期货</span>
 						</a>
-						<a>
+						<a class="clearfix">
 							<img src="${ctx}/images/main/about_us_icon_3.png">
 							<span class="">期权</span>
 						</a>
-						<a>
+						<a class="clearfix">
 							<img src="${ctx}/images/main/about_us_icon_4.png">
 							<span class="">其他OTC金融产品的交易</span>
 						</a>

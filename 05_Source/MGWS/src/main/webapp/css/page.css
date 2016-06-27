@@ -1,5 +1,5 @@
 body {
-	color: #666;
+	color: #222;
 	font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	background: #fff;
 	font-size: 13px;
@@ -9,7 +9,7 @@ body {
 }
 
 a{
-	color: #666;
+	color: #222;
 	text-decoration: none;
 	cursor: pointer;
 
@@ -30,6 +30,7 @@ a{
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
+    -webkit-appearance:none;
 }
 
 .font_xxl{
@@ -111,7 +112,7 @@ a{
 .footer > .footer-split{
 	width:5%;
 	margin: 10px auto;
-	border:0.15px solid #d8d8d8;
+	border:1px solid #bbbbbb;
 }
 
 .info-content-1{
@@ -124,11 +125,11 @@ a{
 }
 
 .fontshow{
-	color: #666;
+	color: #222;
 }
 
 .fontinfo{
-	color: #d8d8d8;
+	color: #bbbbbb;
 }
 
 .circle_size_xll{
@@ -250,6 +251,7 @@ a{
     -moz-border-radius: 4px;
     -o-border-radius: 4px;
     border-radius: 4px;
+    -webkit-appearance:none;
 }
 .flex-control-nav {
     width: 70%;
@@ -268,12 +270,11 @@ a{
 }
 
 .main_section{
-	width: 70%;
-	margin-left: 15%;
-	display: inline-block;
-	position: relative;
-	height: 400px;
-	margin-top: 40px;
+	width: 995px;
+    margin: 0px auto;
+    position: relative;
+    height: 400px;
+    margin-top: 40px;
 }
 
 .main_invite{
@@ -391,13 +392,13 @@ a{
     color: #45E1D4;
     border-radius: 10px;
     margin: 15px 0px;
-    border: 0.5px solid #45E1D4;
+    border: 1px solid #45E1D4;
+    -webkit-appearance:none;
 }
 
 .main_jys_sel{
-	width: 100%;
-    padding: 20px 25%;
-    display: inline-block;
+	width: 995px;
+    margin: 25px auto 0px auto;
 }
 
 .main_jys_sel a{
@@ -445,7 +446,7 @@ a{
 }
 
 .main_about_us_back{
-	width: 70%;
+	width: 995px;
 	margin: 50px auto;
 	box-shadow: 0 5px 5px rgba(47, 20, 20, 0.44);
 }
@@ -457,8 +458,8 @@ a{
 .main_about_us_info{
 	position: absolute;
 	top: 0px;
-	width: 60%;
-	margin-left:20%;
+	width: 64%;
+	margin-left:18%;
 	color: #fff;
 }
 
@@ -481,9 +482,10 @@ a{
 }
 
 .main_about_us_info .content_info div{
-	width: 100%;
-	text-align: center;
-	display: block;
+	width: 800px;
+    margin: 0px auto;
+    text-align: center;
+    display: block;
 }
 
 .main_about_us_info .content_info .main_jy_icon a{
@@ -508,9 +510,9 @@ a{
 }
 
 .main_about_us_info .content_info .main_jy_content{
-	width: 100%;
-	text-align: center;
-	display: inline-block;
+	width: 800px;
+    margin: 25px auto;
+    text-align: center;
 }
 
 .main_about_us_info .content_info .main_aoubt_us_more{
@@ -530,8 +532,9 @@ a{
     color: #45E1D4;
     border-radius: 20px;
     margin: 15px 0px;
-    border: 0.5px solid #45E1D4;
+    border: 1px solid #45E1D4;
     font-size: 15px;
+    -webkit-appearance:none;
 }
 
 .main_exchange .main_exchange_span{
@@ -568,10 +571,8 @@ a{
     border: 2px solid #45E1D4;
 }
 .financial_content{
-	width: 60%;
-    margin-left: 20%;
-    display: inline-block;
-    margin-top: 30px;
+	width: 855px;
+    margin: 30px auto 0px auto;
 }
 .financial_section{
 	display: block;
@@ -647,6 +648,7 @@ a{
 	width: 100%;
 	margin-top: 20px;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .financial_lab_sel li:hover > div > span,
@@ -702,7 +704,7 @@ a{
 
 /******==========================交易所详细页===================================******/
 .jys_detail_section{
-	width: 70%;
+	width: 855px;
 	margin: 0 auto;
 	min-height: 500px;
 	position: relative;
@@ -722,7 +724,7 @@ a{
 /******==========================关于我们===================================******/
 
 .about_us_section{
-	width: 60%;
+	width: 855px;
 	margin: 0 auto;
 	min-height: 500px;
 	position: relative;
@@ -842,9 +844,8 @@ a{
 	border:2px solid #45E1D4;
 }
 .assetinfo_section{
-	width: 60%;
-    margin-left: 20%;
-    display: inline-block;
+	width: 855px;
+    margin: 0px auto;
     min-height: 500px;
     position: relative;
 }
@@ -858,7 +859,7 @@ a{
 	display: block;
 	width: 100%;
 	margin: 5px 0px 25px 0px;
-	color: #d8d8d8;
+	color: #bbbbbb;
 }
 
 .assetinfo_section .asset_title{
@@ -872,9 +873,8 @@ a{
 
 /******==========================子午科技===================================******/
 .science_section{
-	width: 60%;
-    margin-left: 20%;
-    display: inline-block;
+	width: 855px;
+    margin: 0px auto;
     min-height: 500px;
     position: relative;
 }
@@ -909,14 +909,14 @@ a{
 	width: 100%;
 	display: inline-block;
 	margin-top: 5px;
-	color: #d8d8d8;
+	color: #bbbbbb;
 }
 
 
 .main_info_dialog{
 /* 	overflow-y:auto; */
 /* 	max-height:80% !important; */
-	width:75% !important;
+	width:1000px !important;
 }
 
 .modal-content{
@@ -942,5 +942,6 @@ a{
     color: #45E1D4;
     border-radius: 10px;
     margin: 15px 30px;
-    border: 0.5px solid #45E1D4;
+    border: 1px solid #45E1D4;
+    -webkit-appearance:none;
 }
