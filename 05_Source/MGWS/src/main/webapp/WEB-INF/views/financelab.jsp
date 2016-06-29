@@ -53,7 +53,9 @@
 			<c:forEach var="courseItem" items="${ courseList }" varStatus="step">
 				<div class="financial_info" style="display:none">
 					<div class="financial_info_img">
-						<img src="${picpath }${courseItem.coursepic }">
+						<c:forEach var="picitem" items="${ courseItem.coursepic }" varStatus="step">
+							<img src="${picpath }${picitem}">
+						</c:forEach>
 					</div>
 					<div class="financial_info_title fontshow font_ml">${courseItem.coursename }</div>
 					<div class="financial_info_content fontinfo">${courseItem.coursedetails }</div>
