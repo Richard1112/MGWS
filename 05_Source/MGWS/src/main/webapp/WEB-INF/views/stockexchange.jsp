@@ -18,7 +18,19 @@
 <body>
 	<div class="my_container">
 		<div class="notMainBanner">
-			<img src="${ctx }/images/jys/nyfojys.png">
+			<c:if test="${tab == '1'}">
+				<img src="${ctx }/images/jys/nyfojys.png">
+			</c:if>
+			<c:if test="${tab == '2'}">
+				<img src="${ctx }/images/jys/ouzhou.png">
+			</c:if>
+			<c:if test="${tab == '3'}">
+				<img src="${ctx }/images/jys/zhijiage.png">
+			</c:if>
+			<c:if test="${tab == '4'}">
+				<img src="${ctx }/images/jys/shanghai.png">
+			</c:if>
+			
 		</div>
 		<c:if test="${tab == '1'}">
 			<div class="jys_detail_section">

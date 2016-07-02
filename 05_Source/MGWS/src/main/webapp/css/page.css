@@ -201,6 +201,12 @@ a{
 	top: 30px;
 }
 
+.position_l100_t0{
+	position: absolute;
+	left: 100px;
+	top: 0px;
+}
+
 .magin-top-15px{
 	margin-top: 15px;
 }
@@ -360,7 +366,6 @@ a{
 .main_exchange .main_exchange_right{
 	width: 60%;
 	float: left;
-	box-shadow: 0 5px 5px rgba(47, 20, 20, 0.44);
 }
 
 .main_exchange img{
@@ -409,18 +414,16 @@ a{
 }
 
 .main_jys_sel a i{
-	background: url("../images/po_all.png") no-repeat;
-    background-size: 200px 100px;
-    background-position: -100px 0px;
+	background: url("../images/main/po_circle_no.png") no-repeat;
+    background-size: 100px 100px;
     width: 100px;
     height: 120px;
     display: inline-block;
 }
 
 .main_jys_sel a i:HOVER,.main_jys_sel a i:FOCUS{
-	background: url("../images/po_all.png") no-repeat;
-    background-size: 200px 100px;
-    background-position: 0px 0px;
+	background: url("../images/main/po_circle_yes.png") no-repeat;
+    background-size: 100px 100px;
     width: 100px;
     height: 120px;
     display: inline-block;
@@ -458,8 +461,8 @@ a{
 .main_about_us_info{
 	position: absolute;
 	top: 0px;
-	width: 64%;
-	margin-left:18%;
+	width: 60%;
+	margin-left:20%;
 	color: #fff;
 }
 
@@ -482,7 +485,7 @@ a{
 }
 
 .main_about_us_info .content_info div{
-	width: 800px;
+	width: 100%;
     margin: 0px auto;
     text-align: center;
     display: block;
@@ -878,6 +881,11 @@ a{
     margin: 0px auto;
     min-height: 500px;
     position: relative;
+}
+
+.science_section a:focus,
+.science_section a:hover{
+	color: #222;
 }
 
 .science_section .science_head{
