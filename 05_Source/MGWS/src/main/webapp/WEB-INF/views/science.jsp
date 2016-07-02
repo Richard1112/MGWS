@@ -45,12 +45,12 @@
 			</a>
 			<a href="http://116.228.204.43/stock_demo/">
 			<div class="science_div">
-				<img alt="" src="${ctx }/images/science/science_2.png">
+				<img alt="" src="${ctx }/images/science/science_3.png">
 				<div class="science_title">复盘宝</div>
 				<div class="science_content"></div>
 			</div>
 			</a>
-			<div class="circle_size_m position_l100_t30"></div>
+			<div class="circle_size_m position_l100_t0"></div>
 		</div>
 
 
