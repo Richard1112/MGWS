@@ -22,7 +22,7 @@
 <body>
 	<div class="my_container">
 		<div class="notMainBanner">
-			<img src="${ctx }/images/science/science_banner.png">
+			<img src="${ctx }/images/science/science_banner.jpg">
 		</div>
 		<div class="science_section">
 			<div class="science_head magin-top-30px">
