@@ -22,8 +22,8 @@
 	<div class="my_container">
 		<div class="flexslider" id="slider_main_banner">
 	  		<ul class="slides">
-	  			<li><img src="${ctx}/images/main/main_banner.png"></li>
-	  			<li><img src="${ctx}/images/main/main_banner.png"></li>
+	  			<li><img src="${ctx}/images/main/main_banner_1.jpg"></li>
+	  			<li><img src="${ctx}/images/main/main_banner_2.jpg"></li>
 	  		</ul>
 	    </div>
 		<div class="main_section">

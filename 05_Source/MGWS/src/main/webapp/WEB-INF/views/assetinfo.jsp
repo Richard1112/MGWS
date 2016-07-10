@@ -21,7 +21,7 @@
 <body>
 	<div class="my_container">
 		<div class="notMainBanner">
-			<img src="${ctx }/images/assetinfo/assetinfo_banner.png">
+			<img src="${ctx }/images/assetinfo/assetinfo_banner.jpg">
 		</div>
 		
 		<div class="assetinfo_section">
