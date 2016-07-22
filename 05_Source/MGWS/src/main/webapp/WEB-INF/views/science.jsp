@@ -47,7 +47,7 @@
 			<div class="science_div">
 				<img alt="" src="${ctx }/images/science/science_3.png">
 				<div class="science_title">复盘宝</div>
-				<div class="science_content"></div>
+				<div class="science_content">复盘宝是一款集备忘、提醒以及资讯于一体的应用平台，用户可以设置自定义的关注证券，个性化跟踪时间段、关注理由等设置辅助投资者更精确的投资，形成完善的投资体系。在跟踪时间段内，平台会自动显示关于该标的的资讯全景。</div>
 			</div>
 			</a>
 			<div class="circle_size_m position_l100_t0"></div>
