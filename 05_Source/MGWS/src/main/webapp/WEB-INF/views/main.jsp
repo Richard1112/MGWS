@@ -220,7 +220,10 @@
 				after:function(){
 				}
 			});
-			$('#main_qrcode').modal('show');
+			if ('${isFirst}' == '0') {
+				$('#main_qrcode').modal('show');
+			}
+			
 		});
 		
 		function toInviteDetail(){
