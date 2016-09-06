@@ -351,6 +351,30 @@ LOCK TABLES `t_individual_basic_info` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `t_no_customer`
+--
+
+DROP TABLE IF EXISTS `t_no_customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_no_customer` (
+  `no` bigint(12) NOT NULL AUTO_INCREMENT,
+  `date` varchar(8) NOT NULL,
+  `maxNo` varchar(16) NOT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_no_customer`
+--
+
+LOCK TABLES `t_no_customer` WRITE;
+/*!40000 ALTER TABLE `t_no_customer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_no_customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `t_recruitment_info`
 --
 
@@ -538,4 +562,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-06 20:47:52
+-- Dump completed on 2016-09-06 21:01:25
