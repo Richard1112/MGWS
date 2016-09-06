@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS `t_individual_basic_info`;
+CREATE TABLE `t_individual_basic_info` (
+  `no` bigint(12) NOT NULL AUTO_INCREMENT,
+  `customerNo` varchar(16) NOT NULL,
+  `cnSurname` varchar(20) DEFAULT NULL,
+  `cnGivenname` varchar(20) DEFAULT NULL,
+  `enFirstName` varchar(50) DEFAULT NULL,
+  `enMiddleName` varchar(50) DEFAULT NULL,
+  `enLastName` varchar(50) DEFAULT NULL,
+  `idCardNo` varchar(50) DEFAULT NULL,
+  `passportNo` varchar(50) DEFAULT NULL,
+  `sex` varchar(6) DEFAULT NULL,
+  `nickName` varchar(50) DEFAULT NULL,
+  `birthday` varchar(8) DEFAULT NULL,
+  `headPic` varchar(200) DEFAULT NULL,
+  `marriage` varchar(6) DEFAULT NULL,
+  `education` varchar(6) DEFAULT NULL,
+  `occupation` varchar(6) DEFAULT NULL,
+  `comments` varchar(500) DEFAULT NULL,
+  `deleteFlg` char(1) NOT NULL,
+  `addTimestamp` timestamp NULL DEFAULT NULL,
+  `addUserKey` varchar(40) DEFAULT NULL,
+  `updTimestamp` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updUserKey` varchar(40) DEFAULT NULL,
+  `updPgmId` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
