@@ -81,12 +81,14 @@ public class CourseController extends BaseController {
 			tCourseInfo.setUpdpgmid("CourseController");
 			tCourseInfo.setUpdtimestamp(DateFormatUtils.getCurrentDate());
 			tCourseInfo.setUpduserkey(loginUser.getAdminno());
+			tCourseInfo.setCoursepic(tCourseInfo.getCoursepic());
 			courseService.insert(tCourseInfo);
 		} else {
 			tCourseInfo.setUpdpgmid("CourseController");
 			tCourseInfo.setUpdtimestamp(DateFormatUtils.getCurrentDate());
 			tCourseInfo.setUpduserkey(loginUser.getAdminno());
 			courseService.updateByPrimaryKey(tCourseInfo);
+			tCourseInfo.setCoursepic(tCourseInfo.getCoursepic());
 		}
 		
 		model.addAttribute("init", 0);

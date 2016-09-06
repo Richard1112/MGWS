@@ -231,4 +231,15 @@
 			and releaseDate = #{releaseDateF,jdbcType=VARCHAR} and releaseDate = #{releaseDateT,jdbcType=VARCHAR}
 		</if>
 	</select>
+	
+	<select id="getAllTAssetCartForPre" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+	    ,
+	    <include refid="Blob_Column_List" />
+		from t_asset_info
+		where 1=1
+		and releaseFlg = '1'
+	</select>
 </mapper>

@@ -229,4 +229,15 @@
 			and releaseDate = #{releaseDateF,jdbcType=VARCHAR} and releaseDate = #{releaseDateT,jdbcType=VARCHAR}
 		</if>
 	</select>
+	
+	<select id="getAllTCourseInfoForPre" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+	    ,
+	    <include refid="Blob_Column_List" />
+		from t_course_info
+		where 1=1
+		and releaseFlg = '1'
+	</select>
 </mapper>

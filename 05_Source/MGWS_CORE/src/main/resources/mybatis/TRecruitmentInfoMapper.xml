@@ -24,7 +24,7 @@
     <result column="recruitDetails" property="recruitdetails" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    no, recruitNo, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v, releaseFlg,
+    no, recruitNo, releaseDate, DATE_FORMAT(releaseDate, "%Y/%m/%d") as releaseDate_v, releaseFlg,
     case releaseFlg when '0' then '暂存' when '1' then '发布' when '2' then '关闭' end as releaseFlg_v, recruitJobTitle, recruitNumber, recruitLocale, 
     recruitObject, sortOrder, addTimestamp, addUserKey, updTimestamp, updUserKey, updPgmId
   </sql>
@@ -279,4 +279,13 @@
 			and releaseDate = #{releaseDateF,jdbcType=VARCHAR} and releaseDate = #{releaseDateT,jdbcType=VARCHAR}
 		</if>
 	</select>
+	
+	<select id="getAllTRecruitmentInfoForPre" resultMap="ResultMapWithBLOBs" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    ,
+	    <include refid="Blob_Column_List" />
+	    from t_recruitment_info
+	    where releaseFlg = '1'
+	  </select>
 </mapper>

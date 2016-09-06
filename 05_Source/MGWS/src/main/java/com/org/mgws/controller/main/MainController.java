@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.org.mgws.base.util.DateFormatUtils;
@@ -39,6 +40,16 @@ public class MainController extends BaseController {
         	model.addAttribute("msg_info", super.getPageMessage("MAIN_MSG_INFO"));
         	// 当前时间
         	model.addAttribute("curtime", DateFormatUtils.getAbbreviationEngTime());
+        	// 第一次进入
+        	Object isFirst = session.getAttribute("IS_FIRST");
+        	if (StringUtils.isEmpty(isFirst)) {
+        		// 如果空就说明是第一次进入
+        		model.addAttribute("isFirst", "0");
+        		session.setAttribute("IS_FIRST", "1");
+        	} else {
+        		model.addAttribute("isFirst", "1");
+        	}
+        	
             return "main";
         }
         catch (Exception e) {

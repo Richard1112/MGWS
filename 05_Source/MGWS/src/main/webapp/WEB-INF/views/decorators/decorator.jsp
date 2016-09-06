@@ -7,6 +7,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="shortcut icon" href="${ctx}/favicon.ico"  type="image/x-icon" />
   <title><sitemesh:write property='title' /></title>
   <sitemesh:write property='head' />
 </head>
@@ -32,32 +33,32 @@
 					<ul class="nav navbar-nav">
 				        <li id="main_li">
 				        	<a href="${ctx}/main/init">
-								<span class="fontshow">首页</span>
-								<span class="fontinfo">Home</span>
+								<span class="fontshow font_ml">首页</span>
+								<span class="fontinfo font_ml">Home</span>
 							</a>
 				        </li>
 				        <li id="financelab_li">
 				        	<a href="${ctx}/financelab/init">
-								<span class="fontshow">金融实验室</span>
-								<span class="fontinfo">Financial Laboratory</span>
+								<span class="fontshow font_ml">金融实验室</span>
+								<span class="fontinfo font_ml">Financial Laboratory</span>
 							</a>
 				        </li>
-				        <li>
-				        	<a>
-								<span class="fontshow">资产管理</span>
-								<span class="fontinfo">Asset managerment</span>
+				        <li id="assetInfo_li">
+				        	<a href="${ctx}/assetInfo/init">
+								<span class="fontshow font_ml">资产管理</span>
+								<span class="fontinfo font_ml">Asset managerment</span>
 							</a>
 				        </li>
-				        <li>
-				        	<a>
-								<span class="fontshow">子午科技</span>
-								<span class="fontinfo">Meridian Science</span>
+				        <li id="science_li">
+				        	<a href="${ctx}/science/init">
+								<span class="fontshow font_ml">子午科技</span>
+								<span class="fontinfo font_ml">Meridian Science</span>
 							</a>
 				        </li>
 				        <li id="contactus_li">
 				        	<a href="${ctx}/contactus/init">
-								<span class="fontshow">联系我们</span>
-								<span class="fontinfo">Contact Us</span>
+								<span class="fontshow font_ml">联系我们</span>
+								<span class="fontinfo font_ml">Contact Us</span>
 							</a>
 				        </li>
 				    </ul>
@@ -77,6 +78,12 @@
 	}
 	if (currentPath.indexOf("contactus") > 0) {
 		$("#contactus_li").addClass("active");
+	}
+	if (currentPath.indexOf("assetInfo") > 0) {
+		$("#assetInfo_li").addClass("active");
+	}
+	if (currentPath.indexOf("science") > 0) {
+		$("#science_li").addClass("active");
 	}
 
 </script>

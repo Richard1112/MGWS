@@ -44,4 +44,9 @@ public class TCourseInfoDaoImpl extends BaseDao implements
 	public PagingResult<Map<String, Object>> queryByPage(Pagination page) {
 		return selectPagination("courseMapper.selectAllByParam", "courseMapper.selectAllByParamCount", page);
 	}
+
+	@Override
+	public List<TCourseInfo> getAllTCourseInfoForPre() {
+		return select("courseMapper.getAllTCourseInfoForPre");
+	}
 }

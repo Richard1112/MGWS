@@ -44,4 +44,9 @@ public class TAssetCartDaoImpl extends BaseDao implements
 	public PagingResult<Map<String, Object>> queryByPage(Pagination page) {
 		return selectPagination("assetMapper.selectAllByParam", "assetMapper.selectAllByParamCount", page);
 	}
+
+	@Override
+	public List<TAssetCart> getAllTAssetCartForPre() {
+		return select("assetMapper.getAllTAssetCartForPre");
+	}
 }
