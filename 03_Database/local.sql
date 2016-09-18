@@ -351,6 +351,54 @@ LOCK TABLES `t_individual_basic_info` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `t_investment_master`
+--
+
+DROP TABLE IF EXISTS `t_investment_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_investment_master` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT,
+  `productName` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_investment_master`
+--
+
+LOCK TABLES `t_investment_master` WRITE;
+/*!40000 ALTER TABLE `t_investment_master` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_investment_master` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_investment_value`
+--
+
+DROP TABLE IF EXISTS `t_investment_value`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_investment_value` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT,
+  `productId` bigint(12) NOT NULL,
+  `date` varchar(8) DEFAULT NULL,
+  `netValue` decimal(12,4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_investment_value`
+--
+
+LOCK TABLES `t_investment_value` WRITE;
+/*!40000 ALTER TABLE `t_investment_value` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_investment_value` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `t_no_customer`
 --
 
@@ -372,6 +420,32 @@ CREATE TABLE `t_no_customer` (
 LOCK TABLES `t_no_customer` WRITE;
 /*!40000 ALTER TABLE `t_no_customer` DISABLE KEYS */;
 /*!40000 ALTER TABLE `t_no_customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_purchase_record`
+--
+
+DROP TABLE IF EXISTS `t_purchase_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_purchase_record` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT,
+  `customerNo` varchar(16) NOT NULL,
+  `productId` bigint(12) NOT NULL,
+  `dateFrom` varchar(8) DEFAULT NULL,
+  `dateTo` varchar(8) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_purchase_record`
+--
+
+LOCK TABLES `t_purchase_record` WRITE;
+/*!40000 ALTER TABLE `t_purchase_record` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_purchase_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -398,7 +472,7 @@ CREATE TABLE `t_recruitment_info` (
   `updUserKey` varchar(40) DEFAULT NULL,
   `updPgmId` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -562,4 +636,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-06 21:01:25
+-- Dump completed on 2016-09-18 21:43:39
