@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TIndividualBasicInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TIndividualBasicInfo" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
+    <result column="cnSurname" property="cnSurname" jdbcType="VARCHAR" />
+    <result column="cnGivenname" property="cnGivenname" jdbcType="VARCHAR" />
+    <result column="enFirstName" property="enFirstName" jdbcType="VARCHAR" />
+    <result column="enMiddleName" property="enMiddleName" jdbcType="VARCHAR" />
+    <result column="enLastName" property="enLastName" jdbcType="VARCHAR" />
+    <result column="idCardNo" property="idCardNo" jdbcType="VARCHAR" />
+    <result column="passportNo" property="passportNo" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="nickName" property="nickName" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="headPic" property="headPic" jdbcType="VARCHAR" />
+    <result column="marriage" property="marriage" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="occupation" property="occupation" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="deleteFlg" property="deleteFlg" jdbcType="CHAR" />
+    <result column="addTimestamp" property="addTimestamp" jdbcType="TIMESTAMP" />
+    <result column="addUserKey" property="addUserKey" jdbcType="VARCHAR" />
+    <result column="updTimestamp" property="updTimestamp" jdbcType="TIMESTAMP" />
+    <result column="updUserKey" property="updUserKey" jdbcType="VARCHAR" />
+    <result column="updPgmId" property="updPgmId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, customerNo, cnSurname, cnGivenname, enFirstName, enMiddleName, enLastName, idCardNo, 
+    passportNo, sex, nickName, birthday, headPic, marriage, education, occupation, comments, 
+    deleteFlg, addTimestamp, addUserKey, updTimestamp, updUserKey, updPgmId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_individual_basic_info
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_individual_basic_info
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TIndividualBasicInfo" >
+    insert into t_individual_basic_info (no, customerNo, cnSurname, 
+      cnGivenname, enFirstName, enMiddleName, 
+      enLastName, idCardNo, passportNo, 
+      sex, nickName, birthday, 
+      headPic, marriage, education, 
+      occupation, comments, deleteFlg, 
+      addTimestamp, addUserKey, updTimestamp, 
+      updUserKey, updPgmId)
+    values (#{no,jdbcType=BIGINT}, #{customerNo,jdbcType=VARCHAR}, #{cnSurname,jdbcType=VARCHAR}, 
+      #{cnGivenname,jdbcType=VARCHAR}, #{enFirstName,jdbcType=VARCHAR}, #{enMiddleName,jdbcType=VARCHAR}, 
+      #{enLastName,jdbcType=VARCHAR}, #{idCardNo,jdbcType=VARCHAR}, #{passportNo,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{headPic,jdbcType=VARCHAR}, #{marriage,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
+      #{occupation,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, #{deleteFlg,jdbcType=CHAR}, 
+      #{addTimestamp,jdbcType=TIMESTAMP}, #{addUserKey,jdbcType=VARCHAR}, #{updTimestamp,jdbcType=TIMESTAMP}, 
+      #{updUserKey,jdbcType=VARCHAR}, #{updPgmId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TIndividualBasicInfo" >
+    insert into t_individual_basic_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="customerNo != null" >
+        customerNo,
+      </if>
+      <if test="cnSurname != null" >
+        cnSurname,
+      </if>
+      <if test="cnGivenname != null" >
+        cnGivenname,
+      </if>
+      <if test="enFirstName != null" >
+        enFirstName,
+      </if>
+      <if test="enMiddleName != null" >
+        enMiddleName,
+      </if>
+      <if test="enLastName != null" >
+        enLastName,
+      </if>
+      <if test="idCardNo != null" >
+        idCardNo,
+      </if>
+      <if test="passportNo != null" >
+        passportNo,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="nickName != null" >
+        nickName,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="headPic != null" >
+        headPic,
+      </if>
+      <if test="marriage != null" >
+        marriage,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="occupation != null" >
+        occupation,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="deleteFlg != null" >
+        deleteFlg,
+      </if>
+      <if test="addTimestamp != null" >
+        addTimestamp,
+      </if>
+      <if test="addUserKey != null" >
+        addUserKey,
+      </if>
+      <if test="updTimestamp != null" >
+        updTimestamp,
+      </if>
+      <if test="updUserKey != null" >
+        updUserKey,
+      </if>
+      <if test="updPgmId != null" >
+        updPgmId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="customerNo != null" >
+        #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cnSurname != null" >
+        #{cnSurname,jdbcType=VARCHAR},
+      </if>
+      <if test="cnGivenname != null" >
+        #{cnGivenname,jdbcType=VARCHAR},
+      </if>
+      <if test="enFirstName != null" >
+        #{enFirstName,jdbcType=VARCHAR},
+      </if>
+      <if test="enMiddleName != null" >
+        #{enMiddleName,jdbcType=VARCHAR},
+      </if>
+      <if test="enLastName != null" >
+        #{enLastName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="passportNo != null" >
+        #{passportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="headPic != null" >
+        #{headPic,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null" >
+        #{marriage,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null" >
+        #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlg != null" >
+        #{deleteFlg,jdbcType=CHAR},
+      </if>
+      <if test="addTimestamp != null" >
+        #{addTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserKey != null" >
+        #{addUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updTimestamp != null" >
+        #{updTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUserKey != null" >
+        #{updUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updPgmId != null" >
+        #{updPgmId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TIndividualBasicInfo" >
+    update t_individual_basic_info
+    <set >
+      <if test="customerNo != null" >
+        customerNo = #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cnSurname != null" >
+        cnSurname = #{cnSurname,jdbcType=VARCHAR},
+      </if>
+      <if test="cnGivenname != null" >
+        cnGivenname = #{cnGivenname,jdbcType=VARCHAR},
+      </if>
+      <if test="enFirstName != null" >
+        enFirstName = #{enFirstName,jdbcType=VARCHAR},
+      </if>
+      <if test="enMiddleName != null" >
+        enMiddleName = #{enMiddleName,jdbcType=VARCHAR},
+      </if>
+      <if test="enLastName != null" >
+        enLastName = #{enLastName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        idCardNo = #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="passportNo != null" >
+        passportNo = #{passportNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nickName = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="headPic != null" >
+        headPic = #{headPic,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null" >
+        marriage = #{marriage,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null" >
+        occupation = #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlg != null" >
+        deleteFlg = #{deleteFlg,jdbcType=CHAR},
+      </if>
+      <if test="addTimestamp != null" >
+        addTimestamp = #{addTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserKey != null" >
+        addUserKey = #{addUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updTimestamp != null" >
+        updTimestamp = #{updTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUserKey != null" >
+        updUserKey = #{updUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updPgmId != null" >
+        updPgmId = #{updPgmId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TIndividualBasicInfo" >
+    update t_individual_basic_info
+    set customerNo = #{customerNo,jdbcType=VARCHAR},
+      cnSurname = #{cnSurname,jdbcType=VARCHAR},
+      cnGivenname = #{cnGivenname,jdbcType=VARCHAR},
+      enFirstName = #{enFirstName,jdbcType=VARCHAR},
+      enMiddleName = #{enMiddleName,jdbcType=VARCHAR},
+      enLastName = #{enLastName,jdbcType=VARCHAR},
+      idCardNo = #{idCardNo,jdbcType=VARCHAR},
+      passportNo = #{passportNo,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      nickName = #{nickName,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      headPic = #{headPic,jdbcType=VARCHAR},
+      marriage = #{marriage,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      occupation = #{occupation,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      deleteFlg = #{deleteFlg,jdbcType=CHAR},
+      addTimestamp = #{addTimestamp,jdbcType=TIMESTAMP},
+      addUserKey = #{addUserKey,jdbcType=VARCHAR},
+      updTimestamp = #{updTimestamp,jdbcType=TIMESTAMP},
+      updUserKey = #{updUserKey,jdbcType=VARCHAR},
+      updPgmId = #{updPgmId,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+</mapper>

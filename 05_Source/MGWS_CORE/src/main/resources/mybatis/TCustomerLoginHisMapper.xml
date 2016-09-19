@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TCustomerLoginHisMapper" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TCustomerLoginHis" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
+    <result column="loginTimestamp" property="loginTimestamp" jdbcType="TIMESTAMP" />
+    <result column="logoutTimestamp" property="logoutTimestamp" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, customerNo, loginTimestamp, logoutTimestamp
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer_login_his
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_customer_login_his
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TCustomerLoginHis" >
+    insert into t_customer_login_his (no, customerNo, loginTimestamp, 
+      logoutTimestamp)
+    values (#{no,jdbcType=BIGINT}, #{customerNo,jdbcType=VARCHAR}, #{loginTimestamp,jdbcType=TIMESTAMP}, 
+      #{logoutTimestamp,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TCustomerLoginHis" >
+    insert into t_customer_login_his
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="customerNo != null" >
+        customerNo,
+      </if>
+      <if test="loginTimestamp != null" >
+        loginTimestamp,
+      </if>
+      <if test="logoutTimestamp != null" >
+        logoutTimestamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="customerNo != null" >
+        #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTimestamp != null" >
+        #{loginTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoutTimestamp != null" >
+        #{logoutTimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TCustomerLoginHis" >
+    update t_customer_login_his
+    <set >
+      <if test="customerNo != null" >
+        customerNo = #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTimestamp != null" >
+        loginTimestamp = #{loginTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoutTimestamp != null" >
+        logoutTimestamp = #{logoutTimestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TCustomerLoginHis" >
+    update t_customer_login_his
+    set customerNo = #{customerNo,jdbcType=VARCHAR},
+      loginTimestamp = #{loginTimestamp,jdbcType=TIMESTAMP},
+      logoutTimestamp = #{logoutTimestamp,jdbcType=TIMESTAMP}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+</mapper>
