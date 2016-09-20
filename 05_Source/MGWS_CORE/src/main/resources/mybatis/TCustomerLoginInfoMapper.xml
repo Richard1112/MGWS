@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TCustomerLoginInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TCustomerLoginInfo" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
+    <result column="loginId" property="loginId" jdbcType="VARCHAR" />
+    <result column="loginPass" property="loginPass" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="division" property="division" jdbcType="CHAR" />
+    <result column="loginStatus" property="loginStatus" jdbcType="CHAR" />
+    <result column="canLogin" property="canLogin" jdbcType="CHAR" />
+    <result column="deleteFlg" property="deleteFlg" jdbcType="CHAR" />
+    <result column="addTimestamp" property="addTimestamp" jdbcType="TIMESTAMP" />
+    <result column="addUserKey" property="addUserKey" jdbcType="VARCHAR" />
+    <result column="updTimestamp" property="updTimestamp" jdbcType="TIMESTAMP" />
+    <result column="updUserKey" property="updUserKey" jdbcType="VARCHAR" />
+    <result column="updPgmId" property="updPgmId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, customerNo, loginId, loginPass, salt, division, loginStatus, canLogin, deleteFlg, 
+    addTimestamp, addUserKey, updTimestamp, updUserKey, updPgmId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer_login_info
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_customer_login_info
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >
+    insert into t_customer_login_info (no, customerNo, loginId, 
+      loginPass, salt, division, 
+      loginStatus, canLogin, deleteFlg, 
+      addTimestamp, addUserKey, updTimestamp, 
+      updUserKey, updPgmId)
+    values (#{no,jdbcType=BIGINT}, #{customerNo,jdbcType=VARCHAR}, #{loginId,jdbcType=VARCHAR}, 
+      #{loginPass,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{division,jdbcType=CHAR}, 
+      #{loginStatus,jdbcType=CHAR}, #{canLogin,jdbcType=CHAR}, #{deleteFlg,jdbcType=CHAR}, 
+      #{addTimestamp,jdbcType=TIMESTAMP}, #{addUserKey,jdbcType=VARCHAR}, #{updTimestamp,jdbcType=TIMESTAMP}, 
+      #{updUserKey,jdbcType=VARCHAR}, #{updPgmId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >
+    insert into t_customer_login_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="customerNo != null" >
+        customerNo,
+      </if>
+      <if test="loginId != null" >
+        loginId,
+      </if>
+      <if test="loginPass != null" >
+        loginPass,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="division != null" >
+        division,
+      </if>
+      <if test="loginStatus != null" >
+        loginStatus,
+      </if>
+      <if test="canLogin != null" >
+        canLogin,
+      </if>
+      <if test="deleteFlg != null" >
+        deleteFlg,
+      </if>
+      <if test="addTimestamp != null" >
+        addTimestamp,
+      </if>
+      <if test="addUserKey != null" >
+        addUserKey,
+      </if>
+      <if test="updTimestamp != null" >
+        updTimestamp,
+      </if>
+      <if test="updUserKey != null" >
+        updUserKey,
+      </if>
+      <if test="updPgmId != null" >
+        updPgmId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="customerNo != null" >
+        #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPass != null" >
+        #{loginPass,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="division != null" >
+        #{division,jdbcType=CHAR},
+      </if>
+      <if test="loginStatus != null" >
+        #{loginStatus,jdbcType=CHAR},
+      </if>
+      <if test="canLogin != null" >
+        #{canLogin,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlg != null" >
+        #{deleteFlg,jdbcType=CHAR},
+      </if>
+      <if test="addTimestamp != null" >
+        #{addTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserKey != null" >
+        #{addUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updTimestamp != null" >
+        #{updTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUserKey != null" >
+        #{updUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updPgmId != null" >
+        #{updPgmId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >
+    update t_customer_login_info
+    <set >
+      <if test="customerNo != null" >
+        customerNo = #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        loginId = #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPass != null" >
+        loginPass = #{loginPass,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="division != null" >
+        division = #{division,jdbcType=CHAR},
+      </if>
+      <if test="loginStatus != null" >
+        loginStatus = #{loginStatus,jdbcType=CHAR},
+      </if>
+      <if test="canLogin != null" >
+        canLogin = #{canLogin,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlg != null" >
+        deleteFlg = #{deleteFlg,jdbcType=CHAR},
+      </if>
+      <if test="addTimestamp != null" >
+        addTimestamp = #{addTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserKey != null" >
+        addUserKey = #{addUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updTimestamp != null" >
+        updTimestamp = #{updTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUserKey != null" >
+        updUserKey = #{updUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updPgmId != null" >
+        updPgmId = #{updPgmId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >
+    update t_customer_login_info
+    set customerNo = #{customerNo,jdbcType=VARCHAR},
+      loginId = #{loginId,jdbcType=VARCHAR},
+      loginPass = #{loginPass,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      division = #{division,jdbcType=CHAR},
+      loginStatus = #{loginStatus,jdbcType=CHAR},
+      canLogin = #{canLogin,jdbcType=CHAR},
+      deleteFlg = #{deleteFlg,jdbcType=CHAR},
+      addTimestamp = #{addTimestamp,jdbcType=TIMESTAMP},
+      addUserKey = #{addUserKey,jdbcType=VARCHAR},
+      updTimestamp = #{updTimestamp,jdbcType=TIMESTAMP},
+      updUserKey = #{updUserKey,jdbcType=VARCHAR},
+      updPgmId = #{updPgmId,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+</mapper>

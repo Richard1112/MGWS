@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.org.mgws.dao.TInvestmentValueMapper" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TInvestmentValue" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="productId" property="productId" jdbcType="BIGINT" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="netValue" property="netValue" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, productId, date, netValue
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_investment_value
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_investment_value
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TInvestmentValue" >
+    insert into t_investment_value (id, productId, date, 
+      netValue)
+    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{date,jdbcType=VARCHAR}, 
+      #{netValue,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TInvestmentValue" >
+    insert into t_investment_value
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productId != null" >
+        productId,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="netValue != null" >
+        netValue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="netValue != null" >
+        #{netValue,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TInvestmentValue" >
+    update t_investment_value
+    <set >
+      <if test="productId != null" >
+        productId = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="netValue != null" >
+        netValue = #{netValue,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TInvestmentValue" >
+    update t_investment_value
+    set productId = #{productId,jdbcType=BIGINT},
+      date = #{date,jdbcType=VARCHAR},
+      netValue = #{netValue,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
