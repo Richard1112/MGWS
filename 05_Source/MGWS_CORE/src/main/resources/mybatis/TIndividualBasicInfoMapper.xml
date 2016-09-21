@@ -302,4 +302,11 @@
       updPgmId = #{updPgmId,jdbcType=VARCHAR}
     where no = #{no,jdbcType=BIGINT}
   </update>
+  
+  <select id="selectIndividualBasicInfoByCustomerNo" resultMap="BaseResultMap" parameterType="java.lang.String">
+      select
+	  <include refid="Base_Column_List" />
+	  from t_individual_basic_info
+	  where customerNo = #{customerNo,jdbcType=VARCHAR}
+  </select>
 </mapper>

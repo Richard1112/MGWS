@@ -1,17 +1,37 @@
 package com.org.mgws.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import com.org.mgws.base.page.Pagination;
+import com.org.mgws.base.page.PagingResult;
 import com.org.mgws.entity.TInvestmentValue;
 
 public interface TInvestmentValueDao {
-    int deleteByPrimaryKey(Long id);
+	/**
+	 * 根据主键删除记录
+	 */
+	int deleteByPrimaryKey(TInvestmentValue record);
 
-    int insert(TInvestmentValue record);
+	/**
+	 * 保存记录,不管记录里面的属性是否为空
+	 */
+	int insert(TInvestmentValue record);
 
-    int insertSelective(TInvestmentValue record);
+	/**
+	 * 根据主键查询记录
+	 */
+	TInvestmentValue selectByPrimaryKey(Long no);
 
-    TInvestmentValue selectByPrimaryKey(Long id);
+	/**
+	 * 根据主键更新记录
+	 */
+	int updateByPrimaryKey(TInvestmentValue record);
 
-    int updateByPrimaryKeySelective(TInvestmentValue record);
+	//List<TInvestmentValue> getAllTInvestmentValue();
 
-    int updateByPrimaryKey(TInvestmentValue record);
+	//List<TInvestmentValue> getAllTInvestmentValueForPre();
+
+	//PagingResult<Map<String, Object>> queryByPage(Pagination page);
+
 }

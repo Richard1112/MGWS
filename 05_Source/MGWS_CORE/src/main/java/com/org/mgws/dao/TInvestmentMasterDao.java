@@ -1,17 +1,26 @@
 package com.org.mgws.dao;
 
 import com.org.mgws.entity.TInvestmentMaster;
+import com.org.mgws.entity.TInvestmentMaster;
 
 public interface TInvestmentMasterDao {
-    int deleteByPrimaryKey(Long id);
+	/**
+	 * 根据主键删除记录
+	 */
+	int deleteByPrimaryKey(TInvestmentMaster record);
 
-    int insert(TInvestmentMaster record);
+	/**
+	 * 保存记录,不管记录里面的属性是否为空
+	 */
+	int insert(TInvestmentMaster record);
 
-    int insertSelective(TInvestmentMaster record);
+	/**
+	 * 根据主键查询记录
+	 */
+	TInvestmentMaster selectByPrimaryKey(Long no);
 
-    TInvestmentMaster selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(TInvestmentMaster record);
-
-    int updateByPrimaryKey(TInvestmentMaster record);
+	/**
+	 * 根据主键更新记录
+	 */
+	int updateByPrimaryKey(TInvestmentMaster record);
 }

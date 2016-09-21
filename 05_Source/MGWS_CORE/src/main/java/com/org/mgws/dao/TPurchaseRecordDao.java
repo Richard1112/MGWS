@@ -3,15 +3,23 @@ package com.org.mgws.dao;
 import com.org.mgws.entity.TPurchaseRecord;
 
 public interface TPurchaseRecordDao {
-    int deleteByPrimaryKey(Long id);
+	/**
+	 * 根据主键删除记录
+	 */
+	int deleteByPrimaryKey(TPurchaseRecord record);
 
-    int insert(TPurchaseRecord record);
+	/**
+	 * 保存记录,不管记录里面的属性是否为空
+	 */
+	int insert(TPurchaseRecord record);
 
-    int insertSelective(TPurchaseRecord record);
+	/**
+	 * 根据主键查询记录
+	 */
+	TPurchaseRecord selectByPrimaryKey(Long no);
 
-    TPurchaseRecord selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(TPurchaseRecord record);
-
-    int updateByPrimaryKey(TPurchaseRecord record);
+	/**
+	 * 根据主键更新记录
+	 */
+	int updateByPrimaryKey(TPurchaseRecord record);
 }

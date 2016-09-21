@@ -2,7 +2,6 @@ package com.org.mgws.dao;
 
 import java.util.List;
 
-import com.org.mgws.base.shiro.entity.User;
 import com.org.mgws.entity.TAdminLoginInfo;
 
 public interface TAdminLoginInfoDao {

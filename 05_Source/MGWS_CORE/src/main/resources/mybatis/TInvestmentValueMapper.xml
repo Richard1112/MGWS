@@ -79,4 +79,6 @@
       netValue = #{netValue,jdbcType=DECIMAL}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+
 </mapper>

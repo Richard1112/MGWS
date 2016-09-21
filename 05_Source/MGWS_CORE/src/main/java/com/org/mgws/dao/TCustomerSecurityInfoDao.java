@@ -14,4 +14,8 @@ public interface TCustomerSecurityInfoDao {
     int updateByPrimaryKeySelective(TCustomerSecurityInfo record);
 
     int updateByPrimaryKey(TCustomerSecurityInfo record);
+    
+    TCustomerSecurityInfo selectByCustomerNo(String customerno);
+
+    TCustomerSecurityInfo selectByParam(TCustomerSecurityInfo param);
 }
