@@ -10,11 +10,11 @@ public class TInvestmentValue extends BaseEntity {
 
 	private Long id;
 
-    private Long productid;
+	private Long productId;
     
     private String date;
     
-    private BigDecimal netvalue;
+	private BigDecimal netValue;
 
 	public Long getId() {
 		return id;
@@ -24,12 +24,12 @@ public class TInvestmentValue extends BaseEntity {
 		this.id = id;
 	}
 
-	public Long getProductid() {
-		return productid;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setProductid(Long productid) {
-		this.productid = productid;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 	public String getDate() {
@@ -40,12 +40,12 @@ public class TInvestmentValue extends BaseEntity {
 		this.date = date;
 	}
 
-	public BigDecimal getNetvalue() {
-		return netvalue;
+	public BigDecimal getNetValue() {
+		return netValue;
 	}
 
-	public void setNetvalue(BigDecimal netvalue) {
-		this.netvalue = netvalue;
+	public void setNetValue(BigDecimal netValue) {
+		this.netValue = netValue;
 	}
 
 }

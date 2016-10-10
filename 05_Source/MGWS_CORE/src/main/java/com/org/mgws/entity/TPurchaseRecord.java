@@ -8,13 +8,13 @@ public class TPurchaseRecord extends BaseEntity {
 
 	private Long id;
 
-    private String customerno;
+	private String customerNo;
     
-    private Long productid;
+	private Long productId;
     
-    private String datefrom;
+	private String dateFrom;
     
-    private String dateto;
+	private String dateTo;
 
 	public Long getId() {
 		return id;
@@ -24,36 +24,36 @@ public class TPurchaseRecord extends BaseEntity {
 		this.id = id;
 	}
 
-	public String getCustomerno() {
-		return customerno;
+	public String getCustomerNo() {
+		return customerNo;
 	}
 
-	public void setCustomerno(String customerno) {
-		this.customerno = customerno;
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
 	}
 
-	public Long getProductid() {
-		return productid;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setProductid(Long productid) {
-		this.productid = productid;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
-	public String getDatefrom() {
-		return datefrom;
+	public String getDateFrom() {
+		return dateFrom;
 	}
 
-	public void setDatefrom(String datefrom) {
-		this.datefrom = datefrom;
+	public void setDateFrom(String dateFrom) {
+		this.dateFrom = dateFrom;
 	}
 
-	public String getDateto() {
-		return dateto;
+	public String getDateTo() {
+		return dateTo;
 	}
 
-	public void setDateto(String dateto) {
-		this.dateto = dateto;
+	public void setDateTo(String dateTo) {
+		this.dateTo = dateTo;
 	}
 
 }

@@ -1,8 +1,5 @@
 package com.org.mgws.dao.impl;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Repository;
 
 import com.org.mgws.base.dao.BaseDao;
@@ -28,6 +25,10 @@ public class TInvestmentValueDaoImpl extends BaseDao implements
 	@Override
 	public TInvestmentValue selectByPrimaryKey(Long no) {
 		return super.selectOne("com.org.mgws.dao.TInvestmentValueMapper.selectByPrimaryKey", no);
+	}
+	@Override
+	public PagingResult<TInvestmentValue> selectByProductId(Pagination pagination) {
+		return super.selectPagination("tInvestmentValueMapper.selectByProductId", pagination);
 	}
 
 	@Override

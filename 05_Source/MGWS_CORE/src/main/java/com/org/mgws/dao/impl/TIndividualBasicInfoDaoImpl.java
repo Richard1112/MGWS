@@ -9,29 +9,35 @@ import com.org.mgws.entity.TIndividualBasicInfo;
 @Repository
 public class TIndividualBasicInfoDaoImpl extends BaseDao implements TIndividualBasicInfoDao {
 
-    public int deleteByPrimaryKey(Long no) {
+    @Override
+	public int deleteByPrimaryKey(Long no) {
         return update("com.org.mgws.dao.TIndividualBasicInfoDao.deleteByPrimaryKey", no);
     }
 
-    public int insert(TIndividualBasicInfo record) {
+    @Override
+	public int insert(TIndividualBasicInfo record) {
         // TODO Auto-generated method stub
         return 0;
     }
 
-    public int insertSelective(TIndividualBasicInfo record) {
+    @Override
+	public int insertSelective(TIndividualBasicInfo record) {
         return insert("com.org.mgws.dao.TIndividualBasicInfoDao.insertSelective", record);
     }
 
-    public TIndividualBasicInfo selectByPrimaryKey(Long no) {
+    @Override
+	public TIndividualBasicInfo selectByPrimaryKey(Long no) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public int updateByPrimaryKeySelective(TIndividualBasicInfo record) {
+    @Override
+	public int updateByPrimaryKeySelective(TIndividualBasicInfo record) {
         return update("com.org.mgws.dao.TIndividualBasicInfoDao.updateByPrimaryKeySelective", record);
     }
 
-    public int updateByPrimaryKey(TIndividualBasicInfo record) {
+    @Override
+	public int updateByPrimaryKey(TIndividualBasicInfo record) {
         // TODO Auto-generated method stub
         return 0;
     }
@@ -41,4 +47,8 @@ public class TIndividualBasicInfoDaoImpl extends BaseDao implements TIndividualB
         return selectOne("com.org.mgws.dao.TIndividualBasicInfoDao.selectIndividualBasicInfoByCustomerNo", customerNo);
     }
 
+	@Override
+	public TIndividualBasicInfo selectByCustomerNo(String customerNo) {
+		return selectOne("com.org.mgws.dao.TIndividualBasicInfoDao.selectByCustomerNo", customerNo);
+	}
 }

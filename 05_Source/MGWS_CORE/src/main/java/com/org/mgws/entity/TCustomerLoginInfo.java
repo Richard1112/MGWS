@@ -10,31 +10,31 @@ public class TCustomerLoginInfo extends BaseEntity {
 
 	private Long no;
 
-	private String customerno;
+	private String customerNo;
 	
-	private String loginid;
+	private String loginId;
 	
-	private String loginpass;
+	private String loginPass;
 	
 	private String salt;
 	
 	private String division;
 	
-	private String loginstatus;
+	private String loginStatus;
 	
-	private String canlogin;
+	private String canLogin;
 	
-	private String deleteflg;
+	private String deleteFlg;
 	
-	private Date addtimestamp;
+	private Date addTimestamp;
 	
-	private String adduserkey;
+	private String addUserKey;
 	
-	private Date updtimestamp;
+	private Date updTimestamp;
 	
-	private String upduserkey;
+	private String updUserKey;
 	
-	private String updpgmid;
+	private String updPgmId;
 
 	public Long getNo() {
 		return no;
@@ -44,28 +44,28 @@ public class TCustomerLoginInfo extends BaseEntity {
 		this.no = no;
 	}
 
-	public String getCustomerno() {
-		return customerno;
+	public String getCustomerNo() {
+		return customerNo;
 	}
 
-	public void setCustomerno(String customerno) {
-		this.customerno = customerno;
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
 	}
 
-	public String getLoginid() {
-		return loginid;
+	public String getLoginId() {
+		return loginId;
 	}
 
-	public void setLoginid(String loginid) {
-		this.loginid = loginid;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
-	public String getLoginpass() {
-		return loginpass;
+	public String getLoginPass() {
+		return loginPass;
 	}
 
-	public void setLoginpass(String loginpass) {
-		this.loginpass = loginpass;
+	public void setLoginPass(String loginPass) {
+		this.loginPass = loginPass;
 	}
 
 	public String getSalt() {
@@ -84,68 +84,68 @@ public class TCustomerLoginInfo extends BaseEntity {
 		this.division = division;
 	}
 
-	public String getLoginstatus() {
-		return loginstatus;
+	public String getLoginStatus() {
+		return loginStatus;
 	}
 
-	public void setLoginstatus(String loginstatus) {
-		this.loginstatus = loginstatus;
+	public void setLoginStatus(String loginStatus) {
+		this.loginStatus = loginStatus;
 	}
 
-	public String getCanlogin() {
-		return canlogin;
+	public String getCanLogin() {
+		return canLogin;
 	}
 
-	public void setCanlogin(String canlogin) {
-		this.canlogin = canlogin;
+	public void setCanLogin(String canLogin) {
+		this.canLogin = canLogin;
 	}
 
-	public String getDeleteflg() {
-		return deleteflg;
+	public String getDeleteFlg() {
+		return deleteFlg;
 	}
 
-	public void setDeleteflg(String deleteflg) {
-		this.deleteflg = deleteflg;
+	public void setDeleteFlg(String deleteFlg) {
+		this.deleteFlg = deleteFlg;
 	}
 
-	public Date getAddtimestamp() {
-		return addtimestamp;
+	public Date getAddTimestamp() {
+		return addTimestamp;
 	}
 
-	public void setAddtimestamp(Date addtimestamp) {
-		this.addtimestamp = addtimestamp;
+	public void setAddTimestamp(Date addTimestamp) {
+		this.addTimestamp = addTimestamp;
 	}
 
-	public String getAdduserkey() {
-		return adduserkey;
+	public Date getUpdTimestamp() {
+		return updTimestamp;
 	}
 
-	public void setAdduserkey(String adduserkey) {
-		this.adduserkey = adduserkey;
+	public void setUpdTimestamp(Date updTimestamp) {
+		this.updTimestamp = updTimestamp;
 	}
 
-	public Date getUpdtimestamp() {
-		return updtimestamp;
+	public String getAddUserKey() {
+		return addUserKey;
 	}
 
-	public void setUpdtimestamp(Date updtimestamp) {
-		this.updtimestamp = updtimestamp;
+	public void setAddUserKey(String addUserKey) {
+		this.addUserKey = addUserKey;
 	}
 
-	public String getUpduserkey() {
-		return upduserkey;
+	public String getUpdUserKey() {
+		return updUserKey;
 	}
 
-	public void setUpduserkey(String upduserkey) {
-		this.upduserkey = upduserkey;
+	public void setUpdUserKey(String updUserKey) {
+		this.updUserKey = updUserKey;
 	}
 
-	public String getUpdpgmid() {
-		return updpgmid;
+	public String getUpdPgmId() {
+		return updPgmId;
 	}
 
-	public void setUpdpgmid(String updpgmid) {
-		this.updpgmid = updpgmid;
+	public void setUpdPgmId(String updPgmId) {
+		this.updPgmId = updPgmId;
 	}
-	
+
 }

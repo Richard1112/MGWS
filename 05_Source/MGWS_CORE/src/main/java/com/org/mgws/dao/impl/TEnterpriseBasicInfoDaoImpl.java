@@ -9,29 +9,39 @@ import com.org.mgws.entity.TEnterpriseBasicInfo;
 @Repository
 public class TEnterpriseBasicInfoDaoImpl extends BaseDao implements TEnterpriseBasicInfoDao {
 
-    public int deleteByPrimaryKey(Long no) {
+    @Override
+	public int deleteByPrimaryKey(Long no) {
         return update("com.org.mgws.dao.TEnterpriseBasicInfoDao.deleteByPrimaryKey", no);
     }
 
-    public int insert(TEnterpriseBasicInfo record) {
+    @Override
+	public int insert(TEnterpriseBasicInfo record) {
         // TODO Auto-generated method stub
         return 0;
     }
 
-    public int insertSelective(TEnterpriseBasicInfo record) {
+    @Override
+	public int insertSelective(TEnterpriseBasicInfo record) {
         return insert("com.org.mgws.dao.TEnterpriseBasicInfoDao.insertSelective", record);
     }
 
-    public TEnterpriseBasicInfo selectByPrimaryKey(Long no) {
+    @Override
+	public TEnterpriseBasicInfo selectByPrimaryKey(Long no) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public int updateByPrimaryKeySelective(TEnterpriseBasicInfo record) {
+	@Override
+	public TEnterpriseBasicInfo selectByCustomerNo(String customerNo) {
+		return selectOne("com.org.mgws.dao.TEnterpriseBasicInfoDao.selectByCustomerNo", customerNo);
+	}
+    @Override
+	public int updateByPrimaryKeySelective(TEnterpriseBasicInfo record) {
         return update("com.org.mgws.dao.TEnterpriseBasicInfoDao.updateByPrimaryKeySelective", record);
     }
 
-    public int updateByPrimaryKey(TEnterpriseBasicInfo record) {
+    @Override
+	public int updateByPrimaryKey(TEnterpriseBasicInfo record) {
         // TODO Auto-generated method stub
         return 0;
     }

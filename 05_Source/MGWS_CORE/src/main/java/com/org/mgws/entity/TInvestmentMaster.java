@@ -8,7 +8,7 @@ public class TInvestmentMaster extends BaseEntity {
 
 	private Long id;
 
-    private String productname;
+	private String productName;
 
 	public Long getId() {
 		return id;
@@ -18,12 +18,12 @@ public class TInvestmentMaster extends BaseEntity {
 		this.id = id;
 	}
 
-	public String getProductname() {
-		return productname;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setProductname(String productname) {
-		this.productname = productname;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }

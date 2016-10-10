@@ -10,29 +10,29 @@ public class TIndividualBasicInfo extends BaseEntity {
 
 	private Long no;
 
-	private String customerno;
+	private String customerNo;
 	
-	private String cnsurname;
+	private String cnSurName;
 	
-	private String cngivenname;
+	private String cnGivenName;
 	
-	private String enfirstname;
+	private String enFirstName;
 	
-	private String enmiddlename;
+	private String enMiddleName;
 	
-	private String enlastname;
+	private String enLastName;
 	
-	private String idcardno;
+	private String idCardNo;
 	
-	private String passportno;
+	private String passportNo;
 	
 	private String sex;
 	
-	private String nickname;
+	private String nickName;
 	
 	private String birthday;
 	
-	private String headpic;
+	private String headPic;
 	
 	private String marriage;
 	
@@ -42,17 +42,17 @@ public class TIndividualBasicInfo extends BaseEntity {
 	
 	private String comments;
 	
-	private String deleteflg;
+	private String deleteFlg;
 	
-	private Date addtimestamp;
+	private Date addTimestamp;
 	
-	private String adduserkey;
+	private String addUserKey;
 	
-	private Date updtimestamp;
+	private Date updTimestamp;
 	
-	private String upduserkey;
+	private String updUserKey;
 	
-	private String updpgmid;
+	private String updPgmId;
 
 	public Long getNo() {
 		return no;
@@ -62,68 +62,68 @@ public class TIndividualBasicInfo extends BaseEntity {
 		this.no = no;
 	}
 
-	public String getCustomerno() {
-		return customerno;
+	public String getCustomerNo() {
+		return customerNo;
 	}
 
-	public void setCustomerno(String customerno) {
-		this.customerno = customerno;
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
 	}
 
-	public String getCnsurname() {
-		return cnsurname;
+	public String getCnSurName() {
+		return cnSurName;
 	}
 
-	public void setCnsurname(String cnsurname) {
-		this.cnsurname = cnsurname;
+	public void setCnSurName(String cnSurName) {
+		this.cnSurName = cnSurName;
 	}
 
-	public String getCngivenname() {
-		return cngivenname;
+	public String getCnGivenName() {
+		return cnGivenName;
 	}
 
-	public void setCngivenname(String cngivenname) {
-		this.cngivenname = cngivenname;
+	public void setCnGivenName(String cnGivenName) {
+		this.cnGivenName = cnGivenName;
 	}
 
-	public String getEnfirstname() {
-		return enfirstname;
+	public String getEnFirstName() {
+		return enFirstName;
 	}
 
-	public void setEnfirstname(String enfirstname) {
-		this.enfirstname = enfirstname;
+	public void setEnFirstName(String enFirstName) {
+		this.enFirstName = enFirstName;
 	}
 
-	public String getEnmiddlename() {
-		return enmiddlename;
+	public String getEnMiddleName() {
+		return enMiddleName;
 	}
 
-	public void setEnmiddlename(String enmiddlename) {
-		this.enmiddlename = enmiddlename;
+	public void setEnMiddleName(String enMiddleName) {
+		this.enMiddleName = enMiddleName;
 	}
 
-	public String getEnlastname() {
-		return enlastname;
+	public String getEnLastName() {
+		return enLastName;
 	}
 
-	public void setEnlastname(String enlastname) {
-		this.enlastname = enlastname;
+	public void setEnLastName(String enLastName) {
+		this.enLastName = enLastName;
 	}
 
-	public String getIdcardno() {
-		return idcardno;
+	public String getIdCardNo() {
+		return idCardNo;
 	}
 
-	public void setIdcardno(String idcardno) {
-		this.idcardno = idcardno;
+	public void setIdCardNo(String idCardNo) {
+		this.idCardNo = idCardNo;
 	}
 
-	public String getPassportno() {
-		return passportno;
+	public String getPassportNo() {
+		return passportNo;
 	}
 
-	public void setPassportno(String passportno) {
-		this.passportno = passportno;
+	public void setPassportNo(String passportNo) {
+		this.passportNo = passportNo;
 	}
 
 	public String getSex() {
@@ -134,12 +134,12 @@ public class TIndividualBasicInfo extends BaseEntity {
 		this.sex = sex;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getBirthday() {
@@ -150,12 +150,12 @@ public class TIndividualBasicInfo extends BaseEntity {
 		this.birthday = birthday;
 	}
 
-	public String getHeadpic() {
-		return headpic;
+	public String getHeadPic() {
+		return headPic;
 	}
 
-	public void setHeadpic(String headpic) {
-		this.headpic = headpic;
+	public void setHeadPic(String headPic) {
+		this.headPic = headPic;
 	}
 
 	public String getMarriage() {
@@ -190,52 +190,52 @@ public class TIndividualBasicInfo extends BaseEntity {
 		this.comments = comments;
 	}
 
-	public String getDeleteflg() {
-		return deleteflg;
+	public String getDeleteFlg() {
+		return deleteFlg;
 	}
 
-	public void setDeleteflg(String deleteflg) {
-		this.deleteflg = deleteflg;
+	public void setDeleteFlg(String deleteFlg) {
+		this.deleteFlg = deleteFlg;
 	}
 
-	public Date getAddtimestamp() {
-		return addtimestamp;
+	public Date getAddTimestamp() {
+		return addTimestamp;
 	}
 
-	public void setAddtimestamp(Date addtimestamp) {
-		this.addtimestamp = addtimestamp;
+	public void setAddTimestamp(Date addTimestamp) {
+		this.addTimestamp = addTimestamp;
 	}
 
-	public String getAdduserkey() {
-		return adduserkey;
+	public String getAddUserKey() {
+		return addUserKey;
 	}
 
-	public void setAdduserkey(String adduserkey) {
-		this.adduserkey = adduserkey;
+	public void setAddUserKey(String addUserKey) {
+		this.addUserKey = addUserKey;
 	}
 
-	public Date getUpdtimestamp() {
-		return updtimestamp;
+	public Date getUpdTimestamp() {
+		return updTimestamp;
 	}
 
-	public void setUpdtimestamp(Date updtimestamp) {
-		this.updtimestamp = updtimestamp;
+	public void setUpdTimestamp(Date updTimestamp) {
+		this.updTimestamp = updTimestamp;
 	}
 
-	public String getUpduserkey() {
-		return upduserkey;
+	public String getUpdUserKey() {
+		return updUserKey;
 	}
 
-	public void setUpduserkey(String upduserkey) {
-		this.upduserkey = upduserkey;
+	public void setUpdUserKey(String updUserKey) {
+		this.updUserKey = updUserKey;
 	}
 
-	public String getUpdpgmid() {
-		return updpgmid;
+	public String getUpdPgmId() {
+		return updPgmId;
 	}
 
-	public void setUpdpgmid(String updpgmid) {
-		this.updpgmid = updpgmid;
+	public void setUpdPgmId(String updPgmId) {
+		this.updPgmId = updPgmId;
 	}
-	
+
 }

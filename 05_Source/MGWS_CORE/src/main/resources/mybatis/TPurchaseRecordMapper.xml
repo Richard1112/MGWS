@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.mgws.dao.TPurchaseRecordMapper" >
+<mapper namespace="tPurchaseRecordMapper" >
   <resultMap id="BaseResultMap" type="com.org.mgws.entity.TPurchaseRecord" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
@@ -8,14 +8,31 @@
     <result column="dateFrom" property="dateFrom" jdbcType="VARCHAR" />
     <result column="dateTo" property="dateTo" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="PurchaseInfo" type="com.org.mgws.dto.PurchaseInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
+    <result column="productId" property="productId" jdbcType="BIGINT" />
+    <result column="dateFrom" property="dateFrom" jdbcType="VARCHAR" />
+    <result column="dateTo" property="dateTo" jdbcType="VARCHAR" />
+    <result column="productName" property="productName" jdbcType="VARCHAR" />
+  </resultMap>
   <sql id="Base_Column_List" >
     id, customerNo, productId, dateFrom, dateTo
+  </sql>
+  <sql id="productInfo" >
+    t1.id, t1.customerNo, t1.productId, t1.dateFrom, t1.dateTo,t2.productName
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_purchase_record
     where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByCustomerNo" resultMap="PurchaseInfo" parameterType="java.lang.String" >
+    select 
+    <include refid="productInfo" />
+    from t_purchase_record t1 left join t_investment_master t2 on t1.productId = t2.id
+    where t1.customerNo = #{customerNo,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_purchase_record

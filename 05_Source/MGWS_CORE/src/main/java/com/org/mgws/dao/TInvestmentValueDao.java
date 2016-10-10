@@ -1,8 +1,5 @@
 package com.org.mgws.dao;
 
-import java.util.List;
-import java.util.Map;
-
 import com.org.mgws.base.page.Pagination;
 import com.org.mgws.base.page.PagingResult;
 import com.org.mgws.entity.TInvestmentValue;
@@ -27,6 +24,8 @@ public interface TInvestmentValueDao {
 	 * 根据主键更新记录
 	 */
 	int updateByPrimaryKey(TInvestmentValue record);
+
+	PagingResult<TInvestmentValue> selectByProductId(Pagination pagination);
 
 	//List<TInvestmentValue> getAllTInvestmentValue();
 

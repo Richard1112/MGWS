@@ -1,5 +1,8 @@
 package com.org.mgws.dao;
 
+import java.util.List;
+
+import com.org.mgws.dto.PurchaseInfo;
 import com.org.mgws.entity.TPurchaseRecord;
 
 public interface TPurchaseRecordDao {
@@ -18,6 +21,8 @@ public interface TPurchaseRecordDao {
 	 */
 	TPurchaseRecord selectByPrimaryKey(Long no);
 
+	List<PurchaseInfo> selectByCustomerNo(String customerNo);
+	
 	/**
 	 * 根据主键更新记录
 	 */
