@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.mgws.dao.TInvestmentValueMapper" >
+<mapper namespace="tInvestmentValueMapper" >
   <resultMap id="BaseResultMap" type="com.org.mgws.entity.TInvestmentValue" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="productId" property="productId" jdbcType="BIGINT" />
@@ -15,6 +15,18 @@
     <include refid="Base_Column_List" />
     from t_investment_value
     where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByProductId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_investment_value
+    where productId = #{productId,jdbcType=VARCHAR}
+    <if test="dateFrom != null and dateFrom != ''" >
+        and (DATE_FORMAT(date,'%Y/%m/%d')) <![CDATA[ >= ]]> #{dateFrom,jdbcType=VARCHAR}
+    </if>
+    <if test="dateTo != null and dateTo != ''" >
+        and (DATE_FORMAT(date,'%Y/%m/%d')) <![CDATA[ <= ]]> #{dateTo,jdbcType=VARCHAR}
+    </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_investment_value

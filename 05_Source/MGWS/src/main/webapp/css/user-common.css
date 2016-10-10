@@ -1,0 +1,539 @@
+@charset "utf-8";
+/*标签页切换*/
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+a{
+hide-focus: expression(this.hideFocus=true);
+outline: none;
+}
+/* tabbtn */
+.tabbtn {
+	height: 64px;
+}
+
+.tabbtn li {
+	float: left;
+	position: relative;
+	margin: 0 0 0 -1px;
+}
+
+.tabbtn li a {
+	display: block;
+	float: left;
+	height: 64px;
+	line-height: 30px;
+	overflow: hidden;
+	width: 499px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.tabbtn li.current a {
+	height: 64px;
+	line-height: 64px;
+	background: #f7f7f7;
+	color: #3366cc;
+	font-weight: 800;
+}
+
+.asterisk {
+	color: red;
+	font-size: 24px;
+	display: inline;
+	height: 38px;
+	box-sizing: content-box;
+	vertical-align: middle;
+}
+
+.lience_div {
+	width: 170px;
+	height: 112px !important;
+	background: #aaaaaa;
+}
+
+.license_table td {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.regist_top_table {
+	width: 500px;
+	border-collapse: 0;
+	border-spacing: 0;
+}
+
+.regist_top_table .top_title {
+	text-align: center;
+	height: 50px;
+	cursor: pointer;
+	font-size: 24px;
+}
+
+.top_title_selected {
+	background: #6badcf;
+	color: #ffffff;
+	border-bottom: none;
+}
+
+.top_title_unselected {
+	border-bottom: 1px solid #c6c6c6;
+}
+
+.regist_nextstep_btn {
+	width: 280px;
+	border: 1px solid #b5b5b5;
+	background: #07b4ff;
+	cursor: pointer;
+	text-align: center;
+	color: white;
+	font-size: 16px;
+	padding: 6px 0px;
+	line-height: 18px;
+}
+
+.regist {
+	min-width:480px;
+}
+
+.regist table.regist_edit_table {
+	height: 100%;
+	line-height: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.regist table.regist_edit_table td {
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.regist table.regist_edit_table td div {
+	height: 38px;
+	line-height: 38px;
+	display: inline-block;
+}
+
+.regist table.regist_edit_table .td_left {
+	text-align: right;
+	padding-right: 10px;
+	color: #555;
+	font-size: 14px;
+	line-height: 32px;
+	height: 32px;
+}
+
+.regist table.regist_edit_table .i_td {
+	color: #666;
+}
+
+.regist table.regist_edit_table .i_td_title {
+	font-weight: bold;
+	font-size: 14px;
+	vertical-align: top;
+	padding-top: 3px;
+	text-align: right;
+}
+
+.regist table.regist_edit_table .i_td_Content {
+	text-align: left;
+}
+
+.regist table.regist_edit_table label {
+	text-align: Justify;
+	text-justify: inter-ideograph
+}
+
+.error {
+	max-width:30px;
+	white-space:nowrap;
+	color: white;
+	line-height: 38px;
+	padding-left: 5px;
+	display: inline-block;
+	position: absolute;
+	/* background: url("../images/error.png") left no-repeat; */
+	z-index: 1;
+	cursor: pointer;
+	word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.error img{
+	width: 100%;
+	height:100%;
+	max-width:25px;
+	max-height:25px;
+	position: absolute;
+	left:0;
+	top:5px;
+}
+
+.error_hid{
+	white-space:nowrap;
+	color: white;
+	position: absolute;
+	z-index: 2;
+	background-color:#fff;
+}
+
+.error-high {
+	line-height: 33px;
+}
+
+.phone {
+	font-size: 18px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-right: 15px;
+}
+
+.t_register {
+	font-weight:bold;
+	display: inline;
+	float: left;
+	border-left: 1px solid #aaaaaa;
+	/* border-right: 1px solid #aaaaaa; */
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.t_register a {
+	color: #ff6600 !important;
+}
+
+.t_register a:hover {
+	color: white !important;
+}
+
+/*清除浮动============*/
+.clear {
+	DISPLAY: block;
+	HEIGHT: 0px;
+	VISIBILITY: hidden;
+	CLEAR: both;
+	FONT-SIZE: 0px;
+	CONTENT: " ";
+	line-height: 0px;
+}
+
+.regist_img {
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.text {
+	width: 258px !important;
+	padding: 5px 8px !important;
+	color: #666666 !important;
+}
+
+.text_parta {
+	width: 130px !important;
+	padding: 5px 8px !important;
+	outline: none !important;
+	color: #666666 !important;
+}
+
+.text_parta_phone {
+	width: 200px !important;
+	padding: 5px 8px !important;
+	outline: none !important;
+	outline: none !important;
+}
+
+.userName_input {
+	padding-left: 5px !important;
+	outline: none !important;
+	width: 290px !important;
+}
+.lg_regist {
+	float: right;
+}
+
+/*完成按钮*/
+.confirm_btn {
+	display: inline-block;
+	border: none;
+	width: 213px;
+	height: 37px;
+	cursor: pointer;
+	background: url(../images/user/finish.png) no-repeat;
+}
+
+.confirm_btn:hover {
+	display: inline-block;
+	background: url(../images/user/finish_hover.png) no-repeat;
+}
+
+/*确认按钮*/
+.aler_btn {
+	display: inline-block;
+	border: none;
+	cursor: pointer;
+	width: 281px;
+	height: 40px;
+	background: url(../images/user/confirm.png) no-repeat;
+}
+
+.aler_btn:hover {
+	display: inline-block;
+	width: 281px;
+	height: 40px;
+	background: url(../images/user/confirm_hover.png) no-repeat;
+}
+
+.registBackground {
+	border-top: 5px solid #00a2ea;
+	border-bottom: 5px solid #00a2ea;
+}
+
+/**user login**/
+.yzm_img {
+	width: 100px;
+	height: 38px;
+	border: none;
+	padding: 0px;
+	vertical-align: middle;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.yzm_img:hover {
+	border: none;
+}
+
+.login_div {
+	height: auto;
+	width: 364px;
+	padding: 40px 40px 20px 40px;
+	font-size: 14px;
+}
+
+.common_shadow {
+	border: 1px solid #c6c6c6;
+	/* background:#fff;
+	color:#333;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=0,strength=2)
+	progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=90, Color=#909090)
+	progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=180, Color=#909090)
+	progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=270, Color=#909090);
+	-moz-box-shadow: 0px 0px 10px #909090;
+	-webkit-box-shadow: 0px 0px 10px #909090;
+	box-shadow:0px 0px 20px #909090; */
+}
+
+.login_div p {
+	text-align: left;
+}
+
+
+.login_p_table {
+	margin: 0 auto;
+}
+
+.login_table {
+	border: 0;
+}
+
+.login_table td {
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.login_img {
+	cursor: pointer;
+}
+
+.passwd_text {
+	width: 256px;
+	background: url("../images/regist/password.png") no-repeat left;
+	background-position: 15px;
+}
+
+.login_btn {
+	width: 290px;
+	border: 1px solid #b5b5b5;
+	background: #42a6da;
+	cursor: pointer;
+	text-align: center;
+	color: white;
+	font-size: 16px;
+	padding: 6px 0px;
+}
+
+/**user regist**/
+.regist_company {
+	width: 343px;
+	border: solid 1px #ccc;
+	background: url("../images/regist/company_name.png") no-repeat left;
+}
+
+.regist_text {
+	background: url("../images/regist/user_name.png") no-repeat 15px
+		50%;
+	background-position: 15px z-index:  -10000;
+	display: inline-block;
+}
+
+.regist_password {
+	background: url("../images/regist/password.png") no-repeat left;
+	background-position: 15px;
+	z-index: -10000;
+	display: inline;
+}
+
+.regist_phone {
+	background: url("../images/regist/phone.png") no-repeat left;
+	background-position: 15px z-index:  -10000;
+}
+
+.regist_email {
+	background: url("../images/regist/email.png") no-repeat left;
+	background-position: 15px z-index:  -10000;
+}
+
+.regist_input {
+	border: 1px solid #b5b5b5;
+	background: none;
+	padding-left: 5px !important;
+	width: 380px !important;
+}
+
+.registDiv {
+	margin: 0px auto;
+	width: 724px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.registDiv_bg {
+	height: 440px;
+	margin: 20px auto;
+	background: url("../images/regist/a-bg-sml.png") no-repeat;
+	width: 724px;
+}
+.warp1{ margin:0 auto; width:100%; height:auto;padding-top:80px;padding-bottom:100px; overflow:hidden;}
+.login_outter_table {
+	margin: 0 auto;
+	width:100%;
+}
+
+.login_outter_ico_td {
+	padding-right: 65px;
+}
+
+.formError {
+	position: absolute;
+	top: 300px;
+	left: 300px;
+	padding-bottom: 15px;
+	display: block;
+	z-index: 5000;
+}
+
+.formError .formErrorContent {
+	width: 100%;
+	background: #fff;
+	color: #000;
+	border:2px solid red;
+	font-family: tahoma;
+	font-size: 12px;
+	box-shadow: 1px 1px 6px #000;
+	-moz-box-shadow: 1px 1px 6px #000;
+	-webkit-box-shadow: 1px 1px 6px #000;
+	padding: 4px 10px 4px 10px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+
+.formError .formErrorArrow {
+	position: absolute;
+	bottom: 0;
+	left: 20px;
+	width: 15px;
+	height: 15px;
+}
+
+.formError .formErrorArrow div {
+	box-shadow: 1px 4px 5px #000;
+	-moz-box-shadow: 1px 4px 5px #000;
+	-webkit-box-shadow: 1px 1px 5px #000;
+	font-size: 0px;
+}
+
+.formError .formErrorArrow .line10 {
+	width: 15px;
+	height: 1px;
+	background: red;
+	margin: 0 auto;
+	font-size: 0px;
+	display: block;
+}
+
+.formError .formErrorArrow .line9 {
+	width: 13px;
+	height: 1px;
+	background: red;
+	margin: 0 auto;
+	display: block;
+}
+
+.formError .formErrorArrow .line8 {
+	width: 11px;
+	height: 1px;
+	background: red;
+	margin: 0 auto;
+	display: block;
+}
+
+.formError .formErrorArrow .line7 {
+	width: 9px;
+	height: 1px;
+	background: #fff;
+	margin: 0 auto;
+	display: block;
+}
+
+.formError .formErrorArrow .line6 {
+	width: 7px;
+	height: 1px;
+	background: #fff;
+	margin: 0 auto;
+	display: block;
+}
+
+.formError .formErrorArrow .line5 {
+	width: 5px;
+	height: 1px;
+	background: #fff;
+	margin: 0 auto;
+	display: block;
+}
+
+.formError .formErrorArrow .line4 {
+	width: 3px;
+	height: 1px;
+	background: #fff;
+	margin: 0 auto;
+	display: block;
+}
+
+.formError .formErrorArrow .line3 {
+	width: 1px;
+	height: 1px;
+	background: #fff;
+	margin: 0 auto;
+	display: block;
+}
