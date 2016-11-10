@@ -21,6 +21,7 @@ public interface TPurchaseRecordDao {
 	 */
 	TPurchaseRecord selectByPrimaryKey(Long no);
 
+	List<PurchaseInfo> selectByCustomerNo1(String customerNo);
 	List<PurchaseInfo> selectByCustomerNo(String customerNo);
 	
 	/**

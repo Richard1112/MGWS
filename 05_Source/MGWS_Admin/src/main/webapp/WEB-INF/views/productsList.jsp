@@ -39,8 +39,8 @@ line-height:17px;}
 			<table class="search_table">
 				<tr>
 					<td style="width: 200px"><input type="text"
-						name="customerName" class="form-control"
-						style="background: #fff;width: 200px;" placeholder="客户名称" id="customerName">
+						name="productName" class="form-control"
+						style="background: #fff;width: 200px;" placeholder="产品名称" id="productName">
 						<span class="input-group-btn">
 							<button type="button" name="search" id="search-btn"
 								style="background: #fff; margin-left: -40px;margin-top:3px;"
@@ -49,14 +49,8 @@ line-height:17px;}
 								<i class="fa fa-search"></i>
 							</button>
 					</span></td>
-					<td style="width: 100px"><select name="customerType"
-						class="form-control"
-						style="background: #fff;width: 100px;" placeholder="客户类型" id="customerType">
-							<option value="0">全部</option>
-							<option value="1">个人</option>
-							<option value="2">企业</option>
-					</select></td>
-					<td align="right">
+					<td>
+					<button type="button" id="btnAdd" class="btn btn-default">Add</button>
 					</td>
 				</tr>
 			</table>
@@ -72,48 +66,46 @@ line-height:17px;}
 		});
 		function pageInit() {
 			jQuery("#table").jqGrid({
-				url : '${basePath}/customer',
+				url : '${basePath}/product',
 				method : "GET",
 				datatype : "json",
-				colNames : [ '', '客户编号', '客户名称', '客户类型', '注册时间'],
-				colModel : [ {
-					name : 'no',
-					index : 'no',
-					hidden : true,
-					sortable : true
-				}, {
-					name : 'customerNo',
-					index : 'customerNo',
+				colNames : ['产品ID', '产品名称',''],
+				colModel : [{
+					name : 'id',
+					index : 'id',
 					width : 100,
-					editable : false,
+					editable : true,
+					editoptions : {readonly : true,size : 10},
 					sortable : true
 				}, {
-					name : 'customerName',
-					index : 'customerName',
-					width : 50,
-					editable : false,
+					name : 'productName',
+					index : 'productName',
+					width : 150,
+					editable : true,
+					editrules: {required:true},
+					editoptions : {readonly : false,size : 10},
 					sortable : true
-				}, {
-					name : 'customerType',
-					index : 'customerType',
-					width : 50,
-					editable : false,
-					sortable : true
-				}, {
-					name : 'registDate',
-					index : 'registDate',
-					width : 50,
-					align : "center",
-					editable : false,
-					sortable : true
-				}],
+				},{name:'act',index:'act',width:60,search:false,sortable:false,editable:false}],
 				rowNum : 20,
 				autowidth : true,
 				rowList : [ 20, 30, 50 ],
 				pager : '#pager',
 				sortname : 'id',
+				oper:"oper", // operation参数名称
+				editoper:"edit", // 当在edit模式中提交数据时，操作的名称
+				addoper:"add", // 当在add模式中提交数据时，操作的名称
+				deloper:"del", // 当在delete模式中提交数据时，操作的名称
 				viewrecords : true,
 				sortorder : "desc",
+				gridComplete: function(){
+	                var ids = $("#table").getDataIDs();//jqGrid('getDataIDs');
+	                for(var i=0;i<ids.length;i++){
+	                    var cl = ids[i];
+	                    be = "<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('editGridRow','"+cl+"',{checkOnSubmit:true,checkOnUpdate:true,closeAfterEdit:true,closeOnEscape:true});\" >Edit</button>"; 
+	                    de = "&nbsp;&nbsp;<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('delGridRow','"+cl+"',{closeOnEscape:true});\" >Del</button>";
+	                    jQuery("#table").jqGrid('setRowData',ids[i],{act:be+de});
+	                } 
+	            },
 				//后台返回数据
 				jsonReader : { //server返回Json解析设定   
 					root : "resultList", //json中数据列表   
@@ -123,7 +115,7 @@ line-height:17px;}
 					repeatitems : false,
 					id : "0"
 				},
-				editurl : "",
+				editurl : "${basePath}/productEdit",
 				caption : "",
 				loadComplete : function() {
 					var objWindow = $(window);
@@ -135,21 +127,23 @@ line-height:17px;}
 			jQuery("#table").jqGrid('navGrid', "#pager", {
 				edit : false,
 				add : false,
-				del : false
+				del : false,
+				search:false
 			});
+			$("#btnAdd").click(function(){
+	            jQuery("#table").jqGrid('editGridRow','new',{height:280,reloadAfterSubmit:true,closeOnEscape:true,addedrow:false});
+	        });
 		}
 		
 		function searchTable() {
-			var customerName = $("#customerName").val();
-			var customerType = $("#customerType").val();
+			var productName = $("#productName").val();
 
 			$("#table").jqGrid('setGridParam', {
-				url : "${basePath}/customer",
+				url : "${basePath}/product",
 				method : 'GET',
 				postData : {
 					//条件
-					'customerName' : customerName,
-					'customerType' : customerType
+					'productName' : productName
 				}
 			}).trigger("reloadGrid"); //重新载入   
 		}

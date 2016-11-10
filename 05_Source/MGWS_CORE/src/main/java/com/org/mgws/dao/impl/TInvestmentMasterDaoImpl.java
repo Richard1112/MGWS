@@ -35,4 +35,19 @@ public class TInvestmentMasterDaoImpl extends BaseDao implements
 		return super.update("com.org.mgws.dao.TInvestmentMasterMapper.updateByPrimaryKeySelective", record);
 	}
 
+	@Override
+	public PagingResult<Map<String, Object>> queryByPage(Pagination page) {
+		return selectPagination("com.org.mgws.dao.TInvestmentMasterMapper.selectAllByParam",
+				"com.org.mgws.dao.TInvestmentMasterMapper.selectAllByParamCount", page);
+	}
+	@Override
+	public PagingResult<Map<String, Object>> queryByPage2(Pagination page) {
+		return selectPagination("tPurchaseRecordMapper.selectAllByParam", "tPurchaseRecordMapper.selectAllByParamCount",
+				page);
+	}
+
+	@Override
+	public List<Map<String, Object>> queryAll() {
+		return select("com.org.mgws.dao.TInvestmentMasterMapper.selectAllByParam");
+	}
 }

@@ -14,8 +14,27 @@
     from t_investment_master
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectAllByParam" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_investment_master
+    where 1=1
+    <if test="productName != null and productName != ''" >
+        and productName like '%' || #{productName,jdbcType=VARCHAR} || '%'
+    </if>
+  </select>
+  <select id="selectAllByParamCount" resultType="int" parameterType="java.lang.String" >
+    select 
+    count(1)
+    from t_investment_master
+    where 1=1
+    <if test="productName != null and productName != ''" >
+        and productName like '%' || #{productName,jdbcType=VARCHAR} || '%'
+    </if>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_investment_master
+    delete from t_investment_master 
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.org.mgws.entity.TInvestmentMaster" >

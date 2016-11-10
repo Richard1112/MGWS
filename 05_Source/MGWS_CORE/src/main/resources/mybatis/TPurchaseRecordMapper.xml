@@ -16,23 +16,57 @@
     <result column="dateTo" property="dateTo" jdbcType="VARCHAR" />
     <result column="productName" property="productName" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="BaseResultMap2" type="com.org.mgws.entity.TPurchaseRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
+    <result column="customerName" property="customerName" jdbcType="VARCHAR" />
+    <result column="productId" property="productId" jdbcType="BIGINT" />
+    <result column="productName" property="productName" jdbcType="BIGINT" />
+    <result column="dateFrom" property="dateFrom" jdbcType="VARCHAR" />
+    <result column="dateTo" property="dateTo" jdbcType="VARCHAR" />
+  </resultMap>
   <sql id="Base_Column_List" >
     id, customerNo, productId, dateFrom, dateTo
   </sql>
-  <sql id="productInfo" >
-    t1.id, t1.customerNo, t1.productId, t1.dateFrom, t1.dateTo,t2.productName
+  <sql id="Base_Column_List2" >
+    t1.id, t1.customerNo, t1.productId, DATE_FORMAT(t1.dateFrom,'%Y/%m/%d') as dateFrom, DATE_FORMAT(t1.dateTo,'%Y/%m/%d') as dateTo,t2.productName
   </sql>
+
+  <select id="selectAllByParam" resultMap="PurchaseInfo" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List2" />
+    from t_purchase_record t1 left join t_investment_master t2 on t1.productId = t2.id
+    where 1=1
+    <if test="customerNo != null and customerNo != ''" >
+        and t1.customerNo like '%' || #{customerNo,jdbcType=VARCHAR} || '%'
+    </if>
+  </select>
+  <select id="selectAllByParamCount" resultType="int" parameterType="java.lang.String" >
+    select 
+    count(1)
+    from t_investment_master
+    where 1=1
+    <if test="productName != null and productName != ''" >
+        and productName like '%' || #{productName,jdbcType=VARCHAR} || '%'
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_purchase_record
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectByCustomerNo1" resultMap="PurchaseInfo" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List2" />
+    from t_purchase_record t1 left join t_investment_master t2 on t1.productId = t2.id 
+    where customerNo = #{customerNo,jdbcType=VARCHAR}
+  </select>
   <select id="selectByCustomerNo" resultMap="PurchaseInfo" parameterType="java.lang.String" >
     select 
-    <include refid="productInfo" />
-    from t_purchase_record t1 left join t_investment_master t2 on t1.productId = t2.id
-    where t1.customerNo = #{customerNo,jdbcType=VARCHAR}
+    <include refid="Base_Column_List" />
+    from t_purchase_record
+    where customerNo = #{customerNo,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_purchase_record

@@ -3,6 +3,7 @@
  */
 package com.org.mgws.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -51,6 +52,11 @@ public class TCustomerLoginInfoDaoImpl extends BaseDao implements TCustomerLogin
 	public PagingResult<Map<String, Object>> getAllCustomers(Pagination pagination) {
 		return super.selectPagination("customerLoginInfoMapper.selectAllCustomer",
 				"customerLoginInfoMapper.selectAllCustomerCount", pagination);
+	}
+
+	@Override
+	public List<Map<String, Object>> getAllCustomers() {
+		return super.select("customerLoginInfoMapper.selectAllCustomer");
 	}
     @Override
 	public int updateByPrimaryKeySelective(TCustomerLoginInfo record) {

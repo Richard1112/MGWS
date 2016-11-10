@@ -22,9 +22,7 @@
     <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
     <result column="loginId" property="loginId" jdbcType="VARCHAR" />
     <result column="division" property="division" jdbcType="VARCHAR" />
-    <result column="cnSurName" property="cnSurName" jdbcType="VARCHAR" />
-    <result column="cnGivenName" property="cnGivenName" jdbcType="VARCHAR" />
-    <result column="cnName" property="cnName" jdbcType="VARCHAR" />
+    <result column="customerName" property="customerName" jdbcType="VARCHAR" />
     <result column="registDate" property="registDate" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -32,7 +30,9 @@
     addUserKey, updTimestamp, updUserKey, updPgmId
   </sql>
   <sql id="BasicInfo_Column_List" >
-    a.no, a.customerNo, a.loginId, a.division, b.cnSurName, b.cnGivenName, c.cnName, DATE_FORMAT(a.addTimestamp,'%Y/%m/%d') as registDate
+    a.no, a.customerNo, a.loginId, a.division as customerType, 
+    case when b.cnSurName is not null then concat(b.cnSurName, b.cnGivenName) when c.cnName is not null then c.cnName end as customerName,
+    DATE_FORMAT(a.addTimestamp,'%Y/%m/%d') as registDate
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -46,23 +46,45 @@
     <include refid="BasicInfo_Column_List" />
     from t_customer_login_info a left join t_individual_basic_info b on a.customerNo = b.customerNo 
     left join t_enterprise_basic_info c on a.customerNo = c.customerNo 
-    <if test="dateFrom != null and dateFrom != ''" >
-        and (DATE_FORMAT(addTimestamp,'%Y/%m/%d')) <![CDATA[ >= ]]> #{dateFrom,jdbcType=VARCHAR}
+    <if test="customerType == '0'" >
+	    <if test="customerName != null and customerName != ''" >
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
     </if>
-    <if test="dateTo != null and dateTo != ''" >
-        and (DATE_FORMAT(addTimestamp,'%Y/%m/%d')) <![CDATA[ <= ]]> #{dateTo,jdbcType=VARCHAR}
+    <if test="customerType == '1'" >
+        <if test="customerName != null and customerName != ''" >
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
+    </if>
+    <if test="customerType == '2'" >
+        <if test="customerName != null and customerName != ''" >
+	        and c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
     </if>
   </select>
-  <select id="selectAllCustomerCount" resultMap="BasicInfo" parameterType="java.lang.String" >
+  <select id="selectAllCustomerCount" resultType="int" parameterType="java.lang.String" >
     select 
-    count(0)
+    count(1)
     from t_customer_login_info a left join t_individual_basic_info b on a.customerNo = b.customerNo 
     left join t_enterprise_basic_info c on a.customerNo = c.customerNo 
-    <if test="dateFrom != null and dateFrom != ''" >
-        and (DATE_FORMAT(addTimestamp,'%Y/%m/%d')) <![CDATA[ >= ]]> #{dateFrom,jdbcType=VARCHAR}
+    <if test="customerType == '0'" >
+	    <if test="customerName != null and customerName != ''" >
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
     </if>
-    <if test="dateTo != null and dateTo != ''" >
-        and (DATE_FORMAT(addTimestamp,'%Y/%m/%d')) <![CDATA[ <= ]]> #{dateTo,jdbcType=VARCHAR}
+    <if test="customerType == '1'" >
+        <if test="customerName != null and customerName != ''" >
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
+    </if>
+    <if test="customerType == '2'" >
+        <if test="customerName != null and customerName != ''" >
+	        and c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
     </if>
   </select>
   <select id="selectByLoginId" resultMap="BaseResultMap" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >
