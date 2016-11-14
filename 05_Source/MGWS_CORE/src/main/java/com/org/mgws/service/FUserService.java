@@ -3,6 +3,7 @@
  */
 package com.org.mgws.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.org.mgws.base.page.Pagination;
@@ -27,4 +28,6 @@ public interface FUserService {
 	TEnterpriseBasicInfo getEnterpriseBasicInfo(String customerNo);
 
 	PagingResult<Map<String, Object>> getAllCustomers(Pagination pagination);
+
+	List<Map<String, Object>> getAllCustomers();
 }

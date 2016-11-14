@@ -61,14 +61,29 @@
 	<table cellpadding="0" cellspacing="0" border="0" class="login_outter_table">
 		<tr>
 			<td class="login_outter_ico_td" align="right">
-				<img src="<c:url value='/images/login/login_left_ico.jpg'/>" />
+				<img src="<c:url value='/images/login/login_left_ico.png'/>" />
 			</td>
 			<td>
 				<div class="login_div common_shadow" style="margin: 0 auto;">
+					<table class="login_header_t" style="">
+						<tr>
+								<td align="left">
+									用户登录
+								</td>
+								<td style="">
+									<div class="lg_regist">
+										没有账号？<a
+											href="${pageContext.request.contextPath}/Login/registInit" style="color:#fff;">立即注册</a>
+									</div>
+								</td>
+							</tr>
+					</table>
+					<br/>
 					<form:form action="" method="post" id="userForm"
 						modelAttribute="loginInfoDto" class="demoform">
 						<table cellpadding="0" cellspacing="0" border="0"
 							class="login_table">
+							
 							<tr>
 								<td colspan="2">
 									<form:input class="text userName_input" path="userId"
@@ -88,19 +103,8 @@
 							</tr>
 							
 							<tr>
-								<td colspan="2"><input type="button" value="立即登录"
+								<td colspan="2" style="text-align:center;"><input type="button" 
 									class="login_btn" onclick="userLogin('login')" /></td>
-							</tr>
-							<tr>
-								<td align="left">
-									
-								</td>
-								<td style="padding-bottom: 10px;">
-									<div class="lg_regist">
-										没有账号？<a
-											href="${pageContext.request.contextPath}/Login/registInit">注册</a>
-									</div>
-								</td>
 							</tr>
 						</table>
 						

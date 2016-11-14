@@ -1,5 +1,7 @@
 package com.org.mgws.dao.impl;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.org.mgws.base.dao.BaseDao;
@@ -7,6 +9,7 @@ import com.org.mgws.base.page.Pagination;
 import com.org.mgws.base.page.PagingResult;
 import com.org.mgws.dao.TInvestmentValueDao;
 import com.org.mgws.entity.TInvestmentValue;
+import com.org.mgws.entity.TPurchaseRecord;
 
 @Repository
 public class TInvestmentValueDaoImpl extends BaseDao implements
@@ -14,26 +17,30 @@ public class TInvestmentValueDaoImpl extends BaseDao implements
 
 	@Override
 	public int deleteByPrimaryKey(TInvestmentValue record) {
-		return delete("com.org.mgws.dao.TInvestmentValueMapper.deleteByPrimaryKey", record);
+		return delete("tInvestmentValueMapper.deleteByPrimaryKey", record);
 	}
 
 	@Override
 	public int insert(TInvestmentValue record) {
-		return super.insert("com.org.mgws.dao.TInvestmentValueMapper.insertSelective", record);
+		return super.insert("tInvestmentValueMapper.insertSelective", record);
 	}
 
 	@Override
 	public TInvestmentValue selectByPrimaryKey(Long no) {
-		return super.selectOne("com.org.mgws.dao.TInvestmentValueMapper.selectByPrimaryKey", no);
+		return super.selectOne("tInvestmentValueMapper.selectByPrimaryKey", no);
 	}
 	@Override
 	public PagingResult<TInvestmentValue> selectByProductId(Pagination pagination) {
 		return super.selectPagination("tInvestmentValueMapper.selectByProductId", pagination);
 	}
+	@Override
+	public PagingResult<Map<String, Object>> selectProductsValue(Pagination pagination) {
+		return super.selectPagination("tInvestmentValueMapper.selectProductsValue", pagination);
+	}
 
 	@Override
 	public int updateByPrimaryKey(TInvestmentValue record) {
-		return super.update("com.org.mgws.dao.TInvestmentValueMapper.updateByPrimaryKeySelective", record);
+		return super.update("tInvestmentValueMapper.updateByPrimaryKeySelective", record);
 	}
 
 //	@Override
@@ -41,14 +48,21 @@ public class TInvestmentValueDaoImpl extends BaseDao implements
 //		return select("com.org.mgws.dao.TInvestmentValueMapper.getAllTRecruitmentInfo");
 //	}
 //	
+	@Override
+	public PagingResult<Map<String, Object>> queryByPage(Pagination page) {
+		return selectPagination("com.org.mgws.dao.TInvestmentMasterMapper.selectAllByParam",
+				"com.org.mgws.dao.TInvestmentMasterMapper.selectAllByParamCount", page);
+	}
+	//
 //	@Override
-//	public PagingResult<Map<String, Object>> queryByPage(Pagination page) {
-//		return selectPagination("com.org.mgws.dao.TInvestmentValueMapper.selectAllByParam", "com.org.mgws.dao.TInvestmentValueMapper.selectAllByParamCount", page);
+	// public List<TInvestmentValue> getAllTInvestmentValueForPre() {
+	// return
+	// select("com.org.mgws.dao.TInvestmentValueMapper.getAllTInvestmentValueForPre");
 //	}
-//
-//	@Override
-//	public List<TInvestmentValue> getAllTInvestmentValueForPre() {
-//		return select("com.org.mgws.dao.TInvestmentValueMapper.getAllTInvestmentValueForPre");
-//	}
+
+	@Override
+	public TPurchaseRecord getTInvestmentValue(String customerNo) {
+		return super.selectOne("tPurchaseRecordMapper.selectAllByParam", customerNo);
+	}
 
 }

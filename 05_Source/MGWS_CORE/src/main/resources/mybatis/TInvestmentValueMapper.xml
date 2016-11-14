@@ -7,8 +7,18 @@
     <result column="date" property="date" jdbcType="VARCHAR" />
     <result column="netValue" property="netValue" jdbcType="DECIMAL" />
   </resultMap>
+  <resultMap id="BaseResultMap1" type="com.org.mgws.dto.InvestmentValueDto" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="productId" property="productId" jdbcType="BIGINT" />
+    <result column="productName" property="productName" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="netValue" property="netValue" jdbcType="DECIMAL" />
+  </resultMap>
   <sql id="Base_Column_List" >
     id, productId, date, netValue
+  </sql>
+  <sql id="Base_Column_List1" >
+    a.id, a.productId, DATE_FORMAT(a.date,'%Y/%m/%d') as date, a.netValue,b.productName
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -21,6 +31,36 @@
     <include refid="Base_Column_List" />
     from t_investment_value
     where productId = #{productId,jdbcType=VARCHAR}
+    <if test="dateFrom != null and dateFrom != ''" >
+        and (DATE_FORMAT(date,'%Y/%m/%d')) <![CDATA[ >= ]]> #{dateFrom,jdbcType=VARCHAR}
+    </if>
+    <if test="dateTo != null and dateTo != ''" >
+        and (DATE_FORMAT(date,'%Y/%m/%d')) <![CDATA[ <= ]]> #{dateTo,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <select id="selectProductsValue" resultMap="BaseResultMap1" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List1" />
+    from t_investment_value a left join t_investment_master b on a.productId = b.id
+    where 1=1
+    <if test="productName != null and productName != ''" >
+        and b.productName like '%' || #{productName,jdbcType=VARCHAR} || '%'
+    </if>
+    <if test="dateFrom != null and dateFrom != ''" >
+        and (DATE_FORMAT(a.date,'%Y/%m/%d')) <![CDATA[ >= ]]> #{dateFrom,jdbcType=VARCHAR}
+    </if>
+    <if test="dateTo != null and dateTo != ''" >
+        and (DATE_FORMAT(a.date,'%Y/%m/%d')) <![CDATA[ <= ]]> #{dateTo,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <select id="selectProductsValueCount" resultType="int" parameterType="java.lang.String" >
+    select 
+    count(1)
+    from t_investment_value
+    where 1=1
+    <if test="productName != null and productName != ''" >
+        and b.productName like '%' || #{productName,jdbcType=VARCHAR} || '%'
+    </if>
     <if test="dateFrom != null and dateFrom != ''" >
         and (DATE_FORMAT(date,'%Y/%m/%d')) <![CDATA[ >= ]]> #{dateFrom,jdbcType=VARCHAR}
     </if>

@@ -143,7 +143,12 @@ $(document).ready(function() {
 </head>
 <body>
 	<div class="warp1">
-
+<table cellpadding="0" cellspacing="0" border="0" class="login_outter_table">
+		<tr>
+			<td class="login_outter_ico_td" align="right">
+				<img src="<c:url value='/images/login/login_left_ico.png'/>" />
+			</td>
+			<td>
 		<form:form action="" method="post" id="userForm"
 			modelAttribute="loginInfoDto" class="demoform">
 			<form:hidden path="division" />
@@ -151,7 +156,7 @@ $(document).ready(function() {
 				<table style="margin: 0 auto;">
 					<tr>
 						<td style="vertical-align: top">
-							<div class="regist common_shadow" style="padding-bottom: 30px;">
+							<div class="regist common_shadow">
 								<table class="regist_top_table">
 									<tr>
 										<td class="top_title top_title_selected" id="persion_td"
@@ -196,7 +201,7 @@ $(document).ready(function() {
 											class="error" onmouseover="makeMesDiv(this)"
 											onmouseout="removeMesDiv()"><form:errors
 													path="userPassword" /><img
-												src="<c:url value='/images/error/error.png'/>" /></span> <br /> <span>6-8位任意字符</span></td>
+												src="<c:url value='/images/error/error.png'/>" /></span> <br /> <span style="width:100%;text-align:left;">6-8位任意字符</span></td>
 									</tr>
 									<tr>
 										<td class="i_td_Content" colspan="2"><form:password
@@ -209,7 +214,7 @@ $(document).ready(function() {
 									</tr>
 									<tr>
 										<td colspan="2" style="text-align: center;"><br /> <input type="button"
-											id="next_step" class="regist_nextstep_btn" value="提交"
+											id="next_step" class="regist_nextstep_btn"
 											onclick="submitForm();"></input></td>
 									</tr>
 								</table>
@@ -219,6 +224,9 @@ $(document).ready(function() {
 				</table>
 			</div>
 		</form:form>
+		</td>
+		</tr>
+		</table>
 	</div>
 </body>
 </html>

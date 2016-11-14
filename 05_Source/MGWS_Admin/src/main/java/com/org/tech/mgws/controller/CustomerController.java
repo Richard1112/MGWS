@@ -39,8 +39,8 @@ public class CustomerController extends BaseController {
 	@ResponseBody
 	public PagingResult<Map<String, Object>> getAllCustomer(HttpServletRequest req, HttpServletResponse response) {
 
-		String registDateF = req.getParameter("registDateF");
-		String registDateT = req.getParameter("registDateT");
+		String customerName = req.getParameter("customerName");
+		String customerType = req.getParameter("customerType");
 		Pagination pagination = new Pagination();
 		Map<Object, Object> param = new HashMap<Object, Object>();
 		// 取得当前页数,注意这是jqgrid自身的参数
@@ -50,8 +50,8 @@ public class CustomerController extends BaseController {
 		pagination.setPage(Integer.parseInt(page));
 		pagination.setSize(Integer.parseInt(rows));
 
-		param.put("dateFrom", registDateF);
-		param.put("dateTo", registDateT);
+		param.put("customerName", customerName);
+		param.put("customerType", customerType);
 
 		pagination.setParams(param);
 		// 查询信息

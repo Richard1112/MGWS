@@ -3,6 +3,7 @@
  */
 package com.org.mgws.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -120,4 +121,8 @@ public class FUserServiceImpl implements FUserService {
 		return itemList;
 	}
 
+	@Override
+	public List<Map<String, Object>> getAllCustomers() {
+		return tCustomerLoginInfoDao.getAllCustomers();
+	}
 }

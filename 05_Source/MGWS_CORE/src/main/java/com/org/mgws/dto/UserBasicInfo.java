@@ -25,6 +25,8 @@ public class UserBasicInfo {
 	/** 企业名称 */
 	private String cnName;
 
+	private String customerName;
+
 	private String registDate;
 
 	public Long getId() {
@@ -97,6 +99,14 @@ public class UserBasicInfo {
 
 	public void setRegistDate(String registDate) {
 		this.registDate = registDate;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 }

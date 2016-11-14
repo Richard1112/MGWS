@@ -1,5 +1,6 @@
 package com.org.mgws.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.org.mgws.base.page.Pagination;
@@ -30,6 +31,8 @@ public interface TCustomerLoginInfoDao {
 	TCustomerLoginInfo selectByLoginId(TCustomerLoginInfo record);
 
 	public PagingResult<Map<String, Object>> getAllCustomers(Pagination pagination);
+
+	public List<Map<String, Object>> getAllCustomers();
 
     /**
 	 * 根据主键更新属性不为空的记录
