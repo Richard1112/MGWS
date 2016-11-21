@@ -1,11 +1,11 @@
 package com.org.mgws.dao;
 
-import java.util.List;
 import java.util.Map;
 
 import com.org.mgws.base.page.Pagination;
 import com.org.mgws.base.page.PagingResult;
 import com.org.mgws.entity.TInvestmentValue;
+import com.org.mgws.entity.TPurchaseRecord;
 
 public interface TInvestmentValueDao {
 	/**
@@ -28,10 +28,14 @@ public interface TInvestmentValueDao {
 	 */
 	int updateByPrimaryKey(TInvestmentValue record);
 
-	//List<TInvestmentValue> getAllTInvestmentValue();
+	PagingResult<TInvestmentValue> selectByProductId(Pagination pagination);
+
+	PagingResult<Map<String, Object>> selectProductsValue(Pagination pagination);
+
+	TPurchaseRecord getTInvestmentValue(String customerNo);
 
 	//List<TInvestmentValue> getAllTInvestmentValueForPre();
 
-	//PagingResult<Map<String, Object>> queryByPage(Pagination page);
+	PagingResult<Map<String, Object>> queryByPage(Pagination page);
 
 }

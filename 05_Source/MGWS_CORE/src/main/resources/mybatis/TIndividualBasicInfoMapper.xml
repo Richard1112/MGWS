@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.mgws.dao.TIndividualBasicInfoMapper" >
+<mapper namespace="com.org.mgws.dao.TIndividualBasicInfoDao" >
   <resultMap id="BaseResultMap" type="com.org.mgws.entity.TIndividualBasicInfo" >
     <id column="no" property="no" jdbcType="BIGINT" />
     <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
-    <result column="cnSurname" property="cnSurname" jdbcType="VARCHAR" />
-    <result column="cnGivenname" property="cnGivenname" jdbcType="VARCHAR" />
+    <result column="cnSurName" property="cnSurName" jdbcType="VARCHAR" />
+    <result column="cnGivenName" property="cnGivenName" jdbcType="VARCHAR" />
     <result column="enFirstName" property="enFirstName" jdbcType="VARCHAR" />
     <result column="enMiddleName" property="enMiddleName" jdbcType="VARCHAR" />
     <result column="enLastName" property="enLastName" jdbcType="VARCHAR" />
@@ -27,7 +27,7 @@
     <result column="updPgmId" property="updPgmId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    no, customerNo, cnSurname, cnGivenname, enFirstName, enMiddleName, enLastName, idCardNo, 
+    no, customerNo, cnSurName, cnGivenName, enFirstName, enMiddleName, enLastName, idCardNo, 
     passportNo, sex, nickName, birthday, headPic, marriage, education, occupation, comments, 
     deleteFlg, addTimestamp, addUserKey, updTimestamp, updUserKey, updPgmId
   </sql>
@@ -37,21 +37,27 @@
     from t_individual_basic_info
     where no = #{no,jdbcType=BIGINT}
   </select>
+  <select id="selectByCustomerNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_individual_basic_info
+    where customerNo = #{customerNo,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_individual_basic_info
     where no = #{no,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.org.mgws.entity.TIndividualBasicInfo" >
-    insert into t_individual_basic_info (no, customerNo, cnSurname, 
-      cnGivenname, enFirstName, enMiddleName, 
+    insert into t_individual_basic_info (no, customerNo, cnSurName, 
+      cnGivenName, enFirstName, enMiddleName, 
       enLastName, idCardNo, passportNo, 
       sex, nickName, birthday, 
       headPic, marriage, education, 
       occupation, comments, deleteFlg, 
       addTimestamp, addUserKey, updTimestamp, 
       updUserKey, updPgmId)
-    values (#{no,jdbcType=BIGINT}, #{customerNo,jdbcType=VARCHAR}, #{cnSurname,jdbcType=VARCHAR}, 
-      #{cnGivenname,jdbcType=VARCHAR}, #{enFirstName,jdbcType=VARCHAR}, #{enMiddleName,jdbcType=VARCHAR}, 
+    values (#{no,jdbcType=BIGINT}, #{customerNo,jdbcType=VARCHAR}, #{cnSurName,jdbcType=VARCHAR}, 
+      #{cnGivenName,jdbcType=VARCHAR}, #{enFirstName,jdbcType=VARCHAR}, #{enMiddleName,jdbcType=VARCHAR}, 
       #{enLastName,jdbcType=VARCHAR}, #{idCardNo,jdbcType=VARCHAR}, #{passportNo,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
       #{headPic,jdbcType=VARCHAR}, #{marriage,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
@@ -68,11 +74,11 @@
       <if test="customerNo != null" >
         customerNo,
       </if>
-      <if test="cnSurname != null" >
-        cnSurname,
+      <if test="cnSurName != null" >
+        cnSurName,
       </if>
-      <if test="cnGivenname != null" >
-        cnGivenname,
+      <if test="cnGivenName != null" >
+        cnGivenName,
       </if>
       <if test="enFirstName != null" >
         enFirstName,
@@ -139,11 +145,11 @@
       <if test="customerNo != null" >
         #{customerNo,jdbcType=VARCHAR},
       </if>
-      <if test="cnSurname != null" >
-        #{cnSurname,jdbcType=VARCHAR},
+      <if test="cnSurName != null" >
+        #{cnSurName,jdbcType=VARCHAR},
       </if>
-      <if test="cnGivenname != null" >
-        #{cnGivenname,jdbcType=VARCHAR},
+      <if test="cnGivenName != null" >
+        #{cnGivenName,jdbcType=VARCHAR},
       </if>
       <if test="enFirstName != null" >
         #{enFirstName,jdbcType=VARCHAR},
@@ -210,11 +216,11 @@
       <if test="customerNo != null" >
         customerNo = #{customerNo,jdbcType=VARCHAR},
       </if>
-      <if test="cnSurname != null" >
-        cnSurname = #{cnSurname,jdbcType=VARCHAR},
+      <if test="cnSurName != null" >
+        cnSurName = #{cnSurName,jdbcType=VARCHAR},
       </if>
-      <if test="cnGivenname != null" >
-        cnGivenname = #{cnGivenname,jdbcType=VARCHAR},
+      <if test="cnGivenName != null" >
+        cnGivenName = #{cnGivenName,jdbcType=VARCHAR},
       </if>
       <if test="enFirstName != null" >
         enFirstName = #{enFirstName,jdbcType=VARCHAR},
@@ -279,8 +285,8 @@
   <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TIndividualBasicInfo" >
     update t_individual_basic_info
     set customerNo = #{customerNo,jdbcType=VARCHAR},
-      cnSurname = #{cnSurname,jdbcType=VARCHAR},
-      cnGivenname = #{cnGivenname,jdbcType=VARCHAR},
+      cnSurName = #{cnSurName,jdbcType=VARCHAR},
+      cnGivenName = #{cnGivenName,jdbcType=VARCHAR},
       enFirstName = #{enFirstName,jdbcType=VARCHAR},
       enMiddleName = #{enMiddleName,jdbcType=VARCHAR},
       enLastName = #{enLastName,jdbcType=VARCHAR},

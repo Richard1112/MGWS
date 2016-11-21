@@ -10,31 +10,31 @@ public class TEnterpriseBasicInfo extends BaseEntity {
 
 	private Long no;
 
-	private String customerno;
+	private String customerNo;
 	
-	private String cnname;
+	private String cnName;
 	
-	private String enname;
+	private String enName;
 	
-	private String taxno;
+	private String taxNo;
 	
-	private String passportno;
+	private String passportNo;
 	
 	private String occupation;
 	
 	private String comments;
 	
-	private String deleteflg;
+	private String deleteFlg;
 	
-	private Date addtimestamp;
+	private Date addTimestamp;
 	
-	private String adduserkey;
+	private String addUserKey;
 	
-	private Date updtimestamp;
+	private Date updTimestamp;
 	
-	private String upduserkey;
+	private String updUserKey;
 	
-	private String updpgmid;
+	private String updPgmId;
 
 	public Long getNo() {
 		return no;
@@ -44,44 +44,44 @@ public class TEnterpriseBasicInfo extends BaseEntity {
 		this.no = no;
 	}
 
-	public String getCustomerno() {
-		return customerno;
+	public String getCustomerNo() {
+		return customerNo;
 	}
 
-	public void setCustomerno(String customerno) {
-		this.customerno = customerno;
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
 	}
 
-	public String getCnname() {
-		return cnname;
+	public String getCnName() {
+		return cnName;
 	}
 
-	public void setCnname(String cnname) {
-		this.cnname = cnname;
+	public void setCnName(String cnName) {
+		this.cnName = cnName;
 	}
 
-	public String getEnname() {
-		return enname;
+	public String getEnName() {
+		return enName;
 	}
 
-	public void setEnname(String enname) {
-		this.enname = enname;
+	public void setEnName(String enName) {
+		this.enName = enName;
 	}
 
-	public String getTaxno() {
-		return taxno;
+	public String getTaxNo() {
+		return taxNo;
 	}
 
-	public void setTaxno(String taxno) {
-		this.taxno = taxno;
+	public void setTaxNo(String taxNo) {
+		this.taxNo = taxNo;
 	}
 
-	public String getPassportno() {
-		return passportno;
+	public String getPassportNo() {
+		return passportNo;
 	}
 
-	public void setPassportno(String passportno) {
-		this.passportno = passportno;
+	public void setPassportNo(String passportNo) {
+		this.passportNo = passportNo;
 	}
 
 	public String getOccupation() {
@@ -100,52 +100,52 @@ public class TEnterpriseBasicInfo extends BaseEntity {
 		this.comments = comments;
 	}
 
-	public String getDeleteflg() {
-		return deleteflg;
+	public String getDeleteFlg() {
+		return deleteFlg;
 	}
 
-	public void setDeleteflg(String deleteflg) {
-		this.deleteflg = deleteflg;
+	public void setDeleteFlg(String deleteFlg) {
+		this.deleteFlg = deleteFlg;
 	}
 
-	public Date getAddtimestamp() {
-		return addtimestamp;
+	public Date getAddTimestamp() {
+		return addTimestamp;
 	}
 
-	public void setAddtimestamp(Date addtimestamp) {
-		this.addtimestamp = addtimestamp;
+	public void setAddTimestamp(Date addTimestamp) {
+		this.addTimestamp = addTimestamp;
 	}
 
-	public String getAdduserkey() {
-		return adduserkey;
+	public String getAddUserKey() {
+		return addUserKey;
 	}
 
-	public void setAdduserkey(String adduserkey) {
-		this.adduserkey = adduserkey;
+	public void setAddUserKey(String addUserKey) {
+		this.addUserKey = addUserKey;
 	}
 
-	public Date getUpdtimestamp() {
-		return updtimestamp;
+	public Date getUpdTimestamp() {
+		return updTimestamp;
 	}
 
-	public void setUpdtimestamp(Date updtimestamp) {
-		this.updtimestamp = updtimestamp;
+	public void setUpdTimestamp(Date updTimestamp) {
+		this.updTimestamp = updTimestamp;
 	}
 
-	public String getUpduserkey() {
-		return upduserkey;
+	public String getUpdUserKey() {
+		return updUserKey;
 	}
 
-	public void setUpduserkey(String upduserkey) {
-		this.upduserkey = upduserkey;
+	public void setUpdUserKey(String updUserKey) {
+		this.updUserKey = updUserKey;
 	}
 
-	public String getUpdpgmid() {
-		return updpgmid;
+	public String getUpdPgmId() {
+		return updPgmId;
 	}
 
-	public void setUpdpgmid(String updpgmid) {
-		this.updpgmid = updpgmid;
+	public void setUpdPgmId(String updPgmId) {
+		this.updPgmId = updPgmId;
 	}
-	
+
 }

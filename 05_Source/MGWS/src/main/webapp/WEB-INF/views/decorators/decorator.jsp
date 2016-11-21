@@ -61,6 +61,12 @@
 								<span class="fontinfo font_ml">Contact Us</span>
 							</a>
 				        </li>
+				        <li id="contactus_li">
+				        	<a href="${ctx}/products/init">
+								<span class="fontshow font_ml">产品查询</span>
+								<span class="fontinfo font_ml">Products Search</span>
+							</a>
+				        </li>
 				    </ul>
 				</div>
 			</div>

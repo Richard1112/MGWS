@@ -1,30 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.org.mgws.dao.TCustomerLoginInfoDao">
+<mapper namespace="customerLoginInfoMapper">
   <resultMap id="BaseResultMap" type="com.org.mgws.entity.TCustomerLoginInfo" >
     <id column="no" property="no" jdbcType="BIGINT" />
-    <result column="customerNo" property="customerno" jdbcType="VARCHAR" />
-    <result column="loginId" property="loginid" jdbcType="VARCHAR" />
-    <result column="loginPass" property="loginpass" jdbcType="VARCHAR" />
+    <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
+    <result column="loginId" property="loginId" jdbcType="VARCHAR" />
+    <result column="loginPass" property="loginPass" jdbcType="VARCHAR" />
     <result column="salt" property="salt" jdbcType="VARCHAR" />
-    <result column="loginStatus" property="loginstatus" jdbcType="CHAR" />
-    <result column="canLogin" property="canlogin" jdbcType="CHAR" />
-    <result column="deleteFlg" property="deleteflg" jdbcType="CHAR" />
-    <result column="addTimestamp" property="addtimestamp" jdbcType="TIMESTAMP" />
-    <result column="addUserKey" property="adduserkey" jdbcType="VARCHAR" />
-    <result column="updTimestamp" property="updtimestamp" jdbcType="TIMESTAMP" />
-    <result column="updUserKey" property="upduserkey" jdbcType="VARCHAR" />
-    <result column="updPgmId" property="updpgmid" jdbcType="VARCHAR" />
+    <result column="division" property="division" jdbcType="CHAR" />
+    <result column="loginStatus" property="loginStatus" jdbcType="CHAR" />
+    <result column="canLogin" property="canLogin" jdbcType="CHAR" />
+    <result column="deleteFlg" property="deleteFlg" jdbcType="CHAR" />
+    <result column="addTimestamp" property="addTimestamp" jdbcType="TIMESTAMP" />
+    <result column="addUserKey" property="addUserKey" jdbcType="VARCHAR" />
+    <result column="updTimestamp" property="updTimestamp" jdbcType="TIMESTAMP" />
+    <result column="updUserKey" property="updUserKey" jdbcType="VARCHAR" />
+    <result column="updPgmId" property="updPgmId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="BasicInfo" type="com.org.mgws.dto.UserBasicInfo" >
+    <id column="no" property="id" jdbcType="BIGINT" />
+    <result column="customerNo" property="customerNo" jdbcType="VARCHAR" />
+    <result column="loginId" property="loginId" jdbcType="VARCHAR" />
+    <result column="division" property="division" jdbcType="VARCHAR" />
+    <result column="customerName" property="customerName" jdbcType="VARCHAR" />
+    <result column="registDate" property="registDate" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    no, customerNo, loginId, loginPass, salt, loginStatus, canLogin, deleteFlg, addTimestamp, 
+    no, customerNo, loginId, loginPass, salt, division, loginStatus, canLogin, deleteFlg, addTimestamp, 
     addUserKey, updTimestamp, updUserKey, updPgmId
+  </sql>
+  <sql id="BasicInfo_Column_List" >
+    a.no, a.customerNo, a.loginId, a.division as customerType, 
+    case when b.cnSurName is not null then concat(b.cnSurName, b.cnGivenName) when c.cnName is not null then c.cnName end as customerName,
+    DATE_FORMAT(a.addTimestamp,'%Y/%m/%d') as registDate
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from t_customer_login_info
     where no = #{no,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectAllCustomer" resultMap="BasicInfo" parameterType="java.lang.String" >
+    select 
+    <include refid="BasicInfo_Column_List" />
+    from t_customer_login_info a left join t_individual_basic_info b on a.customerNo = b.customerNo 
+    left join t_enterprise_basic_info c on a.customerNo = c.customerNo 
+    <if test="customerType == '0'" >
+	    <if test="customerName != null and customerName != ''" >
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
+    </if>
+    <if test="customerType == '1'" >
+        <if test="customerName != null and customerName != ''" >
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
+    </if>
+    <if test="customerType == '2'" >
+        <if test="customerName != null and customerName != ''" >
+	        and c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
+    </if>
+  </select>
+  <select id="selectAllCustomerCount" resultType="int" parameterType="java.lang.String" >
+    select 
+    count(1)
+    from t_customer_login_info a left join t_individual_basic_info b on a.customerNo = b.customerNo 
+    left join t_enterprise_basic_info c on a.customerNo = c.customerNo 
+    <if test="customerType == '0'" >
+	    <if test="customerName != null and customerName != ''" >
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
+    </if>
+    <if test="customerType == '1'" >
+        <if test="customerName != null and customerName != ''" >
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
+    </if>
+    <if test="customerType == '2'" >
+        <if test="customerName != null and customerName != ''" >
+	        and c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	    </if>
+    </if>
+  </select>
+  <select id="selectByLoginId" resultMap="BaseResultMap" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer_login_info
+    where loginId = #{loginId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from t_customer_login_info
@@ -36,9 +103,9 @@
       canLogin, deleteFlg, addTimestamp, 
       addUserKey, updTimestamp, updUserKey, 
       updPgmId)
-    values (#{no,jdbcType=BIGINT}, #{customerno,jdbcType=VARCHAR}, #{loginid,jdbcType=VARCHAR}, 
-      #{loginpass,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{loginstatus,jdbcType=CHAR}, 
-      #{canlogin,jdbcType=CHAR}, #{deleteflg,jdbcType=CHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
+    values (#{no,jdbcType=BIGINT}, #{customerNo,jdbcType=VARCHAR}, #{loginId,jdbcType=VARCHAR}, 
+      #{loginPass,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{loginStatus,jdbcType=CHAR}, 
+      #{canLogin,jdbcType=CHAR}, #{deleteFlg,jdbcType=CHAR}, #{addtimestamp,jdbcType=TIMESTAMP}, 
       #{adduserkey,jdbcType=VARCHAR}, #{updtimestamp,jdbcType=TIMESTAMP}, #{upduserkey,jdbcType=VARCHAR}, 
       #{updpgmid,jdbcType=VARCHAR})
   </insert>
@@ -48,25 +115,25 @@
       <if test="no != null" >
         no,
       </if>
-      <if test="customerno != null" >
+      <if test="customerNo != null" >
         customerNo,
       </if>
-      <if test="loginid != null" >
+      <if test="loginId != null" >
         loginId,
       </if>
-      <if test="loginpass != null" >
+      <if test="loginPass != null" >
         loginPass,
       </if>
       <if test="salt != null" >
         salt,
       </if>
-      <if test="loginstatus != null" >
+      <if test="loginStatus != null" >
         loginStatus,
       </if>
-      <if test="canlogin != null" >
+      <if test="canLogin != null" >
         canLogin,
       </if>
-      <if test="deleteflg != null" >
+      <if test="deleteFlg != null" >
         deleteFlg,
       </if>
       <if test="addtimestamp != null" >
@@ -89,26 +156,26 @@
       <if test="no != null" >
         #{no,jdbcType=BIGINT},
       </if>
-      <if test="customerno != null" >
-        #{customerno,jdbcType=VARCHAR},
+      <if test="customerNo != null" >
+        #{customerNo,jdbcType=VARCHAR},
       </if>
-      <if test="loginid != null" >
-        #{loginid,jdbcType=VARCHAR},
+      <if test="loginId != null" >
+        #{loginId,jdbcType=VARCHAR},
       </if>
-      <if test="loginpass != null" >
-        #{loginpass,jdbcType=VARCHAR},
+      <if test="loginPass != null" >
+        #{loginPass,jdbcType=VARCHAR},
       </if>
       <if test="salt != null" >
         #{salt,jdbcType=VARCHAR},
       </if>
-      <if test="loginstatus != null" >
-        #{loginstatus,jdbcType=CHAR},
+      <if test="loginStatus != null" >
+        #{loginStatus,jdbcType=CHAR},
       </if>
-      <if test="canlogin != null" >
-        #{canlogin,jdbcType=CHAR},
+      <if test="canLogin != null" >
+        #{canLogin,jdbcType=CHAR},
       </if>
-      <if test="deleteflg != null" >
-        #{deleteflg,jdbcType=CHAR},
+      <if test="deleteFlg != null" >
+        #{deleteFlg,jdbcType=CHAR},
       </if>
       <if test="addtimestamp != null" >
         #{addtimestamp,jdbcType=TIMESTAMP},
@@ -130,26 +197,26 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >
     update t_customer_login_info
     <set >
-      <if test="customerno != null" >
-        customerNo = #{customerno,jdbcType=VARCHAR},
+      <if test="customerNo != null" >
+        customerNo = #{customerNo,jdbcType=VARCHAR},
       </if>
-      <if test="loginid != null" >
-        loginId = #{loginid,jdbcType=VARCHAR},
+      <if test="loginId != null" >
+        loginId = #{loginId,jdbcType=VARCHAR},
       </if>
-      <if test="loginpass != null" >
-        loginPass = #{loginpass,jdbcType=VARCHAR},
+      <if test="loginPass != null" >
+        loginPass = #{loginPass,jdbcType=VARCHAR},
       </if>
       <if test="salt != null" >
         salt = #{salt,jdbcType=VARCHAR},
       </if>
-      <if test="loginstatus != null" >
-        loginStatus = #{loginstatus,jdbcType=CHAR},
+      <if test="loginStatus != null" >
+        loginStatus = #{loginStatus,jdbcType=CHAR},
       </if>
-      <if test="canlogin != null" >
-        canLogin = #{canlogin,jdbcType=CHAR},
+      <if test="canLogin != null" >
+        canLogin = #{canLogin,jdbcType=CHAR},
       </if>
-      <if test="deleteflg != null" >
-        deleteFlg = #{deleteflg,jdbcType=CHAR},
+      <if test="deleteFlg != null" >
+        deleteFlg = #{deleteFlg,jdbcType=CHAR},
       </if>
       <if test="addtimestamp != null" >
         addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
@@ -171,13 +238,13 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >
     update t_customer_login_info
-    set customerNo = #{customerno,jdbcType=VARCHAR},
-      loginId = #{loginid,jdbcType=VARCHAR},
-      loginPass = #{loginpass,jdbcType=VARCHAR},
+    set customerNo = #{customerNo,jdbcType=VARCHAR},
+      loginId = #{loginId,jdbcType=VARCHAR},
+      loginPass = #{loginPass,jdbcType=VARCHAR},
       salt = #{salt,jdbcType=VARCHAR},
-      loginStatus = #{loginstatus,jdbcType=CHAR},
-      canLogin = #{canlogin,jdbcType=CHAR},
-      deleteFlg = #{deleteflg,jdbcType=CHAR},
+      loginStatus = #{loginStatus,jdbcType=CHAR},
+      canLogin = #{canLogin,jdbcType=CHAR},
+      deleteFlg = #{deleteFlg,jdbcType=CHAR},
       addTimestamp = #{addtimestamp,jdbcType=TIMESTAMP},
       addUserKey = #{adduserkey,jdbcType=VARCHAR},
       updTimestamp = #{updtimestamp,jdbcType=TIMESTAMP},
@@ -223,26 +290,26 @@
 		<include refid="Base_Column_List" />
 		from t_customer_login_info
 		where 1=1
-		  <if test="customerno != null" >
-	        and customerNo = #{customerno,jdbcType=VARCHAR}
+		  <if test="customerNo != null" >
+	        and customerNo = #{customerNo,jdbcType=VARCHAR}
 	      </if>
-	      <if test="loginid != null" >
-	        and loginId = #{loginid,jdbcType=VARCHAR}
+	      <if test="loginId != null" >
+	        and loginId = #{loginId,jdbcType=VARCHAR}
 	      </if>
-	      <if test="loginpass != null" >
-	        and loginPass = #{loginpass,jdbcType=VARCHAR}
+	      <if test="loginPass != null" >
+	        and loginPass = #{loginPass,jdbcType=VARCHAR}
 	      </if>
 	      <if test="salt != null" >
 	        and salt = #{salt,jdbcType=VARCHAR}
 	      </if>
-	      <if test="loginstatus != null" >
-	        and loginStatus = #{loginstatus,jdbcType=CHAR}
+	      <if test="loginStatus != null" >
+	        and loginStatus = #{loginStatus,jdbcType=CHAR}
 	      </if>
-	      <if test="canlogin != null" >
-	        and canLogin = #{canlogin,jdbcType=CHAR}
+	      <if test="canLogin != null" >
+	        and canLogin = #{canLogin,jdbcType=CHAR}
 	      </if>
-	      <if test="deleteflg != null" >
-	        and deleteFlg = #{deleteflg,jdbcType=CHAR}
+	      <if test="deleteFlg != null" >
+	        and deleteFlg = #{deleteFlg,jdbcType=CHAR}
 	      </if>
 	</select>
 	

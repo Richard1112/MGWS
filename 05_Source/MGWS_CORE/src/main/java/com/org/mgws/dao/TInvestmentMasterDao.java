@@ -1,6 +1,10 @@
 package com.org.mgws.dao;
 
-import com.org.mgws.entity.TInvestmentMaster;
+import java.util.List;
+import java.util.Map;
+
+import com.org.mgws.base.page.Pagination;
+import com.org.mgws.base.page.PagingResult;
 import com.org.mgws.entity.TInvestmentMaster;
 
 public interface TInvestmentMasterDao {
@@ -23,4 +27,10 @@ public interface TInvestmentMasterDao {
 	 * 根据主键更新记录
 	 */
 	int updateByPrimaryKey(TInvestmentMaster record);
+
+	PagingResult<Map<String, Object>> queryByPage(Pagination page);
+
+	PagingResult<Map<String, Object>> queryByPage2(Pagination page);
+
+	List<Map<String, Object>> queryAll();
 }

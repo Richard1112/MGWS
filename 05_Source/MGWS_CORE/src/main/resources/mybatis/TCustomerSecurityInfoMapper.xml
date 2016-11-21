@@ -169,7 +169,7 @@
     where customerNo = #{customerNo,jdbcType=VARCHAR}
   </select>
   
-  <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.org.oztt.entity.TCustomerSecurityInfo" >
+  <select id="selectByParam" resultMap="BaseResultMap" parameterType="com.org.mgws.entity.TCustomerSecurityInfo" >
     select 
     <include refid="Base_Column_List" />
     from t_customer_security_info

@@ -10,25 +10,25 @@ public class TCustomerSecurityInfo extends BaseEntity {
 
 	private Long no;
 
-	private String customerno;
+	private String customerNo;
 	
-	private String telno;
+	private String telNo;
 	
-	private String emailaddr;
+	private String emailAddr;
 	
-	private String wechatno;
+	private String wechatNo;
 	
-	private String wechatopenid;
+	private String wechatOpenId;
 	
-	private Date addtimestamp;
+	private Date addTimestamp;
 	
-	private String adduserkey;
+	private String addUserKey;
 	
-	private Date updtimestamp;
+	private Date updTimestamp;
 	
-	private String upduserkey;
+	private String updUserKey;
 	
-	private String updpgmid;
+	private String updPgmId;
 
 	public Long getNo() {
 		return no;
@@ -38,84 +38,84 @@ public class TCustomerSecurityInfo extends BaseEntity {
 		this.no = no;
 	}
 
-	public String getCustomerno() {
-		return customerno;
+	public String getCustomerNo() {
+		return customerNo;
 	}
 
-	public void setCustomerno(String customerno) {
-		this.customerno = customerno;
+	public void setCustomerNo(String customerNo) {
+		this.customerNo = customerNo;
 	}
 
-	public String getTelno() {
-		return telno;
+	public String getTelNo() {
+		return telNo;
 	}
 
-	public void setTelno(String telno) {
-		this.telno = telno;
+	public void setTelNo(String telNo) {
+		this.telNo = telNo;
 	}
 
-	public String getEmailaddr() {
-		return emailaddr;
+	public String getEmailAddr() {
+		return emailAddr;
 	}
 
-	public void setEmailaddr(String emailaddr) {
-		this.emailaddr = emailaddr;
+	public void setEmailAddr(String emailAddr) {
+		this.emailAddr = emailAddr;
 	}
 
-	public String getWechatno() {
-		return wechatno;
+	public String getWechatNo() {
+		return wechatNo;
 	}
 
-	public void setWechatno(String wechatno) {
-		this.wechatno = wechatno;
+	public void setWechatNo(String wechatNo) {
+		this.wechatNo = wechatNo;
 	}
 
-	public String getWechatopenid() {
-		return wechatopenid;
+	public String getWechatOpenId() {
+		return wechatOpenId;
 	}
 
-	public void setWechatopenid(String wechatopenid) {
-		this.wechatopenid = wechatopenid;
+	public void setWechatOpenId(String wechatOpenId) {
+		this.wechatOpenId = wechatOpenId;
 	}
 
-	public Date getAddtimestamp() {
-		return addtimestamp;
+	public Date getAddTimestamp() {
+		return addTimestamp;
 	}
 
-	public void setAddtimestamp(Date addtimestamp) {
-		this.addtimestamp = addtimestamp;
+	public void setAddTimestamp(Date addTimestamp) {
+		this.addTimestamp = addTimestamp;
 	}
 
-	public String getAdduserkey() {
-		return adduserkey;
+	public Date getUpdTimestamp() {
+		return updTimestamp;
 	}
 
-	public void setAdduserkey(String adduserkey) {
-		this.adduserkey = adduserkey;
+	public void setUpdTimestamp(Date updTimestamp) {
+		this.updTimestamp = updTimestamp;
 	}
 
-	public Date getUpdtimestamp() {
-		return updtimestamp;
+	public String getAddUserKey() {
+		return addUserKey;
 	}
 
-	public void setUpdtimestamp(Date updtimestamp) {
-		this.updtimestamp = updtimestamp;
+	public void setAddUserKey(String addUserKey) {
+		this.addUserKey = addUserKey;
 	}
 
-	public String getUpduserkey() {
-		return upduserkey;
+	public String getUpdUserKey() {
+		return updUserKey;
 	}
 
-	public void setUpduserkey(String upduserkey) {
-		this.upduserkey = upduserkey;
+	public void setUpdUserKey(String updUserKey) {
+		this.updUserKey = updUserKey;
 	}
 
-	public String getUpdpgmid() {
-		return updpgmid;
+	public String getUpdPgmId() {
+		return updPgmId;
 	}
 
-	public void setUpdpgmid(String updpgmid) {
-		this.updpgmid = updpgmid;
+	public void setUpdPgmId(String updPgmId) {
+		this.updPgmId = updPgmId;
 	}
 
 }
