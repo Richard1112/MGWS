@@ -1,6 +1,8 @@
 package com.org.mgws.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -29,12 +31,14 @@ public class TPurchaseRecordDaoImpl extends BaseDao implements
 	}
 	@Override
 	public List<PurchaseInfo> selectByCustomerNo1(String customerNo) {
-		return super.select("tPurchaseRecordMapper.selectByCustomerNo1", customerNo);
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("customerNo", customerNo);
+		return super.select("tPurchaseRecordMapper.selectByCustomerNo", param);
 	}
 
 	@Override
 	public List<PurchaseInfo> selectByCustomerNo(String customerNo) {
-		return super.select("tPurchaseRecordMapper.selectByCustomerNo", customerNo);
+		return super.select("tPurchaseRecordMapper.checkByCustomerNo", customerNo);
 	}
 
 	@Override
