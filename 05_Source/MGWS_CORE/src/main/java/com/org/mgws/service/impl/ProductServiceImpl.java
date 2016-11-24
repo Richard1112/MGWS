@@ -183,4 +183,26 @@ public class ProductServiceImpl extends BaseService implements ProductService {
 		tPurchaseRecordDao.deleteByPrimaryKey(record);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.org.mgws.service.ProductService#uploadProductValue(com.org.mgws.
+	 * entity.TInvestmentValue)
+	 */
+	@Override
+	public void uploadProductValue(List<TInvestmentValue> record) {
+		if (record != null) {
+			for (TInvestmentValue tmp : record) {
+				TInvestmentValue tb = tInvestmentValueDao.checkByProductIdAndDate(tmp.getProductId().toString(),
+						tmp.getDate());
+				if (tb != null && tb.getNetValue() != null) {
+					tb.setNetValue(tmp.getNetValue());
+					tInvestmentValueDao.updateByPrimaryKey(tb);
+				} else {
+					tInvestmentValueDao.insert(tmp);
+				}
+			}
+		}
+	}
+
 }

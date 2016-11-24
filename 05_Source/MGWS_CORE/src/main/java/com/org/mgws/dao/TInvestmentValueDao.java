@@ -38,4 +38,5 @@ public interface TInvestmentValueDao {
 
 	PagingResult<Map<String, Object>> queryByPage(Pagination page);
 
+	TInvestmentValue checkByProductIdAndDate(String productId, String date);
 }

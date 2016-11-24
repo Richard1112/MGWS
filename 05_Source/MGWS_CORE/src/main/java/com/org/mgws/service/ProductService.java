@@ -62,4 +62,6 @@ public interface ProductService {
 	boolean checkProductValue(TPurchaseRecord record);
 
 	void deletePurchase(String id);
+
+	void uploadProductValue(List<TInvestmentValue> record);
 }

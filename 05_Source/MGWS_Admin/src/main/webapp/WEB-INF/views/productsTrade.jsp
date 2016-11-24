@@ -33,7 +33,7 @@ line-height:17px;}
 </style>
 </head>
 <body>
-	<form action="#" method="get" class="sidebar-form"
+	<form action="#" method="get" id="mainForm" class="sidebar-form"
 		style="border: none;">
 		<div class="input-group" style="margin: 15px 25px; width: 95%;">
 			<table class="search_table">
@@ -61,6 +61,7 @@ line-height:17px;}
 	<div id="pager"></div>
 
 	<script type="text/javascript">
+		
 		$(function() {
 			pageInit();
 		});
