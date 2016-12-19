@@ -37,16 +37,20 @@ public class UserInfoServiceImpl extends BaseService implements UserInfoService 
 		UserBasicInfo userBasicInfo = new UserBasicInfo();
 		if ("0".equals(division)) {
 			TIndividualBasicInfo tIndividualBasicInfo = tIndividualBasicInfoDao.selectByCustomerNo(customerNo);
-			userBasicInfo.setId(tIndividualBasicInfo.getNo());
-			userBasicInfo.setCustomerNo(tIndividualBasicInfo.getCustomerNo());
-			userBasicInfo.setCnSurName(tIndividualBasicInfo.getCnSurName());
-			userBasicInfo.setCnGivenName(tIndividualBasicInfo.getCnGivenName());
-			userBasicInfo.setSex(tIndividualBasicInfo.getSex());
+			userBasicInfo.setCustomerNo(customerNo);
+			if (tIndividualBasicInfo != null) {
+				userBasicInfo.setId(tIndividualBasicInfo.getNo());
+				userBasicInfo.setCnSurName(tIndividualBasicInfo.getCnSurName());
+				userBasicInfo.setCnGivenName(tIndividualBasicInfo.getCnGivenName());
+				userBasicInfo.setSex(tIndividualBasicInfo.getSex());
+			}
 		} else {
 			TEnterpriseBasicInfo tEnterpriseBasicInfo = tEnterpriseBasicInfoDao.selectByCustomerNo(customerNo);
-			userBasicInfo.setCnName(tEnterpriseBasicInfo.getCnName());
-			userBasicInfo.setCustomerNo(tEnterpriseBasicInfo.getCustomerNo());
-			userBasicInfo.setId(tEnterpriseBasicInfo.getNo());
+			userBasicInfo.setCustomerNo(customerNo);
+			if (tEnterpriseBasicInfo != null) {
+				userBasicInfo.setCnName(tEnterpriseBasicInfo.getCnName());
+				userBasicInfo.setId(tEnterpriseBasicInfo.getNo());
+			}
 		}
 		return userBasicInfo;
 	}
@@ -61,19 +65,34 @@ public class UserInfoServiceImpl extends BaseService implements UserInfoService 
 	@Override
 	public void updateBasicInfo(UserBasicInfo userBasicInfo) {
 		if ("0".equals(userBasicInfo.getDivision())) {
+			TIndividualBasicInfo tmp = tIndividualBasicInfoDao.selectByCustomerNo(userBasicInfo.getCustomerNo());
 			TIndividualBasicInfo tIndividualBasicInfo = new TIndividualBasicInfo();
 			tIndividualBasicInfo.setNo(userBasicInfo.getId());
 			tIndividualBasicInfo.setCustomerNo(userBasicInfo.getCustomerNo());
 			tIndividualBasicInfo.setCnSurName(userBasicInfo.getCnSurName());
 			tIndividualBasicInfo.setCnGivenName(userBasicInfo.getCnGivenName());
 			tIndividualBasicInfo.setSex(userBasicInfo.getSex());
-			tIndividualBasicInfoDao.updateByPrimaryKeySelective(tIndividualBasicInfo);
+
+			if (tmp != null) {
+				tIndividualBasicInfoDao.updateByPrimaryKeySelective(tIndividualBasicInfo);
+			} else {
+				tIndividualBasicInfo.setDeleteFlg("0");
+				tIndividualBasicInfoDao.insertSelective(tIndividualBasicInfo);
+			}
 		} else {
 			TEnterpriseBasicInfo tEnterpriseBasicInfo = new TEnterpriseBasicInfo();
 			tEnterpriseBasicInfo.setCnName(userBasicInfo.getCnName());
 			tEnterpriseBasicInfo.setNo(userBasicInfo.getId());
 			tEnterpriseBasicInfo.setCustomerNo(userBasicInfo.getCustomerNo());
-			tEnterpriseBasicInfoDao.updateByPrimaryKeySelective(tEnterpriseBasicInfo);
+
+			TEnterpriseBasicInfo tmp = tEnterpriseBasicInfoDao.selectByCustomerNo(userBasicInfo.getCustomerNo());
+			if (tmp != null) {
+				tEnterpriseBasicInfoDao.updateByPrimaryKeySelective(tEnterpriseBasicInfo);
+			} else {
+				tEnterpriseBasicInfo.setDeleteFlg("0");
+				tEnterpriseBasicInfoDao.insertSelective(tEnterpriseBasicInfo);
+			}
+
 		}
 	}
 

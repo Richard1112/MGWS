@@ -19,11 +19,10 @@
 						class="hidden-xs"><shiro:principal /></span>
 				</a>
 					<ul class="dropdown-menu">
+					
 						<!-- Menu Footer-->
 						<li class="user-footer">
-							<div class="pull-left">
-								<a href="#" class="btn btn-default btn-flat">Detail Info</a>
-							</div>
+							
 							<div class="pull-right">
 								<a href="${basePath}/logout" class="btn btn-default btn-flat">Sign
 									out</a>

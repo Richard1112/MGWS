@@ -136,6 +136,9 @@
       <if test="deleteFlg != null" >
         deleteFlg,
       </if>
+      <if test="division != null" >
+        division,
+      </if>
       <if test="addtimestamp != null" >
         addTimestamp,
       </if>
@@ -173,6 +176,9 @@
       </if>
       <if test="canLogin != null" >
         #{canLogin,jdbcType=CHAR},
+      </if>
+      <if test="division != null" >
+        #{division,jdbcType=CHAR},
       </if>
       <if test="deleteFlg != null" >
         #{deleteFlg,jdbcType=CHAR},
