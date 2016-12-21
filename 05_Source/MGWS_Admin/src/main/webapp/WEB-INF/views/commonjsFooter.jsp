@@ -20,7 +20,7 @@
 <script src="${basePath}/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 <script src="${basePath}/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="${basePath}/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<%-- <script src="${basePath}/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> --%>
 <script src="${basePath}/static/jqGrid/js/i18n/grid.locale-cn.js"></script>
 <script src="${basePath}/static/jqGrid/js/jquery.jqGrid.src.js"
 	type="text/javascript"></script>

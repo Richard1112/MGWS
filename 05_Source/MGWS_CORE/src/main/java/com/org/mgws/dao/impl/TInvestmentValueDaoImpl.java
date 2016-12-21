@@ -1,5 +1,6 @@
 package com.org.mgws.dao.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -63,6 +64,22 @@ public class TInvestmentValueDaoImpl extends BaseDao implements
 	@Override
 	public TPurchaseRecord getTInvestmentValue(String customerNo) {
 		return super.selectOne("tPurchaseRecordMapper.selectAllByParam", customerNo);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.org.mgws.dao.TInvestmentValueDao#checkByProductIdAndDate(java.lang.
+	 * String, java.lang.String)
+	 */
+	@Override
+	public TInvestmentValue checkByProductIdAndDate(String productId, String date) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("productId", productId);
+		param.put("dateFrom", date);
+		param.put("dateTo", date);
+		return super.selectOne("tInvestmentValueMapper.selectByProductId2", param);
 	}
 
 }

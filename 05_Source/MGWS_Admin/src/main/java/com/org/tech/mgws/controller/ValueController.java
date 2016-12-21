@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,6 +39,16 @@ public class ValueController extends BaseController {
 		return "/valueList";
 	}
 
+	@RequestMapping(value = "/uploadInit")
+	public String upload(Model model) {
+		try {
+			List<Map<String, Object>> pList = productService.getAllProducts();
+			model.addAttribute("pList", pList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/exupload";
+	}
 	@RequestMapping(value = "/value", method = RequestMethod.GET)
 	@ResponseBody
 	public PagingResult<Map<String, Object>> getAllValue(HttpServletRequest req, HttpServletResponse response) {

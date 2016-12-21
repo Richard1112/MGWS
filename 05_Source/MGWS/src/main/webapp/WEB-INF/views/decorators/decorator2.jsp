@@ -12,6 +12,8 @@
 	href="${ctx}/dist/css/AdminLTE.css" />
 <link rel="stylesheet" type="text/css"
 	href="${ctx}/dist/css/skins/skin-blue-light.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="${ctx}/dist/css/skins/skin-green-light.min.css" />
 <%@ include file="../commoncssHead.jsp"%>
 <title><sitemesh:write property='title' /></title>
 <sitemesh:write property='head' />
@@ -19,7 +21,7 @@
 
 <!-- Body BEGIN -->
 <body id="container"
-	class="hold-transition skin-blue-light sidebar-mini">
+	class="hold-transition skin-green-light sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Header Navbar: style can be found in header.less -->
@@ -32,7 +34,7 @@
 						<!-- User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> <img
-								src="${ctx }/dist/img/user2-160x160.jpg" class="user-image"
+								src="${ctx }/dist/img/avatar5.png" class="user-image"
 								alt="User Image"> <span class="hidden-xs"> <c:if
 										test="${division==0}">
 								${nick_name}
