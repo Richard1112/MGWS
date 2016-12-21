@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `mgws` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `mgws` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 USE `mgws`;
 -- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
 --
--- Host: 127.0.0.1    Database: mgws
+-- Host: 211.152.62.200    Database: mgws
 -- ------------------------------------------------------
--- Server version	5.6.23
+-- Server version	5.1.73
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -217,7 +217,7 @@ CREATE TABLE `t_customer_login_info` (
   `loginId` varchar(50) NOT NULL,
   `loginPass` varchar(255) NOT NULL,
   `salt` varchar(48) DEFAULT NULL,
-  `division` char(1) NOT NULL,
+  `division` char(1) DEFAULT NULL,
   `loginStatus` char(1) DEFAULT NULL,
   `canLogin` char(1) DEFAULT NULL,
   `deleteFlg` char(1) NOT NULL,
@@ -227,7 +227,7 @@ CREATE TABLE `t_customer_login_info` (
   `updUserKey` varchar(40) DEFAULT NULL,
   `updPgmId` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,6 +236,7 @@ CREATE TABLE `t_customer_login_info` (
 
 LOCK TABLES `t_customer_login_info` WRITE;
 /*!40000 ALTER TABLE `t_customer_login_info` DISABLE KEYS */;
+INSERT INTO `t_customer_login_info` VALUES (1,'CS20161219237244','18036825586','fafbe95c9d57f9ee20354dab502e2e93','4da058c6af22d7893ad7478d36313327',NULL,'1','0','0','2016-12-19 08:59:53',NULL,'2016-12-19 08:59:55',NULL,NULL),(2,'CS20161219194091','richard.ma@tech-coffee.com','431f69cb81b6719cd3f454465499812e','39c4c69357be333197b7d8d7a0307c15',NULL,'1','0','0','2016-12-19 09:02:06',NULL,'2016-12-19 09:02:21',NULL,NULL),(3,'CS20161220828826','13774565043','1f92b841eb8de2fc9f92a8b3eb29c025','f05b7b338176ee2cd03adfb741ea6121',NULL,'1','0','0','2016-12-20 02:29:56',NULL,'2016-12-20 02:31:17',NULL,NULL);
 /*!40000 ALTER TABLE `t_customer_login_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,30 +400,6 @@ LOCK TABLES `t_investment_value` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `t_no_customer`
---
-
-DROP TABLE IF EXISTS `t_no_customer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `t_no_customer` (
-  `no` bigint(12) NOT NULL AUTO_INCREMENT,
-  `date` varchar(8) NOT NULL,
-  `maxNo` varchar(16) NOT NULL,
-  PRIMARY KEY (`no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `t_no_customer`
---
-
-LOCK TABLES `t_no_customer` WRITE;
-/*!40000 ALTER TABLE `t_no_customer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `t_no_customer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `t_purchase_record`
 --
 
@@ -472,7 +449,7 @@ CREATE TABLE `t_recruitment_info` (
   `updUserKey` varchar(40) DEFAULT NULL,
   `updPgmId` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -481,7 +458,7 @@ CREATE TABLE `t_recruitment_info` (
 
 LOCK TABLES `t_recruitment_info` WRITE;
 /*!40000 ALTER TABLE `t_recruitment_info` DISABLE KEYS */;
-INSERT INTO `t_recruitment_info` VALUES (1,'RE20160620000001','2016-06-21 02:45:13','1','深度学习工程师/科学家',8,'上海','数学专业或者深度学习专业，金融模型研究和开发工程师。','<p>									</p><p>&nbsp;</p><p>&nbsp;</p><p><span style=\"font-family: &quot;Helvetica Neue&quot;; font-size: 14px;\">数学专业或者深度学习专业，金融模型研究和开发。</span><span style=\"font-family: 宋体, arial, Verdana, sans-serif; font-size: 14px;\">做过图像识别，语音识别或者自动驾驶的，在天池比赛或者di-tech或者任何国际大数据比赛拿过名次的优先。</span></p><p><span style=\"font-family: 宋体; font-size: 16px;\">The&nbsp;deep&nbsp;learning&nbsp;expert&nbsp;will&nbsp;work&nbsp;in&nbsp;a&nbsp;small&nbsp;and&nbsp;dynamic&nbsp;team&nbsp;to&nbsp;design&nbsp;and&nbsp;implement&nbsp;state&nbsp;of&nbsp;the&nbsp;art<br/>neural&nbsp;network&nbsp;algorithms&nbsp;for&nbsp;automative&nbsp;trading.<br/>Key&nbsp;Qualifications<br/>•&nbsp;Understanding&nbsp;of&nbsp;state&nbsp;of&nbsp;the&nbsp;art&nbsp;deep&nbsp;learning&nbsp;techniques<br/>•&nbsp;Strong&nbsp;understanding&nbsp;of&nbsp;CNNs,&nbsp;recurrent&nbsp;nets,&nbsp;supervised&nbsp;and&nbsp;unsupervised&nbsp;learning,&nbsp;and<br/>optimization&nbsp;techniques<br/>•&nbsp;Experience&nbsp;working&nbsp;with&nbsp;one&nbsp;or&nbsp;more&nbsp;deep&nbsp;learning&nbsp;frameworks&nbsp;such&nbsp;as&nbsp;Caffe,&nbsp;Theano,&nbsp;Torch,<br/>TensorFlow,&nbsp;MXNet<br/>•&nbsp;Strong&nbsp;desire&nbsp;and&nbsp;drive&nbsp;to&nbsp;build&nbsp;robust&nbsp;and&nbsp;efficient&nbsp;solution&nbsp;in&nbsp;consumer&nbsp;products&nbsp;using&nbsp;deep<br/>learning&nbsp;technology<br/>•&nbsp;Solid&nbsp;Python&nbsp;and&nbsp;C/C++&nbsp;development&nbsp;skills<br/>•&nbsp;Team&nbsp;player<br/>•&nbsp;Self&nbsp;motivated<br/>•&nbsp;Excellent&nbsp;problem&nbsp;solving&nbsp;skills<br/>•&nbsp;Excellent&nbsp;communication&nbsp;skills<br/>•&nbsp;Can&nbsp;work&nbsp;under&nbsp;stress&nbsp;and&nbsp;uncertainty<br/>•&nbsp;Fast&nbsp;learner<br/>MS/PhD&nbsp;in&nbsp;Machine&nbsp;Learning,&nbsp;Deep&nbsp;Learning,&nbsp;Computer&nbsp;Vision&nbsp;or&nbsp;similar<br/>Alternatively,&nbsp;a&nbsp;comparable&nbsp;industry&nbsp;career,&nbsp;with&nbsp;significant&nbsp;experience&nbsp;in&nbsp;state-of-the-art&nbsp;Deep&nbsp;Learning,<br/>Computer&nbsp;Vision,&nbsp;Machine&nbsp;Learning&nbsp;and&nbsp;Pattern&nbsp;Recognition&nbsp;fields<br/>Additional&nbsp;Requirements<br/>Solid&nbsp;fundamental&nbsp;computer&nbsp;vision&nbsp;methods&nbsp;and&nbsp;concepts&nbsp;(preferred)<br/>Experience&nbsp;shipping&nbsp;products,&nbsp;especially&nbsp;ones&nbsp;incorporating&nbsp;machine&nbsp;learning&nbsp;(preferred)<br/>Experience/knowledge&nbsp;of&nbsp;GPU&nbsp;computing/CUDA&nbsp;kernels&nbsp;(preferred)<br/>Experience/knowledge&nbsp;of&nbsp;software&nbsp;development&nbsp;on&nbsp;embedded&nbsp;platforms&nbsp;(preferred)</span></p><p style=\"font: 14px/normal Calibri; text-align: justify; color: rgb(0, 0, 0); text-indent: 0px; letter-spacing: normal; margin-top: 0px; margin-bottom: 0px; margin-left: 0px; word-spacing: 0px; white-space: normal; widows: 1; font-size-adjust: none; font-stretch: normal; background-color: rgb(255, 255, 255); -webkit-text-stroke-width: 0px;\"><span style=\"font-family: Calibri;\">&nbsp;</span></p><p><span style=\"font-family: 宋体, arial, Verdana, sans-serif; font-size: 14px;\"><span style=\"font-family: 宋体; font-size: 16px;\"></span></span></p><p><br/></p><p>&nbsp;</p><p>&nbsp;</p><p>\r\n								</p>',10,'2016-06-19 16:00:00','admin','2016-08-27 03:35:22','admin','RecruitmentController');
+INSERT INTO `t_recruitment_info` VALUES (1,'RE20160620000001','2016-06-21 02:45:13','1','深度学习工程师/科学家',8,'上海','数学专业或者深度学习专业，金融模型研究和开发工程师。','<p>									</p><p>&nbsp;</p><p>&nbsp;</p><p><span style=\"font-family: &quot;Helvetica Neue&quot;; font-size: 14px;\">数学专业或者深度学习专业，金融模型研究和开发。</span><span style=\"font-family: 宋体, arial, Verdana, sans-serif; font-size: 14px;\">做过图像识别，语音识别或者自动驾驶的，在天池比赛或者di-tech或者任何国际大数据比赛拿过名次的优先。</span></p><p><span style=\"font-family: 宋体; font-size: 16px;\">The&nbsp;deep&nbsp;learning&nbsp;expert&nbsp;will&nbsp;work&nbsp;in&nbsp;a&nbsp;small&nbsp;and&nbsp;dynamic&nbsp;team&nbsp;to&nbsp;design&nbsp;and&nbsp;implement&nbsp;state&nbsp;of&nbsp;the&nbsp;art<br/>neural&nbsp;network&nbsp;algorithms&nbsp;for&nbsp;automative&nbsp;trading.<br/>Key&nbsp;Qualifications<br/>•&nbsp;Understanding&nbsp;of&nbsp;state&nbsp;of&nbsp;the&nbsp;art&nbsp;deep&nbsp;learning&nbsp;techniques<br/>•&nbsp;Strong&nbsp;understanding&nbsp;of&nbsp;CNNs,&nbsp;recurrent&nbsp;nets,&nbsp;supervised&nbsp;and&nbsp;unsupervised&nbsp;learning,&nbsp;and<br/>optimization&nbsp;techniques<br/>•&nbsp;Experience&nbsp;working&nbsp;with&nbsp;one&nbsp;or&nbsp;more&nbsp;deep&nbsp;learning&nbsp;frameworks&nbsp;such&nbsp;as&nbsp;Caffe,&nbsp;Theano,&nbsp;Torch,<br/>TensorFlow,&nbsp;MXNet<br/>•&nbsp;Strong&nbsp;desire&nbsp;and&nbsp;drive&nbsp;to&nbsp;build&nbsp;robust&nbsp;and&nbsp;efficient&nbsp;solution&nbsp;in&nbsp;consumer&nbsp;products&nbsp;using&nbsp;deep<br/>learning&nbsp;technology<br/>•&nbsp;Solid&nbsp;Python&nbsp;and&nbsp;C/C++&nbsp;development&nbsp;skills<br/>•&nbsp;Team&nbsp;player<br/>•&nbsp;Self&nbsp;motivated<br/>•&nbsp;Excellent&nbsp;problem&nbsp;solving&nbsp;skills<br/>•&nbsp;Excellent&nbsp;communication&nbsp;skills<br/>•&nbsp;Can&nbsp;work&nbsp;under&nbsp;stress&nbsp;and&nbsp;uncertainty<br/>•&nbsp;Fast&nbsp;learner<br/>MS/PhD&nbsp;in&nbsp;Machine&nbsp;Learning,&nbsp;Deep&nbsp;Learning,&nbsp;Computer&nbsp;Vision&nbsp;or&nbsp;similar<br/>Alternatively,&nbsp;a&nbsp;comparable&nbsp;industry&nbsp;career,&nbsp;with&nbsp;significant&nbsp;experience&nbsp;in&nbsp;state-of-the-art&nbsp;Deep&nbsp;Learning,<br/>Computer&nbsp;Vision,&nbsp;Machine&nbsp;Learning&nbsp;and&nbsp;Pattern&nbsp;Recognition&nbsp;fields<br/>Additional&nbsp;Requirements<br/>Solid&nbsp;fundamental&nbsp;computer&nbsp;vision&nbsp;methods&nbsp;and&nbsp;concepts&nbsp;(preferred)<br/>Experience&nbsp;shipping&nbsp;products,&nbsp;especially&nbsp;ones&nbsp;incorporating&nbsp;machine&nbsp;learning&nbsp;(preferred)<br/>Experience/knowledge&nbsp;of&nbsp;GPU&nbsp;computing/CUDA&nbsp;kernels&nbsp;(preferred)<br/>Experience/knowledge&nbsp;of&nbsp;software&nbsp;development&nbsp;on&nbsp;embedded&nbsp;platforms&nbsp;(preferred)</span></p><p style=\"font: 14px/normal Calibri; text-align: justify; color: rgb(0, 0, 0); text-indent: 0px; letter-spacing: normal; margin-top: 0px; margin-bottom: 0px; margin-left: 0px; word-spacing: 0px; white-space: normal; widows: 1; font-size-adjust: none; font-stretch: normal; background-color: rgb(255, 255, 255); -webkit-text-stroke-width: 0px;\"><span style=\"font-family: Calibri;\">&nbsp;</span></p><p><span style=\"font-family: 宋体, arial, Verdana, sans-serif; font-size: 14px;\"><span style=\"font-family: 宋体; font-size: 16px;\"></span></span></p><p><br/></p><p>&nbsp;</p><p>&nbsp;</p><p>\r\n								</p>',10,'2016-06-19 16:00:00','admin','2016-08-27 03:35:22','admin','RecruitmentController'),(3,'RE20161026784698','2016-10-26 05:14:05','1','量化交易专家/实习生',8,'上海','计算机、数学、物理专业背景硕士及以上学历','<p>									</p><p>&nbsp;</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p>任职要求：<br/>1. 超过3年及以上的程序设计经验，如C++, C, Java, Python 或其他高级语言；<br/>2. 熟悉深度神经网络和常用的模型,如CNN,RNN,LSTM, DBN,DRL ；<br/>3. 熟练掌握常用的深度学习框架，如TensorFlow, Theano, Torch, Caffe；<br/>4. 熟练掌握至少一门分析工具，如Matlab, R；<br/>5. 良好的沟通能力和学习能力, 良好的英文阅读能力和书写能力，能够跟踪学术界和工业界的最新研究成果；<br/>6. 计算机、数学、物理专业背景硕士及以上学历 (能力突出者可不受此限）；<br/>7. 具备良好的心理素质，严谨，耐性，有较强的团队意识。<br/>&nbsp;&nbsp;<br/>加分项: <br/>1. 有使用大数据预测和检验统计市场模型经验的优先；<br/>2. 有机器学习理论、计算机视觉、语音理解检索深入工作研究经验的优先；<br/>3. 有Kaggle、ILSVRC、天池、ACM\\ICPC、IOI、NOI等竞赛经验优先。</p><p>&nbsp;</p><p>\r\n								</p>',NULL,'2016-10-26 05:14:05','admin','2016-10-26 05:21:59','admin','RecruitmentController'),(4,'RE20161026571084','2016-10-26 05:20:16','1','交易系统开发工程师/实习生',8,'上海','计算机、数学、物理专业背景硕士及以上学历 ','<p>									</p><p>&nbsp;</p><p><br/></p><p><br/></p><p><br/></p><p>岗位职责：</p><p>1. 理解交易系统设计，负责交易系统的接口发开、维护和相关应用需求；<br/>2. 负责交易系统优化，包括网络编程、数据库、高性能计算优化等。</p><p>任职要求：<br/>&nbsp;<br/>1. 熟练掌握C++, C, Java, Python 或其他高级语言；<br/>2. 熟练掌握Matlab语言，熟悉Matlab语言开发调试和测试技术；<br/>3. 良好的编程习惯，掌握常用数据结构和算法；<br/>4. 良好的沟通能力和学习能力, 良好的英文阅读能力和书写能力；<br/>5. 计算机、数学、物理专业背景硕士及以上学历 (能力突出者可不受此限）；<br/>6. 具备良好的心理素质，严谨，耐性，有较强的团队意识，能快速响应团队需求；<br/>7. 熟悉网络通讯协议和应用层通讯协议 。</p><p>加分项: <br/>有Kaggle、ILSVRC、天池、ACM\\ICPC、IOI、NOI等竞赛经验优先。<br/></p><p>&nbsp;</p><p>\r\n								</p>',NULL,'2016-10-26 05:20:16','admin','2016-10-26 05:22:07','admin','RecruitmentController'),(5,'RE20161026299269','2016-10-26 05:21:19','1','基金执行交易员/实习生',8,'上海','计算机、数学、物理专业背景硕士及以上学历','<p>									</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p>岗位职责：</p><p>1. 实时监控盘面，保障量化交易的顺利进行，及时向基金经理反馈交易中的异常情况；<br/>2. 盘后协助分析、清算，做好交易报告，向基金经理提供每日的交易数据；<br/>3. 协助日常运营管理，维护公司的交易系统及账户。</p><p>任职资格：<br/>1. 计算机、数学、物理专业背景硕士及以上学历 (能力突出者可不受此限)；<br/>2. 具有细心、耐心、恒心的品质，严谨专注、原则性强；<br/>3. 对交易和金融投资有充分的热情；<br/>4. 抗压工作能力强；<br/>5. 良好的团队协作能力和协作沟通能力，能快速影响团队需求 。</p><p>加分项: <br/>有Kaggle、ILSVRC、天池、ACM\\ICPC、IOI、NOI等竞赛经验优先。</p><p>&nbsp;</p><p>\r\n								</p>',NULL,'2016-10-26 05:21:19','admin','2016-10-26 05:22:14','admin','RecruitmentController');
 /*!40000 ALTER TABLE `t_recruitment_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -636,4 +613,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-18 21:43:39
+-- Dump completed on 2016-12-21  9:33:16
