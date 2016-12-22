@@ -34,8 +34,8 @@ line-height:17px;}
 </head>
 <body>
 	<form action="#" method="get" class="sidebar-form"
-		style="border: none;">
-		<div class="input-group" style="margin: 15px 25px; width: 95%;">
+		style="border: none;margin-top:0px;">
+		<div class="input-group" style="margin: 0px 25px; padding-top:15px; width: 95%;">
 			<table class="search_table">
 				<tr>
 					<td style="width: 200px"><input type="text"
@@ -82,14 +82,14 @@ line-height:17px;}
 					name : 'no',
 					index : 'no',
 					hidden : true,
-					sortable : true
+					sortable : false
 				}, {
 					name : 'partnerno',
 					index : 'partnerno',
 					width : 100,
 					editable : true,
 					editoptions : {readonly : true,size : 10},
-					sortable : true
+					sortable : false
 				}, {
 					name : 'releasedate_v',
 					index : 'releasedate_v',
@@ -106,7 +106,7 @@ line-height:17px;}
 					align : "left",
 					editable : true,
 					hidden : true,
-					sortable : true
+					sortable : false
 				}, {
 					name : 'releaseflg_v',
 					index : 'releaseflg_v',
@@ -115,14 +115,14 @@ line-height:17px;}
 					edittype : "select",
 					editoptions : {value : "0:暂存;1:发布;2:关闭"},
 					editable : true,
-					sortable : true
+					sortable : false
 				}, {
 					name : 'assetname',
 					index : 'assetname',
 					width : 80,
 					align : "left",
 					editable : true,
-					sortable : true
+					sortable : false
 				}, {
 					name : 'Modify',
 					index : 'no',
@@ -201,8 +201,8 @@ line-height:17px;}
 			}
 		}
 		function searchTable() {
-			var assetName = $("#assetcartname").val();
-			var releaseFlg = $("#releaseflg").val();
+			var assetName = $("#assetCartName").val();
+			var releaseFlg = $("#releaseFlg").val();
 
 			$("#table").jqGrid('setGridParam', {
 				url : "${basePath}/assetCart",

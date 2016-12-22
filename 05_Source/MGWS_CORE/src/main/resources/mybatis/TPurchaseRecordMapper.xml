@@ -38,7 +38,7 @@
     from t_purchase_record t1 left join t_investment_master t2 on t1.productId = t2.id
     where 1=1
     <if test="customerNo != null and customerNo != ''" >
-        and t1.customerNo like '%' || #{customerNo,jdbcType=VARCHAR} || '%'
+        and t1.customerNo like CONCAT('%',#{customerNo,jdbcType=VARCHAR},'%')
     </if>
   </select>
   <select id="selectAllByParamCount" resultType="int" parameterType="java.lang.String" >
@@ -47,7 +47,7 @@
     from t_investment_master
     where 1=1
     <if test="productName != null and productName != ''" >
-        and productName like '%' || #{productName,jdbcType=VARCHAR} || '%'
+        and productName like CONCAT('%',#{productName,jdbcType=VARCHAR},'%')
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >

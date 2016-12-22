@@ -103,7 +103,7 @@
 		<!-- sidebar: style can be found in sidebar.less -->
 		<section class="sidebar">
 			<!-- sidebar menu: : style can be found in sidebar.less -->
-			<ul class="sidebar-menu" style="min-height: 597px;">
+			<ul class="sidebar-menu" >
 				<li class="active treeview"><a href="#"> <i
 						class="fa fa-dashboard"></i> <span>产品一览</span>
 				</a>

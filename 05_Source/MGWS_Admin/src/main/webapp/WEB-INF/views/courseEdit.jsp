@@ -99,7 +99,7 @@
 	<form:form id="mainForm" name="mainForm"
 		action="${basePath}/courseEdit" method="post"
 		commandName="tCourseInfo" modelAttribute="tCourseInfo">
-		<div class="input-group" style="margin: 15px 25px; min-width: 240px;">
+		<div class="input-group" style="margin: 0px 25px; padding-top:15px; min-width: 600px; width:100%;">
 			<table class="editTable" border="0">
 				<tr>
 					<td colspan="3" align="left"><a href="javascript:void(0)"
