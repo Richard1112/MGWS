@@ -33,8 +33,8 @@ line-height:17px;}
 </head>
 <body>
 	<form action="#" method="get" class="sidebar-form"
-		style="border: none;">
-		<div class="input-group" style="margin: 15px 25px; width: 95%;">
+		style="border: none;margin-top:0px;">
+		<div class="input-group" style="margin: 0px 25px;padding-top:15px; width: 95%;">
 			<table class="search_table">
 				<tr>
 					<td style="width:200px"><input type="text" name="recruitjobtitle"
@@ -80,7 +80,7 @@ line-height:17px;}
 							name : 'no',
 							index : 'no',
 							hidden : true,
-							sortable : true
+							sortable : false
 						}, {
 							name : 'recruitno',
 							index : 'recruitno',
@@ -91,7 +91,7 @@ line-height:17px;}
 								size : 10
 							},
 							editable : false,
-							sortable : true
+							sortable : false
 						}, {
 							name : 'releasedate_v',
 							index : 'releasedate_v',
@@ -99,7 +99,7 @@ line-height:17px;}
 							align : "center",
 							editoptions : {readonly : true,size : 10},
 							editable : false,
-							sortable : true
+							sortable : false
 						}, {
 							name : 'releaseflg_v',
 							index : 'releaseflg_v',
@@ -108,7 +108,7 @@ line-height:17px;}
 							editoptions : {value : "0:暂存;1:发布;2:关闭"},
 							align : "center",
 							editable : true,
-							sortable : true
+							sortable : false
 						}, {
 							name : 'recruitjobtitle',
 							index : 'recruitlobtitle',
@@ -116,7 +116,7 @@ line-height:17px;}
 							align : "left",
 							editoptions : {size : 30},
 							editable : true,
-							sortable : true
+							sortable : false
 						}, {
 							name : 'recruitnumber',
 							index : 'recruitnumber',
@@ -124,7 +124,7 @@ line-height:17px;}
 							editoptions : {size : 10},
 							align : "center",
 							editable : true,
-							sortable : true
+							sortable : false
 						}, {
 							name : 'recruitlocale',
 							index : 'recruitlocale',
@@ -132,7 +132,7 @@ line-height:17px;}
 							editoptions : {size : 50},
 							align : "left",
 							editable : true,
-							sortable : true
+							sortable : false
 						}, {
 							name : 'recruitobject',
 							index : 'recruitobject',
@@ -140,7 +140,7 @@ line-height:17px;}
 							editoptions : {size : 50},
 							align : "left",
 							editable : true,
-							sortable : true
+							sortable : false
 						}, {
 							name : 'Modify',
 							index : 'no',
@@ -158,8 +158,9 @@ line-height:17px;}
 						autowidth : true,
 						rowList : [ 20, 30,50 ],
 						pager : '#pager',
-						sortname : 'id',
+						sortname : 'no',
 						viewrecords : true,
+						sortable:true,
 						sortorder : "desc",
 						editurl : "${basePath}/recruitmentEdit",
 						//后台返回数据
