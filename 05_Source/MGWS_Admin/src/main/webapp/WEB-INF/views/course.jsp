@@ -35,8 +35,8 @@ line-height:17px;}
 </head>
 <body>
 	<form action="#" method="get" class="sidebar-form"
-		style="border: none;margin-top:0px;">
-		<div class="input-group" style="margin: 0px 25px; padding-top:15px; width: 95%;">
+		style="border: none;">
+		<div class="input-group" style="margin: 15px 25px; width: 95%;">
 			<table class="search_table">
 				<tr>
 					<td style="width: 200px"><input type="text" name="courseName"
@@ -84,7 +84,7 @@ line-height:17px;}
 					index : 'no',
 					editoptions : {readonly : true,size : 10},
 					hidden : true,
-					sortable : false
+					sortable : true
 				}, {
 					name : 'courseno',
 					index : 'courseno',
@@ -92,7 +92,7 @@ line-height:17px;}
 					align : "left",
 					editoptions : {readonly : true,size : 10},
 					editable : true,
-					sortable : false
+					sortable : true
 				}, {
 					name : 'releasedate_v',
 					index : 'releasedate_v',
@@ -100,7 +100,7 @@ line-height:17px;}
 					align : "left",
 					editoptions : {readonly : true,size : 10},
 					editable : true,
-					sortable : false
+					sortable : true
 				}, {
 					name : 'releaseflg',
 					index : 'releaseflg',
@@ -110,7 +110,7 @@ line-height:17px;}
 					align : "left",
 					editable : true,
 					hidden : true,
-					sortable : false
+					sortable : true
 				}, {
 					name : 'releaseflg_v',
 					index : 'releasefl_v',
@@ -119,14 +119,14 @@ line-height:17px;}
 					edittype : "select",
 					editoptions : {value : "0:暂存;1:发布;2:关闭"},
 					editable : true,
-					sortable : false
+					sortable : true
 				}, {
 					name : 'coursename',
 					index : 'coursename',
 					width : 80,
 					align : "left",
 					editable : true,
-					sortable : false
+					sortable : true
 				}, {
 					name : 'Modify',
 					index : 'no',

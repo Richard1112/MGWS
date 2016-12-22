@@ -56,7 +56,7 @@
     from t_investment_value a left join t_investment_master b on a.productId = b.id
     where 1=1
     <if test="productName != null and productName != ''" >
-        and b.productName like CONCAT('%',#{productName,jdbcType=VARCHAR},'%')
+        and b.productName like '%' || #{productName,jdbcType=VARCHAR} || '%'
     </if>
     <if test="dateFrom != null and dateFrom != ''" >
         and (DATE_FORMAT(a.date,'%Y/%m/%d')) <![CDATA[ >= ]]> #{dateFrom,jdbcType=VARCHAR}
@@ -71,7 +71,7 @@
     from t_investment_value
     where 1=1
     <if test="productName != null and productName != ''" >
-        and b.productName like CONCAT('%',#{productName,jdbcType=VARCHAR},'%')
+        and b.productName like '%' || #{productName,jdbcType=VARCHAR} || '%'
     </if>
     <if test="dateFrom != null and dateFrom != ''" >
         and (DATE_FORMAT(date,'%Y/%m/%d')) <![CDATA[ >= ]]> #{dateFrom,jdbcType=VARCHAR}

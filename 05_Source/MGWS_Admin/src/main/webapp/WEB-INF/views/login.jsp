@@ -32,12 +32,12 @@
 					</div><br/>
 					<div> <input type="text" id="username" name="username"
 						value="<shiro:principal/>" class="txt_input txt_input2"
-						placeholder="用户名"
+						placeholder="<ms:message code='username' />"
 						>
 					</div>
 					<div> <input type="password" name="password" id="userpwd"
 						class="txt_input"
-						placeholder="密码" >
+						placeholder="<ms:message code='password' />" >
 					</div>
 					<c:if test="${jcaptchaEbabled}">
 						<div><input type="text" name="jcaptchaCode" class="txt_input" style="width:100px;"

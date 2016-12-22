@@ -58,7 +58,7 @@ public class RecruitmentController extends BaseController {
 		String rows = req.getParameter("rows");
 		pagination.setPage(Integer.parseInt(page));
 		pagination.setSize(Integer.parseInt(rows));
-		param.put("recruitJobTitle", recruitjobtitle);
+		param.put("recruitjobtitle", recruitjobtitle);
 		param.put("releaseFlg", releaseFlg);
 		param.put("releaseDateF", releaseDateF);
 		param.put("releaseDateT", releaseDateT);

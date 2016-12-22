@@ -83,7 +83,7 @@
 	<form:form id="mainForm" name="mainForm"
 		action="${basePath}/recruitmentEdit" method="post"
 		commandName="tRecruitmentInfo" modelAttribute="tRecruitmentInfo">
-		<div class="input-group" style="margin: 0px 25px; padding-top:15px; min-width: 600px; width:100%;">
+		<div class="input-group" style="margin: 15px 25px; min-width: 240px;">
 			<table class="editTable">
 				<tr>
 					<td colspan="2" align="left"><a href="javascript:void(0)"

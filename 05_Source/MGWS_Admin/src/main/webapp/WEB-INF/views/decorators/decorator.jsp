@@ -111,7 +111,7 @@
 		<%@ include file="header.jsp"%>
 		<%@ include file="aside.jsp"%>
 		<div class="content-wrapper">
-		<div class="">
+		<div class="col-md-12">
 		<div id="tabs">
 		<sitemesh:write property='body' />
 		</div>

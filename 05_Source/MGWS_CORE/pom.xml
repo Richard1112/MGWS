@@ -249,12 +249,7 @@
 			<classifier>jdk15</classifier>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.15</version>
-		</dependency>
-  </dependencies>
+	</dependencies>
 	<build>
 		<finalName>MGWS_CORE</finalName>
 	</build>

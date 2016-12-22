@@ -34,8 +34,8 @@ line-height:17px;}
 </head>
 <body>
 	<form action="#" method="get" id="mainForm" class="sidebar-form"
-		style="border: none;margin-top:0px;">
-		<div class="input-group" style="margin: 0px 25px;padding-top:15px; width: 95%;">
+		style="border: none;">
+		<div class="input-group" style="margin: 15px 25px; width: 95%;">
 			<table class="search_table">
 				<tr>
 					<td style="width: 200px"><input type="text"

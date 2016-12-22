@@ -46,21 +46,21 @@
     <include refid="BasicInfo_Column_List" />
     from t_customer_login_info a left join t_individual_basic_info b on a.customerNo = b.customerNo 
     left join t_enterprise_basic_info c on a.customerNo = c.customerNo 
-    <if test="customerType == 0" >
+    <if test="customerType == '0'" >
 	    <if test="customerName != null and customerName != ''" >
-	        and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	        or c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
 	    </if>
     </if>
-    <if test="customerType == 1" >
+    <if test="customerType == '1'" >
         <if test="customerName != null and customerName != ''" >
-	        and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	        or c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
 	    </if>
     </if>
-    <if test="customerType == 2" >
+    <if test="customerType == '2'" >
         <if test="customerName != null and customerName != ''" >
-	        and c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	        and c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
 	    </if>
     </if>
   </select>
@@ -69,21 +69,21 @@
     count(1)
     from t_customer_login_info a left join t_individual_basic_info b on a.customerNo = b.customerNo 
     left join t_enterprise_basic_info c on a.customerNo = c.customerNo 
-    <if test="customerType == 0" >
+    <if test="customerType == '0'" >
 	    <if test="customerName != null and customerName != ''" >
-	        and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	        or c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
 	    </if>
     </if>
-    <if test="customerType == 1" >
+    <if test="customerType == '1'" >
         <if test="customerName != null and customerName != ''" >
-	        and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	        or c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	        and concat(b.cnSurName, b.cnGivenName) like '%' || #{customerName,jdbcType=VARCHAR} || '%'
+	        or c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
 	    </if>
     </if>
-    <if test="customerType == 2" >
+    <if test="customerType == '2'" >
         <if test="customerName != null and customerName != ''" >
-	        and c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	        and c.cnName like '%' || #{customerName,jdbcType=VARCHAR} || '%'
 	    </if>
     </if>
   </select>

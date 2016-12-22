@@ -206,7 +206,7 @@
 		from t_asset_info
 		where 1=1
 		<if test="assetName != null and assetName != ''">
-			and assetName like CONCAT('%',#{assetName,jdbcType=VARCHAR},'%')
+			and assetName like '%' || #{assetName,jdbcType=VARCHAR} || '%'
 		</if>
 		<if test="releaseFlg != null and releaseFlg != ''">
 			and releaseFlg = #{releaseFlg,jdbcType=VARCHAR}
@@ -222,7 +222,7 @@
 		from t_asset_info
 		where 1=1
 		<if test="assetName != null and assetName != ''">
-			and assetName like CONCAT('%',#{assetName,jdbcType=VARCHAR},'%')
+			and assetName like '%' || #{assetName,jdbcType=VARCHAR} || '%'
 		</if>
 		<if test="releaseFlg != null and releaseFlg != ''">
 			and releaseFlg = #{releaseFlg,jdbcType=VARCHAR}
