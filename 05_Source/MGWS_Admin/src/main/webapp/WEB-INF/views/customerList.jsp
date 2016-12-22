@@ -34,8 +34,8 @@ line-height:17px;}
 </head>
 <body>
 	<form action="#" method="get" class="sidebar-form"
-		style="border: none;">
-		<div class="input-group" style="margin: 15px 25px; width: 95%;">
+		style="border: none;margin-top:0px;">
+		<div class="input-group" style="margin: 0px 25px;padding-top:15px; width: 95%;">
 			<table class="search_table">
 				<tr>
 					<td style="width: 200px"><input type="text"
@@ -80,32 +80,32 @@ line-height:17px;}
 					name : 'no',
 					index : 'no',
 					hidden : true,
-					sortable : true
+					sortable : false
 				}, {
 					name : 'customerNo',
 					index : 'customerNo',
 					width : 100,
 					editable : false,
-					sortable : true
+					sortable : false
 				}, {
 					name : 'customerName',
 					index : 'customerName',
 					width : 50,
 					editable : false,
-					sortable : true
+					sortable : false
 				}, {
 					name : 'customerType',
 					index : 'customerType',
 					width : 50,
 					editable : false,
-					sortable : true
+					sortable : false
 				}, {
 					name : 'registDate',
 					index : 'registDate',
 					width : 50,
 					align : "center",
 					editable : false,
-					sortable : true
+					sortable : false
 				}],
 				rowNum : 20,
 				autowidth : true,
