@@ -102,6 +102,7 @@
 .content-wrapper, .right-side, .main-footer{
 	/* margin-left: 0px!important; */
 }
+.ui-jqdialog .ui-jqconfirm{height:100px !important;}
 </style>
 <sitemesh:write property='head' />
 

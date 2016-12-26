@@ -213,7 +213,7 @@ line-height:17px;}
 				method : 'GET',
 				postData : {
 					//条件
-					'courseName' : courseName,
+					'courseName' : encodeURI(courseName),
 					'releaseFlg' : releaseFlg
 				//,'releaseDateF' : releaseDateF
 				//,'releaseDateT' : releaseDateT

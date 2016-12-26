@@ -1,5 +1,7 @@
 package com.org.tech.mgws.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,9 +46,13 @@ public class CourseController extends BaseController {
 	
 	@RequestMapping(value = "/course", method = RequestMethod.GET)
 	@ResponseBody
-	public PagingResult<Map<String, Object>> getAllCourse(HttpServletRequest req, HttpServletResponse response) {
+	public PagingResult<Map<String, Object>> getAllCourse(HttpServletRequest req, HttpServletResponse response)
+			throws UnsupportedEncodingException {
 
 		String courseName = req.getParameter("courseName");
+		if (courseName != null) {
+			courseName = URLDecoder.decode(courseName, "UTF-8");
+		}
 		String releaseFlg = req.getParameter("releaseFlg");
 		String releaseDateF = req.getParameter("releaseDateF");
 		String releaseDateT = req.getParameter("releaseDateT");

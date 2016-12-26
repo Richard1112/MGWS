@@ -86,6 +86,7 @@ public class LoginController extends BaseController {
 			// check出错，返回登录画面
 			if (errors.hasErrors()) {
 				loginBean.setPartaCode("");
+				loginBean.setUserPassword(null);
 				model.addAttribute("loginInfoDto", loginBean);
 				return "login";
 			}
@@ -125,12 +126,14 @@ public class LoginController extends BaseController {
 			} else {
 				// 用户名不存在或密码错误
 				errors.rejectValue("userId", "E00005");
+				loginBean.setUserPassword(null);
 				model.addAttribute("loginInfoDto", loginBean);
 				return "login";
 			}
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			loginBean.setUserPassword(null);
 			model.addAttribute("loginInfoDto", loginBean);
 			return "login";
 		}

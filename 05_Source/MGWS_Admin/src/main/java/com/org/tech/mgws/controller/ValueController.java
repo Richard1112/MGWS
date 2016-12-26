@@ -3,7 +3,9 @@
  */
 package com.org.tech.mgws.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,9 +53,13 @@ public class ValueController extends BaseController {
 	}
 	@RequestMapping(value = "/value", method = RequestMethod.GET)
 	@ResponseBody
-	public PagingResult<Map<String, Object>> getAllValue(HttpServletRequest req, HttpServletResponse response) {
+	public PagingResult<Map<String, Object>> getAllValue(HttpServletRequest req, HttpServletResponse response)
+			throws UnsupportedEncodingException {
 
 		String productName = req.getParameter("productName");
+		if (productName != null) {
+			productName = URLDecoder.decode(productName, "UTF-8");
+		}
 		String dateF = req.getParameter("dateF");
 		String dateT = req.getParameter("dateT");
 		Pagination pagination = new Pagination();

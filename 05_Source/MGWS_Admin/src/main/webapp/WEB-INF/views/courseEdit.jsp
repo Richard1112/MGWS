@@ -40,60 +40,7 @@
   border-radius: 4px;
 }
 </style>
-<script type="text/javascript">
-	$(document).ready(function(){
-		var folder = '/picUpload/course/';
-		$('#uploadify').uploadifive({
-			'auto'             : true,
-			'queueID'          : 'queue',
-			'uploadScript'     : '${pageContext.request.contextPath}/servlet/Upload?folder='+folder,
-			'buttonText'       : '上传',
-			'buttonClass'      : 'up_btn',
-			'multi'            : true,
-			'fileSizeLimit'    : '20MB',
-			'queueSizeLimit'    : 3,
-			'simUploadLimit'   : 3,
-			'removeCompleted'  : false,
-			'removeTimeout'    : 1,
-			'width'            : 90,
-			'height'           : 38,
-			'onFallback'       : function() {alert("对不起，你的浏览器版本太低，请使用更高版本的浏览器！");},
-			'onUploadComplete' : function(file, data) {
-				var newName = decodeURI(decodeURI(data, "utf-8"));
-				var fileNames = $("#coursepic").val();
-				if(fileNames!=""){
-					fileNames += "," + newName;
-				} else {
-					fileNames = newName;
-				}
-				$("#coursepic").val(fileNames);
-			},
-			'onCancel': function(file){
-			      /* 注意：取消后应重新设置uploadLimit */
-			      $data= $(this).data('uploadifive'),
-			      settings = $data.settings;
-			      settings.uploadLimit++;
-			      alert(file.name + " 已取消上传~!");
-			}
-		});
-	});
-	function save() {
-		var releaseFlg = $("#releaseflg").val();
-		var coursename = $("#coursename").val();
-		var recruitDetails = $("#coursedetails").val();
-		if (releaseFlg == "") {
-			alert("请选择开放标识！");
-			return;
-		}
-		if (coursename == "") {
-			alert("请输入课程名称！");
-			return;
-		}
-		var content = UE.getEditor('editor').getContent();
-		$("#coursedetails").val(content);
-		document.mainForm.submit();
-	}
-</script>
+
 </head>
 <body>
 	<form:form id="mainForm" name="mainForm"
@@ -141,6 +88,58 @@
 	</form:form>
 	<script type="text/javascript">
 		var ue = UE.getEditor('editor');
-	</script>
+
+		var folder = '/picUpload/course/';
+		$('#uploadify').uploadifive({
+			'auto'             : true,
+			'queueID'          : 'queue',
+			'uploadScript'     : '${pageContext.request.contextPath}/servlet/Upload?folder='+folder,
+			'buttonText'       : '上传',
+			'buttonClass'      : 'up_btn',
+			'multi'            : true,
+			'fileSizeLimit'    : '20MB',
+			'queueSizeLimit'    : 3,
+			'simUploadLimit'   : 3,
+			'removeCompleted'  : false,
+			'removeTimeout'    : 1,
+			'width'            : 90,
+			'height'           : 38,
+			'onFallback'       : function() {alert("对不起，你的浏览器版本太低，请使用更高版本的浏览器！");},
+			'onUploadComplete' : function(file, data) {
+				var newName = decodeURI(decodeURI(data, "utf-8"));
+				var fileNames = $("#coursepic").val();
+				if(fileNames!=""){
+					fileNames += "," + newName;
+				} else {
+					fileNames = newName;
+				}
+				$("#coursepic").val(fileNames);
+			},
+			'onCancel': function(file){
+			      /* 注意：取消后应重新设置uploadLimit */
+			      $data= $(this).data('uploadifive'),
+			      settings = $data.settings;
+			      settings.uploadLimit++;
+			      alert(file.name + " 已取消上传~!");
+			}
+		});
+	
+	function save() {
+		var releaseFlg = $("#releaseflg").val();
+		var coursename = $("#coursename").val();
+		var recruitDetails = $("#coursedetails").val();
+		if (releaseFlg == "") {
+			alert("请选择开放标识！");
+			return;
+		}
+		if (coursename == "") {
+			alert("请输入课程名称！");
+			return;
+		}
+		var content = UE.getEditor('editor').getContent();
+		$("#coursedetails").val(content);
+		document.mainForm.submit();
+	}
+</script>
 </body>
 </html>

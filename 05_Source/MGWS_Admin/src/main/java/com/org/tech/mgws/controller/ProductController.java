@@ -3,6 +3,7 @@
  */
 package com.org.tech.mgws.controller;
 
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,9 @@ public class ProductController extends BaseController {
 			throws Exception {
 
 		String customerName = req.getParameter("customerName");
+		if (customerName != null) {
+			customerName = URLDecoder.decode(customerName, "UTF-8");
+		}
 		Pagination pagination = new Pagination();
 		Map<Object, Object> param = new HashMap<Object, Object>();
 		// 取得当前页数,注意这是jqgrid自身的参数
@@ -60,7 +64,7 @@ public class ProductController extends BaseController {
 		pagination.setPage(Integer.parseInt(page));
 		pagination.setSize(Integer.parseInt(rows));
 
-		param.put("customerName", customerName);
+		param.put("customerNo", customerName);
 
 		pagination.setParams(param);
 		// 查询信息
@@ -119,6 +123,9 @@ public class ProductController extends BaseController {
 			throws Exception {
 
 		String productName = req.getParameter("productName");
+		if (productName != null) {
+			productName = URLDecoder.decode(productName, "UTF-8");
+		}
 		Pagination pagination = new Pagination();
 		Map<Object, Object> param = new HashMap<Object, Object>();
 		// 取得当前页数,注意这是jqgrid自身的参数

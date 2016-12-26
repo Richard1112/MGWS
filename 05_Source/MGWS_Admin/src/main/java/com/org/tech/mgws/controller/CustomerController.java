@@ -3,6 +3,8 @@
  */
 package com.org.tech.mgws.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,9 +39,13 @@ public class CustomerController extends BaseController {
 
 	@RequestMapping(value = "/customer", method = RequestMethod.GET)
 	@ResponseBody
-	public PagingResult<Map<String, Object>> getAllCustomer(HttpServletRequest req, HttpServletResponse response) {
+	public PagingResult<Map<String, Object>> getAllCustomer(HttpServletRequest req, HttpServletResponse response)
+			throws UnsupportedEncodingException {
 
 		String customerName = req.getParameter("customerName");
+		if (customerName != null) {
+			customerName = URLDecoder.decode(customerName, "UTF-8");
+		}
 		String customerType = req.getParameter("customerType");
 		Pagination pagination = new Pagination();
 		Map<Object, Object> param = new HashMap<Object, Object>();
