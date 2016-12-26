@@ -209,7 +209,7 @@ line-height:17px;}
 				method : 'GET',
 				postData : {
 					//条件
-					'assetName' : assetName,
+					'assetName' : encodeURI(assetName),
 					'releaseFlg' : releaseFlg
 				//,'releaseDateF' : releaseDateF
 				//,'releaseDateT' : releaseDateT

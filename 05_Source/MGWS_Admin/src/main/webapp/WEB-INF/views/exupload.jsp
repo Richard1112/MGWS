@@ -45,11 +45,11 @@
 <body>
 	<form id="mainForm" name="mainForm"
 		action="#" method="post">
-		<div class="input-group" style="margin: 15px 25px; min-width: 240px;">
+		<div class="input-group" style="margin: 0px 25px;padding-top:15px; min-width: 240px;">
 			<table class="editTable" border="0" style="width:100%">
 				<tr>
 					<td colspan="3" align="left"><a
-						href="#"
+						href="${basePath}/valueInit"
 						class="btn btn-default">返回</a></td>
 				</tr>
 				<tr>

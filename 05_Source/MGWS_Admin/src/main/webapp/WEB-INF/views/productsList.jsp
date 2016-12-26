@@ -50,7 +50,7 @@ line-height:17px;}
 							</button>
 					</span></td>
 					<td>
-					<button type="button" id="btnAdd" class="btn btn-default">Add</button>
+					<button type="button" id="btnAdd" class="btn btn-default">新增</button>
 					</td>
 				</tr>
 			</table>
@@ -101,8 +101,8 @@ line-height:17px;}
 	                var ids = $("#table").getDataIDs();//jqGrid('getDataIDs');
 	                for(var i=0;i<ids.length;i++){
 	                    var cl = ids[i];
-	                    be = "<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('editGridRow','"+cl+"',{checkOnSubmit:true,checkOnUpdate:true,closeAfterEdit:true,closeOnEscape:true});\" >Edit</button>"; 
-	                    de = "&nbsp;&nbsp;<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('delGridRow','"+cl+"',{closeOnEscape:true});\" >Del</button>";
+	                    be = "<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('editGridRow','"+cl+"',{checkOnSubmit:true,checkOnUpdate:true,closeAfterEdit:true,closeOnEscape:true});\" >修改</button>"; 
+	                    de = "&nbsp;&nbsp;<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('delGridRow','"+cl+"',{closeOnEscape:true});\" >删除</button>";
 	                    jQuery("#table").jqGrid('setRowData',ids[i],{act:be+de});
 	                } 
 	            },
@@ -143,7 +143,7 @@ line-height:17px;}
 				method : 'GET',
 				postData : {
 					//条件
-					'productName' : productName
+					'productName' : encodeURI(productName)
 				}
 			}).trigger("reloadGrid"); //重新载入   
 		}

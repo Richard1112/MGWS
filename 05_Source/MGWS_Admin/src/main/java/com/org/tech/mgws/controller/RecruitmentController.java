@@ -1,5 +1,7 @@
 package com.org.tech.mgws.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,9 +46,14 @@ public class RecruitmentController extends BaseController {
 
 	@RequestMapping(value = "/recruitment", method = RequestMethod.GET)
 	@ResponseBody
-	public PagingResult<Map<String, Object>> getAllRecruitment(HttpServletRequest req, HttpServletResponse response) {
+	public PagingResult<Map<String, Object>> getAllRecruitment(HttpServletRequest req, HttpServletResponse response)
+			throws UnsupportedEncodingException {
 
 		String recruitjobtitle = req.getParameter("recruitjobtitle");
+		if (recruitjobtitle != null) {
+			recruitjobtitle = URLDecoder.decode(recruitjobtitle, "UTF-8");
+		}
+
 		String releaseFlg = req.getParameter("releaseFlg");
 		String releaseDateF = req.getParameter("releaseDateF");
 		String releaseDateT = req.getParameter("releaseDateT");

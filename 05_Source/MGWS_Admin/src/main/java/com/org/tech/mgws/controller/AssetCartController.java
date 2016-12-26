@@ -1,5 +1,7 @@
 package com.org.tech.mgws.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,8 +46,12 @@ public class AssetCartController extends BaseController {
 	
 	@RequestMapping(value = "/assetCart", method = RequestMethod.GET)
 	@ResponseBody
-	public PagingResult<Map<String, Object>> getAllCourse(HttpServletRequest req, HttpServletResponse response) {
+	public PagingResult<Map<String, Object>> getAllCourse(HttpServletRequest req, HttpServletResponse response)
+			throws UnsupportedEncodingException {
 		String assetName = req.getParameter("assetName");
+		if (assetName != null) {
+			assetName = URLDecoder.decode(assetName, "UTF-8");
+		}
 		String releaseFlg = req.getParameter("releaseFlg");
 		String releaseDateF = req.getParameter("releaseDateF");
 		String releaseDateT = req.getParameter("releaseDateT");

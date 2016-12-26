@@ -96,7 +96,7 @@
 							<tr>
 								<td colspan="2">
 									<form:password class="text userName_input" path="userPassword"
-										placeholder='请输入密码' value="123456" /><span
+										placeholder='请输入密码' /><span
 									id="passwordCheckSpan" class="error" onmouseover="makeMesDiv(this)" onmouseout="removeMesDiv()"><form:errors
 											path="userPassword" /><img src="<c:url value='/images/error/error.png'/>"/></span>
 								</td>

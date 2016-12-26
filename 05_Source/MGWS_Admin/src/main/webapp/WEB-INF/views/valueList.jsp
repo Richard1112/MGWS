@@ -58,10 +58,10 @@ line-height:17px;}
 						</div>
 					</td>
 					<td >
-					<button type="button" id="btnAdd" class="btn btn-default">Add</button>
+					<button type="button" id="btnAdd" class="btn btn-default">新增</button>
 					</td>
 					<td>
-					<button type="button" id="btnUpd" onclick="exupload();" class="btn btn-default">Upd</button>
+					<button type="button" id="btnUpd" onclick="exupload();" class="btn btn-default">上传</button>
 					</td>
 				</tr>
 			</table>
@@ -79,8 +79,9 @@ line-height:17px;}
 		$(function() {
 			pageInit();
 		});
+		var selects;
 		function pageInit() {
-			var selects = getSelectvalue();
+			selects = getSelectvalue();
 			jQuery("#table").jqGrid({
 				url : '${basePath}/value',
 				method : "GET",
@@ -122,7 +123,7 @@ line-height:17px;}
 					width : 50,
 					align : "right",
 					editable : true,
-					editrules: {number:true,required:true},
+					editrules: {number:true,required:true,maxValue:999999999999.999999},
 					sortable : false
 				},{name:'act',index:'act',width:60,search:false,sortable:false,editable:false}],
 				rowNum : 20,
@@ -141,8 +142,8 @@ line-height:17px;}
 	                var ids = $("#table").getDataIDs();//jqGrid('getDataIDs');
 	                for(var i=0;i<ids.length;i++){
 	                    var cl = ids[i];
-	                    be = "<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('editGridRow','"+cl+"',{checkOnSubmit:true,checkOnUpdate:true,closeAfterEdit:true,closeOnEscape:true});\" >Edit</button>"; 
-	                    de = "&nbsp;&nbsp;<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('delGridRow','"+cl+"',{closeOnEscape:true});\" >Del</button>";
+	                    be = "<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('editGridRow','"+cl+"',{checkOnSubmit:true,checkOnUpdate:true,closeAfterEdit:true,closeOnEscape:true});editset();\" >修改</button>"; 
+	                    de = "&nbsp;&nbsp;<button type='button' class='btn btn-default' onclick=\"jQuery('#table').jqGrid('delGridRow','"+cl+"',{closeOnEscape:true});\" >删除</button>";
 	                    jQuery("#table").jqGrid('setRowData',ids[i],{act:be+de});
 	                } 
 	            },
@@ -162,19 +163,25 @@ line-height:17px;}
 					var brsWindow = objWindow.width();
 					var brsHindow = objWindow.height();
 					$("#table").jqGrid('setGridHeight', brsHindow - 250);
+					//
 					$("#table").setColProp('productName',  {editType:"select", editoptions: {size : 1, value: selects} });
 				}
 			});
 			jQuery("#table").jqGrid('navGrid', "#pager", {
 				edit : false,
 				add : false,
-				del : false
+				del : false,
+				search:false
 			});
 			$("#btnAdd").click(function(){
+			
 	            jQuery("#table").jqGrid('editGridRow','new',{height:280,reloadAfterSubmit:true,closeOnEscape:true,addedrow:false});
+				$("#productName").removeAttr("disabled");
 	        });
 		}
-		
+		function editset(){
+			$("#productName").prop("disabled", "disabled");
+		}
 		function getSelectvalue() {
 			var selectOption="";
 			$.ajax({
@@ -207,7 +214,7 @@ line-height:17px;}
 				method : 'GET',
 				postData : {
 					//条件
-					'productName' : productName,
+					'productName' : encodeURI(productName),
 					'dateF' : dateF,
 					'dateT' : dateT
 				}

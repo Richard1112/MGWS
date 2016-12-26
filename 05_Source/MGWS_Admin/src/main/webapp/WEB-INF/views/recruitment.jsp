@@ -226,10 +226,10 @@ line-height:17px;}
 
 			$("#table").jqGrid('setGridParam', {
 				url : "${basePath}/recruitment",
-				method: 'GET',
+				method: 'POST',
 				postData : {
 					//条件
-					'recruitjobtitle' : recruitjobtitle
+					'recruitjobtitle' : encodeURI(recruitjobtitle)
 					,'releaseFlg' : releaseFlg
 					//,'releaseDateF' : releaseDateF
 					//,'releaseDateT' : releaseDateT

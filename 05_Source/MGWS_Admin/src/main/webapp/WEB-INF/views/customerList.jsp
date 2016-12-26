@@ -148,7 +148,7 @@ line-height:17px;}
 				method : 'GET',
 				postData : {
 					//条件
-					'customerName' : customerName,
+					'customerName' : encodeURI(customerName),
 					'customerType' : customerType
 				}
 			}).trigger("reloadGrid"); //重新载入   
