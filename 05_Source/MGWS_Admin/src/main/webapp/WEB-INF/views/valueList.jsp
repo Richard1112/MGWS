@@ -110,6 +110,7 @@ line-height:17px;}
 					editrules: {required:true},
 					editoptions:{size:12,
 						dataInit:function(el){
+							//alert($(el).val());
 							$(el).datepicker({todayBtn: "linked",autoclose: true,format:'yyyy/mm/dd'});
 							$(this).click(function(e){//选中时间后隐藏
 		                        $(e).parent().datepicker('hide');
@@ -123,7 +124,7 @@ line-height:17px;}
 					width : 50,
 					align : "right",
 					editable : true,
-					editrules: {number:true,required:true,maxValue:999999999999.999999},
+					editrules: {number:true,required:true,maxValue:99999999.9999},
 					sortable : false
 				},{name:'act',index:'act',width:60,search:false,sortable:false,editable:false}],
 				rowNum : 20,

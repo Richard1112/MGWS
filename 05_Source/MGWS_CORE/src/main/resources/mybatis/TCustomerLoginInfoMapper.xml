@@ -29,9 +29,14 @@
     no, customerNo, loginId, loginPass, salt, division, loginStatus, canLogin, deleteFlg, addTimestamp, 
     addUserKey, updTimestamp, updUserKey, updPgmId
   </sql>
-  <sql id="BasicInfo_Column_List" >
+  <sql id="BasicInfo_Column_List1" >
     a.no, a.customerNo, a.loginId, a.division as customerType, 
-    case when b.cnSurName is not null then concat(b.cnSurName, b.cnGivenName) when c.cnName is not null then c.cnName end as customerName,
+    concat(b.cnSurName, b.cnGivenName) as customerName,
+    DATE_FORMAT(a.addTimestamp,'%Y/%m/%d') as registDate
+  </sql>
+  <sql id="BasicInfo_Column_List2" >
+    a.no, a.customerNo, a.loginId, a.division as customerType, 
+    c.cnName as customerName,
     DATE_FORMAT(a.addTimestamp,'%Y/%m/%d') as registDate
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
@@ -42,49 +47,79 @@
   </select>
   
   <select id="selectAllCustomer" resultMap="BasicInfo" parameterType="java.lang.String" >
-    select 
-    <include refid="BasicInfo_Column_List" />
-    from t_customer_login_info a left join t_individual_basic_info b on a.customerNo = b.customerNo 
-    left join t_enterprise_basic_info c on a.customerNo = c.customerNo 
     <if test="customerType == 0" >
+	    select 
+	    <include refid="BasicInfo_Column_List1" />
+	    from t_individual_basic_info b left join t_customer_login_info a on a.customerNo = b.customerNo 
+	    where 1=1 
 	    <if test="customerName != null and customerName != ''" >
-	        and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	        or c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	    and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
 	    </if>
+	    union all
+	    select 
+	    <include refid="BasicInfo_Column_List2" />
+	    from t_enterprise_basic_info c left join t_customer_login_info a on a.customerNo = c.customerNo 
+	    where 1=1 
+	    <if test="customerName != null and customerName != ''" >
+		   and c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+		</if>
     </if>
     <if test="customerType == 1" >
-        <if test="customerName != null and customerName != ''" >
-	        and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	        or c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	    select 
+	    <include refid="BasicInfo_Column_List1" />
+	    from t_individual_basic_info b left join t_customer_login_info a on a.customerNo = b.customerNo 
+	    where 1=1 
+	    <if test="customerName != null and customerName != ''" >
+	    and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
 	    </if>
     </if>
     <if test="customerType == 2" >
-        <if test="customerName != null and customerName != ''" >
-	        and c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	    </if>
+	    select 
+	    <include refid="BasicInfo_Column_List2" />
+	    from t_enterprise_basic_info c left join t_customer_login_info a on a.customerNo = c.customerNo 
+	    where 1=1 
+	    <if test="customerName != null and customerName != ''" >
+		   and c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+		</if>
     </if>
   </select>
   <select id="selectAllCustomerCount" resultType="int" parameterType="java.lang.String" >
-    select 
-    count(1)
-    from t_customer_login_info a left join t_individual_basic_info b on a.customerNo = b.customerNo 
-    left join t_enterprise_basic_info c on a.customerNo = c.customerNo 
     <if test="customerType == 0" >
+    select 
+	    (select 
+	    count(1)
+	    from t_individual_basic_info b left join t_customer_login_info a on a.customerNo = b.customerNo 
+	    where 1=1 
 	    <if test="customerName != null and customerName != ''" >
-	        and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	        or c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	    and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
 	    </if>
+	    )+
+	    (select 
+	    count(1)
+	    from t_enterprise_basic_info c left join t_customer_login_info a on a.customerNo = c.customerNo 
+	    where 1=1 
+	    <if test="customerName != null and customerName != ''" >
+		   and c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+		</if>
+		)
     </if>
     <if test="customerType == 1" >
-        <if test="customerName != null and customerName != ''" >
-	        and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	        or c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+	    select 
+	    count(1)
+	    from t_individual_basic_info b left join t_customer_login_info a on a.customerNo = b.customerNo 
+	    where 1=1 
+	    <if test="customerName != null and customerName != ''" >
+	    and concat(b.cnSurName, b.cnGivenName) like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
 	    </if>
     </if>
     <if test="customerType == 2" >
-        <if test="customerName != null and customerName != ''" >
-	        and c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
-	    </if>
+	    select 
+	    count(1)
+	    from t_enterprise_basic_info c left join t_customer_login_info a on a.customerNo = c.customerNo 
+	    where 1=1 
+	    <if test="customerName != null and customerName != ''" >
+		   and c.cnName like CONCAT('%',#{customerName,jdbcType=VARCHAR},'%')
+		</if>
     </if>
   </select>
   <select id="selectByLoginId" resultMap="BaseResultMap" parameterType="com.org.mgws.entity.TCustomerLoginInfo" >

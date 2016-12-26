@@ -3,6 +3,7 @@
  */
 package com.org.mgws.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,7 +57,9 @@ public class TCustomerLoginInfoDaoImpl extends BaseDao implements TCustomerLogin
 
 	@Override
 	public List<Map<String, Object>> getAllCustomers() {
-		return super.select("customerLoginInfoMapper.selectAllCustomer");
+		Map<Object, Object> params = new HashMap<Object, Object>();
+		params.put("customerType", "0");
+		return super.select("customerLoginInfoMapper.selectAllCustomer", params);
 	}
     @Override
 	public int updateByPrimaryKeySelective(TCustomerLoginInfo record) {

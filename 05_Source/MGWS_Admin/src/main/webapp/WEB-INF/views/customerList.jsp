@@ -72,7 +72,7 @@ line-height:17px;}
 		});
 		function pageInit() {
 			jQuery("#table").jqGrid({
-				url : '${basePath}/customer',
+				url : '${basePath}/customer?customerType=0',
 				method : "GET",
 				datatype : "json",
 				colNames : [ '', '客户编号', '客户名称', '客户类型', '注册时间'],

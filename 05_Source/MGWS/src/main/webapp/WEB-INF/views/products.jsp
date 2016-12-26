@@ -99,6 +99,17 @@
 </script>
 </head>
 <body>
+	<c:if test="${basicFlg == false }">
+		<div class="content-wrapper page-container" style="min-height: 600px;">
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div style="margin:0 auto;text-align:center;font-size:20px;font-weight:bold;color:red;">请您先完善资料，否则您将无法购买本公司的产品！</div>
+					<div style="margin:0 auto;text-align:center;">完善资料请点击右上角“基本信息”</div>
+				</div>
+			</div>
+			</div>
+	</c:if>
+	<c:if test="${basicFlg == true }">
 	<aside class="main-sidebar">
 		<!-- sidebar: style can be found in sidebar.less -->
 		<section class="sidebar">
@@ -177,5 +188,6 @@
 			</div>
 		</div>
 	</div>
+	</c:if>
 </body>
 </html>

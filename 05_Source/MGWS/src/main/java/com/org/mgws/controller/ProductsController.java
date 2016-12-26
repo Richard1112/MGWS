@@ -20,8 +20,10 @@ import com.org.mgws.base.page.PagingResult;
 import com.org.mgws.contants.CommonConstants;
 import com.org.mgws.dto.LoginInfoDto;
 import com.org.mgws.dto.PurchaseInfo;
+import com.org.mgws.dto.UserBasicInfo;
 import com.org.mgws.entity.TInvestmentValue;
 import com.org.mgws.service.ProductService;
+import com.org.mgws.service.UserInfoService;
 
 @Controller
 @RequestMapping("/products")
@@ -29,6 +31,8 @@ public class ProductsController extends BaseController {
 
 	@Resource
 	ProductService productService;
+	@Resource
+	UserInfoService userInfoService;
 
 	/**
 	 * 产品查询
@@ -44,10 +48,21 @@ public class ProductsController extends BaseController {
 				model.addAttribute("loginInfoDto", loginInfoDto);
 				return "redirect:/Login/loginInit";
 			} else {
+				String division = (String) session.getAttribute("user_Division");
+
 				String customerNo = (String) session.getAttribute("user_customerNo");
-				List<PurchaseInfo> productsList = productService.getProductsByCustomerNo(customerNo);
-				model.addAttribute("productsList", productsList);
-				return "products";
+
+				UserBasicInfo userBasicInfo = userInfoService.getBasicInfo(customerNo, division);
+				if (userBasicInfo == null
+						|| (userBasicInfo.getCnName() == null && userBasicInfo.getCnGivenName() == null)) {
+					model.addAttribute("basicFlg", false);
+					return "products";
+				} else {
+					List<PurchaseInfo> productsList = productService.getProductsByCustomerNo(customerNo);
+					model.addAttribute("productsList", productsList);
+					model.addAttribute("basicFlg", true);
+					return "products";
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

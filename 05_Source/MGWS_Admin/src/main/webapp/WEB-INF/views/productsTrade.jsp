@@ -72,7 +72,7 @@ line-height:17px;}
 				url : '${basePath}/productCt',
 				method : "GET",
 				datatype : "json",
-				colNames : [ '', '客户编号', '产品名称','起始日','终止日',''],
+				colNames : [ '', '客户', '产品名称','起始日','终止日',''],
 				colModel : [ {
 					name : 'id',
 					index : 'id',
