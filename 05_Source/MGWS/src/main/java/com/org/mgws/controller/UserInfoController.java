@@ -12,11 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.org.mgws.base.common.MyMap;
 import com.org.mgws.contants.CommonConstants;
+import com.org.mgws.dto.LoginInfoDto;
 import com.org.mgws.dto.UserBasicInfo;
 import com.org.mgws.service.UserInfoService;
 
@@ -34,6 +36,11 @@ public class UserInfoController extends BaseController {
 	@RequestMapping(value = "/init")
 	public String init(Model model, HttpServletResponse response, HttpSession session) {
 		try {
+			if (StringUtils.isEmpty(session.getAttribute("user_customerNo"))) {
+				LoginInfoDto loginInfoDto = new LoginInfoDto();
+				model.addAttribute("loginInfoDto", loginInfoDto);
+				return "redirect:/Login/loginInit";
+			}
 			String division = (String) session.getAttribute("user_Division");
 			String customerNo = (String) session.getAttribute("user_customerNo");
 			String loginId = (String) session.getAttribute("user_Id");
@@ -63,6 +70,11 @@ public class UserInfoController extends BaseController {
 	@RequestMapping(value = "/update")
 	public String update(Model model, @ModelAttribute UserBasicInfo userBasicInfo, HttpSession session) {
 		try {
+			if (StringUtils.isEmpty(session.getAttribute("user_customerNo"))) {
+				LoginInfoDto loginInfoDto = new LoginInfoDto();
+				model.addAttribute("loginInfoDto", loginInfoDto);
+				return "redirect:/Login/loginInit";
+			}
 			userInfoService.updateBasicInfo(userBasicInfo);
 			List<MyMap> sexList = new ArrayList<MyMap>();
 			MyMap myMap = new MyMap();
