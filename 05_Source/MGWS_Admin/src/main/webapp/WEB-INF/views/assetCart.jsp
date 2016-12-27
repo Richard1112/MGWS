@@ -136,7 +136,7 @@ line-height:17px;}
 					align : "center",
 					sortable : false
 				} ],
-				rowNum : 20,
+				rowNum : 2,
 				autowidth : true,
 				rowList : [ 20, 30, 50 ],
 				pager : '#pager',
@@ -203,7 +203,12 @@ line-height:17px;}
 		function searchTable() {
 			var assetName = $("#assetCartName").val();
 			var releaseFlg = $("#releaseFlg").val();
-
+			var gopage = $(".ui-pg-input").val();
+			var totalpage = $("#sp_1_pager").html();
+			if (gopage> totalpage){
+				alert(gopage);
+				$(".ui-pg-input").val(totalpage);
+			}
 			$("#table").jqGrid('setGridParam', {
 				url : "${basePath}/assetCart",
 				method : 'GET',

@@ -173,9 +173,24 @@ line-height:17px;}
 			});
 			$("#btnAdd").click(function(){
 	            jQuery("#table").jqGrid('editGridRow','new',{height:280,reloadAfterSubmit:true,closeAfterSubmit:true,closeOnEscape:true,addedrow:false});
-	            
+	            $("#sData").click(function(){
+	            	
+	            	$.ajax({
+						type : "get",
+						async: false,
+						url : "${basePath}/saveCheck?productName="+$("#productName").val()+"&customerNo="+$("#customerNo").val(),
+						success : function(json) {
+							if(!json.saveFlg){
+								$("#FormError").css("display","");
+								$("#FormError").children().html("该用户已购买过此产品，请选择其他产品");
+							}
+						}
+					});
+	            });
 	        });
 		}
+		
+		
 		function getSelectvalue(division) {
 			var selectOption="";
 			$.ajax({

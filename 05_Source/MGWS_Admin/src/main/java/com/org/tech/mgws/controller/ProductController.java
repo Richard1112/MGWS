@@ -117,6 +117,29 @@ public class ProductController extends BaseController {
 
 	}
 
+	@RequestMapping(value = "/saveCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> saveCheck(HttpServletRequest req) {
+		String oper = req.getParameter("oper");
+		Map<String, Object> map = new HashMap<String, Object>();
+		if ("del".equals(oper)) {
+
+		} else {
+			String productId = req.getParameter("productName");
+			String customerNo = req.getParameter("customerNo");
+			TPurchaseRecord record = new TPurchaseRecord();
+			record.setCustomerNo(customerNo);
+			record.setProductId(Long.parseLong(productId));
+			boolean flg = productService.checkProductValue(record);
+			if (flg) {
+				map.put("saveFlg", true);
+			} else {
+				map.put("saveFlg", false);
+			}
+		}
+		return map;
+	}
+
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	@ResponseBody
 	public PagingResult<Map<String, Object>> getAllCustomer(HttpServletRequest req, HttpServletResponse response)
