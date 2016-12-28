@@ -66,9 +66,9 @@
 <script src="${basePath}/js/bootstrap-multiselect.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
-jQuery(document).ready(function() {    
+/* jQuery(document).ready(function() {    
    App.init(); // initlayout and core plugins
    EcommerceProductsEdit.init();
-});
+}); */
 </script>
 <!-- END JAVASCRIPTS -->
