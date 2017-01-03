@@ -22,8 +22,8 @@ public class LoginController {
 			error = "用户名/密码错误";
 		} else if ("jCaptcha.error".equals(exceptionClassName)) {
 			error = "验证码错误";
-		} else if (exceptionClassName != null) {
-			error = "其他错误：" + exceptionClassName;
+		} else {
+			error = "用户名/密码错误";
 		}
 		model.addAttribute("error", error);
 		return "login";

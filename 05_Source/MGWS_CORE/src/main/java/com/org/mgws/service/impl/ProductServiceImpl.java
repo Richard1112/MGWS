@@ -69,7 +69,13 @@ public class ProductServiceImpl extends BaseService implements ProductService {
 
 	@Override
 	public PagingResult<Map<String, Object>> getProductValue(Pagination pagination) {
-		return tInvestmentValueDao.selectProductsValue(pagination);
+		PagingResult<Map<String, Object>> result = tInvestmentValueDao.selectProductsValue(pagination);
+		int crrentPage = pagination.getPage();
+		if (result.getResultSize() == 0 && crrentPage > 1) {
+			pagination.setPage(pagination.getPage() - 1);
+			result = tInvestmentValueDao.selectProductsValue(pagination);
+		}
+		return result;
 	}
 
 	/*
