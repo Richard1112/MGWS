@@ -21,7 +21,13 @@ public class AssetCartServiceImpl implements AssetCartService {
 
 	@Override
 	public PagingResult<Map<String, Object>> queryByPage(Pagination page) {
-		return assetCartDao.queryByPage(page);
+		PagingResult<Map<String, Object>> result = assetCartDao.queryByPage(page);
+		int crrentPage = page.getPage();
+		if (result.getResultSize() == 0 && crrentPage > 1) {
+			page.setPage(page.getPage() - 1);
+			result = assetCartDao.queryByPage(page);
+		}
+		return result;
 	}
 
 	@Override
