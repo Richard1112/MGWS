@@ -21,7 +21,13 @@ public class RecruitmentServiceImpl implements RecruitmentService {
 
 	@Override
 	public PagingResult<Map<String, Object>> queryByPage(Pagination page) {
-		return recruitmentDao.queryByPage(page);
+		PagingResult<Map<String, Object>> result = recruitmentDao.queryByPage(page);
+		int crrentPage = page.getPage();
+		if (result.getResultSize() == 0 && crrentPage > 1) {
+			page.setPage(page.getPage() - 1);
+			result = recruitmentDao.queryByPage(page);
+		}
+		return result;
 	}
 
 	@Override

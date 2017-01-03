@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.shiro.util.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import com.org.mgws.base.page.Pagination;
@@ -114,11 +113,13 @@ public class FUserServiceImpl implements FUserService {
 	 */
 	@Override
 	public PagingResult<Map<String, Object>> getAllCustomers(Pagination pagination) {
-		PagingResult<Map<String, Object>> itemList = tCustomerLoginInfoDao.getAllCustomers(pagination);
-		if (!CollectionUtils.isEmpty(itemList.getResultList())) {
-
+		PagingResult<Map<String, Object>> result = tCustomerLoginInfoDao.getAllCustomers(pagination);
+		int crrentPage = pagination.getPage();
+		if (result.getResultSize() == 0 && crrentPage > 1) {
+			pagination.setPage(pagination.getPage() - 1);
+			result = tCustomerLoginInfoDao.getAllCustomers(pagination);
 		}
-		return itemList;
+		return result;
 	}
 
 	@Override

@@ -136,7 +136,7 @@ line-height:17px;}
 					align : "center",
 					sortable : false
 				} ],
-				rowNum : 2,
+				rowNum : 20,
 				autowidth : true,
 				rowList : [ 20, 30, 50 ],
 				pager : '#pager',

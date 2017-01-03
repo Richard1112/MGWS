@@ -81,7 +81,13 @@ public class ProductServiceImpl extends BaseService implements ProductService {
 	 */
 	@Override
 	public PagingResult<Map<String, Object>> getAllProducts(Pagination pagination) throws Exception {
-		return tInvestmentMasterDao.queryByPage(pagination);
+		PagingResult<Map<String, Object>> result = tInvestmentMasterDao.queryByPage(pagination);
+		int crrentPage = pagination.getPage();
+		if (result.getResultSize() == 0 && crrentPage > 1) {
+			pagination.setPage(pagination.getPage() - 1);
+			result = tInvestmentMasterDao.queryByPage(pagination);
+		}
+		return result;
 	}
 
 	@Override
