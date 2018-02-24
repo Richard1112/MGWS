@@ -115,7 +115,7 @@
 		<section class="sidebar">
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu" >
-				<li class="active treeview"><a href="#"> <i
+				<li class="active treeview" onclick="showProductList()"><a href="#"> <i
 						class="fa fa-dashboard"></i> <span>产品一览</span>
 				</a>
 					<ul class="treeview-menu">
@@ -125,11 +125,17 @@
 									class="fa fa-circle-o"></i> ${product.productName }</a></li>
 						</c:forEach>
 					</ul></li>
+				<li class="active treeview" onclick="investorSignList()">
+					<a href="#"> 
+						<i class="fa fa-dashboard"></i>
+						<span>投资人签署</span>
+					</a>
+				</li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->
 	</aside>
-	<div class="content-wrapper page-container" style="min-height: 600px;">
+	<div class="content-wrapper page-container" style="min-height: 600px;" id="product_list">
 		<div class="page-content-wrapper">
 			<div class="page-content">
 				<input type="hidden" id="productId" />
@@ -188,6 +194,31 @@
 			</div>
 		</div>
 	</div>
+	<div class="content-wrapper page-container" style="min-height: 600px;display:none" id="investorSign">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<c:forEach var="investorSign" items="${ investorSignList }" varStatus="step">
+						<div class="openInfoList_div">
+							<a href="${saveInvestorPDFUrl}${investorSign.fileName}" target="_blank">No.${step.index + 1}&nbsp;&nbsp;&nbsp;${investorSign.title }(${investorSign.releaseDate })</a>
+						</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
 	</c:if>
+	
+	<script type="text/javascript">
+		function showProductList(){
+			$("#investorSign").css("display","none");
+			$("#product_list").css("display","");
+		}
+		
+		function investorSignList(){
+			$("#investorSign").css("display","");
+			$("#product_list").css("display","none");
+		}
+	
+	
+	</script>
 </body>
 </html>

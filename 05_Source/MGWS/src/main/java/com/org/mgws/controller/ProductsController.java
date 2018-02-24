@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.org.mgws.base.page.Pagination;
 import com.org.mgws.base.page.PagingResult;
+import com.org.mgws.base.util.MessageUtils;
 import com.org.mgws.contants.CommonConstants;
 import com.org.mgws.dto.LoginInfoDto;
 import com.org.mgws.dto.PurchaseInfo;
 import com.org.mgws.dto.UserBasicInfo;
 import com.org.mgws.entity.TInvestmentValue;
+import com.org.mgws.entity.TInvestorSign;
+import com.org.mgws.service.InvestorSignService;
 import com.org.mgws.service.ProductService;
 import com.org.mgws.service.UserInfoService;
 
@@ -33,6 +36,8 @@ public class ProductsController extends BaseController {
 	ProductService productService;
 	@Resource
 	UserInfoService userInfoService;
+	@Resource
+	InvestorSignService investorSignService;
 
 	/**
 	 * 产品查询
@@ -53,6 +58,11 @@ public class ProductsController extends BaseController {
 				String customerNo = (String) session.getAttribute("user_customerNo");
 
 				UserBasicInfo userBasicInfo = userInfoService.getBasicInfo(customerNo, division);
+				
+				List<TInvestorSign> investorSignList = investorSignService.getAllTInvestorSign();
+		                model.addAttribute("investorSignList", investorSignList);
+		                model.addAttribute("saveInvestorPDFUrl", MessageUtils.getApplicationMessage("saveInvestorPDFUrl"));
+		                
 				if (userBasicInfo == null
 						|| (userBasicInfo.getCnName() == null && userBasicInfo.getCnGivenName() == null)) {
 					model.addAttribute("basicFlg", false);

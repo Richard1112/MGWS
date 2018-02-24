@@ -19,6 +19,8 @@
                 <li><a href="${pageContext.request.contextPath}/productInit" data-addtab="asset" title="产品管理"><i class="fa fa-circle-o"></i> 产品管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/valueInit" data-addtab="asset" title="净值管理"><i class="fa fa-circle-o"></i> 净值管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/productTadeInit" data-addtab="asset" title="产品购买"><i class="fa fa-circle-o"></i> 产品购买</a></li>
+                <li><a href="${pageContext.request.contextPath}/investorSignInit" data-addtab="asset" title="投资人签署"><i class="fa fa-circle-o"></i> 投资人签署</a></li>
+                <li><a href="${pageContext.request.contextPath}/openInfoInit" data-addtab="asset" title="信息公示"><i class="fa fa-circle-o"></i> 信息公示</a></li>
               </ul>
             </li>
           </ul>

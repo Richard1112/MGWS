@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="TOpenInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.org.mgws.entity.TOpenInfo" >
+    <id column="no" property="no" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="releaseDate" property="releaseDate" jdbcType="VARCHAR" />
+    <result column="releaseFlg" property="releaseFlg" jdbcType="CHAR" />
+    <result column="fileName" property="fileName" jdbcType="VARCHAR" />
+    <result column="addTimestamp" property="addTimestamp" jdbcType="TIMESTAMP" />
+    <result column="addUserKey" property="addUserKey" jdbcType="VARCHAR" />
+    <result column="updTimestamp" property="updTimestamp" jdbcType="TIMESTAMP" />
+    <result column="updUserKey" property="updUserKey" jdbcType="VARCHAR" />
+    <result column="updPgmId" property="updPgmId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, title, releaseDate, releaseFlg, fileName, addTimestamp, addUserKey, updTimestamp, 
+    updUserKey, updPgmId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_open_info
+    where no = #{no,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.org.mgws.entity.TOpenInfo" >
+    delete from t_open_info
+    where no = #{no,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.org.mgws.entity.TOpenInfo" >
+    insert into t_open_info (no, title, releaseDate, 
+      releaseFlg, fileName, addTimestamp, 
+      addUserKey, updTimestamp, updUserKey, 
+      updPgmId)
+    values (#{no,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{releaseDate,jdbcType=VARCHAR}, 
+      #{releaseFlg,jdbcType=CHAR}, #{fileName,jdbcType=VARCHAR}, #{addTimestamp,jdbcType=TIMESTAMP}, 
+      #{addUserKey,jdbcType=VARCHAR}, #{updTimestamp,jdbcType=TIMESTAMP}, #{updUserKey,jdbcType=VARCHAR}, 
+      #{updPgmId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.org.mgws.entity.TOpenInfo" >
+    insert into t_open_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="releaseDate != null" >
+        releaseDate,
+      </if>
+      <if test="releaseFlg != null" >
+        releaseFlg,
+      </if>
+      <if test="fileName != null" >
+        fileName,
+      </if>
+      <if test="addTimestamp != null" >
+        addTimestamp,
+      </if>
+      <if test="addUserKey != null" >
+        addUserKey,
+      </if>
+      <if test="updTimestamp != null" >
+        updTimestamp,
+      </if>
+      <if test="updUserKey != null" >
+        updUserKey,
+      </if>
+      <if test="updPgmId != null" >
+        updPgmId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null" >
+        #{releaseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseFlg != null" >
+        #{releaseFlg,jdbcType=CHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTimestamp != null" >
+        #{addTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserKey != null" >
+        #{addUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updTimestamp != null" >
+        #{updTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUserKey != null" >
+        #{updUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updPgmId != null" >
+        #{updPgmId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TOpenInfo" >
+    update t_open_info
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseDate != null" >
+        releaseDate = #{releaseDate,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseFlg != null" >
+        releaseFlg = #{releaseFlg,jdbcType=CHAR},
+      </if>
+      <if test="fileName != null" >
+        fileName = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="addTimestamp != null" >
+        addTimestamp = #{addTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUserKey != null" >
+        addUserKey = #{addUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updTimestamp != null" >
+        updTimestamp = #{updTimestamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updUserKey != null" >
+        updUserKey = #{updUserKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updPgmId != null" >
+        updPgmId = #{updPgmId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TOpenInfo" >
+    update t_open_info
+    set title = #{title,jdbcType=VARCHAR},
+      releaseDate = #{releaseDate,jdbcType=VARCHAR},
+      releaseFlg = #{releaseFlg,jdbcType=CHAR},
+      fileName = #{fileName,jdbcType=VARCHAR},
+      addTimestamp = #{addTimestamp,jdbcType=TIMESTAMP},
+      addUserKey = #{addUserKey,jdbcType=VARCHAR},
+      updTimestamp = #{updTimestamp,jdbcType=TIMESTAMP},
+      updUserKey = #{updUserKey,jdbcType=VARCHAR},
+      updPgmId = #{updPgmId,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectAllByParam" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_open_info
+		where 1=1
+		<if test="title != null and title != ''">
+			and title like CONCAT('%',#{title,jdbcType=VARCHAR},'%')
+		</if>
+	</select>
+
+	<select id="selectAllByParamCount" resultType="int" parameterType="java.lang.String">
+		select
+		count(1)
+		from t_open_info
+		where 1=1
+		<if test="title != null and title != ''">
+			and title like CONCAT('%',#{title,jdbcType=VARCHAR},'%')
+		</if>
+	</select>
+	
+	<select id="getAllTOpenInfo" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from t_open_info
+		where 1=1 and releaseFlg = '1'
+	</select>
+</mapper>

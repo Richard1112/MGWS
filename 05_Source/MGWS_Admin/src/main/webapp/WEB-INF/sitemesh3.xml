@@ -6,4 +6,8 @@
 	<!-- 指明满足条件的页面，将被排除，不被装饰 -->
 	<mapping path="/login" exclue="true" />
 	<mapping path="/logout" exclue="true" />
+	
+	<content-processor>
+		<tag-rule-bundle class="com.org.mgws.base.sitemeshtag.MyTagRuleBundle" />
+	</content-processor>
 </sitemesh>

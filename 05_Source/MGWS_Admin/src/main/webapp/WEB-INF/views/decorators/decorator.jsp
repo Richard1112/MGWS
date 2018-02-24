@@ -120,5 +120,7 @@
 		</div>
 	</div>
 	<%@ include file="../commonjsFooter.jsp"%>
+	
+	<sitemesh:write property='myfooter' />
 </body>
 </html>
