@@ -20,14 +20,16 @@
 		
 
 		<div class="join_us_section">
-			<div class="join_title magin-top-30px">
-				<span class="fontshow">信息公示</span>
-				<span class="fontinfo">Open info</span>
-			</div>
 			<div class="openInfo_content">
 				<c:forEach var="openInfo" items="${ openInfoList }" varStatus="step">
 						<div class="openInfoList_div">
-							<a href="${saveOpenInfoPDFUrl}${openInfo.fileName}" target="_blank">No.${step.index + 1}&nbsp;&nbsp;&nbsp;${openInfo.title }(${openInfo.releaseDate })</a>
+							<a href="${saveOpenInfoPDFUrl}${openInfo.fileName}" target="_blank">
+								<div class="openInfoItem clearfix">
+									<span class="openInfoTitle">No.${step.index + 1}&nbsp;&nbsp;&nbsp;${openInfo.title }</span>
+									<span class="openInfoDate">${openInfo.releaseDate }</span>
+								</div>
+							
+							</a>
 						</div>
 				</c:forEach>
 			</div>
