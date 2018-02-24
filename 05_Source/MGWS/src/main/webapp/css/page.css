@@ -57,6 +57,7 @@ a{
 
 .notMainhead{
 	width: 100%;
+	min-width: 1405px;
 	display: inline-block;
 	padding-top: 30px;
 }
@@ -82,7 +83,7 @@ a{
 
 .notMainTitle a{
 	display: inline-block;
-	margin: 15px 0px;
+	/* margin: 15px 0px; */
 }
 
 .notMainTitle a > span{
@@ -953,4 +954,23 @@ a{
     margin: 15px 30px;
     border: 1px solid #45E1D4;
     -webkit-appearance:none;
+}
+
+
+.openInfo_content{
+	width: 50%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.openInfoList_div{
+	    margin-top:5px;
+	    border-bottom: 1px solid #45e1d43b;
+}
+
+.openInfoList_div a{
+	font-size: 2rem;
+    color: #45E1D4 !important;
+    text-decoration: none;
+
 }

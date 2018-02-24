@@ -55,16 +55,22 @@
 								<span class="fontinfo font_ml">Meridian Science</span>
 							</a>
 				        </li>
+				        <li id="products_li">
+				        	<a href="${ctx}/products/init">
+								<span class="fontshow font_ml">产品查询</span>
+								<span class="fontinfo font_ml">Products Search</span>
+							</a>
+				        </li>
+				        <li id="openInfo_li">
+				        	<a href="${ctx}/openInfo/init">
+								<span class="fontshow font_ml">信息公示</span>
+								<span class="fontinfo font_ml">Open Info</span>
+							</a>
+				        </li>
 				        <li id="contactus_li">
 				        	<a href="${ctx}/contactus/init">
 								<span class="fontshow font_ml">联系我们</span>
 								<span class="fontinfo font_ml">Contact Us</span>
-							</a>
-				        </li>
-				        <li id="contactus_li">
-				        	<a href="${ctx}/products/init">
-								<span class="fontshow font_ml">产品查询</span>
-								<span class="fontinfo font_ml">Products Search</span>
 							</a>
 				        </li>
 				    </ul>
@@ -91,6 +97,13 @@
 	if (currentPath.indexOf("science") > 0) {
 		$("#science_li").addClass("active");
 	}
+	if (currentPath.indexOf("products") > 0) {
+		$("#products_li").addClass("active");
+	}
+	if (currentPath.indexOf("openInfo") > 0) {
+		$("#openInfo_li").addClass("active");
+	}
+	
 
 </script>
 </html>
