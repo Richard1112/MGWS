@@ -199,7 +199,13 @@
 			<div class="page-content">
 				<c:forEach var="investorSign" items="${ investorSignList }" varStatus="step">
 						<div class="openInfoList_div">
-							<a href="${saveInvestorPDFUrl}${investorSign.fileName}" target="_blank">No.${step.index + 1}&nbsp;&nbsp;&nbsp;${investorSign.title }(${investorSign.releaseDate })</a>
+							<a href="${saveInvestorPDFUrl}${investorSign.fileName}" target="_blank">
+								<div class="openInfoItem clearfix">
+									<span class="openInfoTitle">No.${step.index + 1}&nbsp;&nbsp;&nbsp;${investorSign.title }</span>
+									<span class="openInfoDate">${investorSign.releaseDate }</span>
+								</div>
+							
+							</a>
 						</div>
 				</c:forEach>
 			</div>

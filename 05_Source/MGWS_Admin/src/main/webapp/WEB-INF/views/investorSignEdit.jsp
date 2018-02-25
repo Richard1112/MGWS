@@ -83,7 +83,7 @@
 							class="form-control" style="background: #fff;width:800px;" maxlength="100"/></td>
 				</tr>
 				<tr>
-					<td class="_label">投资人签署文件</td>
+					<td class="_label" style="padding-top: 100px">投资人签署文件</td>
 					<td class="_cont">
 					<form:hidden path="fileName"/>
 					<input id="fileNameUpdate" type="file" name="file" class="file" data-max-file-count="1"/>

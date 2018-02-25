@@ -958,19 +958,39 @@ a{
 
 
 .openInfo_content{
-	width: 50%;
+	width: 70%;
     margin: 30px auto;
-    text-align: center;
 }
 
 .openInfoList_div{
 	    margin-top:5px;
-	    border-bottom: 1px solid #45e1d43b;
+	    border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+}
+
+.openInfoItem{
+	position: relative;
+	line-height: 30px;
+}
+
+.openInfoItem .openInfoTitle{
+	display: block;
+    float: left;
+    width: 75%;
+    text-align: left;
+    padding: 0 5px;
+}
+
+.openInfoItem .openInfoDate{
+	display: block;
+    float: left;
+    text-align: right;
+    width: 25%;
+    padding: 0 5px;
 }
 
 .openInfoList_div a{
-	font-size: 2rem;
-    color: #45E1D4 !important;
+	font-size: 1.25rem;
+    color: #111 !important;
     text-decoration: none;
 
 }
