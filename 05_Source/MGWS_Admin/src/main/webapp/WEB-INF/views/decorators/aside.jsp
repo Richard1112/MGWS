@@ -21,6 +21,7 @@
                 <li><a href="${pageContext.request.contextPath}/productTadeInit" data-addtab="asset" title="产品购买"><i class="fa fa-circle-o"></i> 产品购买</a></li>
                 <li><a href="${pageContext.request.contextPath}/investorSignInit" data-addtab="asset" title="投资人签署"><i class="fa fa-circle-o"></i> 投资人签署</a></li>
                 <li><a href="${pageContext.request.contextPath}/openInfoInit" data-addtab="asset" title="信息公示"><i class="fa fa-circle-o"></i> 信息公示</a></li>
+                <li><a href="${pageContext.request.contextPath}/investorEduInit" data-addtab="asset" title="投资人教育"><i class="fa fa-circle-o"></i> 投资人教育</a></li>
               </ul>
             </li>
           </ul>

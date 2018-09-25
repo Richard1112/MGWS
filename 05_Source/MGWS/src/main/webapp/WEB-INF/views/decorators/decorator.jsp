@@ -67,6 +67,12 @@
 								<span class="fontinfo font_ml">Open Info</span>
 							</a>
 				        </li>
+				        <li id="investorEdu_li">
+				        	<a href="${ctx}/investorEdu/init">
+								<span class="fontshow font_ml">投资者教育</span>
+								<span class="fontinfo font_ml">Investor Education</span>
+							</a>
+				        </li>
 				        <li id="contactus_li">
 				        	<a href="${ctx}/contactus/init">
 								<span class="fontshow font_ml">联系我们</span>
@@ -102,6 +108,9 @@
 	}
 	if (currentPath.indexOf("openInfo") > 0) {
 		$("#openInfo_li").addClass("active");
+	}
+	if (currentPath.indexOf("investorEdu") > 0) {
+		$("#investorEdu_li").addClass("active");
 	}
 	
 
