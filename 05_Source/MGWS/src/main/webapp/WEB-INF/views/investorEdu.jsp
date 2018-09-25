@@ -26,7 +26,7 @@
 							<a href="${saveInvestorEduPDFUrl}${investorEdu.fileName}" target="_blank">
 								<div class="openInfoItem clearfix">
 									<span class="openInfoTitle">No.${step.index + 1}&nbsp;&nbsp;&nbsp;${investorEdu.title }</span>
-									<span class="openInfoDate">${investorEdu.releaseDate }</span>
+									<!-- <span class="openInfoDate">${investorEdu.releaseDate }</span> -->
 								</div>
 							
 							</a>
