@@ -137,7 +137,7 @@
 			</div>
 		</div>
 		<div class="footer magin-top-250px">
-			<div class="fontshow">Copyright 2016 Meridian Global Inc.</div>
+			<div class="fontshow">Copyright 2016 Meridian Global Inc. 备案号：沪ICP备16031356号-2</div>
 			<div class="footer-split"></div>
 		</div>
 		
