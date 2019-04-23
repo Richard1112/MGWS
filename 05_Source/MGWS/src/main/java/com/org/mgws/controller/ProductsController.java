@@ -22,8 +22,10 @@ import com.org.mgws.contants.CommonConstants;
 import com.org.mgws.dto.LoginInfoDto;
 import com.org.mgws.dto.PurchaseInfo;
 import com.org.mgws.dto.UserBasicInfo;
+import com.org.mgws.entity.TAnnouncementInfo;
 import com.org.mgws.entity.TInvestmentValue;
 import com.org.mgws.entity.TInvestorSign;
+import com.org.mgws.service.AnnouncementInfoService;
 import com.org.mgws.service.InvestorSignService;
 import com.org.mgws.service.ProductService;
 import com.org.mgws.service.UserInfoService;
@@ -38,6 +40,8 @@ public class ProductsController extends BaseController {
 	UserInfoService userInfoService;
 	@Resource
 	InvestorSignService investorSignService;
+	@Resource
+	AnnouncementInfoService announcementInfoService;
 
 	/**
 	 * 产品查询
@@ -62,6 +66,9 @@ public class ProductsController extends BaseController {
 				List<TInvestorSign> investorSignList = investorSignService.getAllTInvestorSign();
 		                model.addAttribute("investorSignList", investorSignList);
 		                model.addAttribute("saveInvestorPDFUrl", MessageUtils.getApplicationMessage("saveInvestorPDFUrl"));
+		                
+		        List<TAnnouncementInfo> announcementInfoList = announcementInfoService.getAllTAnnouncementInfo();
+		        model.addAttribute("announcementInfoList", announcementInfoList);
 		                
 				if (userBasicInfo == null
 						|| (userBasicInfo.getCnName() == null && userBasicInfo.getCnGivenName() == null)) {

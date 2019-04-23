@@ -131,6 +131,12 @@
 						<span>投资人签署</span>
 					</a>
 				</li>
+				<li class="active treeview" onclick="announcementInfoList()">
+					<a href="#"> 
+						<i class="fa fa-dashboard"></i>
+						<span>公告一览</span>
+					</a>
+				</li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->
@@ -211,18 +217,45 @@
 			</div>
 		</div>
 	</div>
+	<div class="content-wrapper page-container" style="min-height: 600px;display:none" id="announcement_info_list">
+		<div class="page-content-wrapper">
+			<div class="page-content announcementInfo_content">
+				<c:forEach var="announcementInfo" items="${ announcementInfoList }" varStatus="step">
+						<div class="openInfoList_div">
+							<a href="${saveAnnouncementInfoPDFUrl}${announcementInfo.fileName}" target="_blank">
+								<div class="announcementInfoItem clearfix">
+									<span class="announcementInfoTitle">No.${step.index + 1}&nbsp;&nbsp;&nbsp;${announcementInfo.title }</span>
+									<span class="announcementInfoDate">${announcementInfo.releaseDate }</span>
+								</div>
+							
+							</a>
+						</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+	
 	</c:if>
 	
 	<script type="text/javascript">
 		function showProductList(){
 			$("#investorSign").css("display","none");
 			$("#product_list").css("display","");
+			$("#announcement_info_list").css("display","none");
 		}
 		
 		function investorSignList(){
 			$("#investorSign").css("display","");
 			$("#product_list").css("display","none");
+			$("#announcement_info_list").css("display","none");
 		}
+		
+		function announcementInfoList(){
+			$("#investorSign").css("display","none");
+			$("#product_list").css("display","none");
+			$("#announcement_info_list").css("display","");
+		}
+	
 	
 	
 	</script>
