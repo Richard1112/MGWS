@@ -31,6 +31,7 @@
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
+		
 	</build>
 	<dependencies>
 		<dependency>
