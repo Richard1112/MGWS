@@ -20,15 +20,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from t_Announcement_info
+    from t_announcement_info
     where no = #{no,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.org.mgws.entity.TAnnouncementInfo" >
-    delete from t_Announcement_info
+    delete from t_announcement_info
     where no = #{no,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.org.mgws.entity.TAnnouncementInfo" >
-    insert into t_Announcement_info (no, title, releaseDate, 
+    insert into t_announcement_info (no, title, releaseDate, 
       releaseFlg, fileName, addTimestamp, 
       addUserKey, updTimestamp, updUserKey, 
       updPgmId)
@@ -38,7 +38,7 @@
       #{updPgmId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.org.mgws.entity.TAnnouncementInfo" >
-    insert into t_Announcement_info
+    insert into t_announcement_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="no != null" >
         no,
@@ -105,7 +105,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.org.mgws.entity.TAnnouncementInfo" >
-    update t_Announcement_info
+    update t_announcement_info
     <set >
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
@@ -138,7 +138,7 @@
     where no = #{no,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.org.mgws.entity.TAnnouncementInfo" >
-    update t_Announcement_info
+    update t_announcement_info
     set title = #{title,jdbcType=VARCHAR},
       releaseDate = #{releaseDate,jdbcType=VARCHAR},
       releaseFlg = #{releaseFlg,jdbcType=CHAR},
@@ -155,7 +155,7 @@
 		parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" />
-		from t_Announcement_info
+		from t_announcement_info
 		where 1=1
 		<if test="title != null and title != ''">
 			and title like CONCAT('%',#{title,jdbcType=VARCHAR},'%')
@@ -165,7 +165,7 @@
 	<select id="selectAllByParamCount" resultType="int" parameterType="java.lang.String">
 		select
 		count(1)
-		from t_Announcement_info
+		from t_announcement_info
 		where 1=1
 		<if test="title != null and title != ''">
 			and title like CONCAT('%',#{title,jdbcType=VARCHAR},'%')
@@ -175,7 +175,7 @@
 	<select id="getAllTAnnouncementInfo" resultMap="BaseResultMap" >
 		select
 		<include refid="Base_Column_List" />
-		from t_Announcement_info
+		from t_announcement_info
 		where 1=1 and releaseFlg = '1'
 	</select>
 </mapper>
