@@ -222,7 +222,7 @@
 			<div class="page-content announcementInfo_content">
 				<c:forEach var="announcementInfo" items="${ announcementInfoList }" varStatus="step">
 						<div class="openInfoList_div">
-							<a href="${saveAnnouncementInfoPDFUrl}${announcementInfo.fileName}" target="_blank">
+							<a href="#" onclick="downloadAnnouncePdf('${announcementInfo.no}')" >
 								<div class="announcementInfoItem clearfix">
 									<span class="announcementInfoTitle">No.${step.index + 1}&nbsp;&nbsp;&nbsp;${announcementInfo.title }</span>
 									<span class="announcementInfoDate">${announcementInfo.releaseDate }</span>
@@ -236,6 +236,10 @@
 	</div>
 	
 	</c:if>
+	
+	<form>
+        <input type="hidden" id="hiddenAnnouncementId" name="announcementId"/>
+    </form>
 	
 	<script type="text/javascript">
 		function showProductList(){
@@ -255,6 +259,15 @@
 			$("#product_list").css("display","none");
 			$("#announcement_info_list").css("display","");
 		}
+		
+		function downloadAnnouncePdf(noStr) {
+			$("#hiddenAnnouncementId").val(noStr);
+			var targetform = document.forms[0];
+            targetform.action = "${ctx}/products/downLoadAnnouncementPdf";
+            targetform.method = "POST";
+            targetform.submit();
+		}
+		
 	
 	
 	
